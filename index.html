@@ -1050,21 +1050,94 @@ const PERF_DRUGS = [
    objectif:'Amélioration du débit expiratoire, baisse de la fréquence respiratoire',
    alertes:['Tachycardie et tremblements constants','Surveiller la kaliémie : hypokaliémie fréquente','Poursuivre les nébulisations et la corticothérapie en parallèle']},
 
-  {id:'p_nacl_rempl', volPur:500, nom:'NaCl 0,9 % — remplissage vasculaire', dci:'Chlorure de sodium isotonique', cat:'Remplissage', icon:'🫙', color:'#38bdf8',
-   amp:'Poche 500 mL', unit:'mL', qteStd:500, volStd:500, solvOk:['pur'], solvIdeal:'pur', purOk:true,
-   mode:'duree', dmin:10, dmax:60, dusuel:15, dunit:'min', step:5,
+  /* ───────── REMPLISSAGE & SOLUTÉS ───────── */
+  {id:'p_nacl_rempl', volPur:500, volOptions:[100,250,500,1000], nom:'NaCl 0,9 % — cristalloïde isotonique', dci:'Chlorure de sodium isotonique', cat:'Remplissage & solutés', icon:'🫙', color:'#38bdf8',
+   amp:'Poche souple — 154 mmol/L de Na⁺ et de Cl⁻', unit:'mL', qteStd:500, volStd:500, solvOk:['pur'], solvIdeal:'pur', purOk:true,
+   mode:'duree', dmin:10, dmax:180, dusuel:15, dunit:'min', step:5,
    voie:'VVP de gros calibre (14G–18G) — deux voies si état de choc',
-   indic:'Hypovolémie, état de choc, déshydratation',
-   objectif:'30 mL/kg en 3 h dans le sepsis, réévaluation après chaque 500 mL',
-   alertes:['Réévaluer la tolérance après chaque poche : auscultation, SpO2','Risque de surcharge chez l’insuffisant cardiaque et le sujet âgé','Accélérateur de perfusion ou poche à pression si remplissage rapide']},
+   indic:'Hypovolémie, état de choc, déshydratation, véhicule de perfusion',
+   objectif:'30 mL/kg dans le sepsis, réévaluation clinique après chaque 500 mL',
+   alertes:['Réévaluer après chaque poche : auscultation, SpO2, marbrures','Risque de surcharge chez l’insuffisant cardiaque et le sujet âgé','Acidose hyperchlorémique si volumes importants — préférer un cristalloïde balancé au-delà de 2 L','Poche à pression ou accélérateur de perfusion si remplissage rapide']},
 
-  {id:'p_rl_rempl', volPur:500, nom:'Ringer Lactate — remplissage', dci:'Solution de Ringer lactate', cat:'Remplissage', icon:'🧴', color:'#38bdf8',
-   amp:'Poche 500 mL', unit:'mL', qteStd:500, volStd:500, solvOk:['pur'], solvIdeal:'pur', purOk:true,
-   mode:'duree', dmin:10, dmax:60, dusuel:15, dunit:'min', step:5,
+  {id:'p_rl_rempl', volPur:500, volOptions:[500,1000], nom:'Ringer Lactate — cristalloïde balancé', dci:'Solution de Ringer lactate', cat:'Remplissage & solutés', icon:'🧴', color:'#38bdf8',
+   amp:'Poche souple — Na⁺, K⁺, Ca²⁺ et lactate', unit:'mL', qteStd:500, volStd:500, solvOk:['pur'], solvIdeal:'pur', purOk:true,
+   mode:'duree', dmin:10, dmax:180, dusuel:15, dunit:'min', step:5,
    voie:'VVP de gros calibre — voie dédiée',
-   indic:'Remplissage du traumatisé, brûlé, choc hémorragique',
-   objectif:'PAS 80–90 mmHg en hypotension permissive chez le traumatisé hémorragique',
-   alertes:['Contient du calcium : incompatible avec la Ceftriaxone et les transfusions sur la même voie','À éviter en cas d’hyperkaliémie (contient du K+)','Ne pas utiliser comme solvant pour les amines']},
+   indic:'Remplissage du traumatisé et du brûlé, choc hémorragique, règle de Parkland',
+   objectif:'Chez le brûlé : 2 à 4 mL/kg par % de surface brûlée sur 24 h, moitié dans les 8 premières heures',
+   alertes:['Contient du calcium : JAMAIS sur la même ligne qu’un culot globulaire ni que de la ceftriaxone','À éviter en cas d’hyperkaliémie — la solution contient du potassium','Ne pas utiliser comme solvant pour les amines','Composition plus proche du plasma que le NaCl : moins d’acidose hyperchlorémique']},
+
+  {id:'p_isofundine', volPur:500, volOptions:[500,1000], nom:'Isofundine — cristalloïde équilibré', dci:'Solution électrolytique balancée', cat:'Remplissage & solutés', icon:'⚖️', color:'#38bdf8',
+   amp:'Poche souple — tamponnée par de l’acétate et du malate', unit:'mL', qteStd:500, volStd:500, solvOk:['pur'], solvIdeal:'pur', purOk:true,
+   mode:'duree', dmin:10, dmax:180, dusuel:20, dunit:'min', step:5,
+   voie:'VVP de bon calibre',
+   indic:'Remplissage de grand volume, sepsis, chirurgie, réanimation du traumatisé',
+   objectif:'Restauration volémique en limitant l’acidose hyperchlorémique',
+   alertes:['Solution de choix quand le remplissage dépasse 2 L','Contient du calcium comme le Ringer : incompatible avec les culots globulaires','Contient du potassium — prudence en cas d’insuffisance rénale','Ne pas utiliser comme solvant pour les amines']},
+
+  {id:'p_plasmion', volPur:500, volOptions:[500], nom:'Plasmion — colloïde (gélatine)', dci:'Gélatine fluide modifiée', cat:'Remplissage & solutés', icon:'🧫', color:'#818cf8',
+   amp:'Poche de 500 mL — gélatine fluide modifiée à 3 %', unit:'mL', qteStd:500, volStd:500, solvOk:['pur'], solvIdeal:'pur', purOk:true,
+   mode:'duree', dmin:10, dmax:60, dusuel:20, dunit:'min', step:5,
+   voie:'VVP de gros calibre',
+   indic:'Hypovolémie sévère ne répondant pas aux cristalloïdes, choc hémorragique en attente de transfusion',
+   objectif:'Expansion volémique rapide — pouvoir d’expansion supérieur aux cristalloïdes',
+   alertes:['Risque de réaction anaphylactique : surveiller les 15 premières minutes','Maximum 33 mL/kg par 24 h','Interfère avec le groupage sanguin : prélever le bilan AVANT de perfuser','Les cristalloïdes restent la première intention']},
+
+  {id:'p_ssh', volPur:250, volOptions:[100,250], nom:'Sérum salé hypertonique 7,5 %', dci:'Chlorure de sodium hypertonique', cat:'Remplissage & solutés', icon:'🧊', color:'#818cf8',
+   amp:'Poche de 250 mL — 7,5 % (osmolarité ≈ 2400 mOsm/L)', unit:'mL', qteStd:250, volStd:250, solvOk:['pur'], solvIdeal:'pur', purOk:true,
+   mode:'duree', dmin:10, dmax:30, dusuel:15, dunit:'min', step:5,
+   voie:'VVP de bon calibre — VVC préférable, produit très veinotoxique',
+   indic:'Traumatisme crânien grave avec HTIC, engagement cérébral, choc hémorragique du traumatisé crânien',
+   objectif:'Baisse de la pression intracrânienne, natrémie cible 145–155 mmol/L',
+   alertes:['Dose de référence : 4 mL/kg — ne pas dépasser sans avis médical','Natrémie et osmolarité à contrôler : la correction doit rester progressive','Très veinotoxique : rincer la voie après passage','Ne jamais l’utiliser comme soluté de remplissage courant']},
+
+  {id:'p_alb4', sang:true, volPur:500, volOptions:[250,500], nom:'Albumine 4 % — colloïde naturel', dci:'Albumine humaine iso-oncotique', cat:'Remplissage & solutés', icon:'🥚', color:'#818cf8',
+   amp:'Flacon de 500 mL — albumine humaine à 4 %', unit:'mL', qteStd:500, volStd:500, solvOk:['pur'], solvIdeal:'pur', purOk:true,
+   mode:'duree', dmin:30, dmax:120, dusuel:60, dunit:'min', step:10,
+   voie:'VVP — transfuseur avec filtre',
+   indic:'Remplissage de la femme enceinte, du cirrhotique, du brûlé après la 24e heure, sepsis avec hypoalbuminémie',
+   objectif:'Expansion volémique durable sans surcharge chlorée',
+   alertes:['Produit dérivé du sang : traçabilité obligatoire du numéro de lot','Utiliser un transfuseur muni d’un filtre','Ne jamais diluer avec de l’eau pour préparation injectable — risque d’hémolyse','Réservé aux indications où les cristalloïdes ne suffisent pas']},
+
+  {id:'p_alb20', sang:true, volPur:100, volOptions:[100], nom:'Albumine 20 % — colloïde hyperoncotique', dci:'Albumine humaine concentrée', cat:'Remplissage & solutés', icon:'🥚', color:'#818cf8',
+   amp:'Flacon de 100 mL — albumine humaine à 20 %', unit:'mL', qteStd:100, volStd:100, solvOk:['pur'], solvIdeal:'pur', purOk:true,
+   mode:'duree', dmin:30, dmax:120, dusuel:60, dunit:'min', step:10,
+   voie:'VVP — transfuseur avec filtre, débit lent',
+   indic:'Hypoalbuminémie profonde, ascite réfractaire, syndrome hépato-rénal, œdème cérébral',
+   objectif:'Rappel de liquide vers le secteur vasculaire',
+   alertes:['Hyperoncotique : attire l’eau vers le vaisseau — risque d’OAP si passage trop rapide','Produit dérivé du sang : traçabilité du numéro de lot obligatoire','Surveiller la tension pendant tout le passage','Ce n’est pas un soluté de remplissage d’urgence']},
+
+  {id:'p_cgr', sang:true, meExtra:{label:'Contrôle ultime pré-transfusionnel', texte:'/me réalise le contrôle ultime au lit du patient : il vérifie l’identité du patient, confronte le groupe inscrit sur la poche à la carte de contrôle, réalise le test de Beth-Vincent sur carte, lit le résultat à voix haute avec un témoin et note l’heure du contrôle avant de brancher quoi que ce soit.'}, volPur:280, volOptions:[280], nom:'Culot globulaire O Rh− (urgence vitale)', dci:'Concentré de globules rouges', cat:'Remplissage & solutés', icon:'🩸', color:'#f43f5e',
+   amp:'Poche de concentré érythrocytaire — 250 à 300 mL', unit:'mL', qteStd:280, volStd:280, solvOk:['pur'], solvIdeal:'pur', purOk:true,
+   mode:'duree', dmin:10, dmax:120, dusuel:20, dunit:'min', step:5,
+   voie:'VVP de gros calibre (16G minimum) — transfuseur avec filtre et réchauffeur',
+   indic:'Choc hémorragique, transfusion préhospitalière en urgence vitale immédiate',
+   objectif:'Hémoglobine ≥ 7 g/dL — ≥ 10 g/dL chez le traumatisé crânien ou le coronarien',
+   alertes:['Contrôle ultime au lit du patient OBLIGATOIRE avant de brancher, même en urgence vitale','JAMAIS sur la même ligne qu’un Ringer Lactate ou une Isofundine : le calcium fait coaguler la poche','Réchauffer au-delà de 2 culots — l’hypothermie aggrave la coagulopathie','Surveillance rapprochée les 15 premières minutes : frissons, douleur lombaire, hypotension','Traçabilité de la poche et de la carte de contrôle obligatoire']},
+
+  {id:'p_plyo', sang:true, meExtra:{label:'Reconstitution du plasma', texte:'/me raccorde le flacon d’eau pour préparation injectable au flacon de plasma lyophilisé à l’aide du dispositif de transfert stérile, agite doucement jusqu’à dissolution complète, puis vérifie l’absence de particule et note l’heure de reconstitution.'}, volPur:200, volOptions:[200], nom:'Plasma lyophilisé (PLYO)', dci:'Plasma humain lyophilisé universel', cat:'Remplissage & solutés', icon:'🧊', color:'#f43f5e',
+   amp:'Flacon lyophilisé — reconstitué dans 200 mL d’eau PPI', unit:'mL', qteStd:200, volStd:200, solvOk:['pur'], solvIdeal:'pur', purOk:true,
+   mode:'duree', dmin:10, dmax:45, dusuel:20, dunit:'min', step:5,
+   voie:'VVP de bon calibre — transfuseur avec filtre',
+   indic:'Choc hémorragique du traumatisé, coagulopathie précoce, damage control préhospitalier',
+   objectif:'Ratio transfusionnel proche de 1 plasma pour 1 culot globulaire',
+   alertes:['Reconstituer avec l’eau PPI fournie et agiter doucement jusqu’à dissolution complète','Universel : utilisable sans connaître le groupe du patient','À passer dans les 6 heures suivant la reconstitution','Traçabilité obligatoire du numéro de lot']},
+
+  {id:'p_g10', volPur:500, volOptions:[250,500], nom:'Glucose 10 % — relais hypoglycémie', dci:'Sérum glucosé isotonique', cat:'Remplissage & solutés', icon:'🍯', color:'#fbbf24',
+   amp:'Poche de 500 mL — 50 g de glucose', unit:'mL', qteStd:500, volStd:500, solvOk:['pur'], solvIdeal:'pur', purOk:true,
+   mode:'duree', dmin:30, dmax:240, dusuel:120, dunit:'min', step:15,
+   voie:'VVP',
+   indic:'Relais après resucrage au G30 %, hypoglycémie du sulfamide, dénutrition, apport glucidique',
+   objectif:'Glycémie maintenue entre 1 et 2 g/L',
+   alertes:['N’est pas un soluté de remplissage : il ne reste pas dans le secteur vasculaire','Indispensable après un G30 % : sans relais, l’hypoglycémie récidive','Glycémie capillaire toutes les 30 min au début','Prudence chez le patient dénutri ou alcoolique — penser à la vitamine B1 avant le glucose']},
+
+  {id:'p_mannitol', volPur:250, volOptions:[125,250], nom:'Mannitol 20 % — osmothérapie', dci:'Mannitol', cat:'Remplissage & solutés', icon:'🧠', color:'#a78bfa',
+   amp:'Poche de 250 mL — 50 g de mannitol', unit:'mL', qteStd:250, volStd:250, solvOk:['pur'], solvIdeal:'pur', purOk:true,
+   mode:'duree', dmin:15, dmax:60, dusuel:20, dunit:'min', step:5,
+   voie:'VVP de bon calibre — transfuseur avec filtre',
+   indic:'HTIC, engagement cérébral, œdème cérébral du traumatisé crânien grave',
+   objectif:'0,25 à 1 g/kg par passage — baisse de la pression intracrânienne en 15 à 30 min',
+   alertes:['Utiliser un filtre : la solution peut cristalliser, ne jamais perfuser une poche trouble','Diurèse osmotique majeure : sonde urinaire et compensation des pertes','Contrôler l’osmolarité — arrêter au-delà de 320 mOsm/L','Effet rebond possible : ne pas répéter sans avis médical','Contre-indiqué en cas d’insuffisance rénale anurique ou d’hypovolémie non corrigée']},
 
   {id:'p_hepa', nom:'Héparine sodique IVSE', dci:'Héparine non fractionnée', cat:'Cardiologie', icon:'🧬', color:'#a78bfa',
    amp:'25 000 UI / 5 mL', unit:'UI', qteStd:25000, volStd:50, solvOk:['nacl','g5'], solvIdeal:'nacl', purOk:false,
@@ -1075,7 +1148,7 @@ const PERF_DRUGS = [
    alertes:['Bolus initial souvent prescrit : 50 UI/kg IVD','Voie dédiée — ne pas mélanger en Y','Risque hémorragique : surveiller les points de ponction','Antidote : sulfate de protamine']},
 ];
 
-const PERF_CATS = ['Amines vasoactives','Cardiologie','Sédation & analgésie','Métabolique','Antalgiques & antibiotiques','Remplissage'];
+const PERF_CATS = ['Amines vasoactives','Cardiologie','Sédation & analgésie','Métabolique','Antalgiques & antibiotiques','Remplissage & solutés'];
 
 /* ── Cas cliniques du mode examen ── */
 const PERF_CAS = [
@@ -1138,6 +1211,22 @@ const PERF_CAS = [
    enonce:'Femme de 29 ans, asthmatique connue. Impossibilité de parler, FR 34, SpO2 89 %, silence auscultatoire. Trois nébulisations de salbutamol et corticoïdes déjà administrés, sans amélioration.',
    poids:55, drug:'p_salbu', base:'nacl', doseMin:0.25, doseMax:2,
    corr:'Passage au salbutamol IV à la seringue électrique devant l’échec des nébulisations : 5 mg dans 50 mL, débuté à 0,25–0,5 mg/h puis augmenté selon la réponse. Scope continu, surveillance de la kaliémie. Poursuivre les nébulisations et la corticothérapie, préparer le matériel d’intubation.'},
+
+  {id:'c13', titre:'Choc hémorragique — transfusion', icon:'🩸', diff:'Difficile',
+   enonce:'Homme de 38 ans, plaie par arme blanche abdominale. PA 74/40, FC 138, pâleur extrême, Glasgow 13. Hémocue à 6,2 g/dL. Deux VVP de 16G en place, dont une avec du Ringer Lactate en cours. Transfusion préhospitalière décidée.',
+   poids:80, drug:'p_cgr', base:'pur', doseMin:10, doseMax:30,
+   corr:'Urgence vitale immédiate : culots globulaires O Rh négatif, passés rapidement sur 15 à 20 minutes avec un transfuseur à filtre et un réchauffeur. Le piège du cas est la voie : le Ringer Lactate contient du calcium et fait coaguler le culot — il faut rincer la ligne au NaCl 0,9 % ou utiliser la seconde voie. Le contrôle ultime au lit du patient reste obligatoire, même en urgence vitale. Associer le plasma lyophilisé pour tenir un ratio proche de 1 pour 1, et l’acide tranexamique.'},
+
+  {id:'c14', titre:'Traumatisme crânien — HTIC', icon:'🧠', diff:'Difficile',
+   enonce:'Femme de 45 ans, chute de 4 mètres. Glasgow 6, anisocorie avec mydriase droite, PA 168/92, FC 58. Patiente intubée et ventilée, capnie contrôlée. Signes d’engagement cérébral, scanner à 20 minutes.',
+   poids:65, drug:'p_ssh', base:'pur', doseMin:10, doseMax:30,
+   corr:'Signes d’engagement : osmothérapie en urgence. Sérum salé hypertonique 7,5 % à la dose de 4 mL/kg, soit environ 260 mL pour 65 kg, à passer sur 10 à 20 minutes sur une voie de bon calibre. Le mannitol 20 % à 0,25–1 g/kg est l’alternative, mais le SSH est préféré chez le patient hypotendu ou hémodynamiquement fragile car il ne provoque pas de diurèse osmotique. Maintenir la PAM pour préserver la pression de perfusion cérébrale — surtout ne pas faire chuter la tension.'},
+
+  {id:'c15', titre:'Brûlé grave', icon:'🔥', diff:'Standard',
+   enonce:'Homme de 70 kg, incendie domestique. Brûlures du 2e degré profond sur les deux membres supérieurs et le tronc antérieur, soit 36 % de la surface corporelle. Conscient, PA 108/64, FC 118. Brûlures survenues il y a 30 minutes.',
+   poids:70, drug:'p_rl_rempl', base:'pur', doseMin:10, doseMax:60,
+   corr:'Règle de Parkland : 2 à 4 mL/kg par pourcentage de surface brûlée sur les 24 premières heures, dont la moitié dans les 8 heures suivant la brûlure — ici environ 5 à 10 L sur 24 h, la moitié sur les 8 premières heures, à compter de l’heure de la brûlure et non de la prise en charge. Le Ringer Lactate est le soluté de référence du brûlé. Sonde urinaire indispensable : la diurèse, entre 0,5 et 1 mL/kg/h, est le meilleur guide du remplissage.'},
+
 ];
 
 /* ══════════════════════════════════════════════ UTILS ══ */
@@ -1728,7 +1817,13 @@ const defaultSolv = d => {
   const b = PERF_SOLVANTS.find(x=>x.base===d.solvIdeal);
   return b ? b.id : null;
 };
-const volFinal = (drug,solv) => !solv ? 0 : (solv.base==='pur' ? (drug.volPur||drug.volStd) : solv.vol);
+const isFluide = d => !!d && d.unit==='mL';
+const pretEmploi = d => !!d && d.solvOk.length===1 && d.solvOk[0]==='pur';
+const volFinal = (drug,solv,volSel) => {
+  if(!solv) return 0;
+  if(drug.volOptions && volSel && drug.volOptions.includes(volSel)) return volSel;
+  return solv.base==='pur' ? (drug.volPur||drug.volStd) : solv.vol;
+};
 
 /* Calcul du débit */
 function perfCalc(drug, qte, vol, dose, poids){
@@ -1775,6 +1870,12 @@ function checkPresc(drug, qte, vol, dose, poids, r){
     const gh = (qte/vol)*r.mlh;
     if(gh > 1.02) out.push({lvl:'err', txt:`${nf(gh,2)} g de KCl par heure — le maximum en voie périphérique est de 1 g/h. Ralentir ou diluer davantage.`});
   }
+  if(isFluide(drug) && poids>0){
+    const mlkg = vol/poids;
+    if(mlkg > 22) out.push({lvl:'warn', txt:`${nf(mlkg,1)} mL/kg d’un coup : c’est beaucoup pour un seul passage. Réévaluer la tolérance (auscultation, SpO2) avant de poursuivre.`});
+    if(drug.id==='p_ssh' && mlkg > 5) out.push({lvl:'err', txt:`${nf(mlkg,1)} mL/kg de sérum salé hypertonique — la dose de référence est de 4 mL/kg, soit environ ${nf(poids*4,0)} mL pour ce patient.`});
+    if(drug.id==='p_plasmion' && mlkg > 33) out.push({lvl:'err', txt:`Au-delà de 33 mL/kg par 24 h de gélatine, le risque hémorragique et rénal l’emporte.`});
+  }
   const isSe = vol <= 50;
   if(isSe && r.mlh > 999) out.push({lvl:'err', txt:`Débit de ${nf(r.mlh,0)} mL/h : impossible à régler sur un pousse-seringue (max 999 mL/h). Revoir la dilution.`});
   if(!isSe && r.mlh > 900) out.push({lvl:'warn', txt:`${nf(r.mlh,0)} mL/h : au-delà de ce qu’une perfusion par gravité peut délivrer — il faut une poche à pression ou un accélérateur de perfusion.`});
@@ -1786,24 +1887,33 @@ function checkPresc(drug, qte, vol, dose, poids, r){
 /* Génération des /me */
 function perfMe(drug, solv, qte, vol, dose, poids, r){
   const u = drug.unit;
-  const dilTxt = solv.base==='pur'
-    ? `sans dilution, tel quel`
-    : `dans ${nf(vol,0)} mL de ${BASE_NOM[solv.base]}`;
-  const contenant = solv.se ? (vol<=20?'une seringue de 20 mL':'une seringue de 50 mL') : `une poche de ${nf(vol,0)} mL`;
+  const fluide = isFluide(drug);
+  const useSe = !!solv.se && vol<=50 && !fluide;
+  const ligne  = drug.sang ? 'un transfuseur muni d’un filtre' : (useSe ? 'un prolongateur' : 'une tubulure de perfusion');
+  const appareil = drug.sang ? 'du transfuseur' : 'du perfuseur';
+  const nomCourt = drug.nom.split('—')[0].trim();
+  const dilTxt = solv.base==='pur' ? `sans dilution, tel quel` : `dans ${nf(vol,0)} mL de ${BASE_NOM[solv.base]}`;
+  const contenant = useSe ? (vol<=20?'une seringue de 20 mL':'une seringue de 50 mL') : `une poche de ${nf(vol,0)} mL`;
   const conc = `${nf(r.conc,3)} ${u}/mL`;
 
   return {
-    verif: `/me vérifie l’étiquette de l’ampoule de ${drug.nom} — nom du produit, dosage ${drug.amp} et date de péremption — contrôle l’intégrité du conditionnement, se désinfecte les mains et prépare un plan de travail propre.`,
-    prep: solv.base==='pur'
-      ? `/me prépare ${drug.nom} ${dilTxt} : ${nf(qte,2)} ${u} pour ${nf(vol,0)} mL, soit une concentration de ${conc}, et purge l’air de la seringue.`
-      : `/me prélève ${nf(qte,2)} ${u} de ${drug.nom} (${drug.amp}) à l’aide d’une seringue stérile puis l’injecte ${dilTxt} pour obtenir ${contenant} de ${nf(vol,0)} mL à ${conc}, avant d’homogénéiser doucement la préparation.`,
-    etiq: `/me colle une étiquette sur ${solv.se?'la seringue':'la poche'} et y inscrit lisiblement : « ${drug.nom} — ${nf(qte,2)} ${u} / ${nf(vol,0)} mL — ${conc} — ${heureNow()} », puis ajoute ses initiales et le nom du patient.`,
-    purge: `/me connecte ${solv.se?'un prolongateur':'une tubulure de perfusion'} à la préparation, ouvre le clamp et purge intégralement la ligne jusqu’à chasser la dernière bulle d’air, puis referme le clamp.`,
-    branch: `/me désinfecte le robinet de la voie veineuse à l’antiseptique, contrôle la perméabilité du cathéter par un flush de sérum physiologique, puis y connecte la ligne purgée de ${drug.nom} en vérifiant l’absence de douleur et d’extravasation.`,
-    debit: solv.se
+    verif: fluide
+      ? `/me contrôle la poche de ${nomCourt} avant de la suspendre : nom du soluté, volume de ${nf(vol,0)} mL, date de péremption, limpidité de la solution et intégrité de l’emballage, puis se désinfecte les mains.`
+      : `/me vérifie l’étiquette de l’ampoule de ${drug.nom} — nom du produit, dosage ${drug.amp} et date de péremption — contrôle l’intégrité du conditionnement, se désinfecte les mains et prépare un plan de travail propre.`,
+    prep: fluide
+      ? `/me suspend la poche de ${nf(vol,0)} mL de ${nomCourt} à la potence, y adapte ${ligne} et ferme le clamp avant de purger la ligne.`
+      : solv.base==='pur'
+        ? `/me prépare ${drug.nom} ${dilTxt} : ${nf(qte,2)} ${u} pour ${nf(vol,0)} mL, soit une concentration de ${conc}, et purge l’air de la seringue.`
+        : `/me prélève ${nf(qte,2)} ${u} de ${drug.nom} (${drug.amp}) à l’aide d’une seringue stérile puis l’injecte ${dilTxt} pour obtenir ${contenant} de ${nf(vol,0)} mL à ${conc}, avant d’homogénéiser doucement la préparation.`,
+    etiq: fluide
+      ? `/me inscrit sur la poche l’heure de pose, le volume de ${nf(vol,0)} mL et le nom du patient, puis reporte l’apport sur la feuille de bilan des entrées et des sorties.`
+      : `/me colle une étiquette sur ${useSe?'la seringue':'la poche'} et y inscrit lisiblement : « ${drug.nom} — ${nf(qte,2)} ${u} / ${nf(vol,0)} mL — ${conc} — ${heureNow()} », puis ajoute ses initiales et le nom du patient.`,
+    purge: `/me connecte ${ligne} à ${fluide?'la poche':'la préparation'}, ouvre le clamp et purge intégralement la ligne jusqu’à chasser la dernière bulle d’air, puis referme le clamp.`,
+    branch: `/me désinfecte le robinet de la voie veineuse à l’antiseptique, contrôle la perméabilité du cathéter par un flush de sérum physiologique, puis y connecte la ligne purgée de ${nomCourt} en vérifiant l’absence de douleur et d’extravasation.`,
+    debit: useSe
       ? `/me installe la seringue de ${drug.nom} dans le pousse-seringue électrique, sélectionne le volume et règle le débit à ${nf(r.mlh,1)} mL/h — soit ${nf(dose,3)} ${drug.dunit}${drug.mode.includes('k')?` pour ${poids} kg`:''} — puis lance la perfusion et s’assure de l’absence d’alarme d’occlusion.`
-      : `/me règle la molette du perfuseur sur ${nf(r.gttes,0)} gouttes par minute, soit ${nf(r.mlh,0)} mL/h, pour faire passer les ${nf(vol,0)} mL en ${drug.mode==='duree'?nf(dose,0)+' minutes':'la durée prescrite'}, et contrôle l’écoulement régulier dans la chambre compte-gouttes.`,
-    surv: `/me note sur la feuille de surveillance l’heure de début, le produit, la dilution et le débit réglé, puis met en place la surveillance : ${drug.objectif}. ${drug.mode==='duree'?'Il repasse contrôler le point de ponction avant la fin du passage.':'Il réévalue le débit toutes les 5 minutes selon la réponse du patient.'}`,
+      : `/me règle la molette ${appareil} sur ${nf(r.gttes,0)} gouttes par minute, soit ${nf(r.mlh,0)} mL/h, pour faire passer les ${nf(vol,0)} mL en ${drug.mode==='duree'?nf(dose,0)+' minutes':'la durée prescrite'}, et contrôle l’écoulement régulier dans la chambre compte-gouttes.`,
+    surv: `/me note sur la feuille de surveillance l’heure de début, le produit, ${fluide?'le volume':'la dilution'} et le débit réglé, puis met en place la surveillance : ${drug.objectif}. ${drug.mode==='duree'?'Il repasse contrôler le point de ponction avant la fin du passage.':'Il réévalue le débit toutes les 5 minutes selon la réponse du patient.'}`,
   };
 }
 
@@ -1907,30 +2017,36 @@ function PerfAtelier({showToast,copy}){
   const [solvId,setSolv]= useState(null);
   const [qte,setQte]    = useState(0);
   const [dose,setDose]  = useState(0);
+  const [volSel,setVolSel] = useState(0);
 
   const drug = getDrug(drugId);
   const solv = getSolv(solvId);
-  const vol  = drug&&solv ? volFinal(drug,solv) : 0;
-  const r    = drug&&vol>0 ? perfCalc(drug,qte,vol,dose,poids) : {conc:0,mlh:0,gttes:0,auto:0};
+  const fluide = isFluide(drug);
+  const vol  = drug&&solv ? volFinal(drug,solv,volSel) : 0;
+  const qteE = fluide ? vol : qte;
+  const r    = drug&&vol>0 ? perfCalc(drug,qteE,vol,dose,poids) : {conc:0,mlh:0,gttes:0,auto:0};
   const solvErr = checkSolvant(drug,solv);
-  const alerts  = drug&&solv&&!solvErr&&vol>0 ? checkPresc(drug,qte,vol,dose,poids,r) : [];
-  const me      = drug&&solv&&vol>0 ? perfMe(drug,solv,qte,vol,dose,poids,r) : null;
+  const alerts  = drug&&solv&&!solvErr&&vol>0 ? checkPresc(drug,qteE,vol,dose,poids,r) : [];
+  const me      = drug&&solv&&vol>0 ? perfMe(drug,solv,qteE,vol,dose,poids,r) : null;
   const blocked = !!solvErr || alerts.some(a=>a.lvl==='err');
 
   const pickDrug = id => {
     const d = getDrug(id);
-    setDrug(id); setQte(d.qteStd); setDose(d.dusuel);
+    setDrug(id); setQte(d.qteStd); setDose(d.dusuel); setVolSel(d.volStd);
     setSolv(defaultSolv(d));
     setStep(2);
   };
 
-  const reset = ()=>{ setStep(0);setDrug(null);setSolv(null);setQte(0);setDose(0); };
+  const reset = ()=>{ setStep(0);setDrug(null);setSolv(null);setQte(0);setDose(0);setVolSel(0); };
   const canNext = [true, !!drug, !!drug&&!!solv&&!solvErr&&qte>0, true, true, true][step];
 
   const copyAll = () => {
     if(!me) return;
-    copy([me.verif,me.prep,me.etiq,me.purge,me.branch,me.debit,me.surv].join('\n\n'));
-    showToast('Protocole complet copié (7 /me) !','me');
+    const lignes=[me.verif];
+    if(drug.meExtra) lignes.push(drug.meExtra.texte);
+    lignes.push(me.prep,me.etiq,me.purge,me.branch,me.debit,me.surv);
+    copy(lignes.join('\n\n'));
+    showToast(`Protocole complet copié (${lignes.length} /me) !`,'me');
   };
 
   return (
@@ -1956,12 +2072,11 @@ function PerfAtelier({showToast,copy}){
         {/* Étiquette live */}
         {drug&&solv&&vol>0&&!solvErr&&(
           <div className="perf-etiquette" style={{borderColor:drug.color+'55'}}>
-            <div style={{fontSize:8.5,fontWeight:800,letterSpacing:'0.14em',textTransform:'uppercase',color:drug.color,marginBottom:6}}>◉ Étiquette seringue</div>
+            <div style={{fontSize:8.5,fontWeight:800,letterSpacing:'0.14em',textTransform:'uppercase',color:drug.color,marginBottom:6}}>◉ Étiquette {(solv.se&&vol<=50&&!fluide)?'seringue':'poche'}</div>
             <div style={{fontSize:13,fontWeight:900,color:'#f1f5f9',lineHeight:1.25,marginBottom:5}}>{drug.nom}</div>
             <div style={{fontSize:10.5,fontFamily:'JetBrains Mono,monospace',color:'#94a3b8',lineHeight:1.7}}>
-              {nf(qte,2)} {drug.unit} / {nf(vol,0)} mL<br/>
-              = {nf(r.conc,3)} {drug.unit}/mL<br/>
-              {solv.base==='pur'?'Non dilué':`Solvant : ${BASE_NOM[solv.base]}`}<br/>
+              {fluide ? <>Poche de {nf(vol,0)} mL<br/>= {nf(vol/poids,1)} mL/kg<br/></>
+                      : <>{nf(qte,2)} {drug.unit} / {nf(vol,0)} mL<br/>= {nf(r.conc,3)} {drug.unit}/mL<br/>{solv.base==='pur'?'Non dilué':`Solvant : ${BASE_NOM[solv.base]}`}<br/></>}
               {r.mlh>0 && <>Débit : {nf(r.mlh,1)} mL/h<br/></>}
               Préparé à {heureNow()}
             </div>
@@ -2024,6 +2139,11 @@ function PerfAtelier({showToast,copy}){
             </div>
 
             <div className="perf-lbl" style={{marginTop:18}}>Contenant et solvant</div>
+            {pretEmploi(drug) ? (
+              <div className="perf-note" style={{marginBottom:18}}>
+                <b>Prêt à l’emploi.</b> {drug.nom.split('—')[0].trim()} se perfuse tel quel — {drug.amp}. Aucun solvant à ajouter, aucune reconstitution : le diluer fausserait la concentration et, pour certains produits, provoquerait une hémolyse.
+              </div>
+            ) : (
             <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(190px,1fr))',gap:8,marginBottom:18}}>
               {PERF_SOLVANTS.map(s=>{
                 const bad = !!checkSolvant(drug,s);
@@ -2042,28 +2162,59 @@ function PerfAtelier({showToast,copy}){
                 );
               })}
             </div>
+            )}
 
             {solvErr && <AlertBox lvl="err" txt={solvErr}/>}
 
             {solv&&!solvErr&&(
               <>
-                <div className="perf-lbl">Quantité de {drug.nom} à diluer</div>
-                <div className="perf-panel">
-                  <div style={{display:'flex',alignItems:'center',gap:12,marginBottom:10}}>
-                    <input type="number" value={qte} min="0" step={drug.qteStd/10} onChange={e=>setQte(+e.target.value)}
-                      style={{width:130,padding:'9px 11px',borderRadius:10,fontSize:14,fontWeight:800,fontFamily:'JetBrains Mono,monospace'}}/>
-                    <span style={{fontSize:13,fontWeight:800,color:'var(--muted)'}}>{drug.unit}</span>
-                    <button onClick={()=>setQte(drug.qteStd)} className="perf-chip" style={{marginLeft:'auto'}}>↺ Dilution standard SMUR</button>
+                {drug.volOptions&&drug.volOptions.length>1&&(
+                  <>
+                    <div className="perf-lbl">{fluide?'Volume de la poche':'Volume du contenant'}</div>
+                    <div style={{display:'flex',gap:7,flexWrap:'wrap',marginBottom:16}}>
+                      {drug.volOptions.map(o=>(
+                        <button key={o} onClick={()=>setVolSel(o)} className="perf-chip"
+                          style={vol===o?{borderColor:drug.color+'88',color:drug.color,background:drug.color+'18'}:{}}>
+                          {o} mL{poids>0?` · ${nf(o/poids,1)} mL/kg`:''}
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                )}
+
+                {!fluide&&(
+                  <>
+                    <div className="perf-lbl">Quantité de {drug.nom} à diluer</div>
+                    <div className="perf-panel">
+                      <div style={{display:'flex',alignItems:'center',gap:12,marginBottom:10}}>
+                        <input type="number" value={qte} min="0" step={drug.qteStd/10} onChange={e=>setQte(+e.target.value)}
+                          style={{width:130,padding:'9px 11px',borderRadius:10,fontSize:14,fontWeight:800,fontFamily:'JetBrains Mono,monospace'}}/>
+                        <span style={{fontSize:13,fontWeight:800,color:'var(--muted)'}}>{drug.unit}</span>
+                        <button onClick={()=>setQte(drug.qteStd)} className="perf-chip" style={{marginLeft:'auto'}}>↺ Dilution standard SMUR</button>
+                      </div>
+                      <div style={{display:'flex',gap:9,flexWrap:'wrap'}}>
+                        <PerfStat label="Volume final" value={nf(vol,0)} unit="mL" color="#38bdf8"/>
+                        <PerfStat label="Concentration" value={nf(r.conc,3)} unit={`${drug.unit}/mL`} color={drug.color} big/>
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {fluide&&(
+                  <div className="perf-panel">
+                    <div style={{display:'flex',gap:9,flexWrap:'wrap'}}>
+                      <PerfStat label="Volume perfusé" value={nf(vol,0)} unit="mL" color="#38bdf8" big/>
+                      <PerfStat label="Rapporté au poids" value={nf(vol/poids,1)} unit="mL/kg" color={drug.color} big/>
+                    </div>
                   </div>
-                  <div style={{display:'flex',gap:9,flexWrap:'wrap'}}>
-                    <PerfStat label="Volume final" value={nf(vol,0)} unit="mL" color="#38bdf8"/>
-                    <PerfStat label="Concentration" value={nf(r.conc,3)} unit={`${drug.unit}/mL`} color={drug.color} big/>
-                  </div>
-                </div>
+                )}
+
                 <div className="perf-note" style={{marginTop:14}}>
-                  <b>Dilution de référence :</b> {drug.solvIdeal==='pur'
-                    ? `${drug.nom} s’utilise pur — ${nf(drug.qteStd,2)} ${drug.unit} pour ${nf(drug.volStd,0)} mL, sans ajout de solvant.`
-                    : `${nf(drug.qteStd,2)} ${drug.unit} dans ${nf(drug.volStd,0)} mL de ${BASE_NOM[drug.solvIdeal]}`} — c’est la préparation qu’utilisent les équipes SMUR, autant la connaître par cœur.
+                  <b>{fluide?'Repère de dose :':'Dilution de référence :'}</b> {fluide
+                    ? drug.objectif
+                    : (drug.solvIdeal==='pur'
+                      ? `${drug.nom} s’utilise pur — ${nf(drug.qteStd,2)} ${drug.unit} pour ${nf(drug.volStd,0)} mL, sans ajout de solvant.`
+                      : `${nf(drug.qteStd,2)} ${drug.unit} dans ${nf(drug.volStd,0)} mL de ${BASE_NOM[drug.solvIdeal]} — c’est la préparation qu’utilisent les équipes SMUR, autant la connaître par cœur.`)}
                 </div>
               </>
             )}
@@ -2075,8 +2226,9 @@ function PerfAtelier({showToast,copy}){
           <div>
             {solvErr&&<AlertBox lvl="err" txt={solvErr}/>}
             <MeLine label="1 · Vérification du produit" texte={me.verif} onCopy={copy} accent={drug.color}/>
-            <MeLine label="2 · Reconstitution / dilution" texte={me.prep} onCopy={copy} accent={drug.color}/>
-            <MeLine label="3 · Étiquetage" texte={me.etiq} onCopy={copy} accent={drug.color}/>
+            {drug.meExtra&&<MeLine label={`2 · ${drug.meExtra.label}`} texte={drug.meExtra.texte} onCopy={copy} accent={drug.color}/>}
+            <MeLine label={`${drug.meExtra?3:2} · ${fluide?'Mise en place de la poche':'Reconstitution / dilution'}`} texte={me.prep} onCopy={copy} accent={drug.color}/>
+            <MeLine label={`${drug.meExtra?4:3} · ${fluide?'Traçabilité de la poche':'Étiquetage'}`} texte={me.etiq} onCopy={copy} accent={drug.color}/>
             <div className="perf-lbl" style={{marginTop:18}}>Points de vigilance</div>
             {drug.alertes.map((a,i)=><AlertBox key={i} lvl={i===0?'err':'warn'} txt={a}/>)}
           </div>
@@ -2114,7 +2266,9 @@ function PerfAtelier({showToast,copy}){
               <PerfStat label="Débit pousse-seringue" value={nf(r.mlh,1)} unit="mL/h" color="#22d3ee" big/>
               <PerfStat label="Perfuseur 20 gttes/mL" value={nf(r.gttes,0)} unit="gttes/min" color="#a78bfa"/>
               <PerfStat label="Autonomie" value={nf(r.auto,1)} unit="h" color="#34d399"/>
-              {drug.mode!=='duree'&&<PerfStat label={`Dose horaire`} value={nf(r.mlh*r.conc,2)} unit={`${drug.unit}/h`} color={drug.color}/>}
+              {fluide
+                ? <PerfStat label="Rapporté au poids" value={nf(vol/poids,1)} unit="mL/kg" color={drug.color}/>
+                : drug.mode!=='duree'&&<PerfStat label={`Dose horaire`} value={nf(r.mlh*r.conc,2)} unit={`${drug.unit}/h`} color={drug.color}/>}
             </div>
 
             {alerts.map((a,i)=><AlertBox key={i} lvl={a.lvl} txt={a.txt}/>)}
@@ -2127,7 +2281,7 @@ function PerfAtelier({showToast,copy}){
 
             <button onClick={copyAll} className="copy-next-btn" disabled={blocked}
               style={{marginTop:8,background:blocked?'rgba(244,63,94,0.08)':`linear-gradient(135deg,${drug.color}22,${drug.color}0a)`,border:`1.5px solid ${blocked?'#f43f5e44':drug.color+'55'}`,color:blocked?'#f43f5e':drug.color,cursor:blocked?'not-allowed':'pointer'}}>
-              {blocked?'⛔ Corrige les erreurs avant de copier le protocole':'📋 Copier le protocole complet (7 /me)'}
+              {blocked?'⛔ Corrige les erreurs avant de copier le protocole':`📋 Copier le protocole complet (${drug.meExtra?8:7} /me)`}
             </button>
           </div>
         ))}
@@ -2152,6 +2306,7 @@ function PerfExamen({showToast,copy}){
   const [solvId,setSolv] = useState(null);
   const [qte,setQte]     = useState(0);
   const [dose,setDose]   = useState(0);
+  const [volSel,setVolSel] = useState(0);
   const [res,setRes]     = useState(null);
   const [scores,setScores]=useState(()=>load('mRP2_perf_scores',{}));
 
@@ -2160,11 +2315,13 @@ function PerfExamen({showToast,copy}){
   const cas  = PERF_CAS.find(c=>c.id===casId);
   const drug = getDrug(drugId);
   const solv = getSolv(solvId);
-  const vol  = drug&&solv ? volFinal(drug,solv) : 0;
-  const r    = drug&&vol>0 ? perfCalc(drug,qte,vol,dose,cas?cas.poids:75) : {conc:0,mlh:0,gttes:0,auto:0};
+  const fluide = isFluide(drug);
+  const vol  = drug&&solv ? volFinal(drug,solv,volSel) : 0;
+  const qteE = fluide ? vol : qte;
+  const r    = drug&&vol>0 ? perfCalc(drug,qteE,vol,dose,cas?cas.poids:75) : {conc:0,mlh:0,gttes:0,auto:0};
 
-  const openCas = id => { setCas(id);setDrug(null);setSolv(null);setQte(0);setDose(0);setRes(null); };
-  const pickDrug = id => { const d=getDrug(id);setDrug(id);setQte(d.qteStd);setDose(d.dusuel);
+  const openCas = id => { setCas(id);setDrug(null);setSolv(null);setQte(0);setDose(0);setVolSel(0);setRes(null); };
+  const pickDrug = id => { const d=getDrug(id);setDrug(id);setQte(d.qteStd);setDose(d.dusuel);setVolSel(d.volStd);
     setSolv(defaultSolv(d)); };
 
   const valider = () => {
@@ -2193,7 +2350,7 @@ function PerfExamen({showToast,copy}){
     pts += dp;
     det.push({ok:dp===35, pts:dp, max:35, lbl:'Dose / durée de passage', txt:dtxt});
     /* Malus sécurité */
-    const secu = drug&&vol>0 ? checkPresc(drug,qte,vol,dose,cas.poids,r).filter(a=>a.lvl==='err') : [];
+    const secu = drug&&vol>0 ? checkPresc(drug,qteE,vol,dose,cas.poids,r).filter(a=>a.lvl==='err') : [];
     if(secu.length){ pts = Math.max(0,pts-15); det.push({ok:false, pts:-15, max:0, lbl:'Erreur de sécurité', txt:secu.map(s=>s.txt).join(' ')}); }
 
     const out = {pts:Math.max(0,Math.min(100,pts)), det};
@@ -2262,7 +2419,12 @@ function PerfExamen({showToast,copy}){
 
                 {drug&&(
                   <>
-                    <div className="perf-lbl" style={{marginTop:16}}>2 · Solvant et dilution</div>
+                    <div className="perf-lbl" style={{marginTop:16}}>2 · {pretEmploi(drug)?'Conditionnement':'Solvant et dilution'}</div>
+                    {pretEmploi(drug) ? (
+                      <div className="perf-note" style={{marginBottom:12}}>
+                        <b>Prêt à l’emploi</b> — {drug.amp}. Rien à diluer, il ne reste qu’à choisir le volume et la vitesse de passage.
+                      </div>
+                    ) : (
                     <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(185px,1fr))',gap:8,marginBottom:12}}>
                       {PERF_SOLVANTS.map(s=>{
                         const on=solvId===s.id;
@@ -2280,14 +2442,33 @@ function PerfExamen({showToast,copy}){
                         );
                       })}
                     </div>
-                    <div className="perf-panel">
-                      <div style={{display:'flex',alignItems:'center',gap:11,flexWrap:'wrap'}}>
-                        <span style={{fontSize:11.5,fontWeight:700,color:'var(--muted)'}}>Quantité :</span>
-                        <input type="number" value={qte} min="0" step={drug.qteStd/10} onChange={e=>setQte(+e.target.value)}
-                          style={{width:110,padding:'8px 10px',borderRadius:9,fontSize:13,fontWeight:800,fontFamily:'JetBrains Mono,monospace'}}/>
-                        <span style={{fontSize:12,fontWeight:800,color:'var(--muted)'}}>{drug.unit}</span>
-                        <span style={{fontSize:11.5,color:'#475569'}}>dans {nf(vol,0)} mL → <b style={{color:'#22d3ee'}}>{nf(r.conc,3)} {drug.unit}/mL</b></span>
+                    )}
+                    {drug.volOptions&&drug.volOptions.length>1&&(
+                      <div style={{display:'flex',gap:7,flexWrap:'wrap',marginBottom:10}}>
+                        {drug.volOptions.map(o=>(
+                          <button key={o} onClick={()=>setVolSel(o)} className="perf-chip"
+                            style={vol===o?{borderColor:'rgba(34,211,238,0.5)',color:'#22d3ee',background:'rgba(34,211,238,0.1)'}:{}}>
+                            {o} mL · {nf(o/cas.poids,1)} mL/kg
+                          </button>
+                        ))}
                       </div>
+                    )}
+                    <div className="perf-panel">
+                      {fluide ? (
+                        <div style={{display:'flex',alignItems:'center',gap:11,flexWrap:'wrap',fontSize:11.5,color:'#475569'}}>
+                          <span style={{fontWeight:700,color:'var(--muted)'}}>Volume :</span>
+                          <b style={{color:'#22d3ee',fontSize:14,fontFamily:'JetBrains Mono,monospace'}}>{nf(vol,0)} mL</b>
+                          <span>soit <b style={{color:'#22d3ee'}}>{nf(vol/cas.poids,1)} mL/kg</b> pour {cas.poids} kg</span>
+                        </div>
+                      ) : (
+                        <div style={{display:'flex',alignItems:'center',gap:11,flexWrap:'wrap'}}>
+                          <span style={{fontSize:11.5,fontWeight:700,color:'var(--muted)'}}>Quantité :</span>
+                          <input type="number" value={qte} min="0" step={drug.qteStd/10} onChange={e=>setQte(+e.target.value)}
+                            style={{width:110,padding:'8px 10px',borderRadius:9,fontSize:13,fontWeight:800,fontFamily:'JetBrains Mono,monospace'}}/>
+                          <span style={{fontSize:12,fontWeight:800,color:'var(--muted)'}}>{drug.unit}</span>
+                          <span style={{fontSize:11.5,color:'#475569'}}>dans {nf(vol,0)} mL → <b style={{color:'#22d3ee'}}>{nf(r.conc,3)} {drug.unit}/mL</b></span>
+                        </div>
+                      )}
                     </div>
 
                     <div className="perf-lbl" style={{marginTop:16}}>3 · {drug.mode==='duree'?'Durée de passage':'Dose prescrite'}</div>
@@ -2359,7 +2540,7 @@ function PerfusionView({showToast}){
     <div style={{display:'flex',flex:1,flexDirection:'column',overflow:'hidden',minHeight:0}}>
       <div className="perf-modebar">
         {[{k:'atelier',ic:'🧪',t:'Atelier de préparation',d:'Monte ta perfusion étape par étape'},
-          {k:'examen', ic:'🎓',t:'Mode examen',           d:'12 cas cliniques notés'}].map(m=>(
+          {k:'examen', ic:'🎓',t:'Mode examen',           d:`${PERF_CAS.length} cas cliniques notés`}].map(m=>(
           <button key={m.k} onClick={()=>setMode(m.k)} className="perf-modebtn"
             style={mode===m.k?{borderColor:'rgba(34,211,238,0.45)',background:'rgba(34,211,238,0.09)',color:'#22d3ee'}:{}}>
             <span style={{fontSize:15}}>{m.ic}</span>
