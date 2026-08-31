@@ -400,6 +400,12 @@ const DEFAULT_MACROS = [
    info:'Préféré au NaCl en trauma · Moins hyperchlorémiant · Max 2-3L avant PFC en choc hémorragique'},
   {id:'med49',categorie:'Médicaments',type:'me',titre:'Acide Tranexamique (Exacyl) 1g IV',        texte:'/me perfuse 1g d\'Acide Tranexamique (Exacyl) 500mg/5ml dilué dans 100mL de NaCl sur 10 min pour hémorragie active ou trauma.',
    info:'1g sur 10 min · 2ème g sur 8h · DANS LES 3h du traumatisme · CI : ATCD thromboembolique · Scope'},
+  {id:'med65',categorie:'Médicaments',type:'me',titre:'Isofundine 500mL — remplissage équilibré', texte:'/me branche 500mL d\'Isofundine (cristalloïde balancé) en perfusion IV rapide pour remplissage vasculaire.',
+   info:'Cristalloïde balancé de choix si > 2L · Contient potassium : prudence en insuffisance rénale · Ne pas utiliser en solvant d\'amines'},
+  {id:'med66',categorie:'Médicaments',type:'me',titre:'Plasmion 500mL — remplissage colloïde',      texte:'/me branche 500mL de Plasmion (gélatine fluide modifiée) en perfusion IV rapide pour remplissage vasculaire.',
+   info:'Colloïde, effet volémique plus rapide · Risque allergique (réactions anaphylactoïdes) · Ne remplace pas les cristalloïdes en 1ère intention'},
+  {id:'med67',categorie:'Médicaments',type:'me',titre:'Albumine 4% 500mL — remplissage',            texte:'/me branche 500mL d\'Albumine 4% en perfusion IV pour remplissage vasculaire chez le patient à risque (cirrhotique, brûlé, femme enceinte).',
+   info:'Indiqué chez cirrhotique, brûlé après H24, sepsis avec hypoalbuminémie · Produit dérivé du sang : traçabilité obligatoire'},
   // ── ANTIBIOTHÉRAPIE ──
   {id:'med50',categorie:'Médicaments',type:'me',titre:'Ceftriaxone 1g IV — infection',            texte:'/me perfuse la Ceftriaxone Fl 1g diluée dans 100mL de NaCl 0,9% sur 30 minutes pour antibiothérapie probabiliste.',
    info:'PRÉLEVER hémocultures AVANT · 1g/30 min · CI : allergie C3G · Allergie péni : CI relative (5% cross)'},
@@ -540,6 +546,19 @@ const DEFAULT_MACROS = [
   {id:'ex31',categorie:'Examens',type:'me',titre:'Fond d\'œil',               texte:'/me instille les gouttes mydriatiques dans les deux yeux du patient et attend 15 minutes avant la réalisation du fond d\'œil.'},
   {id:'ex32',categorie:'Examens',type:'me',titre:'Spirométrie',               texte:'/me installe le patient assis, explique la manœuvre et réalise la spirométrie avec trois mesures reproductibles du VEMS et de la CVF.'},
 
+  // ── AUTRES / SOINS INFIRMIERS ──
+  {id:'inf1', categorie:'Autres',type:'me',titre:'Prise des constantes complètes',      texte:'/me prend les constantes vitales complètes du patient : tension artérielle, fréquence cardiaque, fréquence respiratoire, SpO2, température et glycémie capillaire, puis les transmet au médecin.'},
+  {id:'inf2', categorie:'Autres',type:'me',titre:'Installation en position semi-assise', texte:'/me installe le patient en position semi-assise pour favoriser le confort respiratoire et surveille sa tolérance.'},
+  {id:'inf3', categorie:'Autres',type:'me',titre:'Surveillance neurologique horaire',    texte:'/me réalise une surveillance neurologique horaire : score de Glasgow, taille et réactivité des pupilles, motricité des quatre membres.'},
+  {id:'inf4', categorie:'Autres',type:'me',titre:'Réfection de pansement',               texte:'/me réalise la réfection du pansement en asepsie : retire l\'ancien pansement, nettoie la plaie au sérum physiologique, applique un pansement stérile propre et note l\'aspect de la plaie.'},
+  {id:'inf5', categorie:'Autres',type:'me',titre:'Transmission ciblée',                  texte:'/me rédige la transmission ciblée dans le dossier de soins : événement, constantes relevées, actions réalisées et réponse du patient.'},
+  {id:'inf6', categorie:'Autres',type:'me',titre:'Sécurisation avant transport',         texte:'/me sécurise le patient sur le brancard, vérifie les sangles, les perfusions et le monitorage avant le transport.'},
+  {id:'inf7', categorie:'Autres',type:'me',titre:'Surveillance du point de ponction',    texte:'/me surveille le point de ponction de la voie veineuse : absence de rougeur, de chaleur, d\'œdème ou de douleur à la palpation.'},
+  {id:'inf8', categorie:'Autres',type:'me',titre:'Sondage urinaire',                     texte:'/me réalise un sondage urinaire en technique stérile, mesure la diurèse et note l\'aspect et la couleur des urines.'},
+  {id:'inf9', categorie:'Autres',type:'me',titre:'Aspiration des sécrétions',            texte:'/me réalise une aspiration des sécrétions bronchiques en asepsie, sur une durée inférieure à 15 secondes, en surveillant la SpO2 pendant le geste.'},
+  {id:'inf10',categorie:'Autres',type:'me',titre:'Prévention des escarres',              texte:'/me évalue les points d\'appui, procède au changement de position du patient et vérifie l\'état cutané aux zones à risque.'},
+  {id:'inf11',categorie:'Autres',type:'me',titre:'Réévaluation post-remplissage',        texte:'/me réévalue la tension artérielle, la fréquence cardiaque, la diurèse et l\'aspect des marbrures après le passage de la poche de remplissage vasculaire.'},
+
   // /qu
   {id:'q1',categorie:'Questions /qu',type:'qu',titre:'TA ?',texte:'/qu TA ?'},
   {id:'q2',categorie:'Questions /qu',type:'qu',titre:'FC ?',texte:'/qu FC ?'},
@@ -565,6 +584,59 @@ const DEFAULT_MACROS = [
   {id:'q22',categorie:'Questions /qu',type:'qu',titre:'IOT OK ?',texte:'/qu IOT OK ?'},
   {id:'q23',categorie:'Questions /qu',type:'qu',titre:'Voie calibre ?',texte:'/qu Voie en place, quel calibre ?'},
   {id:'q24',categorie:'Questions /qu',type:'qu',titre:'PVC ?',texte:'/qu PVC ?'},
+  // État de la peau
+  {id:'q25',categorie:'Questions /qu',type:'qu',titre:'État de la peau ?',texte:'/qu État de la peau ?'},
+  {id:'q26',categorie:'Questions /qu',type:'qu',titre:'Peau chaude ou froide ?',texte:'/qu Peau chaude ou froide ?'},
+  {id:'q27',categorie:'Questions /qu',type:'qu',titre:'Coloration cutanée ?',texte:'/qu Coloration de la peau ?'},
+  {id:'q28',categorie:'Questions /qu',type:'qu',titre:'Marbrures ?',texte:'/qu Présence de marbrures ?'},
+  {id:'q29',categorie:'Questions /qu',type:'qu',titre:'Cyanose ?',texte:'/qu Cyanose ?'},
+  {id:'q30',categorie:'Questions /qu',type:'qu',titre:'Sueurs / moiteur ?',texte:'/qu Sueurs ou moiteur de la peau ?'},
+  {id:'q31',categorie:'Questions /qu',type:'qu',titre:'Plaies / lésions cutanées ?',texte:'/qu Plaies ou lésions cutanées visibles ?'},
+  {id:'q32',categorie:'Questions /qu',type:'qu',titre:'Temps de recoloration cutanée ?',texte:'/qu Temps de recoloration cutanée (TRC) ?'},
+  // Respiratoire
+  {id:'q33',categorie:'Questions /qu',type:'qu',titre:'Respi ?',texte:'/qu Comment est la respiration ?'},
+  {id:'q34',categorie:'Questions /qu',type:'qu',titre:'Amplitude respiratoire ?',texte:'/qu Amplitude respiratoire ?'},
+  {id:'q35',categorie:'Questions /qu',type:'qu',titre:'Tirage ?',texte:'/qu Signes de tirage ?'},
+  {id:'q36',categorie:'Questions /qu',type:'qu',titre:'Auscultation pulmonaire ?',texte:'/qu Auscultation pulmonaire, murmure vésiculaire symétrique ?'},
+  {id:'q37',categorie:'Questions /qu',type:'qu',titre:'Encombrement bronchique ?',texte:'/qu Encombrement bronchique ?'},
+  // VVP
+  {id:'q38',categorie:'Questions /qu',type:'qu',titre:'VVP en place ?',texte:'/qu VVP en place et perméable ?'},
+  {id:'q39',categorie:'Questions /qu',type:'qu',titre:'VVP calibre ?',texte:'/qu VVP posée, quel calibre ?'},
+  // Remplissage
+  {id:'q40',categorie:'Questions /qu',type:'qu',titre:'Remplissage prescrit ?',texte:'/qu Un remplissage vasculaire est-il prescrit ?'},
+  {id:'q41',categorie:'Questions /qu',type:'qu',titre:'Volume de remplissage passé ?',texte:'/qu Combien de mL de remplissage ont été passés ?'},
+  {id:'q42',categorie:'Questions /qu',type:'qu',titre:'Réponse au remplissage ?',texte:'/qu Quelle est la réponse hémodynamique au remplissage ?'},
+  // Questions au patient
+  {id:'q43',categorie:'Questions /qu',type:'qu',titre:'Nom ?',texte:'/qu Comment vous appelez-vous ?'},
+  {id:'q44',categorie:'Questions /qu',type:'qu',titre:'Âge ?',texte:'/qu Quel âge avez-vous ?'},
+  {id:'q45',categorie:'Questions /qu',type:'qu',titre:'Orientation lieu ?',texte:'/qu Savez-vous où vous êtes ?'},
+  {id:'q46',categorie:'Questions /qu',type:'qu',titre:'Orientation temps ?',texte:'/qu Savez-vous quel jour on est ?'},
+  {id:'q47',categorie:'Questions /qu',type:'qu',titre:'Douleur ?',texte:'/qu Avez-vous mal ?'},
+  {id:'q48',categorie:'Questions /qu',type:'qu',titre:'Localisation douleur ?',texte:'/qu Où avez-vous mal ?'},
+  {id:'q49',categorie:'Questions /qu',type:'qu',titre:'Depuis quand ?',texte:'/qu Depuis quand avez-vous ce symptôme ?'},
+  {id:'q50',categorie:'Questions /qu',type:'qu',titre:'Décrire la douleur ?',texte:'/qu Pouvez-vous décrire la douleur ?'},
+  {id:'q51',categorie:'Questions /qu',type:'qu',titre:'Nausées / vomissements ?',texte:'/qu Avez-vous des nausées ou des vomissements ?'},
+  {id:'q52',categorie:'Questions /qu',type:'qu',titre:'Respiration normale ?',texte:'/qu Arrivez-vous à respirer normalement ?'},
+  {id:'q53',categorie:'Questions /qu',type:'qu',titre:'Antécédents médicaux ?',texte:'/qu Avez-vous des antécédents médicaux ?'},
+  {id:'q54',categorie:'Questions /qu',type:'qu',titre:'Traitements habituels ?',texte:'/qu Prenez-vous des médicaments habituellement ?'},
+  {id:'q55',categorie:'Questions /qu',type:'qu',titre:'Allergies connues ?',texte:'/qu Avez-vous des allergies connues ?'},
+  {id:'q56',categorie:'Questions /qu',type:'qu',titre:'Alcool / stupéfiants ?',texte:'/qu Avez-vous consommé de l\'alcool ou des stupéfiants ?'},
+  {id:'q57',categorie:'Questions /qu',type:'qu',titre:'Perte de connaissance ?',texte:'/qu Avez-vous perdu connaissance ?'},
+  {id:'q58',categorie:'Questions /qu',type:'qu',titre:'Sensibilité membres ?',texte:'/qu Sentez-vous vos jambes et vos bras ?'},
+  {id:'q59',categorie:'Questions /qu',type:'qu',titre:'Motricité doigts/orteils ?',texte:'/qu Arrivez-vous à bouger les doigts et les orteils ?'},
+  {id:'q60',categorie:'Questions /qu',type:'qu',titre:'Malaise déjà connu ?',texte:'/qu Avez-vous déjà eu ce genre de malaise ?'},
+  // VVP — pose
+  {id:'q61',categorie:'Questions /qu',type:'qu',titre:'VVP réussie ?',texte:'/qu VVP posée avec succès ?'},
+  {id:'q62',categorie:'Questions /qu',type:'qu',titre:'Tentatives VVP ?',texte:'/qu Combien de tentatives pour la VVP ?'},
+  {id:'q63',categorie:'Questions /qu',type:'qu',titre:'Reflux à la pose ?',texte:'/qu Reflux veineux obtenu à la pose ?'},
+  {id:'q64',categorie:'Questions /qu',type:'qu',titre:'Fixation correcte ?',texte:'/qu Fixation du cathéter correcte ?'},
+  // Biologie délocalisée
+  {id:'q65',categorie:'Questions /qu',type:'qu',titre:'Bio délocalisée ?',texte:'/qu Résultat de la biologie délocalisée ?'},
+  {id:'q66',categorie:'Questions /qu',type:'qu',titre:'Hémocue ?',texte:'/qu Hémoglobine délocalisée (Hémocue), résultat ?'},
+  {id:'q67',categorie:'Questions /qu',type:'qu',titre:'GDS délocalisé ?',texte:'/qu Gaz du sang délocalisé, résultat ?'},
+  {id:'q68',categorie:'Questions /qu',type:'qu',titre:'Lactate délocalisé ?',texte:'/qu Lactate délocalisé, résultat ?'},
+  {id:'q69',categorie:'Questions /qu',type:'qu',titre:'Troponine délocalisée ?',texte:'/qu Troponine délocalisée, résultat ?'},
+  {id:'q70',categorie:'Questions /qu',type:'qu',titre:'Iono délocalisé ?',texte:'/qu Ionogramme délocalisé, résultat ?'},
 ];
 
 /* ══════════════════════════════════════ BODY SCHEMA DATA ══ */
