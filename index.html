@@ -1313,6 +1313,7 @@ const uid  = () => 'x_'+Date.now()+'_'+Math.random().toString(36).slice(2,8);
 const load = (k,fb) => { try{const v=localStorage.getItem(k);return v?JSON.parse(v):fb;}catch{return fb;} };
 const save = (k,v) => { try{localStorage.setItem(k,JSON.stringify(v));}catch{} };
 const isME = m => (m.type||'me')==='me';
+const nowHM = () => { const d=new Date(); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); };
 
 /* ═══════════════════════════════════════════════ ICONS ══ */
 const Ic={
@@ -2635,6 +2636,70 @@ function PerfusionView({showToast}){
   );
 }
 
+/* ═══════════════════════════════════════════ SESSION ══ */
+function SessionView({log,onUpdateTime,onDelete,active,onToggleActive,onClear,showToast,onClose}){
+  const copyResume=useCallback(async()=>{
+    const txt=log.map(e=>`[${e.heure}] /${e.type} ${e.texte.replace(/^\/(me|qu)\s*/,'')}`).join('\n');
+    try{ await navigator.clipboard.writeText(txt); }
+    catch{ const el=document.createElement('textarea');el.value=txt;document.body.appendChild(el);el.select();document.execCommand('copy');el.remove(); }
+    showToast('Résumé copié dans le presse-papiers !','me');
+  },[log,showToast]);
+
+  return(
+    <div style={{display:'flex',flex:1,flexDirection:'column',overflow:'hidden',minHeight:0}}>
+      <div style={{padding:'16px 20px 12px',borderBottom:'1px solid var(--border)',flexShrink:0,display:'flex',alignItems:'center',justifyContent:'space-between',gap:12,flexWrap:'wrap'}}>
+        <div style={{display:'flex',alignItems:'center',gap:12}}>
+          <div style={{width:4,height:26,borderRadius:99,background:'var(--green)',boxShadow:'0 0 12px var(--green)'}}/>
+          <div>
+            <h1 style={{fontSize:19,fontWeight:900,color:'#f1f5f9',letterSpacing:'-0.03em'}}>🕒 Résumé de session</h1>
+            <p style={{fontSize:12,color:'var(--muted)',marginTop:2,fontFamily:'JetBrains Mono'}}>{log.length} action{log.length!==1?'s':''} copiée{log.length!==1?'s':''}{active?' · enregistrement actif':' · enregistrement en pause'}</p>
+          </div>
+        </div>
+        <div style={{display:'flex',gap:8,flexWrap:'wrap'}}>
+          <button onClick={onToggleActive} style={{background:active?'rgba(52,211,153,0.12)':'var(--surface)',border:`1px solid ${active?'rgba(52,211,153,0.3)':'var(--border)'}`,color:active?'var(--green)':'var(--muted)',padding:'8px 14px',borderRadius:10,cursor:'pointer',fontSize:12.5,fontWeight:700,fontFamily:'Inter,sans-serif'}}>
+            {active?'⏸ Mettre en pause':"▶ Reprendre l'enregistrement"}
+          </button>
+          <button onClick={copyResume} disabled={log.length===0} style={{background:'var(--surface)',border:'1px solid var(--border)',color:log.length===0?'var(--faint)':'var(--text)',padding:'8px 14px',borderRadius:10,cursor:log.length===0?'not-allowed':'pointer',fontSize:12.5,fontWeight:700,fontFamily:'Inter,sans-serif',display:'flex',alignItems:'center',gap:7}}>
+            <Ic.Copy/> Copier le résumé
+          </button>
+          <button onClick={()=>{if(log.length===0||confirm('Vider tout le résumé de session ?'))onClear();}} style={{background:'var(--surface)',border:'1px solid var(--border)',color:'var(--red)',padding:'8px 14px',borderRadius:10,cursor:'pointer',fontSize:12.5,fontWeight:700,fontFamily:'Inter,sans-serif',display:'flex',alignItems:'center',gap:7}}>
+            <Ic.Trash/> Vider
+          </button>
+          <button onClick={onClose} style={{background:'var(--surface)',border:'1px solid var(--border)',color:'var(--muted)',padding:'8px 14px',borderRadius:10,cursor:'pointer',fontSize:12.5,fontWeight:700,fontFamily:'Inter,sans-serif',display:'flex',alignItems:'center',gap:7}}>
+            <Ic.X s={14}/> Fermer
+          </button>
+        </div>
+      </div>
+      <div style={{flex:1,overflowY:'auto',padding:'16px 20px 24px'}}>
+        {log.length===0?(
+          <div style={{textAlign:'center',padding:'80px 20px',color:'var(--muted)'}}>
+            <div style={{fontSize:34,marginBottom:10}}>🕒</div>
+            <div style={{fontSize:14,fontWeight:700,color:'var(--text)'}}>Aucune action copiée pour l'instant</div>
+            <div style={{fontSize:12.5,marginTop:6,maxWidth:380,marginLeft:'auto',marginRight:'auto',lineHeight:1.6}}>
+              {active?"Continue à copier des /me et /qu dans les autres onglets : elles apparaîtront ici automatiquement avec leur heure.":"L'enregistrement est en pause. Clique sur « Reprendre l'enregistrement » pour recommencer à capturer tes copies."}
+            </div>
+          </div>
+        ):(
+          <div style={{display:'flex',flexDirection:'column',gap:6}}>
+            {log.map(e=>(
+              <div key={e.id} style={{display:'flex',alignItems:'flex-start',gap:12,background:'var(--surface)',border:'1px solid var(--border)',borderRadius:10,padding:'10px 12px'}}>
+                <input type="time" value={e.heure} onChange={ev=>onUpdateTime(e.id,ev.target.value)}
+                  style={{background:'var(--bg3)',border:'1px solid var(--border2)',color:'var(--text)',borderRadius:7,padding:'5px 7px',fontSize:12,fontFamily:'JetBrains Mono,monospace',flexShrink:0,colorScheme:'dark'}}/>
+                <div style={{flex:1,minWidth:0}}>
+                  <span className={e.type==='me'?'chip-me':'chip-qu'}>{e.type==='me'?'/me':'/qu'} · {e.categorie==='Questions /qu'?'Question':e.categorie}</span>
+                  <div style={{fontSize:12.5,fontWeight:700,color:'#e2e8f0',marginTop:5}}>{e.titre}</div>
+                  <div style={{fontSize:11,color:'#334155',fontFamily:'JetBrains Mono,monospace',marginTop:2,lineHeight:1.5}}>{e.texte}</div>
+                </div>
+                <button onClick={()=>onDelete(e.id)} style={{background:'none',border:'none',cursor:'pointer',color:'var(--faint)',padding:'5px',borderRadius:6,flexShrink:0}} onMouseEnter={ev=>ev.currentTarget.style.color='var(--red)'} onMouseLeave={ev=>ev.currentTarget.style.color='var(--faint)'}><Ic.Trash/></button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 /* ═══════════════════════════════════════════════ APP ══ */
 function App(){
   const [custom,setCustom]=useState(()=>load('mRP2_custom',[]));
@@ -2645,6 +2710,8 @@ function App(){
   const [toast,setToast]=useState({msg:'',show:false,type:'me'});
   const [sidebar,setSidebar]=useState(false);
   const [view,setView]=useState('macros'); // 'macros' | 'body'
+  const [sessionActive,setSessionActive]=useState(()=>load('mRP2_sessionActive',false));
+  const [sessionLog,setSessionLog]=useState(()=>load('mRP2_sessionLog',[]));
   const searchRef=useRef(null);
   const timerRef=useRef(null);
 
@@ -2665,6 +2732,8 @@ function App(){
 
   useEffect(()=>{save('mRP2_custom',custom);},[custom]);
   useEffect(()=>{save('mRP2_favs',favs);},[favs]);
+  useEffect(()=>{save('mRP2_sessionActive',sessionActive);},[sessionActive]);
+  useEffect(()=>{save('mRP2_sessionLog',sessionLog);},[sessionLog]);
 
   useEffect(()=>{
     const h=e=>{
@@ -2676,11 +2745,12 @@ function App(){
       if((e.ctrlKey||e.metaKey)&&e.key==='b'){e.preventDefault();setView(v=>v==='body'?'macros':'body');}
       if((e.ctrlKey||e.metaKey)&&e.key==='p'){e.preventDefault();setView(v=>v==='procedures'?'macros':'procedures');}
       if((e.ctrlKey||e.metaKey)&&e.key==='i'){e.preventDefault();setView(v=>v==='perfusion'?'macros':'perfusion');}
+      if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();setSessionActive(true);setView(v=>v==='session'?'macros':'session');}
       if(e.key==='Escape'){setModal(null);setSidebar(false);}
     };
     window.addEventListener('keydown',h);
     return()=>window.removeEventListener('keydown',h);
-  },[view]);
+  },[view,sessionActive]);
 
   const showToast=useCallback((msg,type='me')=>{
     if(timerRef.current)clearTimeout(timerRef.current);
@@ -2693,16 +2763,26 @@ function App(){
     try{await navigator.clipboard.writeText(macro.texte);}
     catch{const el=document.createElement('textarea');el.value=macro.texte;document.body.appendChild(el);el.select();document.execCommand('copy');el.remove();}
     showToast(`/${t} copié dans le presse-papiers !`,t);
-  },[showToast]);
+    if(sessionActive){
+      setSessionLog(log=>[...log,{id:uid(),type:t,titre:macro.titre,texte:macro.texte,categorie:macro.categorie,heure:nowHM()}]);
+    }
+  },[showToast,sessionActive]);
 
   const handleFav=useCallback(id=>setFavs(f=>f.includes(id)?f.filter(x=>x!==id):[...f,id]),[]);
   const handleDel=useCallback(id=>{setCustom(c=>c.filter(m=>m.id!==id));setFavs(f=>f.filter(x=>x!==id));},[]);
   const handleSave=useCallback(m=>{setCustom(c=>[...c,m]);showToast('Macro créée !',m.type||'me');},[showToast]);
   const handleAdd=useCallback(ms=>{setCustom(c=>[...c,...ms]);showToast(`${ms.length} macro(s) ajoutée(s) !`,ms[0]?.type||'me');},[showToast]);
 
+  const openSession=useCallback(()=>{setSessionActive(true);setView(v=>v==='session'?'macros':'session');},[]);
+  const toggleSessionActive=useCallback(()=>setSessionActive(a=>!a),[]);
+  const updateSessionTime=useCallback((id,heure)=>setSessionLog(log=>log.map(e=>e.id===id?{...e,heure}:e)),[]);
+  const deleteSessionEntry=useCallback(id=>setSessionLog(log=>log.filter(e=>e.id!==id)),[]);
+  const clearSessionLog=useCallback(()=>setSessionLog([]),[]);
+
   const isBodyView=view==='body';
   const isProcView=view==='procedures';
   const isPerfView=view==='perfusion';
+  const isSessionView=view==='session';
 
   return(
     <div style={{display:'flex',height:'100vh',overflow:'hidden'}}>
@@ -2789,6 +2869,14 @@ function App(){
             <span className="key-tag" style={{fontSize:9}}>Ctrl+I</span>
           </button>
 
+          {/* Session button */}
+          <button onClick={()=>{openSession();setSidebar(false);}}
+            className={`cat-btn ${isSessionView?'active':''}`}
+            style={isSessionView?{background:'rgba(52,211,153,0.09)',color:'var(--green)'}:{}}>
+            <span><span style={{marginRight:8}}>🕒</span>Mode session{sessionLog.length>0?` (${sessionLog.length})`:''}</span>
+            <span className="key-tag" style={{fontSize:9}}>Ctrl+S</span>
+          </button>
+
           <div style={{height:1,background:'var(--border)',margin:'10px 4px'}}/>
 
           <div className="section-label">/me — Actions</div>
@@ -2867,7 +2955,12 @@ function App(){
             🧪 {isPerfView?'Fermer perfusion':'Faire ma perfusion'}
           </button>
 
-          {!isBodyView&&!isProcView&&!isPerfView&&<>
+          {/* Session toggle chip */}
+          <button onClick={openSession} style={{background:isSessionView?'rgba(52,211,153,0.12)':'var(--surface)',border:`1px solid ${isSessionView?'rgba(52,211,153,0.3)':'var(--border)'}`,color:isSessionView?'var(--green)':'var(--muted)',padding:'8px 14px',borderRadius:10,cursor:'pointer',fontSize:12.5,fontWeight:700,display:'flex',alignItems:'center',gap:7,flexShrink:0,fontFamily:'Inter,sans-serif',transition:'all 0.15s'}}>
+            🕒 {isSessionView?'Fermer session':sessionActive?`Session (${sessionLog.length})`:'Mode session'}
+          </button>
+
+          {!isBodyView&&!isProcView&&!isPerfView&&!isSessionView&&<>
             <div style={{position:'relative',flex:1,maxWidth:500}}>
               <span style={{position:'absolute',left:13,top:'50%',transform:'translateY(-50%)',color:'var(--muted)',pointerEvents:'none'}}><Ic.Search/></span>
               <input ref={searchRef} type="text" placeholder="Rechercher /me ou /qu… (Ctrl+K)" value={q} onChange={e=>setQ(e.target.value)} style={{...INP,paddingLeft:38,paddingRight:36,borderRadius:12,width:'100%'}}/>
@@ -2884,6 +2977,10 @@ function App(){
           <ProceduresView showToast={showToast}/>
         ) : isPerfView ? (
           <PerfusionView showToast={showToast}/>
+        ) : isSessionView ? (
+          <SessionView log={sessionLog} onUpdateTime={updateSessionTime} onDelete={deleteSessionEntry}
+            active={sessionActive} onToggleActive={toggleSessionActive} onClear={clearSessionLog}
+            showToast={showToast} onClose={()=>setView('macros')}/>
         ) : (
           <>
             <div style={{padding:'16px 20px 12px',borderBottom:'1px solid var(--border)',flexShrink:0}}>
