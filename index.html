@@ -216,7 +216,6 @@ const DEFAULT_MACROS = [
   {id:'c10',categorie:'Cathéters',type:'me',titre:'Prolongateur sur le cathéter',texte:'/me pose un prolongateur sur le cathéter.',info:'Un prolongateur ne nécessite pas obligatoirement de soluté.'},
   {id:'c11',categorie:'Cathéters',type:'me',titre:'Réglage du débit à la molette',texte:'/me règle le débit avec la molette de la tubulure.'},
   {id:'c12',categorie:'Cathéters',type:'me',titre:'Fixation du cathéter',texte:'/me fixe le cathéter avec du sparadrap et note l\'heure de pose.'},
-  {id:'c13',categorie:'Cathéters',type:'me',titre:'Retrait du cathéter',texte:'/me retire le cathéter, comprime le point de ponction et pose un pansement.'},
   {id:'c14',categorie:'Cathéters',type:'me',titre:'Deuxième VVP',texte:'/me pose une deuxième voie veineuse.',info:'Deux voies minimum pour l\'IOT ; 2ème VVP dans le choc hémorragique.'},
   {id:'c15',categorie:'Cathéters',type:'me',titre:'VVP d\'attente (PISU 11)',texte:'/me pose une VVP d\'attente avec un SSI 100mL en garde veine.',info:'PISU 11 : à tenir compte du risque de surcharge volémique (insuffisance rénale, enfant, décompensation respiratoire chez cardiaque).'},
 
@@ -645,7 +644,6 @@ const ACTION_TEMPLATES = [
   {id:'prlvt', label:'Prélèvement veineux',   icon:'🧪', ptype:['vein'],                                fn:p=>`/me réalise un prélèvement veineux ${p} et remplit les tubes.`},
   {id:'perf',  label:'Branchement perfusion', icon:'🫙', ptype:['vein'],                                fn:p=>`/me branche la perfusion ${p} et règle le débit selon la prescription.`},
   {id:'injiv', label:'Injection IV directe',  icon:'💊', ptype:['vein'],                                fn:p=>`/me injecte le traitement en IV direct ${p}.`},
-  {id:'retcat',label:'Retrait cathéter',      icon:'🩹', ptype:['vein'],                                fn:p=>`/me retire le cathéter ${p}, comprime et pose un pansement.`},
   {id:'injim', label:'Injection IM',          icon:'💉', ptype:['muscle'],                              fn:p=>`/me réalise une injection IM ${p} après désinfection.`},
   {id:'io_pose',  label:'Pose VIO (EZ-IO)',        icon:'🦴', ptype:['io'],                              fn:p=>`/me repère le site IO ${p}, désinfecte et pose l'aiguille EZ-IO jusqu'à la perte de résistance.`},
   {id:'io_verif', label:'Vérification VIO',        icon:'✅', ptype:['io'],                              fn:p=>`/me vérifie la VIO ${p} en aspirant de la moelle puis injecte 10mL de NaCl 0,9%.`},
@@ -683,18 +681,6 @@ const PROCEDURES = [
       {titre:'Retrait du garrot et du mandrin', texte:'/me retire le garrot puis le mandrin en comprimant la veine en amont.'},
       {titre:'Prolongateur et fixation', texte:'/me pose le prolongateur, fixe le cathéter avec du sparadrap et note l\'heure de pose.'},
       {titre:'Branchement de la perfusion', texte:'/me connecte la tubulure purgée et règle le débit avec la molette.'},
-    ]
-  },
-  {
-    id:'retrait_vvp', titre:'Retrait de VVP', icon:'🩹', color:'#f97316',
-    desc:'Retrait d\'une voie veineuse périphérique',
-    etapes:[
-      {titre:'Arrêt de la perfusion', texte:'/me clampe la tubulure et arrête la perfusion.'},
-      {titre:'Déconnexion de la tubulure', texte:'/me déconnecte la tubulure sans traction.'},
-      {titre:'Retrait du pansement', texte:'/me retire le pansement transparent.'},
-      {titre:'Retrait du cathéter', texte:'/me retire le cathéter lentement en comprimant le site.'},
-      {titre:'Compression du site', texte:'/me comprime le site avec une compresse stérile pendant 2 à 3 minutes.'},
-      {titre:'Pansement final', texte:'/me pose un pansement stérile et vérifie l\'absence de saignement.'},
     ]
   },
   {
@@ -965,15 +951,6 @@ const PERF_DRUGS = [
    objectif:'PAM ≥ 65 mmHg',
    alertes:['Jamais en bolus — toujours à la seringue électrique','Nécrose cutanée si extravasation : surveiller le point de ponction','Ne jamais mélanger en Y avec du bicarbonate','Purger la tubulure AVANT branchement pour éviter le bolus accidentel']},
 
-  {id:'p_adre', nom:'Adrénaline IVSE', dci:'Épinéphrine', cat:'Amines vasoactives', icon:'⚡', color:'#f43f5e',
-   amp:'5 mg / 5 mL', unit:'mg', qteStd:5, volStd:50, solvOk:['g5','nacl'], solvIdeal:'g5', purOk:false,
-   solvNo:{rl:'Le Ringer Lactate ne s’utilise pas comme solvant pour les amines — G5 % ou NaCl 0,9 %.'},
-   mode:'gkm', dmin:0.05, dmax:1, dusuel:0.2, dunit:'µg/kg/min', step:0.05,
-   voie:'VVC / VVP gros calibre — scope obligatoire',
-   indic:'Choc anaphylactique réfractaire, post-ACR, choc cardiogénique',
-   objectif:'PAS ≥ 90 mmHg avec perfusion tissulaire correcte',
-   alertes:['Scope + PA continue obligatoires','Risque de trouble du rythme et d’ischémie myocardique','Ne pas confondre avec la seringue de 1 mg/10 mL de l’ACR']},
-
   {id:'p_dobu', nom:'Dobutamine', dci:'Dobutamine', cat:'Amines vasoactives', icon:'💓', color:'#fb923c',
    amp:'250 mg / 20 mL', unit:'mg', qteStd:250, volStd:50, solvOk:['g5','nacl'], solvIdeal:'g5', purOk:false,
    solvNo:{rl:'Le Ringer Lactate ne s’utilise pas comme solvant pour la dobutamine — G5 % ou NaCl 0,9 %.'},
@@ -1051,23 +1028,6 @@ const PERF_DRUGS = [
    objectif:'Absence de réactivité douloureuse, BPS ≤ 5',
    alertes:['Stupéfiant : traçabilité obligatoire du flacon et du reliquat','Dépression respiratoire majeure — ventilation contrôlée indispensable','Antidote : Naloxone']},
 
-  {id:'p_keta', volPur:5, nom:'Kétamine IVSE', dci:'Kétamine', cat:'Sédation & analgésie', icon:'🌀', color:'#818cf8',
-   amp:'250 mg / 5 mL', unit:'mg', qteStd:250, volStd:50, solvOk:['nacl','g5'], solvIdeal:'nacl', purOk:true,
-   mode:'mkh', dmin:0.2, dmax:3, dusuel:1, dunit:'mg/kg/h', step:0.1,
-   voie:'VVP',
-   indic:'Sédation-analgésie du polytraumatisé, entretien chez le patient instable, asthme aigu grave',
-   objectif:'Analgésie efficace en préservant l’hémodynamique',
-   alertes:['Conserve la PA : intéressante chez le patient en état de choc','Effets psychodysleptiques — prévenir le patient, ambiance calme','Hypersialorrhée possible']},
-
-  {id:'p_propo', volPur:50, nom:'Propofol IVSE', dci:'Propofol', cat:'Sédation & analgésie', icon:'🥛', color:'#818cf8',
-   amp:'1 % — 10 mg/mL, flacon 50 mL', unit:'mg', qteStd:500, volStd:50, solvOk:['pur'], solvIdeal:'pur', purOk:true,
-   mode:'mkh', dmin:1, dmax:6, dusuel:3, dunit:'mg/kg/h', step:0.5,
-   voie:'VVP dédiée — patient intubé ventilé',
-   indic:'Sédation d’entretien en ventilation contrôlée',
-   objectif:'RASS −4 / −5',
-   alertes:['S’utilise PUR — ne jamais diluer','Émulsion lipidique : changer la tubulure toutes les 12 h','Hypotension dose-dépendante, surtout chez l’hypovolémique','Douleur à l’injection']},
-
-  /* ───────── MÉTABOLIQUE ───────── */
   {id:'p_insu', nom:'Insuline rapide (Novorapid) IVSE', dci:'Insuline asparte', cat:'Métabolique', icon:'🩸', color:'#fbbf24',
    amp:'100 UI / mL — flacon 10 mL', unit:'UI', qteStd:50, volStd:50, solvOk:['nacl'], solvIdeal:'nacl', purOk:false,
    solvNo:{g5:'L’insuline se dilue dans du NaCl 0,9 % : le G5 % fausserait l’équilibre glycémique que l’on cherche justement à contrôler.',rl:'Le Ringer Lactate n’est pas un solvant pour l’insuline — NaCl 0,9 %.'},
@@ -1085,14 +1045,6 @@ const PERF_DRUGS = [
    indic:'Hypokaliémie symptomatique ou < 3,0 mmol/L',
    objectif:'Kaliémie > 3,5 mmol/L',
    alertes:['JAMAIS EN IV DIRECT — arrêt cardiaque immédiat','Débit maximal 1 g/h en voie périphérique','Scope continu obligatoire pendant la perfusion','Douleur veineuse fréquente : diluer davantage si besoin']},
-
-  {id:'p_mgso4', nom:'Sulfate de magnésium', dci:'Sulfate de magnésium', cat:'Métabolique', icon:'✨', color:'#fbbf24',
-   amp:'1,5 g / 10 mL', unit:'g', qteStd:2, volStd:100, solvOk:['nacl','g5'], solvIdeal:'nacl', purOk:false,
-   mode:'duree', dmin:10, dmax:30, dusuel:20, dunit:'min', step:5,
-   voie:'VVP — scope continu',
-   indic:'Torsades de pointes, éclampsie, asthme aigu grave réfractaire',
-   objectif:'Disparition des torsades / contrôle des convulsions',
-   alertes:['Surveiller les réflexes ostéo-tendineux — leur abolition signe le surdosage','Surveiller la fréquence respiratoire','Antidote : gluconate de calcium']},
 
   {id:'p_g30', volPur:40, nom:'Glucose 30 % — resucrage IV', dci:'Glucose hypertonique', cat:'Métabolique', icon:'🍬', color:'#fbbf24',
    amp:'Ampoule 10 g / 20 mL ×2', unit:'g', qteStd:20, volStd:40, solvOk:['pur'], solvIdeal:'pur', purOk:true,
@@ -1128,15 +1080,6 @@ const PERF_DRUGS = [
    objectif:'Antibiothérapie la plus précoce possible — idéalement < 1 h',
    alertes:['INCOMPATIBLE avec le Ringer Lactate — précipité de sel de calcium','Reconstituer la poudre avant dilution dans la poche','Prélever les hémocultures avant, si cela ne retarde pas l’injection']},
 
-  {id:'p_salbu', volPur:5, nom:'Salbutamol IVSE', dci:'Salbutamol', cat:'Antalgiques & antibiotiques', icon:'🫁', color:'#34d399',
-   amp:'5 mg / 5 mL', unit:'mg', qteStd:5, volStd:50, solvOk:['nacl','g5'], solvIdeal:'nacl', purOk:true,
-   mode:'mgh', dmin:0.25, dmax:5, dusuel:0.5, dunit:'mg/h', step:0.25,
-   voie:'VVP — scope continu',
-   indic:'Asthme aigu grave résistant aux nébulisations',
-   objectif:'Amélioration du débit expiratoire, baisse de la fréquence respiratoire',
-   alertes:['Tachycardie et tremblements constants','Surveiller la kaliémie : hypokaliémie fréquente','Poursuivre les nébulisations et la corticothérapie en parallèle']},
-
-  /* ───────── REMPLISSAGE & SOLUTÉS ───────── */
   {id:'p_nacl_rempl', volPur:500, volOptions:[100,250,500,1000], nom:'NaCl 0,9 % — cristalloïde isotonique', dci:'Chlorure de sodium isotonique', cat:'Remplissage & solutés', icon:'🫙', color:'#38bdf8',
    amp:'Poche souple — 154 mmol/L de Na⁺ et de Cl⁻', unit:'mL', qteStd:500, volStd:500, solvOk:['pur'], solvIdeal:'pur', purOk:true,
    mode:'duree', dmin:10, dmax:180, dusuel:15, dunit:'min', step:5,
@@ -1152,62 +1095,6 @@ const PERF_DRUGS = [
    indic:'Remplissage du traumatisé et du brûlé, choc hémorragique, règle de Parkland',
    objectif:'Chez le brûlé : 2 à 4 mL/kg par % de surface brûlée sur 24 h, moitié dans les 8 premières heures',
    alertes:['Contient du calcium : JAMAIS sur la même ligne qu’un culot globulaire ni que de la ceftriaxone','À éviter en cas d’hyperkaliémie — la solution contient du potassium','Ne pas utiliser comme solvant pour les amines','Composition plus proche du plasma que le NaCl : moins d’acidose hyperchlorémique']},
-
-  {id:'p_isofundine', volPur:500, volOptions:[500,1000], nom:'Isofundine — cristalloïde équilibré', dci:'Solution électrolytique balancée', cat:'Remplissage & solutés', icon:'⚖️', color:'#38bdf8',
-   amp:'Poche souple — tamponnée par de l’acétate et du malate', unit:'mL', qteStd:500, volStd:500, solvOk:['pur'], solvIdeal:'pur', purOk:true,
-   mode:'duree', dmin:10, dmax:180, dusuel:20, dunit:'min', step:5,
-   voie:'VVP de bon calibre',
-   indic:'Remplissage de grand volume, sepsis, chirurgie, réanimation du traumatisé',
-   objectif:'Restauration volémique en limitant l’acidose hyperchlorémique',
-   alertes:['Solution de choix quand le remplissage dépasse 2 L','Contient du calcium comme le Ringer : incompatible avec les culots globulaires','Contient du potassium — prudence en cas d’insuffisance rénale','Ne pas utiliser comme solvant pour les amines']},
-
-  {id:'p_plasmion', volPur:500, volOptions:[500], nom:'Plasmion — colloïde (gélatine)', dci:'Gélatine fluide modifiée', cat:'Remplissage & solutés', icon:'🧫', color:'#818cf8',
-   amp:'Poche de 500 mL — gélatine fluide modifiée à 3 %', unit:'mL', qteStd:500, volStd:500, solvOk:['pur'], solvIdeal:'pur', purOk:true,
-   mode:'duree', dmin:10, dmax:60, dusuel:20, dunit:'min', step:5,
-   voie:'VVP de gros calibre',
-   indic:'Hypovolémie sévère ne répondant pas aux cristalloïdes, choc hémorragique en attente de transfusion',
-   objectif:'Expansion volémique rapide — pouvoir d’expansion supérieur aux cristalloïdes',
-   alertes:['Risque de réaction anaphylactique : surveiller les 15 premières minutes','Maximum 33 mL/kg par 24 h','Interfère avec le groupage sanguin : prélever le bilan AVANT de perfuser','Les cristalloïdes restent la première intention']},
-
-  {id:'p_ssh', volPur:250, volOptions:[100,250], nom:'Sérum salé hypertonique 7,5 %', dci:'Chlorure de sodium hypertonique', cat:'Remplissage & solutés', icon:'🧊', color:'#818cf8',
-   amp:'Poche de 250 mL — 7,5 % (osmolarité ≈ 2400 mOsm/L)', unit:'mL', qteStd:250, volStd:250, solvOk:['pur'], solvIdeal:'pur', purOk:true,
-   mode:'duree', dmin:10, dmax:30, dusuel:15, dunit:'min', step:5,
-   voie:'VVP de bon calibre — VVC préférable, produit très veinotoxique',
-   indic:'Traumatisme crânien grave avec HTIC, engagement cérébral, choc hémorragique du traumatisé crânien',
-   objectif:'Baisse de la pression intracrânienne, natrémie cible 145–155 mmol/L',
-   alertes:['Dose de référence : 4 mL/kg — ne pas dépasser sans avis médical','Natrémie et osmolarité à contrôler : la correction doit rester progressive','Très veinotoxique : rincer la voie après passage','Ne jamais l’utiliser comme soluté de remplissage courant']},
-
-  {id:'p_alb4', sang:true, volPur:500, volOptions:[250,500], nom:'Albumine 4 % — colloïde naturel', dci:'Albumine humaine iso-oncotique', cat:'Remplissage & solutés', icon:'🥚', color:'#818cf8',
-   amp:'Flacon de 500 mL — albumine humaine à 4 %', unit:'mL', qteStd:500, volStd:500, solvOk:['pur'], solvIdeal:'pur', purOk:true,
-   mode:'duree', dmin:30, dmax:120, dusuel:60, dunit:'min', step:10,
-   voie:'VVP — transfuseur avec filtre',
-   indic:'Remplissage de la femme enceinte, du cirrhotique, du brûlé après la 24e heure, sepsis avec hypoalbuminémie',
-   objectif:'Expansion volémique durable sans surcharge chlorée',
-   alertes:['Produit dérivé du sang : traçabilité obligatoire du numéro de lot','Utiliser un transfuseur muni d’un filtre','Ne jamais diluer avec de l’eau pour préparation injectable — risque d’hémolyse','Réservé aux indications où les cristalloïdes ne suffisent pas']},
-
-  {id:'p_alb20', sang:true, volPur:100, volOptions:[100], nom:'Albumine 20 % — colloïde hyperoncotique', dci:'Albumine humaine concentrée', cat:'Remplissage & solutés', icon:'🥚', color:'#818cf8',
-   amp:'Flacon de 100 mL — albumine humaine à 20 %', unit:'mL', qteStd:100, volStd:100, solvOk:['pur'], solvIdeal:'pur', purOk:true,
-   mode:'duree', dmin:30, dmax:120, dusuel:60, dunit:'min', step:10,
-   voie:'VVP — transfuseur avec filtre, débit lent',
-   indic:'Hypoalbuminémie profonde, ascite réfractaire, syndrome hépato-rénal, œdème cérébral',
-   objectif:'Rappel de liquide vers le secteur vasculaire',
-   alertes:['Hyperoncotique : attire l’eau vers le vaisseau — risque d’OAP si passage trop rapide','Produit dérivé du sang : traçabilité du numéro de lot obligatoire','Surveiller la tension pendant tout le passage','Ce n’est pas un soluté de remplissage d’urgence']},
-
-  {id:'p_cgr', sang:true, meExtra:{label:'Contrôle ultime pré-transfusionnel', texte:'/me réalise le contrôle ultime au lit : identité du patient, groupe de la poche vs carte, test de Beth-Vincent, résultat lu avec un témoin, heure notée.'}, volPur:280, volOptions:[280], nom:'Culot globulaire O Rh− (urgence vitale)', dci:'Concentré de globules rouges', cat:'Remplissage & solutés', icon:'🩸', color:'#f43f5e',
-   amp:'Poche de concentré érythrocytaire — 250 à 300 mL', unit:'mL', qteStd:280, volStd:280, solvOk:['pur'], solvIdeal:'pur', purOk:true,
-   mode:'duree', dmin:10, dmax:120, dusuel:20, dunit:'min', step:5,
-   voie:'VVP de gros calibre (16G minimum) — transfuseur avec filtre et réchauffeur',
-   indic:'Choc hémorragique, transfusion préhospitalière en urgence vitale immédiate',
-   objectif:'Hémoglobine ≥ 7 g/dL — ≥ 10 g/dL chez le traumatisé crânien ou le coronarien',
-   alertes:['Contrôle ultime au lit du patient OBLIGATOIRE avant de brancher, même en urgence vitale','JAMAIS sur la même ligne qu’un Ringer Lactate ou une Isofundine : le calcium fait coaguler la poche','Réchauffer au-delà de 2 culots — l’hypothermie aggrave la coagulopathie','Surveillance rapprochée les 15 premières minutes : frissons, douleur lombaire, hypotension','Traçabilité de la poche et de la carte de contrôle obligatoire']},
-
-  {id:'p_plyo', sang:true, meExtra:{label:'Reconstitution du plasma', texte:'/me raccorde l’eau PPI au flacon de PLYO avec le dispositif de transfert, agite doucement et vérifie l’absence de particule.'}, volPur:200, volOptions:[200], nom:'Plasma lyophilisé (PLYO)', dci:'Plasma humain lyophilisé universel', cat:'Remplissage & solutés', icon:'🧊', color:'#f43f5e',
-   amp:'Flacon lyophilisé — reconstitué dans 200 mL d’eau PPI', unit:'mL', qteStd:200, volStd:200, solvOk:['pur'], solvIdeal:'pur', purOk:true,
-   mode:'duree', dmin:10, dmax:45, dusuel:20, dunit:'min', step:5,
-   voie:'VVP de bon calibre — transfuseur avec filtre',
-   indic:'Choc hémorragique du traumatisé, coagulopathie précoce, damage control préhospitalier',
-   objectif:'Ratio transfusionnel proche de 1 plasma pour 1 culot globulaire',
-   alertes:['Reconstituer avec l’eau PPI fournie et agiter doucement jusqu’à dissolution complète','Universel : utilisable sans connaître le groupe du patient','À passer dans les 6 heures suivant la reconstitution','Traçabilité obligatoire du numéro de lot']},
 
   {id:'p_g10', volPur:500, volOptions:[250,500], nom:'Glucose 10 % — relais hypoglycémie', dci:'Sérum glucosé isotonique', cat:'Remplissage & solutés', icon:'🍯', color:'#fbbf24',
    amp:'Poche de 500 mL — 50 g de glucose', unit:'mL', qteStd:500, volStd:500, solvOk:['pur'], solvIdeal:'pur', purOk:true,
@@ -1238,75 +1125,20 @@ const PERF_CATS = ['Amines vasoactives','Cardiologie','Sédation & analgésie','
 
 /* ── Cas cliniques du mode examen ── */
 const PERF_CAS = [
-  {id:'c1', titre:'Choc septique', icon:'🦠', diff:'Standard',
-   enonce:'Homme de 62 ans, fièvre à 39,4 °C, marbrures des genoux, PA 78/42, FC 128, lactates 4,2 mmol/L. Il a déjà reçu 30 mL/kg de cristalloïdes sans amélioration. PAM à 54 mmHg.',
-   poids:80, drug:'p_nad', base:'g5', doseMin:0.1, doseMax:1,
-   corr:'Choc septique réfractaire au remplissage : introduction de la noradrénaline à la seringue électrique. Dilution SMUR classique 8 mg dans 40–50 mL de G5 %, débutée à 0,1–0,5 µg/kg/min puis titrée pour obtenir une PAM ≥ 65 mmHg. Antibiothérapie à passer en parallèle sur une autre voie.'},
-
-  {id:'c2', titre:'Choc cardiogénique post-IDM', icon:'💔', diff:'Standard',
-   enonce:'Femme de 71 ans, 6 h après un infarctus antérieur. PA 82/55, FC 112, extrémités froides, OAP à l’auscultation, SpO2 88 % sous 15 L. Échographie : FEVG effondrée.',
-   poids:65, drug:'p_dobu', base:'g5', doseMin:5, doseMax:15,
-   corr:'Bas débit cardiaque avec congestion : inotrope positif. Dobutamine 250 mg dans 50 mL, débit initial 5 µg/kg/min, titré jusqu’à 15–20 µg/kg/min selon la tolérance. Surveiller l’apparition d’une tachycardie ou de troubles du rythme.'},
-
-  {id:'c3', titre:'OAP hypertensif', icon:'🫁', diff:'Standard',
-   enonce:'Homme de 78 ans, dyspnée majeure, crépitants aux deux champs, PA 212/118, FC 104, SpO2 84 % en air ambiant. Pas de douleur thoracique. Aucun traitement pour troubles de l’érection.',
-   poids:75, drug:'p_risor', base:'nacl', doseMin:1, doseMax:5,
-   corr:'OAP cardiogénique hypertensif : dérivés nitrés en première intention. Risordan 10 mg / 10 mL à la seringue électrique, 1 à 5 mg/h titré sur la PA systolique, associé à la VNI et au furosémide. Arrêt immédiat si PAS < 100 mmHg.'},
-
-  {id:'c4', titre:'AVC hémorragique — urgence hypertensive', icon:'🧠', diff:'Difficile',
-   enonce:'Femme de 58 ans, hémiplégie droite brutale, Glasgow 12. Scanner : hématome capsulo-lenticulaire. PA 224/126, FC 78.',
-   poids:70, drug:'p_loxen', base:'nacl', doseMin:1, doseMax:5,
-   corr:'Contrôle tensionnel prudent : nicardipine (Loxen) à la seringue électrique, 1 à 5 mg/h. Objectif de baisse contrôlée — pas plus de 25 % de la PAM sur la première heure, sous peine d’aggraver l’ischémie péri-lésionnelle. Les dérivés nitrés sont à éviter (augmentation de la pression intracrânienne).'},
-
-  {id:'c5', titre:'Acidocétose diabétique', icon:'🍬', diff:'Standard',
-   enonce:'Homme de 24 ans, diabétique de type 1, vomissements et polypnée. Glycémie capillaire « HI », cétonémie 5,8 mmol/L, pH 7,08, kaliémie 4,1 mmol/L. Réhydratation en cours.',
-   poids:60, drug:'p_insu', base:'nacl', doseMin:4, doseMax:8,
-   corr:'Insulinothérapie IVSE à 0,1 UI/kg/h, soit environ 6 UI/h pour 60 kg. Dilution 50 UI dans 50 mL de NaCl 0,9 % (1 UI/mL). Purger 20 mL de la préparation avant branchement — l’insuline s’adsorbe sur le plastique. Glycémie capillaire horaire, apport de potassium dès que la kaliémie descend sous 5 mmol/L.'},
-
   {id:'c6', titre:'Traumatisme hémorragique', icon:'🩸', diff:'Facile',
    enonce:'Motard de 32 ans, AVP à haute cinétique il y a 40 minutes. Fracture de bassin, PA 88/52, FC 130, abdomen sensible. Ceinture pelvienne posée.',
    poids:90, drug:'p_exacyl', base:'nacl', doseMin:10, doseMax:20,
    corr:'Acide tranexamique 1 g dilué dans 100 mL de NaCl 0,9 %, à passer sur 10 minutes — soit 600 mL/h. À administrer impérativement dans les 3 heures suivant le traumatisme. Relais par 1 g sur 8 h. Une injection trop rapide entraîne une hypotension.'},
-
-  {id:'c7', titre:'Torsades de pointes', icon:'⚡', diff:'Difficile',
-   enonce:'Femme de 68 ans, syncopes à répétition. ECG : QT long, salves de torsades de pointes. Kaliémie 3,2 mmol/L, magnésémie basse. Sous traitement antiarythmique au long cours.',
-   poids:62, drug:'p_mgso4', base:'nacl', doseMin:10, doseMax:20,
-   corr:'Sulfate de magnésium 2 g dilués dans 100 mL, à passer sur 10 à 20 minutes. C’est le traitement de référence des torsades, même en cas de magnésémie normale. Corriger la kaliémie en parallèle, arrêter tous les médicaments allongeant le QT, prévoir un entraînement électrosystolique si récidive.'},
 
   {id:'c8', titre:'FV réfractaire', icon:'❤️‍🔥', diff:'Standard',
    enonce:'Arrêt cardiaque devant témoin. Après le 3e choc électrique externe et 1 mg d’adrénaline, le patient reste en fibrillation ventriculaire. Massage cardiaque en cours.',
    poids:75, drug:'p_cordar', base:'g5', doseMin:20, doseMax:60,
    corr:'Amiodarone 300 mg — en contexte d’arrêt cardiaque le bolus IVD est la règle, mais toute dilution ou tout entretien se fait exclusivement dans du G5 %. L’amiodarone précipite dans le NaCl 0,9 %. Dose de charge complémentaire de 150 mg possible, puis entretien 900 mg / 24 h.'},
 
-  {id:'c9', titre:'Hypokaliémie sévère', icon:'🧂', diff:'Difficile',
-   enonce:'Femme de 74 ans sous diurétiques, asthénie majeure et crampes. Kaliémie 2,1 mmol/L, ECG : ondes U, extrasystoles ventriculaires fréquentes.',
-   poids:70, drug:'p_kcl', base:'nacl', doseMin:120, doseMax:240,
-   corr:'Recharge potassique en perfusion lente : 2 g de KCl dilués dans 500 mL de NaCl 0,9 % à passer sur 2 heures minimum, soit un débit qui ne dépasse jamais 1 g/h en voie périphérique. Le KCl ne doit JAMAIS être injecté en IV direct — arrêt cardiaque immédiat. Scope continu pendant toute la perfusion.'},
-
-  {id:'c10', titre:'Purpura fulminans', icon:'🦠', diff:'Standard',
-   enonce:'Adolescent de 16 ans, fièvre, purpura nécrotique extensif, PA 90/50, FC 125. Transport vers la réanimation. Une VVP est en place avec du Ringer Lactate en cours.',
-   poids:58, drug:'p_rocef', base:'nacl', doseMin:20, doseMax:30,
-   corr:'Ceftriaxone en urgence absolue, avant même le transport. 1 g reconstitué puis dilué dans 100 mL de NaCl 0,9 % sur 30 minutes. Piège du cas : la ceftriaxone est incompatible avec le Ringer Lactate (précipité de sel de calcium) — il faut rincer la voie ou utiliser une autre voie.'},
-
   {id:'c11', titre:'Sédation du patient intubé', icon:'😴', diff:'Standard',
    enonce:'Homme de 46 ans intubé pour traumatisme crânien grave. Il commence à s’opposer au ventilateur pendant le transport. Hémodynamique stable, PA 132/78.',
    poids:82, drug:'p_hypno', base:'nacl', doseMin:0.05, doseMax:0.2,
    corr:'Entretien de la sédation par midazolam à la seringue électrique, 0,05 à 0,2 mg/kg/h — soit environ 4 à 16 mg/h pour 82 kg. Dilution 50 mg dans 50 mL (1 mg/mL). Toujours associer une analgésie par morphinique : la sédation seule ne traite pas la douleur.'},
-
-  {id:'c12', titre:'Asthme aigu grave', icon:'🫁', diff:'Difficile',
-   enonce:'Femme de 29 ans, asthmatique connue. Impossibilité de parler, FR 34, SpO2 89 %, silence auscultatoire. Trois nébulisations de salbutamol et corticoïdes déjà administrés, sans amélioration.',
-   poids:55, drug:'p_salbu', base:'nacl', doseMin:0.25, doseMax:2,
-   corr:'Passage au salbutamol IV à la seringue électrique devant l’échec des nébulisations : 5 mg dans 50 mL, débuté à 0,25–0,5 mg/h puis augmenté selon la réponse. Scope continu, surveillance de la kaliémie. Poursuivre les nébulisations et la corticothérapie, préparer le matériel d’intubation.'},
-
-  {id:'c13', titre:'Choc hémorragique — transfusion', icon:'🩸', diff:'Difficile',
-   enonce:'Homme de 38 ans, plaie par arme blanche abdominale. PA 74/40, FC 138, pâleur extrême, Glasgow 13. Hémocue à 6,2 g/dL. Deux VVP de 16G en place, dont une avec du Ringer Lactate en cours. Transfusion préhospitalière décidée.',
-   poids:80, drug:'p_cgr', base:'pur', doseMin:10, doseMax:30,
-   corr:'Urgence vitale immédiate : culots globulaires O Rh négatif, passés rapidement sur 15 à 20 minutes avec un transfuseur à filtre et un réchauffeur. Le piège du cas est la voie : le Ringer Lactate contient du calcium et fait coaguler le culot — il faut rincer la ligne au NaCl 0,9 % ou utiliser la seconde voie. Le contrôle ultime au lit du patient reste obligatoire, même en urgence vitale. Associer le plasma lyophilisé pour tenir un ratio proche de 1 pour 1, et l’acide tranexamique.'},
-
-  {id:'c14', titre:'Traumatisme crânien — HTIC', icon:'🧠', diff:'Difficile',
-   enonce:'Femme de 45 ans, chute de 4 mètres. Glasgow 6, anisocorie avec mydriase droite, PA 168/92, FC 58. Patiente intubée et ventilée, capnie contrôlée. Signes d’engagement cérébral, scanner à 20 minutes.',
-   poids:65, drug:'p_ssh', base:'pur', doseMin:10, doseMax:30,
-   corr:'Signes d’engagement : osmothérapie en urgence. Sérum salé hypertonique 7,5 % à la dose de 4 mL/kg, soit environ 260 mL pour 65 kg, à passer sur 10 à 20 minutes sur une voie de bon calibre. Le mannitol 20 % à 0,25–1 g/kg est l’alternative, mais le SSH est préféré chez le patient hypotendu ou hémodynamiquement fragile car il ne provoque pas de diurèse osmotique. Maintenir la PAM pour préserver la pression de perfusion cérébrale — surtout ne pas faire chuter la tension.'},
 
   {id:'c15', titre:'Brûlé grave', icon:'🔥', diff:'Standard',
    enonce:'Homme de 70 kg, incendie domestique. Brûlures du 2e degré profond sur les deux membres supérieurs et le tronc antérieur, soit 36 % de la surface corporelle. Conscient, PA 108/64, FC 118. Brûlures survenues il y a 30 minutes.',
@@ -1960,8 +1792,6 @@ function checkPresc(drug, qte, vol, dose, poids, r){
   if(isFluide(drug) && poids>0){
     const mlkg = vol/poids;
     if(mlkg > 22) out.push({lvl:'warn', txt:`${nf(mlkg,1)} mL/kg d’un coup : c’est beaucoup pour un seul passage. Réévaluer la tolérance (auscultation, SpO2) avant de poursuivre.`});
-    if(drug.id==='p_ssh' && mlkg > 5) out.push({lvl:'err', txt:`${nf(mlkg,1)} mL/kg de sérum salé hypertonique — la dose de référence est de 4 mL/kg, soit environ ${nf(poids*4,0)} mL pour ce patient.`});
-    if(drug.id==='p_plasmion' && mlkg > 33) out.push({lvl:'err', txt:`Au-delà de 33 mL/kg par 24 h de gélatine, le risque hémorragique et rénal l’emporte.`});
   }
   const isSe = vol <= 50;
   if(isSe && r.mlh > 999) out.push({lvl:'err', txt:`Débit de ${nf(r.mlh,0)} mL/h : impossible à régler sur un pousse-seringue (max 999 mL/h). Revoir la dilution.`});
@@ -1983,24 +1813,24 @@ function perfMe(drug, solv, qte, vol, dose, poids, r){
   const contenant = useSe ? (vol<=20?'une seringue de 20 mL':'une seringue de 50 mL') : `une poche de ${nf(vol,0)} mL`;
   const conc = `${nf(r.conc,3)} ${u}/mL`;
 
+  const FLOW_DOC = {p_perfa:'en IVL sur 15 minutes',p_exacyl:'en IVL sur 20 minutes',p_cordar:'en IVL sur 15 minutes',p_nacl_rempl:'sur 10 minutes (remplissage) ou en garde veine',p_rl_rempl:'à 20mL/kg sur 1 heure (brûlé)',p_hypno:'à la seringue électrique, entre 2,5 et 10 mL/h',p_sufe:'à la seringue électrique, entre 0,8 et 20 mL/h',p_hepa:'en IVL',p_g30:'en IVDL'};
+  const flow = FLOW_DOC[drug.id] || (useSe ? 'à la seringue électrique, débit selon la prescription' : 'débit selon la prescription');
   return {
     verif: fluide
-      ? `/me contrôle la poche de ${nomCourt} : volume de ${nf(vol,0)} mL, péremption, limpidité, emballage intact.`
-      : `/me vérifie l’ampoule de ${drug.nom} (${drug.amp}) : nom, dosage, péremption, conditionnement intact.`,
+      ? `/me contrôle la poche de ${nomCourt}.`
+      : `/me vérifie l’ampoule de ${drug.nom} (${drug.amp}).`,
     prep: fluide
-      ? `/me suspend la poche de ${nf(vol,0)} mL de ${nomCourt} à la potence et y adapte ${ligne}.`
+      ? `/me suspend la poche de ${nomCourt} à la potence.`
       : solv.base==='pur'
-        ? `/me prépare ${drug.nom} sans dilution : ${nf(qte,2)} ${u} pour ${nf(vol,0)} mL (${conc}) et purge l’air de la seringue.`
+        ? `/me prépare ${drug.nom} pur : ${nf(qte,2)} ${u} pour ${nf(vol,0)} mL (${conc}).`
         : `/me prélève ${nf(qte,2)} ${u} de ${drug.nom} et l’injecte ${dilTxt} pour ${contenant} de ${nf(vol,0)} mL à ${conc}.`,
     etiq: fluide
-      ? `/me note sur la poche l’heure de pose, le volume de ${nf(vol,0)} mL et le nom du patient.`
-      : `/me étiquette ${useSe?'la seringue':'la poche'} : « ${drug.nom} — ${nf(qte,2)} ${u} / ${nf(vol,0)} mL — ${conc} — ${heureNow()} » avec ses initiales.`,
-    purge: `/me connecte ${ligne} à ${fluide?'la poche':'la préparation'} et purge la ligne jusqu’à la dernière bulle.`,
-    branch: `/me désinfecte le robinet, flush la voie au sérum physiologique et connecte la ligne de ${nomCourt}.`,
-    debit: useSe
-      ? `/me installe la seringue dans le pousse-seringue et règle ${nf(r.mlh,1)} mL/h (${nf(dose,3)} ${drug.dunit}${drug.mode.includes('k')?` pour ${poids} kg`:''}), puis lance la perfusion.`
-      : `/me règle le perfuseur sur ${nf(r.gttes,0)} gouttes/min (${nf(r.mlh,0)} mL/h) pour ${nf(vol,0)} mL en ${drug.mode==='duree'?nf(dose,0)+' minutes':'la durée prescrite'}.`,
-    surv: `/me note l’heure de début, le produit, ${fluide?'le volume':'la dilution'} et le débit, puis surveille : ${drug.objectif}.`,
+      ? `/me numérote la poche et note l’heure de pose.`
+      : `/me étiquette ${useSe?'la seringue':'la poche'} : « ${drug.nom} — ${nf(qte,2)} ${u} / ${nf(vol,0)} mL — ${conc} — ${heureNow()} ».`,
+    purge: `/me connecte ${ligne} à ${fluide?'la poche':'la préparation'} et purge la ligne.`,
+    branch: `/me connecte la ligne de ${nomCourt} sur la voie veineuse.`,
+    debit: `/me passe ${fluide?'la poche':nomCourt} ${flow}.`,
+    surv: `/me note l’heure de début, le produit et le passage (${flow}).`,
   };
 }
 
