@@ -202,37 +202,37 @@ const CATEGORIES = ['Tous','Favoris','Cathéters','Intra-osseux','Perfusions','M
 const CAT_ICON = {'Tous':'🏥','Favoris':'⭐','Cathéters':'💉','Intra-osseux':'🦴','Perfusions':'🫙','Monitoring':'📊','Intubation':'🫁','Réanimation':'❤️‍🔥','Trauma':'🩹','Médicaments':'💉','Per Os':'💊','Urgences':'🚨','Examens':'🔬','Questions /qu':'💬','Autres':'📋'};
 
 const DEFAULT_MACROS = [
-  {id:'c1',categorie:'Cathéters',type:'me',titre:'Cathéter 18G bras gauche',texte:'/me désinfecte soigneusement la zone puis pose un cathéter 18G au bras gauche en s\'assurant d\'un bon reflux sanguin.'},
-  {id:'c2',categorie:'Cathéters',type:'me',titre:'Cathéter 18G bras droit',texte:'/me prépare le matériel, désinfecte le pli du coude droit et insère un cathéter 18G en vérifiant la perméabilité.'},
-  {id:'c3',categorie:'Cathéters',type:'me',titre:'Cathéter 20G',texte:'/me pose un cathéter 20G après repérage veineux et désinfection à l\'antiseptique dermique.'},
-  {id:'c4',categorie:'Cathéters',type:'me',titre:'Vérification reflux',texte:'/me vérifie le reflux sanguin et la bonne perméabilité du cathéter avant tout branchement.'},
-  {id:'c5',categorie:'Cathéters',type:'me',titre:'Purge de la tubulure',texte:'/me purge soigneusement la tubulure afin d\'éliminer toute bulle d\'air avant administration.'},
-  {id:'c6',categorie:'Cathéters',type:'me',titre:'Fixation cathéter',texte:'/me fixe le cathéter à l\'aide d\'un pansement transparent stérile et note l\'heure de pose.'},
-  {id:'c7',categorie:'Cathéters',type:'me',titre:'Retrait cathéter',texte:'/me retire délicatement le cathéter, comprime la zone avec une compresse stérile puis pose un pansement.'},
-  {id:'c8',categorie:'Cathéters',type:'me',titre:'Double VVP',texte:'/me pose rapidement deux voies veineuses périphériques de bon calibre pour accès médicamenteux sécurisé.'},
+  {id:'c1',categorie:'Cathéters',type:'me',titre:'Cathéter 18G bras gauche',texte:'/me désinfecte et pose un cathéter 18G au bras gauche, reflux sanguin vérifié.'},
+  {id:'c2',categorie:'Cathéters',type:'me',titre:'Cathéter 18G bras droit',texte:'/me désinfecte le pli du coude droit et pose un cathéter 18G.'},
+  {id:'c3',categorie:'Cathéters',type:'me',titre:'Cathéter 20G',texte:'/me désinfecte et pose un cathéter 20G après repérage veineux.'},
+  {id:'c4',categorie:'Cathéters',type:'me',titre:'Vérification reflux',texte:'/me vérifie le reflux sanguin et la perméabilité du cathéter.'},
+  {id:'c5',categorie:'Cathéters',type:'me',titre:'Purge de la tubulure',texte:'/me purge la tubulure pour chasser les bulles d\'air.'},
+  {id:'c6',categorie:'Cathéters',type:'me',titre:'Fixation cathéter',texte:'/me fixe le cathéter avec un pansement transparent et note l\'heure de pose.'},
+  {id:'c7',categorie:'Cathéters',type:'me',titre:'Retrait cathéter',texte:'/me retire le cathéter, comprime avec une compresse puis pose un pansement.'},
+  {id:'c8',categorie:'Cathéters',type:'me',titre:'Double VVP',texte:'/me pose deux voies veineuses périphériques de bon calibre.'},
 
   // ── INTRA-OSSEUX ──
   {id:'io1',categorie:'Intra-osseux',type:'me',titre:'Pose VIO tibia proximal (EZ-IO)',
-   texte:'/me repère le tibia proximal à 2 cm sous la tubérosité tibiale antérieure, désinfecte la zone, positionne l\'aiguille EZ-IO 25mm perpendiculairement à la corticale et fore jusqu\'à sentir la perte de résistance caractéristique.',
+   texte:'/me repère le tibia proximal, désinfecte et pose l\'aiguille EZ-IO 25mm jusqu\'à la perte de résistance.',
    info:'Site de 1ère intention chez l\'adulte · Aiguille bleue 25mm standard · Rose 45mm si obèse · Jaune 45mm enfant'},
   {id:'io2',categorie:'Intra-osseux',type:'me',titre:'Pose VIO humérus proximal (EZ-IO)',
-   texte:'/me positionne le bras en rotation interne, repère le grand tubercule huméral, désinfecte et fore l\'aiguille EZ-IO perpendiculairement à la surface osseuse en visant légèrement vers le bas.',
+   texte:'/me repère le grand tubercule huméral, désinfecte et pose l\'aiguille EZ-IO.',
    info:'Débit max ≈ 125mL/min (sous pression) · Préféré si tibia inaccessible · Débits IV identiques aux VVP'},
   {id:'io3',categorie:'Intra-osseux',type:'me',titre:'Vérification positionnement IO',
-   texte:'/me vérifie le bon positionnement de la VIO en aspirant 5mL de contenu médullaire avec une seringue, confirme l\'absence de résistance excessive puis injecte 10mL de NaCl 0,9% en observant l\'absence d\'extravasation.'},
+   texte:'/me aspire de la moelle pour vérifier la VIO puis injecte 10mL de NaCl 0,9%.'},
   {id:'io4',categorie:'Intra-osseux',type:'me',titre:'Lidocaïne IO — antalgie pose (conscient)',
-   texte:'/me injecte lentement 40mg de Lidocaïne 2% (2mL) en IO sur 2 minutes pour antalgie intra-médullaire avant toute perfusion, laisse agir 60 secondes puis rince avec 10mL de NaCl 0,9%.',
+   texte:'/me injecte lentement 40mg de Lidocaïne 2% en IO, attend 60 secondes puis rince au NaCl 0,9%.',
    info:'40mg Lido 2% IO lente · Attendre 60s avant perfusion · À répéter si douleur à chaque flush · Inutile si inconscient'},
   {id:'io5',categorie:'Intra-osseux',type:'me',titre:'Remplissage rapide IO (sous pression)',
-   texte:'/me connecte la poche de remplissage sous poche pression gonflée à 300 mmHg sur la VIO et ouvre le débit pour remplissage vasculaire rapide par voie intra-osseuse.',
+   texte:'/me branche la poche de remplissage sous pression (300 mmHg) sur la VIO.',
    info:'Débit libre insuffisant en IO — toujours utiliser une poche pression · Contrôler site d\'injection toutes les 5 min'},
   {id:'io6',categorie:'Intra-osseux',type:'me',titre:'Flush NaCl 10mL post-injection IO',
-   texte:'/me flush la VIO avec 10mL de NaCl 0,9% en bolus rapide après chaque injection médicamenteuse pour s\'assurer de l\'acheminement complet du produit dans la circulation centrale.'},
+   texte:'/me flush la VIO avec 10mL de NaCl 0,9% après chaque injection.'},
   {id:'io7',categorie:'Intra-osseux',type:'me',titre:'Adrénaline ACR par voie IO',
-   texte:'/me administre 1mg d\'Adrénaline 1mg/1ml en bolus IV direct via la VIO suivi immédiatement d\'un flush de 20mL NaCl 0,9% rapide pour assurer la distribution centrale.',
+   texte:'/me injecte 1mg d\'Adrénaline en IV direct sur la VIO puis flush de 20mL de NaCl 0,9%.',
    info:'Flush 20mL impératif après chaque injection IO en ACR · Délai action légèrement > IV mais efficacité équivalente'},
   {id:'io8',categorie:'Intra-osseux',type:'me',titre:'Retrait VIO — fin de prise en charge',
-   texte:'/me dévisse délicatement l\'aiguille EZ-IO à l\'aide du mandrin prévu à cet effet, retire l\'ensemble en un mouvement de rotation stable, comprime la zone d\'insertion avec une compresse stérile et pose un pansement compressif.',
+   texte:'/me dévisse l\'aiguille EZ-IO avec le mandrin, comprime et pose un pansement compressif.',
    info:'VIO max 24h · Retirer dès que VVP disponible · Ne jamais laisser l\'aiguille sans le trocard de sécurité'},
   {id:'io9',categorie:'Intra-osseux',type:'qu',titre:'VIO en place OK ?',
    texte:'/qu VIO en place et perméable ?'},
@@ -241,331 +241,331 @@ const DEFAULT_MACROS = [
 
   // ── PERFUSIONS ──
   // Solutés de base
-  {id:'pf1', categorie:'Perfusions',type:'me',titre:'NaCl 0,9% 500mL — remplissage rapide',   texte:'/me prend un flacon de NaCl 0,9% 500mL, purge la tubulure, le connecte sur la VVP et ouvre le débit en grand pour remplissage vasculaire rapide.'},
-  {id:'pf2', categorie:'Perfusions',type:'me',titre:'NaCl 0,9% 100mL — débit libre',          texte:'/me branche un flacon de NaCl 0,9% 100mL en débit libre sur la VVP pour maintien de la voie veineuse en attendant.'},
-  {id:'pf3', categorie:'Perfusions',type:'me',titre:'Ringer Lactate 500mL — trauma',          texte:'/me prend un flacon de Ringer Lactate 500mL, purge la tubulure et le branche en remplissage vasculaire pour patient traumatisé.'},
-  {id:'pf4', categorie:'Perfusions',type:'me',titre:'G5% 250mL — solvant médicament',         texte:'/me prend un flacon de G5% 250mL et le prépare comme solvant de dilution pour la perfusion médicamenteuse.'},
-  {id:'pf5', categorie:'Perfusions',type:'me',titre:'G10% 500mL — apport glucosé',            texte:'/me branche un flacon de G10% 500mL en perfusion IV pour apport glucosé chez le patient à jeun ou hypoglycémique.'},
-  {id:'pf6', categorie:'Perfusions',type:'me',titre:'Mannitol 20% 500mL — HTIC',              texte:'/me branche le Mannitol 20% 500mL en perfusion IV rapide sur 20 minutes pour traitement d\'une HTIC aiguë.'},
+  {id:'pf1', categorie:'Perfusions',type:'me',titre:'NaCl 0,9% 500mL — remplissage rapide',   texte:'/me branche un NaCl 0,9% 500mL sur la VVP en débit rapide.'},
+  {id:'pf2', categorie:'Perfusions',type:'me',titre:'NaCl 0,9% 100mL — débit libre',          texte:'/me branche un NaCl 0,9% 100mL en débit libre sur la VVP.'},
+  {id:'pf3', categorie:'Perfusions',type:'me',titre:'Ringer Lactate 500mL — trauma',          texte:'/me branche un Ringer Lactate 500mL en remplissage rapide.'},
+  {id:'pf4', categorie:'Perfusions',type:'me',titre:'G5% 250mL — solvant médicament',         texte:'/me prépare un G5% 250mL comme solvant de dilution.'},
+  {id:'pf5', categorie:'Perfusions',type:'me',titre:'G10% 500mL — apport glucosé',            texte:'/me branche un G10% 500mL en perfusion IV.'},
+  {id:'pf6', categorie:'Perfusions',type:'me',titre:'Mannitol 20% 500mL — HTIC',              texte:'/me branche le Mannitol 20% 500mL en IV rapide sur 20 minutes.'},
   // Perfalgan
-  {id:'pf7', categorie:'Perfusions',type:'me',titre:'Perfalgan 1g/100mL — antalgique IV',     texte:'/me prend le flacon de Paracétamol (Perfalgan) 1g/100mL prêt à l\'emploi et le branche en perfusion IV sur 15 minutes.'},
+  {id:'pf7', categorie:'Perfusions',type:'me',titre:'Perfalgan 1g/100mL — antalgique IV',     texte:'/me branche le Perfalgan 1g/100mL en IV sur 15 minutes.'},
   // Médicaments dilués
-  {id:'pf8', categorie:'Perfusions',type:'me',titre:'Amiodarone 300mg — perf. 20 min',        texte:'/me dilue 300mg d\'Amiodarone (Cordarone) 150mg/3ml dans 100mL de G5% et perfuse en 20 minutes sous scope continu.'},
-  {id:'pf9', categorie:'Perfusions',type:'me',titre:'Ceftriaxone 1g — perf. 30 min',          texte:'/me dissout la Ceftriaxone Fl 1g dans 100mL de NaCl 0,9% et perfuse en 30 minutes en surveillance des signes allergiques.'},
-  {id:'pf10',categorie:'Perfusions',type:'me',titre:'Augmentin 2g — perf. 30 min',            texte:'/me reconstitue l\'Augmentin 2g/200mg avec 10mL d\'eau ppi puis dilue dans 100mL de NaCl et perfuse sur 30 minutes.'},
-  {id:'pf11',categorie:'Perfusions',type:'me',titre:'Keppra 500mg — perf. 15 min',            texte:'/me dilue le Lévetiracétam (Keppra) 500mg/5ml dans 100mL de NaCl 0,9% et perfuse sur 15 minutes.'},
-  {id:'pf12',categorie:'Perfusions',type:'me',titre:'Exacyl 1g — perf. 10 min',               texte:'/me dilue 1g d\'Acide Tranexamique (Exacyl) 500mg/5ml dans 100mL de NaCl et perfuse sur 10 minutes pour hémorragie active.'},
-  {id:'pf13',categorie:'Perfusions',type:'me',titre:'Solumedrol 120mg — bolus IV',            texte:'/me dilue 120mg de Méthylprednisolone (Solumedrol) dans 50mL de NaCl 0,9% et perfuse en 15 minutes.'},
-  {id:'pf14',categorie:'Perfusions',type:'me',titre:'Furosémide 40mg — perf. lente',          texte:'/me dilue 40mg de Furosémide (Lasilix) dans 50mL de NaCl et perfuse en 10 minutes sous surveillance de la diurèse.'},
+  {id:'pf8', categorie:'Perfusions',type:'me',titre:'Amiodarone 300mg — perf. 20 min',        texte:'/me dilue 300mg d\'Amiodarone dans 100mL de G5% et perfuse en 20 minutes sous scope.'},
+  {id:'pf9', categorie:'Perfusions',type:'me',titre:'Ceftriaxone 1g — perf. 30 min',          texte:'/me dissout 1g de Ceftriaxone dans 100mL de NaCl 0,9% et perfuse en 30 minutes.'},
+  {id:'pf10',categorie:'Perfusions',type:'me',titre:'Augmentin 2g — perf. 30 min',            texte:'/me reconstitue l\'Augmentin 2g puis dilue dans 100mL de NaCl, perfusion sur 30 minutes.'},
+  {id:'pf11',categorie:'Perfusions',type:'me',titre:'Keppra 500mg — perf. 15 min',            texte:'/me dilue 500mg de Keppra dans 100mL de NaCl 0,9% et perfuse sur 15 minutes.'},
+  {id:'pf12',categorie:'Perfusions',type:'me',titre:'Exacyl 1g — perf. 10 min',               texte:'/me dilue 1g d\'Exacyl dans 100mL de NaCl et perfuse sur 10 minutes.'},
+  {id:'pf13',categorie:'Perfusions',type:'me',titre:'Solumedrol 120mg — bolus IV',            texte:'/me dilue 120mg de Solumedrol dans 50mL de NaCl 0,9% et perfuse en 15 minutes.'},
+  {id:'pf14',categorie:'Perfusions',type:'me',titre:'Furosémide 40mg — perf. lente',          texte:'/me dilue 40mg de Lasilix dans 50mL de NaCl et perfuse en 10 minutes.'},
   // Seringue électrique (SE)
-  {id:'pf15',categorie:'Perfusions',type:'me',titre:'SE — Noradrénaline (dilution standard)', texte:'/me prépare la seringue électrique de Noradrénaline 8mg/4ml diluée dans 36mL de G5% pour une concentration de 200μg/mL, branche sur la VVP centrale et démarre au débit prescrit.'},
-  {id:'pf16',categorie:'Perfusions',type:'me',titre:'SE — Dobutamine 250mg',                  texte:'/me prépare la seringue électrique de Dobutamine 250mg/20ml diluée dans du G5% et démarre selon la prescription pour support inotrope.'},
-  {id:'pf17',categorie:'Perfusions',type:'me',titre:'SE — Risordan (dérivé nitré)',            texte:'/me prépare la seringue électrique de Risordan 10mg/10ml et titre progressivement le débit selon la TA systolique (cible > 90 mmHg).'},
-  {id:'pf18',categorie:'Perfusions',type:'me',titre:'SE — Loxen (nicardipine)',                texte:'/me prépare la seringue électrique de Nicardipine (Loxen) 10mg/10ml diluée dans 40mL de G5% et titre selon la TA cible.'},
-  {id:'pf19',categorie:'Perfusions',type:'me',titre:'SE — Somatostatine 250μg/h',             texte:'/me prépare la seringue électrique de Somatostatine 250μg/1ml et démarre à la dose prescrite pour hémorragie digestive haute.'},
-  {id:'pf20',categorie:'Perfusions',type:'me',titre:'SE — Morphine (analgésie continue)',     texte:'/me prépare la seringue électrique de Morphine 10mg/1ml diluée dans 19mL de NaCl (concentration 0,5mg/mL) et démarre à 1-2mg/h selon EVA.'},
-  {id:'pf21',categorie:'Perfusions',type:'me',titre:'SE — Midazolam (sédation continue)',     texte:'/me prépare la seringue électrique de Midazolam (Hypnovel) 50mg/10ml diluée dans 40mL de NaCl et démarre à la dose de sédation prescrite.'},
+  {id:'pf15',categorie:'Perfusions',type:'me',titre:'SE — Noradrénaline (dilution standard)', texte:'/me prépare la SE de Noradrénaline 8mg/4mL dans 36mL de G5%, branche et démarre au débit prescrit.'},
+  {id:'pf16',categorie:'Perfusions',type:'me',titre:'SE — Dobutamine 250mg',                  texte:'/me prépare la SE de Dobutamine 250mg/20mL dans du G5% et démarre selon prescription.'},
+  {id:'pf17',categorie:'Perfusions',type:'me',titre:'SE — Risordan (dérivé nitré)',            texte:'/me prépare la SE de Risordan 10mg/10mL et titre selon la TA systolique.'},
+  {id:'pf18',categorie:'Perfusions',type:'me',titre:'SE — Loxen (nicardipine)',                texte:'/me prépare la SE de Loxen 10mg/10mL dans 40mL de G5% et titre selon la TA.'},
+  {id:'pf19',categorie:'Perfusions',type:'me',titre:'SE — Somatostatine 250μg/h',             texte:'/me prépare la SE de Somatostatine 250μg/1mL et démarre à la dose prescrite.'},
+  {id:'pf20',categorie:'Perfusions',type:'me',titre:'SE — Morphine (analgésie continue)',     texte:'/me prépare la SE de Morphine 10mg dans 19mL de NaCl (0,5mg/mL) et démarre à 1-2mg/h.'},
+  {id:'pf21',categorie:'Perfusions',type:'me',titre:'SE — Midazolam (sédation continue)',     texte:'/me prépare la SE de Midazolam 50mg/10mL dans 40mL de NaCl et démarre selon prescription.'},
   // Purge + flush
-  {id:'pf22',categorie:'Perfusions',type:'me',titre:'Purge tubulure — vérification bulles',   texte:'/me purge soigneusement la tubulure de perfusion en chassant toutes les bulles d\'air avant de la connecter sur la VVP.'},
-  {id:'pf23',categorie:'Perfusions',type:'me',titre:'Flush NaCl 10mL — perméabilité VVP',    texte:'/me réalise un flush de 10mL de NaCl 0,9% sur la VVP et vérifie l\'absence d\'extravasation et la bonne perméabilité.'},
-  {id:'pf24',categorie:'Perfusions',type:'me',titre:'Changement de flacon — relai',           texte:'/me remplace le flacon de perfusion vide par le suivant en limitant au maximum la durée d\'interruption du débit.'},
-  {id:'pf25',categorie:'Perfusions',type:'me',titre:'Réglage du débit — calcul gouttes',      texte:'/me calcule et règle le débit de la perfusion selon la prescription et note l\'heure de branchement dans le dossier.'},
-  {id:'m1',categorie:'Monitoring',type:'me',titre:'Électrodes ECG 12 dérivations',texte:'/me place les 10 électrodes ECG sur le thorax et les membres du patient puis lance l\'enregistrement.'},
-  {id:'m2',categorie:'Monitoring',type:'me',titre:'Saturomètre (SpO2)',texte:'/me installe le saturomètre à l\'index droit et surveille la SpO2 ainsi que la fréquence cardiaque en continu.'},
-  {id:'m3',categorie:'Monitoring',type:'me',titre:'Tension artérielle',texte:'/me pose le brassard tensionnel au bras gauche et mesure la pression artérielle du patient.'},
-  {id:'m4',categorie:'Monitoring',type:'me',titre:'Glycémie capillaire',texte:'/me effectue une glycémie capillaire en piquant le bout du doigt avec l\'autopiqueur et lit le résultat.'},
-  {id:'m5',categorie:'Monitoring',type:'me',titre:'Constantes complètes',texte:'/me relève l\'ensemble des constantes vitales : TA, FC, SpO2, FR, température et glycémie capillaire.'},
-  {id:'m6',categorie:'Monitoring',type:'me',titre:'Température tympanique',texte:'/me prend la température du patient avec le thermomètre auriculaire dans le conduit auditif droit.'},
-  {id:'m7',categorie:'Monitoring',type:'me',titre:'Scope cardiaque',texte:'/me installe le scope cardiaque, positionne les électrodes et règle les alarmes aux valeurs cibles.'},
-  {id:'i1',categorie:'Intubation',type:'me',titre:'Préparation IOT',texte:'/me prépare le matériel d\'intubation : laryngoscope, sonde adaptée, mandrin, aspiration, ballon et drogues.'},
-  {id:'i2',categorie:'Intubation',type:'me',titre:'Intubation oro-trachéale',texte:'/me procède à l\'intubation oro-trachéale sous laryngoscopie directe et gonfle le ballonnet à 25 cmH2O.'},
-  {id:'i3',categorie:'Intubation',type:'me',titre:'Vérification position sonde',texte:'/me vérifie la bonne position de la sonde par auscultation bilatérale symétrique et capnographie.'},
-  {id:'i4',categorie:'Intubation',type:'me',titre:'Fixation sonde IOT',texte:'/me fixe soigneusement la sonde d\'intubation avec du sparadrap et note la cote labiale.'},
-  {id:'i5',categorie:'Intubation',type:'me',titre:'Aspiration trachéale',texte:'/me effectue une aspiration trachéo-bronchique en technique stérile avec sonde adaptée.'},
-  {id:'r1',categorie:'Réanimation',type:'me',titre:'MCE (compressions)',texte:'/me entame les compressions thoraciques au rythme de 100/min, déprimant le sternum de 5 à 6 cm sans interruption.'},
-  {id:'r2',categorie:'Réanimation',type:'me',titre:'Défibrillateur — analyse',texte:'/me allume le défibrillateur, place les électrodes autocollantes et lance l\'analyse du rythme cardiaque.'},
-  {id:'r3',categorie:'Réanimation',type:'me',titre:'Choc électrique 200J',texte:'/me s\'assure que personne ne touche le patient, charge à 200J et délivre un choc électrique biphasique.'},
-  {id:'r4',categorie:'Réanimation',type:'me',titre:'Adrénaline 1mg IV',texte:'/me administre 1mg d\'adrénaline en bolus IV direct et reprend immédiatement le MCE sans interruption.'},
-  {id:'r5',categorie:'Réanimation',type:'me',titre:'Amiodarone 300mg',texte:'/me injecte 300mg d\'amiodarone en IV lent après le 3ème choc électrique inefficace selon le protocole.'},
-  {id:'r6',categorie:'Réanimation',type:'me',titre:'Ventilation BVM',texte:'/me ventile le patient au masque BVM avec O2 pur à 15L/min, 2 insufflations toutes les 30 compressions.'},
-  {id:'r7',categorie:'Réanimation',type:'me',titre:'Bicarbonate 84 mEq',texte:'/me administre 84 mEq de bicarbonate de sodium IV pour corriger l\'acidose métabolique sévère.'},
-  {id:'t1',categorie:'Trauma',type:'me',titre:'Garrot proximal',texte:'/me applique un garrot pneumatique proximal sur le membre hémorragique et marque l\'heure de pose sur le front.'},
-  {id:'t2',categorie:'Trauma',type:'me',titre:'Attelle membre',texte:'/me immobilise le membre fracturé avec une attelle rigide en position anatomique avant transport.'},
-  {id:'t3',categorie:'Trauma',type:'me',titre:'Collier cervical',texte:'/me pose un collier cervical rigide de taille adaptée en maintenant l\'axe tête-cou-tronc strict.'},
-  {id:'t4',categorie:'Trauma',type:'me',titre:'Pansement compressif',texte:'/me applique un pansement compressif stérile sur la plaie et maintient la pression pour contrôler l\'hémorragie.'},
-  {id:'t5',categorie:'Trauma',type:'me',titre:'Bilan ABCDE',texte:'/me réalise le bilan primaire ABCDE : voies aériennes, ventilation, circulation, neurologie, exposition complète.'},
+  {id:'pf22',categorie:'Perfusions',type:'me',titre:'Purge tubulure — vérification bulles',   texte:'/me purge la tubulure puis la connecte sur la VVP.'},
+  {id:'pf23',categorie:'Perfusions',type:'me',titre:'Flush NaCl 10mL — perméabilité VVP',    texte:'/me flush la VVP avec 10mL de NaCl 0,9% et vérifie l\'absence d\'extravasation.'},
+  {id:'pf24',categorie:'Perfusions',type:'me',titre:'Changement de flacon — relai',           texte:'/me remplace le flacon vide par le suivant en limitant l\'interruption du débit.'},
+  {id:'pf25',categorie:'Perfusions',type:'me',titre:'Réglage du débit — calcul gouttes',      texte:'/me règle le débit selon la prescription et note l\'heure de branchement.'},
+  {id:'m1',categorie:'Monitoring',type:'me',titre:'Électrodes ECG 12 dérivations',texte:'/me pose les 10 électrodes ECG et lance l\'enregistrement.'},
+  {id:'m2',categorie:'Monitoring',type:'me',titre:'Saturomètre (SpO2)',texte:'/me pose le saturomètre à l\'index droit et surveille SpO2 et FC.'},
+  {id:'m3',categorie:'Monitoring',type:'me',titre:'Tension artérielle',texte:'/me pose le brassard au bras gauche et prend la tension.'},
+  {id:'m4',categorie:'Monitoring',type:'me',titre:'Glycémie capillaire',texte:'/me pique le bout du doigt et lit la glycémie capillaire.'},
+  {id:'m5',categorie:'Monitoring',type:'me',titre:'Constantes complètes',texte:'/me relève les constantes : TA, FC, SpO2, FR, température, glycémie.'},
+  {id:'m6',categorie:'Monitoring',type:'me',titre:'Température tympanique',texte:'/me prend la température à l\'oreille droite avec le thermomètre auriculaire.'},
+  {id:'m7',categorie:'Monitoring',type:'me',titre:'Scope cardiaque',texte:'/me installe le scope, place les électrodes et règle les alarmes.'},
+  {id:'i1',categorie:'Intubation',type:'me',titre:'Préparation IOT',texte:'/me prépare le matériel d\'intubation : laryngoscope, sonde, mandrin, aspiration, ballon.'},
+  {id:'i2',categorie:'Intubation',type:'me',titre:'Intubation oro-trachéale',texte:'/me intube le patient sous laryngoscopie directe et gonfle le ballonnet à 25 cmH2O.'},
+  {id:'i3',categorie:'Intubation',type:'me',titre:'Vérification position sonde',texte:'/me vérifie la sonde par auscultation bilatérale et capnographie.'},
+  {id:'i4',categorie:'Intubation',type:'me',titre:'Fixation sonde IOT',texte:'/me fixe la sonde d\'intubation et note la cote labiale.'},
+  {id:'i5',categorie:'Intubation',type:'me',titre:'Aspiration trachéale',texte:'/me aspire les sécrétions trachéo-bronchiques en technique stérile.'},
+  {id:'r1',categorie:'Réanimation',type:'me',titre:'MCE (compressions)',texte:'/me débute le MCE à 100/min, sternum déprimé de 5 à 6 cm.'},
+  {id:'r2',categorie:'Réanimation',type:'me',titre:'Défibrillateur — analyse',texte:'/me allume le défibrillateur, place les électrodes et lance l\'analyse du rythme.'},
+  {id:'r3',categorie:'Réanimation',type:'me',titre:'Choc électrique 200J',texte:'/me s\'assure que personne ne touche le patient, charge à 200J et délivre le choc.'},
+  {id:'r4',categorie:'Réanimation',type:'me',titre:'Adrénaline 1mg IV',texte:'/me injecte 1mg d\'Adrénaline en IV direct et reprend le MCE.'},
+  {id:'r5',categorie:'Réanimation',type:'me',titre:'Amiodarone 300mg',texte:'/me injecte 300mg d\'Amiodarone en IV lent après le 3ème choc.'},
+  {id:'r6',categorie:'Réanimation',type:'me',titre:'Ventilation BVM',texte:'/me ventile au BAVU avec O2 pur à 15L/min, 2 insufflations pour 30 compressions.'},
+  {id:'r7',categorie:'Réanimation',type:'me',titre:'Bicarbonate 84 mEq',texte:'/me administre 84 mEq de bicarbonate de sodium en IV.'},
+  {id:'t1',categorie:'Trauma',type:'me',titre:'Garrot proximal',texte:'/me pose un garrot en amont de l\'hémorragie et note l\'heure sur le front du patient.'},
+  {id:'t2',categorie:'Trauma',type:'me',titre:'Attelle membre',texte:'/me immobilise le membre fracturé avec une attelle rigide.'},
+  {id:'t3',categorie:'Trauma',type:'me',titre:'Collier cervical',texte:'/me pose un collier cervical rigide en maintenant l\'axe tête-cou-tronc.'},
+  {id:'t4',categorie:'Trauma',type:'me',titre:'Pansement compressif',texte:'/me pose un pansement compressif stérile et maintient la pression.'},
+  {id:'t5',categorie:'Trauma',type:'me',titre:'Bilan ABCDE',texte:'/me réalise le bilan ABCDE : voies aériennes, ventilation, circulation, neurologie, exposition.'},
   // ── ANALGÉSIE (Pharmacie AR SAMU 93) ──
-  {id:'med1', categorie:'Médicaments',type:'me',titre:'Morphine 10mg — titration IV',        texte:'/me administre la Morphine 10mg/1ml en titration IV : bolus de 2mg toutes les 5 min jusqu\'à EVA ≤ 3, en surveillant la fréquence respiratoire.',
+  {id:'med1', categorie:'Médicaments',type:'me',titre:'Morphine 10mg — titration IV',        texte:'/me titre la Morphine 10mg en IV : bolus de 2mg toutes les 5 min jusqu\'à EVA ≤ 3.',
    info:'Bolus 2mg / 5 min · Surveillance FR continue · Antidote : Naloxone · Max selon EVA'},
-  {id:'med2', categorie:'Médicaments',type:'me',titre:'Kétamine — analgésie sub-dissociative',texte:'/me administre 0,3 mg/kg de Kétamine 250mg/5ml en bolus IV lent sur 10 secondes pour analgésie multimodale.',
+  {id:'med2', categorie:'Médicaments',type:'me',titre:'Kétamine — analgésie sub-dissociative',texte:'/me injecte 0,3 mg/kg de Kétamine en IV lent sur 10 secondes.',
    info:'0,3 mg/kg IV sub-disso · Induction IOT : 1,5-2 mg/kg IV ou 4 mg/kg IM · Délai 1-2 min'},
-  {id:'med3', categorie:'Médicaments',type:'me',titre:'Néfopam (Acupan) 20mg IV',            texte:'/me administre 20mg de Néfopam (Acupan) 20mg/2ml dilué dans 100mL de NaCl en perfusion IV sur 15 minutes.',
+  {id:'med3', categorie:'Médicaments',type:'me',titre:'Néfopam (Acupan) 20mg IV',            texte:'/me perfuse 20mg d\'Acupan dans 100mL de NaCl sur 15 minutes.',
    info:'20mg sur 15 min · CI : glaucome, HBP, convulsions, rétention urinaire · Palier 2'},
-  {id:'med4', categorie:'Médicaments',type:'me',titre:'Sufentanil — analgésie profonde',      texte:'/me administre le Sufentanil 250μg/10ml en titration IV stricte sous surveillance rapprochée de la ventilation.',
+  {id:'med4', categorie:'Médicaments',type:'me',titre:'Sufentanil — analgésie profonde',      texte:'/me titre le Sufentanil en IV sous surveillance de la ventilation.',
    info:'0,1-0,2 μg/kg IV titration · Risque apnée ++ · Antidote : Naloxone · Scope obligatoire'},
-  {id:'med5', categorie:'Médicaments',type:'me',titre:'Paracétamol (Perfalgan) 1g IV',        texte:'/me passe 1g de Paracétamol (Perfalgan) 1g/100ml en perfusion IV sur 15 minutes à débit constant.',
+  {id:'med5', categorie:'Médicaments',type:'me',titre:'Paracétamol (Perfalgan) 1g IV',        texte:'/me perfuse 1g de Perfalgan en IV sur 15 minutes.',
    info:'1g sur 15 min · Max 4g/24h · Espacer de 4h min · Réduire si insuffisance hépatique'},
-  {id:'med6', categorie:'Médicaments',type:'me',titre:'Oxynorm 5mg Per Os',                   texte:'/me administre Oxynorm 5mg per os au patient et surveille la tolérance et l\'EVA sur les 20 minutes suivantes.',
+  {id:'med6', categorie:'Médicaments',type:'me',titre:'Oxynorm 5mg Per Os',                   texte:'/me donne 5mg d\'Oxynorm per os et surveille l\'EVA.',
    info:'5mg PO · Délai d\'action 30 min · CI si trouble déglutition, coma · Antidote : Naloxone'},
   // ── IOT / SÉDATION ──
-  {id:'med7', categorie:'Médicaments',type:'me',titre:'Etomidate (Hypnomidate) — induction IOT',texte:'/me administre 0,3 mg/kg d\'Etomidate (Hypnomidate) 20mg/10ml en IV direct rapide pour induction anesthésique avant IOT.',
+  {id:'med7', categorie:'Médicaments',type:'me',titre:'Etomidate (Hypnomidate) — induction IOT',texte:'/me injecte 0,3 mg/kg d\'Etomidate en IV direct pour l\'induction avant IOT.',
    info:'0,3 mg/kg IV rapide · Durée 5-10 min · Inhibe cortisol si répété · Pas d\'analg. → coupler Sufenta/Fenta'},
-  {id:'med8', categorie:'Médicaments',type:'me',titre:'Propofol — induction / sédation',       texte:'/me administre le Propofol 200mg/20ml en titration IV pour induction ou entretien d\'une sédation procédurale.',
+  {id:'med8', categorie:'Médicaments',type:'me',titre:'Propofol — induction / sédation',       texte:'/me titre le Propofol en IV pour la sédation.',
    info:'Induction : 1,5-2,5 mg/kg IV lent · Entretien : 1-4 mg/kg/h · Inotrope négatif · Douleur injection'},
-  {id:'med9', categorie:'Médicaments',type:'me',titre:'Midazolam (Hypnovel) 5mg IV',           texte:'/me administre 5mg de Midazolam (Hypnovel) 5mg/5ml en IV lent pour sédation procédurale ou prémédication.',
+  {id:'med9', categorie:'Médicaments',type:'me',titre:'Midazolam (Hypnovel) 5mg IV',           texte:'/me injecte 5mg de Midazolam en IV lent.',
    info:'0,05-0,1 mg/kg IV lent · Max 0,2 mg/kg · Antidote : Flumazénil · CI si dépression resp.'},
-  {id:'med10',categorie:'Médicaments',type:'me',titre:'Midazolam (Hypnovel) IM — convulsions', texte:'/me injecte 10mg de Midazolam (Hypnovel) 5mg/1ml en IM pour traitement d\'urgence d\'un accès convulsif.',
+  {id:'med10',categorie:'Médicaments',type:'me',titre:'Midazolam (Hypnovel) IM — convulsions', texte:'/me injecte 10mg de Midazolam en IM pour la crise convulsive.',
    info:'10mg IM dose unique · Répétable 1 fois après 10 min · Si inefficace → Rivotril IV · Antidote : Flumazénil'},
-  {id:'med11',categorie:'Médicaments',type:'me',titre:'Suxaméthonium (Célocurine) — RSI',      texte:'/me administre 1 mg/kg de Suxaméthonium (Célocurine) 100mg/10ml en IV rapide pour curarisation de séquence rapide avant IOT.',
+  {id:'med11',categorie:'Médicaments',type:'me',titre:'Suxaméthonium (Célocurine) — RSI',      texte:'/me injecte 1 mg/kg de Célocurine en IV rapide avant l\'IOT.',
    info:'1 mg/kg IV · Délai 60s · Durée 5-10 min · CI : hyperkaliémie, brûlés > 48h, paraplégie, myopathie'},
-  {id:'med12',categorie:'Médicaments',type:'me',titre:'Tracrium — curare entretien',            texte:'/me administre le Tracrium 50mg/5ml à la seringue électrique selon la prescription pour entretien de la curarisation.',
+  {id:'med12',categorie:'Médicaments',type:'me',titre:'Tracrium — curare entretien',            texte:'/me administre le Tracrium à la SE selon la prescription.',
    info:'0,5 mg/kg IV · Durée 25-35 min · Entretien 0,1-0,2 mg/kg · Histamino-libérateur modéré'},
-  {id:'med13',categorie:'Médicaments',type:'me',titre:'Lidocaïne 1% — pré-IOT HTIC',           texte:'/me administre 1,5 mg/kg de Lidocaïne 1% 200mg/20ml en IV lent 3 min avant l\'IOT pour prévenir la montée d\'HTIC.',
+  {id:'med13',categorie:'Médicaments',type:'me',titre:'Lidocaïne 1% — pré-IOT HTIC',           texte:'/me injecte 1,5 mg/kg de Lidocaïne 1% en IV lent 3 min avant l\'IOT.',
    info:'1,5 mg/kg IV 3 min avant laryngoscopie · Prévention réflexe vagal + HTIC · Max 3 mg/kg'},
   // ── CARDIOVASCULAIRE ──
-  {id:'med14',categorie:'Médicaments',type:'me',titre:'Adrénaline 1mg/1ml IV — ACR',           texte:'/me administre 1mg d\'Adrénaline 1mg/1ml en bolus IV direct et reprend immédiatement le MCE sans interruption.',
+  {id:'med14',categorie:'Médicaments',type:'me',titre:'Adrénaline 1mg/1ml IV — ACR',           texte:'/me injecte 1mg d\'Adrénaline en IV direct et reprend le MCE.',
    info:'1mg IV toutes les 2 cycles de RCP (≈ 4 min) · Dès la 2ème analyse sans choc · FV/TV : après 3ème choc'},
-  {id:'med15',categorie:'Médicaments',type:'me',titre:'Adrénaline IM — anaphylaxie',            texte:'/me injecte 0,5mg d\'Adrénaline 5mg/5ml en IM dans la face latérale de cuisse pour choc anaphylactique.',
+  {id:'med15',categorie:'Médicaments',type:'me',titre:'Adrénaline IM — anaphylaxie',            texte:'/me injecte 0,5mg d\'Adrénaline en IM dans la face latérale de la cuisse.',
    info:'0,5mg IM face lat. cuisse · Répétable après 5-10 min si inefficace · Dose enfant : 0,01 mg/kg IM'},
-  {id:'med16',categorie:'Médicaments',type:'me',titre:'Amiodarone (Cordarone) 300mg — FV/TV',  texte:'/me injecte 300mg d\'Amiodarone (Cordarone) 150mg/3ml en IV lent après le 3ème choc électrique inefficace.',
+  {id:'med16',categorie:'Médicaments',type:'me',titre:'Amiodarone (Cordarone) 300mg — FV/TV',  texte:'/me injecte 300mg d\'Amiodarone en IV lent après le 3ème choc.',
    info:'300mg au 3ème choc · 150mg au 5ème choc · Diluer dans G5% · Ne pas mélanger avec NaCl'},
-  {id:'med17',categorie:'Médicaments',type:'me',titre:'Atropine 1mg IV — bradycardie',          texte:'/me administre 1mg d\'Atropine 1mg/1ml en IV direct pour traitement d\'une bradycardie symptomatique.',
+  {id:'med17',categorie:'Médicaments',type:'me',titre:'Atropine 1mg IV — bradycardie',          texte:'/me injecte 1mg d\'Atropine en IV direct.',
    info:'0,5-1mg IV répétable · Max 3mg total · CI relatif si FA/flutter · Effet en 2-5 min'},
-  {id:'med18',categorie:'Médicaments',type:'me',titre:'Noradrénaline SE — choc vasoplégique',   texte:'/me démarre la Noradrénaline 8mg/4ml à la seringue électrique selon la prescription pour choc distributif.',
+  {id:'med18',categorie:'Médicaments',type:'me',titre:'Noradrénaline SE — choc vasoplégique',   texte:'/me démarre la Noradrénaline 8mg/4mL à la SE selon la prescription.',
    info:'Objectif PAM > 65 mmHg · Commencer à 0,1 μg/kg/min · Titrer par paliers · Voie centrale si possible'},
-  {id:'med19',categorie:'Médicaments',type:'me',titre:'Dobutamine SE — choc cardiogénique',     texte:'/me démarre la Dobutamine 250mg/20ml à la seringue électrique pour soutien inotrope positif en choc cardiogénique.',
+  {id:'med19',categorie:'Médicaments',type:'me',titre:'Dobutamine SE — choc cardiogénique',     texte:'/me démarre la Dobutamine 250mg/20mL à la SE.',
    info:'5-20 μg/kg/min · Risque arythmies ++ · Scope continu obligatoire · Associer à Noradrénaline si hypotension'},
-  {id:'med20',categorie:'Médicaments',type:'me',titre:'Furosémide (Lasilix) 40mg IV — OAP',    texte:'/me administre 40mg de Furosémide (Lasilix) 20mg/2ml en IV direct pour traitement d\'un OAP cardiogénique.',
+  {id:'med20',categorie:'Médicaments',type:'me',titre:'Furosémide (Lasilix) 40mg IV — OAP',    texte:'/me injecte 40mg de Lasilix en IV direct.',
    info:'1 mg/kg IV · Effet diurétique en 15-30 min · Surveiller kaliémie · Max 500mg/24h'},
-  {id:'med21',categorie:'Médicaments',type:'me',titre:'Risordan SE — OAP / angor',              texte:'/me administre l\'Isosorbide dinitrate (Risordan) 10mg/10ml en IVSE titré selon la TA systolique pour OAP ou angor instable.',
+  {id:'med21',categorie:'Médicaments',type:'me',titre:'Risordan SE — OAP / angor',              texte:'/me démarre le Risordan à la SE et titre selon la TA systolique.',
    info:'STOPPER si TAS < 90 mmHg · Débuter 2-5 mg/h · Titrer selon TA · CI : hypotension, Viagra < 24h'},
-  {id:'med22',categorie:'Médicaments',type:'me',titre:'Nicardipine (Loxen) SE — HTA',           texte:'/me démarre la Nicardipine (Loxen) 10mg/10ml à la seringue électrique pour contrôle d\'une poussée hypertensive sévère.',
+  {id:'med22',categorie:'Médicaments',type:'me',titre:'Nicardipine (Loxen) SE — HTA',           texte:'/me démarre le Loxen 10mg/10mL à la SE.',
    info:'Débuter 5 mg/h · Max 15 mg/h · Objectif TA selon prescription · Baisser progressivement (25% en 1h)'},
-  {id:'med23',categorie:'Médicaments',type:'me',titre:'Esmolol (Brevibloc) — tachycardie',      texte:'/me administre l\'Esmolol (Brevibloc) 100mg/10ml en bolus IV lent sous scope pour contrôle d\'une TSV rapide.',
+  {id:'med23',categorie:'Médicaments',type:'me',titre:'Esmolol (Brevibloc) — tachycardie',      texte:'/me injecte l\'Esmolol 100mg en IV lent sous scope.',
    info:'Bolus 0,5 mg/kg sur 1 min → entretien 50-200 μg/kg/min · CI : bradycardie, BAV, asthme, IC sévère'},
-  {id:'med24',categorie:'Médicaments',type:'me',titre:'Diltiazem (Tildiem) — FA / flutter',     texte:'/me administre le Diltiazem (Tildiem) Fl 25mg en IV lent sous monitoring continu pour contrôle de la FA ou du flutter.',
+  {id:'med24',categorie:'Médicaments',type:'me',titre:'Diltiazem (Tildiem) — FA / flutter',     texte:'/me injecte le Tildiem 25mg en IV lent sous monitoring.',
    info:'Bolus 0,25 mg/kg sur 2 min · 2ème bolus 0,35 mg/kg si inefficace · CI : WPW, IC systolique'},
-  {id:'med25',categorie:'Médicaments',type:'me',titre:'Striadyne 20mg — TSV',                   texte:'/me administre 20mg de Striadyne en IV direct rapide suivi immédiatement d\'un flush pour réduction d\'une TSV.',
+  {id:'med25',categorie:'Médicaments',type:'me',titre:'Striadyne 20mg — TSV',                   texte:'/me injecte 20mg de Striadyne en IV direct puis flush rapide.',
    info:'20mg IV bolus RAPIDE + flush immédiat · ECG en continu · Répétable · CI : BAV, asthme · Durée 10-20s'},
-  {id:'med26',categorie:'Médicaments',type:'me',titre:'Aspegic 500mg IV — SCA',                 texte:'/me administre Aspegic Fl 500mg en bolus IV dans le cadre d\'un SCA confirmé ou très suspecté.',
+  {id:'med26',categorie:'Médicaments',type:'me',titre:'Aspegic 500mg IV — SCA',                 texte:'/me injecte 500mg d\'Aspégic en IV.',
    info:'500mg IV dose unique · Associer Ticagrelor 180mg · CI : allergie aspirine, hémorragie active, AVC récent'},
-  {id:'med27',categorie:'Médicaments',type:'me',titre:'Ticagrelor (Brilique) 180mg PO — SCA',   texte:'/me administre Ticagrelor (Brilique) 2 comprimés 90mg per os pour double antiplaquettaire du SCA, si pas de contre-indication.',
+  {id:'med27',categorie:'Médicaments',type:'me',titre:'Ticagrelor (Brilique) 180mg PO — SCA',   texte:'/me donne 2 comprimés de Brilique 90mg per os.',
    info:'Dose de charge 180mg (2 cp) · CI : AVC hémorragique, hémorragie active, anticoag. orale · Puis 90mg×2/j'},
-  {id:'med28',categorie:'Médicaments',type:'me',titre:'Héparine sodique — anticoagulation',      texte:'/me administre un bolus d\'Héparine sodique 25000UI/5ml en IV selon le poids pour anticoagulation curative.',
+  {id:'med28',categorie:'Médicaments',type:'me',titre:'Héparine sodique — anticoagulation',      texte:'/me injecte un bolus d\'Héparine en IV selon le poids.',
    info:'60-80 UI/kg bolus IV (max 5000 UI) · CI : hémorragie active, allergie HNF · Relais HBPM à distance'},
-  {id:'med29',categorie:'Médicaments',type:'me',titre:'Métalyse — thrombolyse STEMI',            texte:'/me administre le Métalyse 10000UI en bolus IV unique en 5 à 10 secondes après décision médicale pour thrombolyse d\'un STEMI.',
+  {id:'med29',categorie:'Médicaments',type:'me',titre:'Métalyse — thrombolyse STEMI',            texte:'/me injecte le Métalyse 10000UI en bolus IV unique sur 5 à 10 secondes.',
    info:'Dose unique selon poids : <60kg→6000UI · 60-69→7000UI · 70-79→8000UI · 80-89→9000UI · ≥90→10000UI'},
-  {id:'med30',categorie:'Médicaments',type:'me',titre:'Gluconate de calcium 10% IV',             texte:'/me administre du Gluconate de calcium 10% 10ml en IV lent pour hyperkaliémie sévère ou intox aux anticalciques.',
+  {id:'med30',categorie:'Médicaments',type:'me',titre:'Gluconate de calcium 10% IV',             texte:'/me injecte 10mL de Gluconate de calcium 10% en IV lent.',
    info:'10mL IV lent sur 3 min · Effet en 1-5 min · Répétable · Ne pas mélanger bicarbonates · Scope continu'},
   // ── NEUROLOGIE ──
-  {id:'med31',categorie:'Médicaments',type:'me',titre:'Clonazépam (Rivotril) 1mg IV — EME',     texte:'/me injecte 1mg de Clonazépam (Rivotril) 1mg/1ml en IV lent sur 2 minutes pour état de mal épileptique.',
+  {id:'med31',categorie:'Médicaments',type:'me',titre:'Clonazépam (Rivotril) 1mg IV — EME',     texte:'/me injecte 1mg de Rivotril en IV lent sur 2 minutes.',
    info:'1mg IV lent sur 2 min · Répétable 1 fois · Max 3mg · Si échec → Valium 10mg ou Keppra · Surveiller FR'},
-  {id:'med32',categorie:'Médicaments',type:'me',titre:'Diazépam (Valium) 10mg IV',               texte:'/me administre 10mg de Diazépam (Valium) 10mg/2ml en IV lent en surveillant la fréquence respiratoire.',
+  {id:'med32',categorie:'Médicaments',type:'me',titre:'Diazépam (Valium) 10mg IV',               texte:'/me injecte 10mg de Valium en IV lent et surveille la FR.',
    info:'10mg IV lent 2-3 min · Max 30mg total · Durée 20-30 min · Antidote : Flumazénil · Risque apnée'},
-  {id:'med33',categorie:'Médicaments',type:'me',titre:'Lévetiracétam (Keppra) 500mg IV',         texte:'/me perfuse le Lévetiracétam (Keppra) 500mg/5ml dilué dans 100mL de NaCl sur 15 min en relais antiépileptique de 2ème ligne.',
+  {id:'med33',categorie:'Médicaments',type:'me',titre:'Lévetiracétam (Keppra) 500mg IV',         texte:'/me perfuse le Keppra 500mg dans 100mL de NaCl sur 15 minutes.',
    info:'20-30 mg/kg sur 15 min (max 3g) · 2ème ligne EME · Peu d\'effets 2nd · Réduire si IR · Pas d\'antidote'},
-  {id:'med34',categorie:'Médicaments',type:'me',titre:'Loxapine (Loxapac) 50mg IM — agitation',  texte:'/me injecte 50mg de Loxapine (Loxapac) 50mg/2ml en IM pour sédation d\'une agitation psychomotrice sévère réfractaire.',
+  {id:'med34',categorie:'Médicaments',type:'me',titre:'Loxapine (Loxapac) 50mg IM — agitation',  texte:'/me injecte 50mg de Loxapac en IM.',
    info:'50mg IM · Délai 15-30 min · Risque : allongement QT, hypotension orthostatique · Scope conseillé'},
-  {id:'med35',categorie:'Médicaments',type:'me',titre:'Mannitol 20% — HTIC',                     texte:'/me perfuse Mannitol 20% 500ml en IV rapide sur 20 minutes pour traitement d\'une hypertension intracrânienne aiguë engageant le pronostic.',
+  {id:'med35',categorie:'Médicaments',type:'me',titre:'Mannitol 20% — HTIC',                     texte:'/me perfuse le Mannitol 20% 500mL en IV rapide sur 20 minutes.',
    info:'0,5-1 g/kg IV sur 20 min · Effet 15-30 min · Durée 2-6h · CI : anurie, IC sévère · Sonde urinaire avant'},
   // ── ANTIDOTES ──
-  {id:'med36',categorie:'Médicaments',type:'me',titre:'Naloxone 0,4mg IV — intox opiacés',       texte:'/me administre 0,4mg de Naloxone 0,4mg/1ml en IV et surveille la réponse respiratoire toutes les 2 minutes.',
+  {id:'med36',categorie:'Médicaments',type:'me',titre:'Naloxone 0,4mg IV — intox opiacés',       texte:'/me injecte 0,4mg de Naloxone en IV et surveille la respiration.',
    info:'0,4mg IV / 2 min · Titrer pour garder ventil. spontanée · Durée 30-90 min (< opiacé) → resédation possible'},
-  {id:'med37',categorie:'Médicaments',type:'me',titre:'Flumazénil (Anexate) 0,2mg IV',            texte:'/me injecte 0,2mg de Flumazénil (Anexate) en IV lent pour antagoniser une intoxication aux benzodiazépines.',
+  {id:'med37',categorie:'Médicaments',type:'me',titre:'Flumazénil (Anexate) 0,2mg IV',            texte:'/me injecte 0,2mg d\'Anexate en IV lent.',
    info:'0,2mg IV / 1 min · Max 1mg total · Durée 30-60 min → resédation possible · CI : intox mixte ATC'},
-  {id:'med38',categorie:'Médicaments',type:'me',titre:'Glucagon 1mg IM — hypoglycémie / BB',     texte:'/me administre 1mg de Glucagon 1mg/1ml en IM pour hypoglycémie sans voie veineuse ou intoxication aux bêtabloquants.',
+  {id:'med38',categorie:'Médicaments',type:'me',titre:'Glucagon 1mg IM — hypoglycémie / BB',     texte:'/me injecte 1mg de Glucagon en IM.',
    info:'1mg SC/IM · Effet 10-15 min · Répétable 1 fois · Relais G30% IV dès VVP posée · Nausées fréquentes'},
-  {id:'med39',categorie:'Médicaments',type:'me',titre:'Toxicarb (charbon activé) 50g PO',        texte:'/me administre le Toxicarb (charbon activé) 50g/250ml per os pour décontamination digestive dans la première heure post-ingestion.',
+  {id:'med39',categorie:'Médicaments',type:'me',titre:'Toxicarb (charbon activé) 50g PO',        texte:'/me donne 50g de Toxicarb à boire.',
    info:'1g/kg PO (max 50g) · Dans la 1ère heure post-ingestion · CI : coma, trouble déglutition, caustiques'},
   // ── MÉTABOLISME ──
-  {id:'med40',categorie:'Médicaments',type:'me',titre:'Glucose 30% — hypoglycémie sévère',       texte:'/me injecte 3 ampoules de G30% 3g/10ml en IV lent pour corriger une hypoglycémie sévère < 2,5 mmol/L sous contrôle glycémique.',
+  {id:'med40',categorie:'Médicaments',type:'me',titre:'Glucose 30% — hypoglycémie sévère',       texte:'/me injecte 3 ampoules de G30% en IV lent sous contrôle glycémique.',
    info:'1 amp = 3g glucose · Dose : 2-4 amp IV lent · Dextro de contrôle à 15 min · Risque phlébite → rincer VVP'},
-  {id:'med41',categorie:'Médicaments',type:'me',titre:'Glucose 10% — hypoglycémie modérée',      texte:'/me branche une perfusion de G10% 500ml en IV pour correction progressive d\'une hypoglycémie modérée.',
+  {id:'med41',categorie:'Médicaments',type:'me',titre:'Glucose 10% — hypoglycémie modérée',      texte:'/me branche un G10% 500mL en IV.',
    info:'Débit selon dextro cible > 7 mmol/L · Contrôle glycémique / 30 min · Relais dextrose PO dès possible'},
-  {id:'med42',categorie:'Médicaments',type:'me',titre:'Novorapide — hyperglycémie',               texte:'/me administre Novorapide 1000UI/10ml selon la prescription médicale pour correction d\'une hyperglycémie aiguë.',
+  {id:'med42',categorie:'Médicaments',type:'me',titre:'Novorapide — hyperglycémie',               texte:'/me administre le Novorapide selon la prescription.',
    info:'NE PAS injecter sans prescription · Schéma selon glycémie · Dextro de contrôle à 30 min après injection'},
   // ── RESPIRATOIRE ──
-  {id:'med43',categorie:'Médicaments',type:'me',titre:'Salbutamol 5mg — nébulisation',            texte:'/me prépare l\'aérosol de Salbutamol 5mg/2.5ml et démarre la nébulisation pour bronchospasme ou crise d\'asthme.',
+  {id:'med43',categorie:'Médicaments',type:'me',titre:'Salbutamol 5mg — nébulisation',            texte:'/me prépare l\'aérosol de Salbutamol 5mg et démarre la nébulisation.',
    info:'5mg sur 15-20 min · Répétable toutes les 20 min · Scope continu · Tachycardie fréquente · Hypo K+ si répété'},
-  {id:'med44',categorie:'Médicaments',type:'me',titre:'Ipratropium 0,5mg — nébulisation',         texte:'/me ajoute l\'Ipratropium 0,5mg/2ml au nébuliseur en association au salbutamol pour crise d\'asthme sévère.',
+  {id:'med44',categorie:'Médicaments',type:'me',titre:'Ipratropium 0,5mg — nébulisation',         texte:'/me ajoute 0,5mg d\'Ipratropium au nébuliseur.',
    info:'0,5mg associé au salbutamol · Max 3 fois / 4h · Effet en 30-60 min · CI : glaucome par fermeture angle'},
-  {id:'med68',categorie:'Médicaments',type:'me',titre:'Adrénaline nébulisée — laryngite / œdème',    texte:'/me prépare l\'aérosol d\'Adrénaline 5mg dilué dans 5mL de NaCl 0,9% et démarre la nébulisation pour laryngite aiguë sévère ou œdème des voies aériennes supérieures.',
+  {id:'med68',categorie:'Médicaments',type:'me',titre:'Adrénaline nébulisée — laryngite / œdème',    texte:'/me prépare l\'aérosol d\'Adrénaline 5mg dans 5mL de NaCl 0,9% et démarre.',
    info:'5mg (5mL de la solution à 1mg/mL) non dilué ou dans du NaCl · Effet en quelques minutes, transitoire (2h) · Scope + surveillance FC/TA · Répétable si besoin'},
-  {id:'med69',categorie:'Médicaments',type:'me',titre:'Budésonide (Pulmicort) — nébulisation',       texte:'/me prépare l\'aérosol de Budésonide (Pulmicort) 2mg/2ml et démarre la nébulisation pour laryngite aiguë ou composante inflammatoire des voies aériennes.',
+  {id:'med69',categorie:'Médicaments',type:'me',titre:'Budésonide (Pulmicort) — nébulisation',       texte:'/me prépare l\'aérosol de Pulmicort 2mg et démarre la nébulisation.',
    info:'2mg en nébulisation · Effet en 15-30 min · Peut être associé à l\'adrénaline nébulisée · Bien tolérée chez l\'enfant'},
-  {id:'med70',categorie:'Médicaments',type:'me',titre:'Terbutaline (Bricanyl) — nébulisation',       texte:'/me prépare l\'aérosol de Terbutaline (Bricanyl) 5mg/2ml et démarre la nébulisation en alternative au salbutamol pour bronchospasme.',
+  {id:'med70',categorie:'Médicaments',type:'me',titre:'Terbutaline (Bricanyl) — nébulisation',       texte:'/me prépare l\'aérosol de Bricanyl 5mg et démarre la nébulisation.',
    info:'5mg sur 10-15 min · Répétable · Alternative au salbutamol · Tachycardie et tremblements possibles'},
-  {id:'med71',categorie:'Médicaments',type:'me',titre:'NaCl 0,9% — nébulisation (vecteur)',          texte:'/me prépare une nébulisation de NaCl 0,9% seul en fluidifiant bronchique ou comme vecteur pour diluer un autre médicament en aérosol.',
+  {id:'med71',categorie:'Médicaments',type:'me',titre:'NaCl 0,9% — nébulisation (vecteur)',          texte:'/me prépare une nébulisation de NaCl 0,9%.',
    info:'Sert de solvant / fluidifiant · Sans effet pharmacologique propre · Utile en encombrement bronchique simple'},
-  {id:'med45',categorie:'Médicaments',type:'me',titre:'Solumedrol 120mg IV — asthme / allergie',  texte:'/me administre 120mg de Méthylprednisolone (Solumedrol) en IV direct pour asthme aigu grave ou réaction anaphylactique.',
+  {id:'med45',categorie:'Médicaments',type:'me',titre:'Solumedrol 120mg IV — asthme / allergie',  texte:'/me injecte 120mg de Solumedrol en IV direct.',
    info:'1-2 mg/kg IV · Délai d\'action anti-inflammatoire 4-6h · Associer bronchodilatateurs · Hyperglycémie possible'},
-  {id:'med46',categorie:'Médicaments',type:'me',titre:'Polaramine 5mg IV — allergie',             texte:'/me administre 5mg de Polaramine (dexchlorphéniramine) 5mg/ml en IV lent pour réaction allergique aiguë.',
+  {id:'med46',categorie:'Médicaments',type:'me',titre:'Polaramine 5mg IV — allergie',             texte:'/me injecte 5mg de Polaramine en IV lent.',
    info:'5mg IV lent · Adjuvant anaphylaxie (PAS 1ère ligne) · Somnolence · Compléter par Solumedrol'},
   // ── REMPLISSAGE ──
-  {id:'med47',categorie:'Médicaments',type:'me',titre:'NaCl 0,9% 500mL — remplissage',            texte:'/me branche 500mL de NaCl 0,9% en perfusion IV rapide pour remplissage vasculaire.',
+  {id:'med47',categorie:'Médicaments',type:'me',titre:'NaCl 0,9% 500mL — remplissage',            texte:'/me branche 500mL de NaCl 0,9% en IV rapide.',
    info:'Remplissage vasculaire 1ère intention · Répétable selon réponse hémodynamique · Surveiller surcharge'},
-  {id:'med48',categorie:'Médicaments',type:'me',titre:'Ringer Lactate 500mL — trauma',            texte:'/me branche 500mL de Ringer Lactate en perfusion IV pour remplissage vasculaire en contexte traumatique.',
+  {id:'med48',categorie:'Médicaments',type:'me',titre:'Ringer Lactate 500mL — trauma',            texte:'/me branche 500mL de Ringer Lactate en IV.',
    info:'Préféré au NaCl en trauma · Moins hyperchlorémiant · Max 2-3L avant PFC en choc hémorragique'},
-  {id:'med49',categorie:'Médicaments',type:'me',titre:'Acide Tranexamique (Exacyl) 1g IV',        texte:'/me perfuse 1g d\'Acide Tranexamique (Exacyl) 500mg/5ml dilué dans 100mL de NaCl sur 10 min pour hémorragie active ou trauma.',
+  {id:'med49',categorie:'Médicaments',type:'me',titre:'Acide Tranexamique (Exacyl) 1g IV',        texte:'/me perfuse 1g d\'Exacyl dans 100mL de NaCl sur 10 minutes.',
    info:'1g sur 10 min · 2ème g sur 8h · DANS LES 3h du traumatisme · CI : ATCD thromboembolique · Scope'},
-  {id:'med65',categorie:'Médicaments',type:'me',titre:'Isofundine 500mL — remplissage équilibré', texte:'/me branche 500mL d\'Isofundine (cristalloïde balancé) en perfusion IV rapide pour remplissage vasculaire.',
+  {id:'med65',categorie:'Médicaments',type:'me',titre:'Isofundine 500mL — remplissage équilibré', texte:'/me branche 500mL d\'Isofundine en IV rapide.',
    info:'Cristalloïde balancé de choix si > 2L · Contient potassium : prudence en insuffisance rénale · Ne pas utiliser en solvant d\'amines'},
-  {id:'med66',categorie:'Médicaments',type:'me',titre:'Plasmion 500mL — remplissage colloïde',      texte:'/me branche 500mL de Plasmion (gélatine fluide modifiée) en perfusion IV rapide pour remplissage vasculaire.',
+  {id:'med66',categorie:'Médicaments',type:'me',titre:'Plasmion 500mL — remplissage colloïde',      texte:'/me branche 500mL de Plasmion en IV rapide.',
    info:'Colloïde, effet volémique plus rapide · Risque allergique (réactions anaphylactoïdes) · Ne remplace pas les cristalloïdes en 1ère intention'},
-  {id:'med67',categorie:'Médicaments',type:'me',titre:'Albumine 4% 500mL — remplissage',            texte:'/me branche 500mL d\'Albumine 4% en perfusion IV pour remplissage vasculaire chez le patient à risque (cirrhotique, brûlé, femme enceinte).',
+  {id:'med67',categorie:'Médicaments',type:'me',titre:'Albumine 4% 500mL — remplissage',            texte:'/me branche 500mL d\'Albumine 4% en IV.',
    info:'Indiqué chez cirrhotique, brûlé après H24, sepsis avec hypoalbuminémie · Produit dérivé du sang : traçabilité obligatoire'},
   // ── ANTIBIOTHÉRAPIE ──
-  {id:'med50',categorie:'Médicaments',type:'me',titre:'Ceftriaxone 1g IV — infection',            texte:'/me perfuse la Ceftriaxone Fl 1g diluée dans 100mL de NaCl 0,9% sur 30 minutes pour antibiothérapie probabiliste.',
+  {id:'med50',categorie:'Médicaments',type:'me',titre:'Ceftriaxone 1g IV — infection',            texte:'/me perfuse 1g de Ceftriaxone dans 100mL de NaCl 0,9% sur 30 minutes.',
    info:'PRÉLEVER hémocultures AVANT · 1g/30 min · CI : allergie C3G · Allergie péni : CI relative (5% cross)'},
-  {id:'med51',categorie:'Médicaments',type:'me',titre:'Augmentin 2g IV',                          texte:'/me perfuse l\'Amoxicilline/acide clavulanique (Augmentin) 2g/200mg dilué dans 100mL de NaCl sur 30 minutes.',
+  {id:'med51',categorie:'Médicaments',type:'me',titre:'Augmentin 2g IV',                          texte:'/me perfuse l\'Augmentin 2g dans 100mL de NaCl sur 30 minutes.',
    info:'PRÉLEVER hémocultures AVANT · 2g sur 30 min · CI : allergie pénicilline · Cholestase possible'},
   // ── DIVERS ──
-  {id:'med52',categorie:'Médicaments',type:'me',titre:'Somatostatine SE — hémorragie digestive',  texte:'/me démarre la Somatostatine 250μg/1ml à la seringue électrique pour hémorragie digestive haute active.',
+  {id:'med52',categorie:'Médicaments',type:'me',titre:'Somatostatine SE — hémorragie digestive',  texte:'/me démarre la Somatostatine 250μg à la SE.',
    info:'Bolus 250μg puis 250μg/h IVSE · Continuer 5j si varicielle · CI : aucune en urgence · Hypo glycémie possible'},
-  {id:'med53',categorie:'Médicaments',type:'me',titre:'Oxytocine SE — hémorragie post-partum',    texte:'/me administre l\'Oxytocine 5UI/1ml en IVSE selon la prescription pour prévention ou traitement de l\'hémorragie du post-partum.',
+  {id:'med53',categorie:'Médicaments',type:'me',titre:'Oxytocine SE — hémorragie post-partum',    texte:'/me démarre l\'Oxytocine 5UI à la SE selon la prescription.',
    info:'5-10 UI IV lent puis 10-20 UI/h IVSE · Risque hypotension si bolus rapide · Surveiller TA continu'},
-  {id:'med54',categorie:'Médicaments',type:'me',titre:'Isuprel — BAV complet / bradycardie ext.', texte:'/me démarre l\'Isuprel (Isoprotérénol) 0,2mg/1ml à la seringue électrique en attente de pace-maker pour BAV complet.',
+  {id:'med54',categorie:'Médicaments',type:'me',titre:'Isuprel — BAV complet / bradycardie ext.', texte:'/me démarre l\'Isuprel 0,2mg à la SE.',
    info:'Titration 0,02-0,2 μg/kg/min · MESURE ATTENTE avant pace-maker · Arythmies +++ · Scope continu obligatoire'},
 
   // ── MÉDICAMENTS COMPLÉMENTAIRES ──
   {id:'med55',categorie:'Médicaments',type:'me',titre:'Adrénaline 5mg/5ml — préparation ACR',
-   texte:'/me prend l\'ampoule d\'Adrénaline 5mg/5ml et administre 1mg (1mL) en bolus IVD pur sur l\'ACR, sans dilution.',
+   texte:'/me injecte 1mg d\'Adrénaline pure (1mL) en IV direct.',
    info:'1mg = 1mL de la 5mg/5ml · Même protocole ACR : toutes les 2 cycles RCP · Ne pas diluer pour l\'ACR'},
   {id:'med56',categorie:'Médicaments',type:'me',titre:'Enoxaparine (Lovenox) 10000UI SC',
-   texte:'/me administre l\'Enoxaparine sodique (Lovenox) 10000UI/1mL en injection sous-cutanée à la face antéro-latérale de la cuisse, pli cutané maintenu pendant toute l\'injection.',
+   texte:'/me injecte 10000UI de Lovenox en sous-cutané dans la cuisse.',
    info:'Voie SC uniquement · Pas en IV directe · CI : hémorragie active, thrombopénie · Surveillance hématomes site injection'},
   {id:'med57',categorie:'Médicaments',type:'me',titre:'Esoméprazole (Inexium) 40mg IVL',
-   texte:'/me reconstitue le flacon d\'Esoméprazole (Inexium) 40mg avec 100mL de NaCl 0,9% et perfuse en IVL sur 30 minutes pour protection gastrique.',
+   texte:'/me dilue l\'Inexium 40mg dans 100mL de NaCl 0,9% et perfuse en 30 minutes.',
    info:'Protection gastrique · Hémorragie digestive haute · Reconstituer juste avant usage · Stable 12h à température ambiante'},
   {id:'med58',categorie:'Médicaments',type:'me',titre:'Métoclopramide (Primpéran) 10mg IVD',
-   texte:'/me administre le Métoclopramide (Primpéran) 10mg/2mL en IVD lente sur 3 minutes pour nausées ou vomissements.',
+   texte:'/me injecte 10mg de Primpéran en IV lente sur 3 minutes.',
    info:'IVD lente 3 min minimum · CI : phéochromocytome, épilepsie, obstruction digestive · Effets extra-pyramidaux possibles'},
   {id:'med59',categorie:'Médicaments',type:'me',titre:'Potassium 10% — correction hypokaliémie',
-   texte:'/me prépare le Potassium 10% (1g/10mL) dilué dans 250mL de NaCl 0,9% et perfuse en IVL à débit contrôlé selon prescription pour correction d\'hypokaliémie.',
+   texte:'/me dilue le Potassium 10% dans 250mL de NaCl 0,9% et perfuse à débit contrôlé.',
    info:'JAMAIS IVD pur — risque AC · Max 20 mEq/h en IVL · Diluer obligatoirement · Scope continu · Brûlures veineux normales'},
   {id:'med60',categorie:'Médicaments',type:'me',titre:'Phloroglucinol (Spasfon) 40mg/4mL IVL',
-   texte:'/me administre le Phloroglucinol (Spasfon) 40mg/4mL en IVL lente sur 5 minutes pour douleurs spasmodiques abdominales ou pelviennes.',
+   texte:'/me injecte 40mg de Spasfon en IV lente sur 5 minutes.',
    info:'Antispasmodique pur · Pas d\'effet antalgique direct · Peut être associé au Paracétamol · IVL lente pour éviter flush'},
   {id:'med61',categorie:'Médicaments',type:'me',titre:'Midazolam 5mg — intranasal (IN)',
-   texte:'/me administre le Midazolam (Hypnovel) 5mg/1mL en intranasal : 5mg dans chaque narine à l\'aide du MAD (Mucosal Atomization Device) pour traitement de l\'état épileptique ou sédation vigile.',
+   texte:'/me administre 5mg de Midazolam en intranasal dans chaque narine avec le MAD.',
    info:'5mg/narine · Délai 3-5 min · Alternative si voie IV impossible · CI : choc, allergie BZD · FR à surveiller · Antidote : Flumazénil'},
   {id:'med62',categorie:'Médicaments',type:'me',titre:'N-Acétylcystéine (Hidonac) — intox. paracétamol',
-   texte:'/me prépare la N-Acétylcystéine (Hidonac) à 200mg/kg dans 500mL de NaCl 0,9% et débute la perfusion IVL sur 4 heures pour intoxication au paracétamol.',
+   texte:'/me prépare l\'Hidonac 200mg/kg dans 500mL de NaCl 0,9% et perfuse sur 4 heures.',
    info:'200mg/kg sur 4h (ex : 70kg = 14g → 3 flacons de 5g/25mL) · Réaction anaphylactoïde possible en début de perf · Arrêter temporairement si urticaire'},
   {id:'med63',categorie:'Médicaments',type:'me',titre:'Hydroxocobalamine (Cyanokit) — intox. cyanure',
-   texte:'/me perfuse l\'Hydroxocobalamine (Cyanokit) 5g dilué dans 200mL de NaCl 0,9% en IVL sur 15 minutes pour intoxication au cyanure (incendie, fumée d\'incendie).',
+   texte:'/me dilue le Cyanokit 5g dans 200mL de NaCl 0,9% et perfuse en 15 minutes.',
    info:'Indication : victimes d\'incendie avec trouble conscience · 5g en 15 min · Urines rouge pendant 2-3 jours (normal) · Allergie possible · Ne pas mélanger avec Exacyl'},
   {id:'med64',categorie:'Médicaments',type:'me',titre:'Morphine 5mg SC — antalgie sous-cutanée',
-   texte:'/me administre la Morphine 5mg en injection sous-cutanée à la face antérieure de la cuisse ou du bras pour antalgie lorsque la voie IV n\'est pas disponible.',
+   texte:'/me injecte 5mg de Morphine en sous-cutané dans la cuisse.',
    info:'Délai action 20-30 min vs 5 min IV · Dose 5-10mg SC · Renouvelable à 4h · Même surveillance FR/sédation · CI : idem IV'},
 
   // ── PER OS ──
   {id:'po1',categorie:'Per Os',type:'me',titre:'Ticagrelor (Brilique) 180mg PO — SCA',
-   texte:'/me administre 2 comprimés de Ticagrelor (Brilique) 90mg par voie orale (dose de charge 180mg) selon prescription médicale dans le cadre d\'un SCA confirmé.',
+   texte:'/me donne 2 comprimés de Brilique 90mg per os (charge 180mg).',
    info:'Dose de charge unique : 2 cp × 90mg · Donner avec eau · CI : AVC hémorragique, insuffisance hépatique sévère, anticoagulant concomitant · Puis 90mg × 2/j'},
   {id:'po2',categorie:'Per Os',type:'me',titre:'Clopidogrel (Plavix) 300mg PO — SCA',
-   texte:'/me administre Clopidogrel (Plavix) 300mg PO (dose de charge) en 4 comprimés de 75mg à avaler avec de l\'eau selon prescription dans le cadre d\'un SCA.',
+   texte:'/me donne 4 comprimés de Plavix 75mg per os (charge 300mg) avec de l\'eau.',
    info:'Dose de charge 300mg (4 cp de 75mg) · Alternative si Brilique CI · Délai d\'action 2-4h · CI : saignement actif · Associé systématiquement à Aspégic'},
   {id:'po3',categorie:'Per Os',type:'me',titre:'Aspégic 500mg PO — SCA / fièvre',
-   texte:'/me administre un comprimé d\'Aspégic 500mg à avaler avec de l\'eau ou un sachet de poudre dissous dans un verre d\'eau selon la prescription médicale.',
+   texte:'/me donne un comprimé d\'Aspégic 500mg avec de l\'eau.',
    info:'SCA : 250mg à 500mg PO · Pericardite : 1g PO · AVC : 1-5mg/kg · CI : allergie, ulcère actif, hémophilie, grossesse T3'},
   {id:'po4',categorie:'Per Os',type:'me',titre:'Oxynorm 5mg PO — antalgie palier 3',
-   texte:'/me administre un comprimé d\'Oxynorm (Oxycodone) 5mg par voie orale pour antalgie palier 3, patient assis ou demi-assis, avec un grand verre d\'eau.',
+   texte:'/me donne un comprimé d\'Oxynorm 5mg avec un verre d\'eau.',
    info:'Palier 3 · Délai 15-30 min, pic à 1h · Max 30mg/prise · CI : iléus, insuffisance resp., IMAO · Surveillance sédation/FR · Antidote : Naloxone'},
   {id:'po5',categorie:'Per Os',type:'me',titre:'Hydroxyzine (Atarax) 25mg PO — anxiolyse',
-   texte:'/me administre un comprimé d\'Hydroxyzine (Atarax) 25mg par voie orale pour anxiolyse ou prémédication selon prescription médicale.',
+   texte:'/me donne un comprimé d\'Atarax 25mg per os.',
    info:'Délai 30 min · Sédation possible · CI : glaucome, adénome prostate, troubles cardiaques · Ne pas associer aux BZD sans avis · Pas si conducteur'},
   {id:'po6',categorie:'Per Os',type:'me',titre:'Cétirizine 10mg PO — allergie légère',
-   texte:'/me administre un comprimé de Cétirizine 10mg par voie orale pour réaction allergique légère ou prévention.',
+   texte:'/me donne un comprimé de Cétirizine 10mg per os.',
    info:'Antihistaminique H1 · Délai 20-30 min · Peu sédatif · CI : insuffisance rénale sévère · Pour allergie légère uniquement — si anaphylaxie → Adrénaline'},
   {id:'po7',categorie:'Per Os',type:'me',titre:'Prednisolone 20mg PO — corticoïde oral',
-   texte:'/me administre des comprimés de Prednisolone 20mg par voie orale selon la dose prescrite pour asthme, allergie ou poussée inflammatoire.',
+   texte:'/me donne la Prednisolone 20mg per os selon la dose prescrite.',
    info:'Asthme aigu : 1mg/kg/j (max 80mg) · Allergie modérée : 40mg PO · Délai action 1-2h · CI : infection non contrôlée, ulcère actif · Surveiller glycémie'},
   {id:'po8',categorie:'Per Os',type:'me',titre:'Spasfon (Phloroglucinol) 80mg PO',
-   texte:'/me administre 1 comprimé de Phloroglucinol (Spasfon) 80mg à avaler avec de l\'eau pour traitement des douleurs spasmodiques abdominales ou pelviennes.',
+   texte:'/me donne 1 comprimé de Spasfon 80mg avec de l\'eau.',
    info:'Antispasmodique pur · Sans prescription · Association Paracétamol PO possible · Délai 20-30 min · Pas de CI connue · 3 cp/j max'},
   {id:'po9',categorie:'Per Os',type:'me',titre:'Toxicarb (charbon activé) 50g PO — intoxication',
-   texte:'/me administre le Toxicarb (charbon activé) 50g/250mL à faire boire au patient dans l\'heure suivant l\'ingestion toxique, patient assis ou en léger déclive.',
+   texte:'/me fait boire 50g de Toxicarb au patient assis.',
    info:'Efficace si < 1h après ingestion · Ne pas donner si trouble conscience (risque inhalation) · CI : corrosifs, alcools · Selles noires normales'},
   {id:'po10',categorie:'Per Os',type:'me',titre:'Méopa (MEOPA) — antalgie inhalée',
-   texte:'/me prépare le masque de MEOPA, explique la technique au patient et débute l\'auto-inhalation du mélange équimolaire O2/N2O pour antalgie procédurale.',
+   texte:'/me prépare le masque de MEOPA, explique la technique et débute l\'inhalation.',
    info:'Analgésie procédurale · Auto-inhalation patient · Délai 3-5 min · Max 60 min · CI : trauma crânien, pneumothorax, sinusite, 1er trimestre grossesse'},
 
   // ── PERFUSIONS COMPLÉMENTAIRES ──
   {id:'pf26',categorie:'Perfusions',type:'me',titre:'Cyanokit 5g/200mL — intox. cyanure',
-   texte:'/me prépare le flacon de Hydroxocobalamine (Cyanokit) 5g, le dilue dans 200mL de NaCl 0,9% fourni avec le kit et perfuse en IVL sur 15 minutes pour intoxication cyanure.',
+   texte:'/me dilue le Cyanokit 5g dans 200mL de NaCl 0,9% et perfuse en 15 minutes.',
    info:'Ne pas mélanger avec Exacyl dans même tubulure · Urines rouge 2-3 jours normales · Si arrêt cardiaque : accélérer perf · 1 seule poche par patient'},
   {id:'pf27',categorie:'Perfusions',type:'me',titre:'N-Acétylcystéine (Hidonac) 14g/500mL',
-   texte:'/me prépare la N-Acétylcystéine (Hidonac) à 200mg/kg (soit 14g pour 70kg → 3 flacons de 5g/25mL) dans 500mL de NaCl 0,9% et débute la perfusion sur 4 heures.',
+   texte:'/me prépare l\'Hidonac 200mg/kg (14g pour 70kg) dans 500mL de NaCl 0,9%, perfusion sur 4 heures.',
    info:'Calcul : 200mg/kg · 70kg=14g (3 fl) · 80kg=16g (4 fl) · Réaction anaphylactoïde possible en début — ralentir · Stopper 15 min si urticaire puis reprendre'},
   {id:'pf28',categorie:'Perfusions',type:'me',titre:'Ringer Lactate 20mL/kg — brûlés',
-   texte:'/me calcule le volume de remplissage pour brûlé (20mL/kg en 1ère heure) et branche le Ringer Lactate en débit rapide selon la formule de Parkland.',
+   texte:'/me branche du Ringer Lactate en débit rapide (Parkland : 20mL/kg la 1ère heure).',
    info:'Formule Parkland : 4mL × kg × %SCB · 50% en 8h · 50% en 16h restantes · NaCl CI (trauma crânien associé) · Mesurer diurèse 0,5-1mL/kg/h'},
   {id:'pf29',categorie:'Perfusions',type:'me',titre:'SE — Sufentanil 5μg/mL (entretien IOT)',
-   texte:'/me prépare la seringue électrique de Sufentanil : 1 ampoule de 250μg/10mL ramenée à 50mL avec du NaCl 0,9% (concentration 5μg/mL) et démarre à la vitesse prescrite pour entretien de sédation post-IOT.',
+   texte:'/me prépare la SE de Sufentanil 250μg dans 50mL de NaCl (5μg/mL) et démarre selon prescription.',
    info:'Concentration : 250μg/50mL = 5μg/mL · Vitesse : 0,8 à 20mL/h selon prescription · Toujours associé Hypnovel · Antidote : Naloxone'},
   {id:'pf30',categorie:'Perfusions',type:'me',titre:'SE — Kétamine (analgésie continue)',
-   texte:'/me prépare une seringue électrique de Kétamine : 250mg/5mL dans 45mL de NaCl (concentration 5mg/mL) et démarre à faible dose pour analgésie continue ou sédation.',
+   texte:'/me prépare la SE de Kétamine 250mg dans 45mL de NaCl (5mg/mL) et démarre à faible dose.',
    info:'Concentration : 250mg/50mL = 5mg/mL · Analgésie : 0,1-0,3 mg/kg/h · Sédation : 0,5-2mg/kg/h · Bronchodilatateur · CI relative HTA sévère'},
 
-  {id:'u1',categorie:'Urgences',type:'me',titre:'Bilan initial rapide',texte:'/me effectue un bilan initial et évalue l\'état de conscience du patient avec le score de Glasgow.'},
-  {id:'u2',categorie:'Urgences',type:'me',titre:'O2 masque haute concentration',texte:'/me installe le masque à haute concentration et règle le débit d\'oxygène à 15 litres par minute.'},
-  {id:'u3',categorie:'Urgences',type:'me',titre:'Position latérale de sécurité',texte:'/me place le patient en position latérale de sécurité en protégeant le rachis cervical.'},
-  {id:'u4',categorie:'Urgences',type:'me',titre:'Score de Glasgow',texte:'/me évalue le score de Glasgow : ouverture des yeux, réponse verbale et réponse motrice adaptée.'},
-  {id:'u5',categorie:'Urgences',type:'me',titre:'Triage START',texte:'/me applique le triage START : évalue ventilation, circulation et état neurologique de la victime.'},
-  {id:'u6',categorie:'Urgences',type:'me',titre:'Appel régulation SAMU',texte:'/me contacte la régulation médicale en transmettant identité, localisation précise et bilan de la victime.'},
+  {id:'u1',categorie:'Urgences',type:'me',titre:'Bilan initial rapide',texte:'/me fait un bilan initial et évalue la conscience au Glasgow.'},
+  {id:'u2',categorie:'Urgences',type:'me',titre:'O2 masque haute concentration',texte:'/me pose le masque à haute concentration à 15L/min d\'O2.'},
+  {id:'u3',categorie:'Urgences',type:'me',titre:'Position latérale de sécurité',texte:'/me place le patient en PLS en protégeant le rachis cervical.'},
+  {id:'u4',categorie:'Urgences',type:'me',titre:'Score de Glasgow',texte:'/me évalue le Glasgow : yeux, réponse verbale, réponse motrice.'},
+  {id:'u5',categorie:'Urgences',type:'me',titre:'Triage START',texte:'/me applique le triage START : ventilation, circulation, état neurologique.'},
+  {id:'u6',categorie:'Urgences',type:'me',titre:'Appel régulation SAMU',texte:'/me appelle la régulation avec identité, localisation précise et bilan.'},
   // /qu
   // ── EXAMENS ──
   // ECG
-  {id:'ex1', categorie:'Examens',type:'me',titre:'ECG 12 dérivations',         texte:'/me installe le patient, pose les 10 électrodes et réalise un ECG 12 dérivations qu\'il transmet immédiatement au médecin.'},
-  {id:'ex2', categorie:'Examens',type:'me',titre:'ECG 18 dérivations',         texte:'/me réalise un ECG 18 dérivations en ajoutant les dérivations droites V3R, V4R et les dérivations postérieures V7, V8, V9 pour rechercher un infarctus inférieur ou du ventricule droit.'},
-  {id:'ex3', categorie:'Examens',type:'me',titre:'ECG de contrôle',            texte:'/me effectue un ECG de contrôle et compare les tracés pour évaluer l\'évolution du rythme cardiaque.'},
+  {id:'ex1', categorie:'Examens',type:'me',titre:'ECG 12 dérivations',         texte:'/me pose les 10 électrodes, réalise un ECG 12 dérivations et le transmet au médecin.'},
+  {id:'ex2', categorie:'Examens',type:'me',titre:'ECG 18 dérivations',         texte:'/me réalise un ECG 18 dérivations (V3R, V4R, V7, V8, V9).'},
+  {id:'ex3', categorie:'Examens',type:'me',titre:'ECG de contrôle',            texte:'/me refait un ECG de contrôle et compare les tracés.'},
   // Gaz du sang
-  {id:'ex4', categorie:'Examens',type:'me',titre:'Gazométrie artérielle (GDS)',texte:'/me réalise une ponction artérielle radiale en technique stérile, prélève les gaz du sang sur seringue héparinée et envoie immédiatement l\'échantillon à l\'analyseur.'},
-  {id:'ex5', categorie:'Examens',type:'me',titre:'GDS — compression post-ponction', texte:'/me comprime le site de ponction artérielle pendant 5 minutes minimum après le prélèvement gazométrique.'},
-  {id:'ex6', categorie:'Examens',type:'me',titre:'Lactates veineux',           texte:'/me prélève un tube pour dosage des lactates veineux et note l\'heure de prélèvement dans le dossier.'},
+  {id:'ex4', categorie:'Examens',type:'me',titre:'Gazométrie artérielle (GDS)',texte:'/me ponctionne l\'artère radiale en stérile, prélève les gaz du sang et envoie à l\'analyseur.'},
+  {id:'ex5', categorie:'Examens',type:'me',titre:'GDS — compression post-ponction', texte:'/me comprime le site de ponction artérielle pendant 5 minutes.'},
+  {id:'ex6', categorie:'Examens',type:'me',titre:'Lactates veineux',           texte:'/me prélève un tube pour les lactates et note l\'heure.'},
   // Bilans biologiques
-  {id:'ex7', categorie:'Examens',type:'me',titre:'Bilan biologique complet',   texte:'/me réalise le bilan biologique prescrit : NFS, ionogramme, créatinine, urée, glycémie, bilan hépatique, coagulation et CRP.'},
-  {id:'ex8', categorie:'Examens',type:'me',titre:'NFS — Numération Formule',   texte:'/me prélève un tube EDTA pour numération formule sanguine et plaquettes, puis l\'achemine au laboratoire.'},
-  {id:'ex9', categorie:'Examens',type:'me',titre:'Ionogramme sanguin',         texte:'/me prélève un tube sec pour ionogramme : sodium, potassium, chlore, bicarbonates, calcium et phosphore.'},
-  {id:'ex10',categorie:'Examens',type:'me',titre:'Troponine I/T',              texte:'/me prélève les tubes pour dosage de la troponine I et T ultra-sensible, note l\'heure précise de prélèvement.'},
-  {id:'ex11',categorie:'Examens',type:'me',titre:'Troponine de contrôle H+3',  texte:'/me réalise le prélèvement de contrôle de la troponine 3 heures après le premier dosage selon le protocole NSTEMI.'},
-  {id:'ex12',categorie:'Examens',type:'me',titre:'D-dimères',                  texte:'/me prélève un tube citraté pour dosage des D-dimères et l\'envoie en urgence au laboratoire d\'hémostase.'},
-  {id:'ex13',categorie:'Examens',type:'me',titre:'Groupe sanguin + RAI',       texte:'/me réalise les deux prélèvements de groupe sanguin sur deux tubes distincts avec double identification et les tubes pour la RAI.'},
-  {id:'ex14',categorie:'Examens',type:'me',titre:'Hémostase (TP, TCA, fibrinogène)', texte:'/me prélève un tube citraté pour bilan d\'hémostase complet : TP, TCA, fibrinogène et facteurs de coagulation.'},
-  {id:'ex15',categorie:'Examens',type:'me',titre:'CRP / Procalcitonine',       texte:'/me prélève un tube sec pour dosage de la CRP et de la procalcitonine dans le cadre du bilan infectieux.'},
-  {id:'ex16',categorie:'Examens',type:'me',titre:'β-HCG',                      texte:'/me prélève un tube pour dosage qualitatif et quantitatif des β-HCG plasmatiques.'},
-  {id:'ex17',categorie:'Examens',type:'me',titre:'Hémocultures x2',            texte:'/me réalise deux paires d\'hémocultures en site périphérique distinct, en asepsie stricte, avant toute antibiothérapie.'},
-  {id:'ex18',categorie:'Examens',type:'me',titre:'ECBU',                       texte:'/me réalise un ECBU en technique mi-jet après toilette soigneuse, sur flacon stérile, et l\'envoie rapidement au laboratoire.'},
-  {id:'ex19',categorie:'Examens',type:'me',titre:'Prélèvement de gorge / nasal', texte:'/me réalise un prélèvement naso-pharyngé avec un écouvillon stérile pour PCR ou culture bactériologique.'},
+  {id:'ex7', categorie:'Examens',type:'me',titre:'Bilan biologique complet',   texte:'/me réalise le bilan biologique prescrit : NFS, iono, créatinine, urée, glycémie, bilan hépatique, coag, CRP.'},
+  {id:'ex8', categorie:'Examens',type:'me',titre:'NFS — Numération Formule',   texte:'/me prélève un tube EDTA pour la NFS et les plaquettes.'},
+  {id:'ex9', categorie:'Examens',type:'me',titre:'Ionogramme sanguin',         texte:'/me prélève un tube sec pour l\'ionogramme.'},
+  {id:'ex10',categorie:'Examens',type:'me',titre:'Troponine I/T',              texte:'/me prélève les tubes de troponine et note l\'heure.'},
+  {id:'ex11',categorie:'Examens',type:'me',titre:'Troponine de contrôle H+3',  texte:'/me prélève la troponine de contrôle à H3.'},
+  {id:'ex12',categorie:'Examens',type:'me',titre:'D-dimères',                  texte:'/me prélève un tube citraté pour les D-dimères.'},
+  {id:'ex13',categorie:'Examens',type:'me',titre:'Groupe sanguin + RAI',       texte:'/me prélève deux tubes de groupe sanguin avec double identification, plus la RAI.'},
+  {id:'ex14',categorie:'Examens',type:'me',titre:'Hémostase (TP, TCA, fibrinogène)', texte:'/me prélève un tube citraté pour l\'hémostase (TP, TCA, fibrinogène).'},
+  {id:'ex15',categorie:'Examens',type:'me',titre:'CRP / Procalcitonine',       texte:'/me prélève un tube sec pour CRP et procalcitonine.'},
+  {id:'ex16',categorie:'Examens',type:'me',titre:'β-HCG',                      texte:'/me prélève un tube pour les β-HCG plasmatiques.'},
+  {id:'ex17',categorie:'Examens',type:'me',titre:'Hémocultures x2',            texte:'/me réalise deux paires d\'hémocultures en asepsie, avant toute antibiothérapie.'},
+  {id:'ex18',categorie:'Examens',type:'me',titre:'ECBU',                       texte:'/me réalise un ECBU en mi-jet sur flacon stérile après toilette.'},
+  {id:'ex19',categorie:'Examens',type:'me',titre:'Prélèvement de gorge / nasal', texte:'/me réalise un prélèvement naso-pharyngé avec un écouvillon stérile.'},
   // Imagerie
-  {id:'ex20',categorie:'Examens',type:'me',titre:'Radio thorax au lit',        texte:'/me installe le patient et réalise une radiographie du thorax de face au lit avec le capteur numérique.'},
-  {id:'ex21',categorie:'Examens',type:'me',titre:'Échographie FAST',           texte:'/me réalise l\'échographie FAST : épanchement péricardique, pleural et péritonéal aux quatre fenêtres acoustiques.'},
-  {id:'ex22',categorie:'Examens',type:'me',titre:'Échographie cardiaque',      texte:'/me installe la sonde cardiaque et réalise une échographie trans-thoracique en coupes parasternale, apicale et sous-costale.'},
-  {id:'ex23',categorie:'Examens',type:'me',titre:'Écho abdominale',            texte:'/me réalise l\'échographie abdominale et explore le foie, la vésicule, la rate, les reins et les vaisseaux.'},
-  {id:'ex24',categorie:'Examens',type:'me',titre:'Doppler veineux membres inf.',texte:'/me réalise un écho-doppler veineux des membres inférieurs à la recherche d\'une thrombose veineuse profonde.'},
-  {id:'ex25',categorie:'Examens',type:'me',titre:'Scanner cérébral',           texte:'/me prépare le patient pour le scanner cérébral sans et avec injection de produit de contraste selon la prescription.'},
-  {id:'ex26',categorie:'Examens',type:'me',titre:'Scanner thoraco-abdomino-pelvien', texte:'/me prépare le patient pour le scanner TAP avec injection, vérifie la créatinine et l\'absence d\'allergie au produit de contraste.'},
-  {id:'ex27',categorie:'Examens',type:'me',titre:'IRM cérébrale',              texte:'/me vérifie l\'absence de contre-indication à l\'IRM, retire les objets métalliques et installe le patient dans l\'antenne crânienne.'},
+  {id:'ex20',categorie:'Examens',type:'me',titre:'Radio thorax au lit',        texte:'/me réalise une radio thorax de face au lit.'},
+  {id:'ex21',categorie:'Examens',type:'me',titre:'Échographie FAST',           texte:'/me réalise l\'écho FAST : péricarde, plèvres, péritoine.'},
+  {id:'ex22',categorie:'Examens',type:'me',titre:'Échographie cardiaque',      texte:'/me réalise une échographie cardiaque en coupes parasternale, apicale et sous-costale.'},
+  {id:'ex23',categorie:'Examens',type:'me',titre:'Écho abdominale',            texte:'/me réalise une échographie abdominale : foie, vésicule, rate, reins, vaisseaux.'},
+  {id:'ex24',categorie:'Examens',type:'me',titre:'Doppler veineux membres inf.',texte:'/me réalise un écho-doppler veineux des membres inférieurs.'},
+  {id:'ex25',categorie:'Examens',type:'me',titre:'Scanner cérébral',           texte:'/me prépare le patient pour le scanner cérébral avec et sans injection.'},
+  {id:'ex26',categorie:'Examens',type:'me',titre:'Scanner thoraco-abdomino-pelvien', texte:'/me prépare le patient pour le scanner TAP avec injection et vérifie créatinine et allergies.'},
+  {id:'ex27',categorie:'Examens',type:'me',titre:'IRM cérébrale',              texte:'/me vérifie les contre-indications IRM, retire les objets métalliques et installe le patient.'},
   // Actes spécialisés
-  {id:'ex28',categorie:'Examens',type:'me',titre:'Ponction lombaire',          texte:'/me installe le patient en position fœtale ou assis courbé, repère l\'espace L4-L5 et prépare le champ stérile pour la ponction lombaire.'},
-  {id:'ex29',categorie:'Examens',type:'me',titre:'Ponction pleurale',          texte:'/me installe le patient assis penché en avant, désinfecte la zone et prépare le matériel pour la ponction pleurale à visée diagnostique.'},
-  {id:'ex30',categorie:'Examens',type:'me',titre:'Ponction d\'ascite',         texte:'/me installe le patient en décubitus dorsal, repère le point de ponction sous écho-guidage et prépare le matériel pour la paracentèse.'},
-  {id:'ex31',categorie:'Examens',type:'me',titre:'Fond d\'œil',               texte:'/me instille les gouttes mydriatiques dans les deux yeux du patient et attend 15 minutes avant la réalisation du fond d\'œil.'},
-  {id:'ex32',categorie:'Examens',type:'me',titre:'Spirométrie',               texte:'/me installe le patient assis, explique la manœuvre et réalise la spirométrie avec trois mesures reproductibles du VEMS et de la CVF.'},
+  {id:'ex28',categorie:'Examens',type:'me',titre:'Ponction lombaire',          texte:'/me installe le patient en position fœtale, repère L4-L5 et prépare le champ stérile.'},
+  {id:'ex29',categorie:'Examens',type:'me',titre:'Ponction pleurale',          texte:'/me installe le patient assis penché en avant et prépare la ponction pleurale.'},
+  {id:'ex30',categorie:'Examens',type:'me',titre:'Ponction d\'ascite',         texte:'/me installe le patient allongé, repère sous écho et prépare la paracentèse.'},
+  {id:'ex31',categorie:'Examens',type:'me',titre:'Fond d\'œil',               texte:'/me instille les gouttes mydriatiques dans les deux yeux et attend 15 minutes.'},
+  {id:'ex32',categorie:'Examens',type:'me',titre:'Spirométrie',               texte:'/me explique la manœuvre et réalise la spirométrie, trois mesures.'},
 
   // ── AUTRES / SOINS INFIRMIERS ──
-  {id:'inf1', categorie:'Autres',type:'me',titre:'Prise des constantes complètes',      texte:'/me prend les constantes vitales complètes du patient : tension artérielle, fréquence cardiaque, fréquence respiratoire, SpO2, température et glycémie capillaire, puis les transmet au médecin.'},
-  {id:'inf2', categorie:'Autres',type:'me',titre:'Installation en position semi-assise', texte:'/me installe le patient en position semi-assise pour favoriser le confort respiratoire et surveille sa tolérance.'},
-  {id:'inf3', categorie:'Autres',type:'me',titre:'Surveillance neurologique horaire',    texte:'/me réalise une surveillance neurologique horaire : score de Glasgow, taille et réactivité des pupilles, motricité des quatre membres.'},
-  {id:'inf4', categorie:'Autres',type:'me',titre:'Réfection de pansement',               texte:'/me réalise la réfection du pansement en asepsie : retire l\'ancien pansement, nettoie la plaie au sérum physiologique, applique un pansement stérile propre et note l\'aspect de la plaie.'},
-  {id:'inf5', categorie:'Autres',type:'me',titre:'Transmission ciblée',                  texte:'/me rédige la transmission ciblée dans le dossier de soins : événement, constantes relevées, actions réalisées et réponse du patient.'},
-  {id:'inf6', categorie:'Autres',type:'me',titre:'Sécurisation avant transport',         texte:'/me sécurise le patient sur le brancard, vérifie les sangles, les perfusions et le monitorage avant le transport.'},
-  {id:'inf7', categorie:'Autres',type:'me',titre:'Surveillance du point de ponction',    texte:'/me surveille le point de ponction de la voie veineuse : absence de rougeur, de chaleur, d\'œdème ou de douleur à la palpation.'},
-  {id:'inf8', categorie:'Autres',type:'me',titre:'Sondage urinaire',                     texte:'/me réalise un sondage urinaire en technique stérile, mesure la diurèse et note l\'aspect et la couleur des urines.'},
-  {id:'inf9', categorie:'Autres',type:'me',titre:'Aspiration des sécrétions',            texte:'/me réalise une aspiration des sécrétions bronchiques en asepsie, sur une durée inférieure à 15 secondes, en surveillant la SpO2 pendant le geste.'},
-  {id:'inf10',categorie:'Autres',type:'me',titre:'Prévention des escarres',              texte:'/me évalue les points d\'appui, procède au changement de position du patient et vérifie l\'état cutané aux zones à risque.'},
-  {id:'inf11',categorie:'Autres',type:'me',titre:'Réévaluation post-remplissage',        texte:'/me réévalue la tension artérielle, la fréquence cardiaque, la diurèse et l\'aspect des marbrures après le passage de la poche de remplissage vasculaire.'},
+  {id:'inf1', categorie:'Autres',type:'me',titre:'Prise des constantes complètes',      texte:'/me relève les constantes complètes et les transmet au médecin.'},
+  {id:'inf2', categorie:'Autres',type:'me',titre:'Installation en position semi-assise', texte:'/me installe le patient en position semi-assise.'},
+  {id:'inf3', categorie:'Autres',type:'me',titre:'Surveillance neurologique horaire',    texte:'/me surveille le neuro : Glasgow, pupilles, motricité des quatre membres.'},
+  {id:'inf4', categorie:'Autres',type:'me',titre:'Réfection de pansement',               texte:'/me refait le pansement en asepsie, nettoie la plaie au sérum phy et note son aspect.'},
+  {id:'inf5', categorie:'Autres',type:'me',titre:'Transmission ciblée',                  texte:'/me rédige la transmission ciblée dans le dossier de soins.'},
+  {id:'inf6', categorie:'Autres',type:'me',titre:'Sécurisation avant transport',         texte:'/me sécurise le patient sur le brancard : sangles, perfusions et monitorage vérifiés.'},
+  {id:'inf7', categorie:'Autres',type:'me',titre:'Surveillance du point de ponction',    texte:'/me surveille le point de ponction : rougeur, chaleur, œdème, douleur.'},
+  {id:'inf8', categorie:'Autres',type:'me',titre:'Sondage urinaire',                     texte:'/me réalise un sondage urinaire en stérile et note la diurèse.'},
+  {id:'inf9', categorie:'Autres',type:'me',titre:'Aspiration des sécrétions',            texte:'/me aspire les sécrétions bronchiques en asepsie (moins de 15 secondes) en surveillant la SpO2.'},
+  {id:'inf10',categorie:'Autres',type:'me',titre:'Prévention des escarres',              texte:'/me change le patient de position et vérifie la peau aux points d\'appui.'},
+  {id:'inf11',categorie:'Autres',type:'me',titre:'Réévaluation post-remplissage',        texte:'/me réévalue TA, FC, diurèse et marbrures après le remplissage.'},
 
   // /qu
   {id:'q1',categorie:'Questions /qu',type:'qu',titre:'TA ?',texte:'/qu TA ?'},
@@ -733,34 +733,34 @@ const getZoneColor = z => PTYPE_COLOR[z.ptype[0]] || '#94a3b8';
 
 // Actions par type de zone
 const ACTION_TEMPLATES = [
-  {id:'cat18', label:'Cathéter 18G',          icon:'💉', ptype:['vein'],                                fn:p=>`/me désinfecte soigneusement la zone puis pose un cathéter 18G ${p}.`},
-  {id:'cat20', label:'Cathéter 20G',          icon:'💉', ptype:['vein'],                                fn:p=>`/me pose un cathéter 20G ${p} après repérage veineux et désinfection à l\'antiseptique.`},
-  {id:'cat14', label:'Cathéter 14G (urgence)',icon:'🚨', ptype:['vein'],                                fn:p=>`/me pose en urgence un cathéter 14G ${p} pour obtenir un accès veineux de gros calibre.`},
-  {id:'prlvt', label:'Prélèvement veineux',   icon:'🧪', ptype:['vein'],                                fn:p=>`/me réalise un prélèvement veineux ${p} et remplit les tubes selon la prescription.`},
-  {id:'perf',  label:'Branchement perfusion', icon:'🫙', ptype:['vein'],                                fn:p=>`/me branche la perfusion ${p} et règle le débit selon la prescription médicale.`},
-  {id:'injiv', label:'Injection IV directe',  icon:'💊', ptype:['vein'],                                fn:p=>`/me administre le traitement en injection intraveineuse directe ${p} en vérifiant le reflux.`},
-  {id:'retcat',label:'Retrait cathéter',      icon:'🩹', ptype:['vein'],                                fn:p=>`/me retire délicatement le cathéter ${p}, comprime la zone et pose un pansement stérile.`},
-  {id:'injim', label:'Injection IM',          icon:'💉', ptype:['muscle'],                              fn:p=>`/me réalise une injection intramusculaire ${p} après désinfection et contrôle du produit.`},
-  {id:'io_pose',  label:'Pose VIO (EZ-IO)',        icon:'🦴', ptype:['io'],                              fn:p=>`/me repère le site d\'insertion IO ${p}, désinfecte soigneusement la zone et positionne l\'aiguille EZ-IO perpendiculairement à la corticale avant de forer jusqu\'à la perte de résistance caractéristique.`},
-  {id:'io_verif', label:'Vérification VIO',        icon:'✅', ptype:['io'],                              fn:p=>`/me vérifie le bon positionnement de la VIO ${p} en aspirant du contenu médullaire puis injecte 10mL de NaCl 0,9% en observant l\'absence d\'extravasation.`},
-  {id:'io_lido',  label:'Lidocaïne IO (douleur)',  icon:'💊', ptype:['io'],                              fn:p=>`/me injecte lentement 40mg de Lidocaïne 2% en IO ${p} sur 2 minutes pour antalgie intra-médullaire, laisse agir 60 secondes puis rince avec 10mL de NaCl 0,9%.`},
-  {id:'io_perf',  label:'Perfusion IO (pression)', icon:'🫙', ptype:['io'],                              fn:p=>`/me connecte la poche de remplissage sous poche pression gonflée à 300 mmHg sur la VIO ${p} et ouvre le débit pour remplissage vasculaire rapide.`},
-  {id:'io_flush', label:'Flush NaCl 10mL IO',      icon:'💧', ptype:['io'],                              fn:p=>`/me flush la VIO ${p} avec 10mL de NaCl 0,9% en bolus pour s\'assurer de l\'acheminement complet du produit vers la circulation centrale.`},
-  {id:'io_ret',   label:'Retrait VIO',             icon:'🩹', ptype:['io'],                              fn:p=>`/me dévisse l\'aiguille EZ-IO ${p} avec le mandrin, retire l\'ensemble en rotation stable, comprime la zone avec une compresse stérile et pose un pansement compressif.`},
-  {id:'desinf',label:'Désinfection',          icon:'🧴', ptype:['vein','muscle','wound','limb','thorax','abdomen','head','io'], fn:p=>`/me désinfecte soigneusement ${p} avec un antiseptique dermique.`},
-  {id:'panse', label:'Pansement stérile',     icon:'🩹', ptype:['wound','limb','vein','muscle','head','thorax'],fn:p=>`/me pose un pansement stérile ${p} après nettoyage et désinfection de la plaie.`},
-  {id:'pansec',label:'Pansement compressif',  icon:'🔴', ptype:['wound','limb'],                        fn:p=>`/me applique un pansement compressif stérile ${p} et maintient la pression pour stopper l\'hémorragie.`},
-  {id:'suture',label:'Points de suture',      icon:'🪡', ptype:['wound'],                               fn:p=>`/me réalise des points de suture ${p} après anesthésie locale et nettoyage soigneux de la plaie.`},
-  {id:'aust',  label:'Auscultation',          icon:'🩺', ptype:['thorax','abdomen'],                   fn:p=>`/me ausculte ${p} à la recherche de bruits anormaux : crépitants, sibilants ou silence auscultatoire.`},
-  {id:'ecg',   label:'Électrodes ECG',        icon:'📊', ptype:['thorax'],                              fn:p=>`/me place les électrodes ECG ${p} et lance l\'enregistrement des 12 dérivations.`},
-  {id:'defib', label:'Défibrillation',        icon:'⚡', ptype:['thorax'],                              fn:p=>`/me positionne les palettes du défibrillateur ${p}, s\'assure que personne ne touche le patient et délivre le choc.`},
-  {id:'drain', label:'Drain thoracique',      icon:'🔧', ptype:['thorax'],                              fn:p=>`/me pose un drain thoracique ${p} sous anesthésie locale après repérage échographique.`},
-  {id:'palp',  label:'Palpation abdominale',  icon:'🖐️',ptype:['abdomen'],                             fn:p=>`/me palpe soigneusement ${p} à la recherche d\'une défense, contracture ou douleur provoquée.`},
-  {id:'pupil', label:'Examen des pupilles',   icon:'👁️',ptype:['head'],                               fn:p=>`/me examine les pupilles ${p} : taille, symétrie et réactivité photo-motrice à la lampe stylo.`},
-  {id:'coll',  label:'Collier cervical',      icon:'🔒', ptype:['head'],                               fn:p=>`/me pose un collier cervical rigide de taille adaptée ${p} en maintenant l\'axe tête-cou-tronc.`},
-  {id:'garrot',label:'Garrot proximal',       icon:'🔴', ptype:['limb'],                               fn:p=>`/me applique un garrot proximal ${p} et note l\'heure de pose sur le front du patient.`},
-  {id:'attell',label:'Attelle',               icon:'🦴', ptype:['limb','wound'],                       fn:p=>`/me immobilise ${p} avec une attelle rigide en position anatomique de fonction.`},
-  {id:'surelv',label:'Surélévation du membre',icon:'⬆️', ptype:['limb'],                              fn:p=>`/me surélève ${p} afin de favoriser le retour veineux et limiter la formation de l\'œdème.`},
+  {id:'cat18', label:'Cathéter 18G',          icon:'💉', ptype:['vein'],                                fn:p=>`/me désinfecte et pose un cathéter 18G ${p}.`},
+  {id:'cat20', label:'Cathéter 20G',          icon:'💉', ptype:['vein'],                                fn:p=>`/me pose un cathéter 20G ${p} après repérage veineux.`},
+  {id:'cat14', label:'Cathéter 14G (urgence)',icon:'🚨', ptype:['vein'],                                fn:p=>`/me pose en urgence un cathéter 14G ${p}.`},
+  {id:'prlvt', label:'Prélèvement veineux',   icon:'🧪', ptype:['vein'],                                fn:p=>`/me réalise un prélèvement veineux ${p} et remplit les tubes.`},
+  {id:'perf',  label:'Branchement perfusion', icon:'🫙', ptype:['vein'],                                fn:p=>`/me branche la perfusion ${p} et règle le débit selon la prescription.`},
+  {id:'injiv', label:'Injection IV directe',  icon:'💊', ptype:['vein'],                                fn:p=>`/me injecte le traitement en IV direct ${p}.`},
+  {id:'retcat',label:'Retrait cathéter',      icon:'🩹', ptype:['vein'],                                fn:p=>`/me retire le cathéter ${p}, comprime et pose un pansement.`},
+  {id:'injim', label:'Injection IM',          icon:'💉', ptype:['muscle'],                              fn:p=>`/me réalise une injection IM ${p} après désinfection.`},
+  {id:'io_pose',  label:'Pose VIO (EZ-IO)',        icon:'🦴', ptype:['io'],                              fn:p=>`/me repère le site IO ${p}, désinfecte et pose l'aiguille EZ-IO jusqu'à la perte de résistance.`},
+  {id:'io_verif', label:'Vérification VIO',        icon:'✅', ptype:['io'],                              fn:p=>`/me vérifie la VIO ${p} en aspirant de la moelle puis injecte 10mL de NaCl 0,9%.`},
+  {id:'io_lido',  label:'Lidocaïne IO (douleur)',  icon:'💊', ptype:['io'],                              fn:p=>`/me injecte lentement 40mg de Lidocaïne 2% en IO ${p}, attend 60 secondes puis rince au NaCl 0,9%.`},
+  {id:'io_perf',  label:'Perfusion IO (pression)', icon:'🫙', ptype:['io'],                              fn:p=>`/me branche la poche de remplissage sous pression (300 mmHg) sur la VIO ${p}.`},
+  {id:'io_flush', label:'Flush NaCl 10mL IO',      icon:'💧', ptype:['io'],                              fn:p=>`/me flush la VIO ${p} avec 10mL de NaCl 0,9%.`},
+  {id:'io_ret',   label:'Retrait VIO',             icon:'🩹', ptype:['io'],                              fn:p=>`/me dévisse l'aiguille EZ-IO ${p} avec le mandrin, comprime et pose un pansement compressif.`},
+  {id:'desinf',label:'Désinfection',          icon:'🧴', ptype:['vein','muscle','wound','limb','thorax','abdomen','head','io'], fn:p=>`/me désinfecte ${p} avec un antiseptique.`},
+  {id:'panse', label:'Pansement stérile',     icon:'🩹', ptype:['wound','limb','vein','muscle','head','thorax'],fn:p=>`/me pose un pansement stérile ${p} après nettoyage de la plaie.`},
+  {id:'pansec',label:'Pansement compressif',  icon:'🔴', ptype:['wound','limb'],                        fn:p=>`/me pose un pansement compressif stérile ${p} et maintient la pression.`},
+  {id:'suture',label:'Points de suture',      icon:'🪡', ptype:['wound'],                               fn:p=>`/me suture ${p} après anesthésie locale et nettoyage.`},
+  {id:'aust',  label:'Auscultation',          icon:'🩺', ptype:['thorax','abdomen'],                   fn:p=>`/me ausculte ${p} à la recherche de bruits anormaux.`},
+  {id:'ecg',   label:'Électrodes ECG',        icon:'📊', ptype:['thorax'],                              fn:p=>`/me place les électrodes ECG ${p} et lance l'enregistrement.`},
+  {id:'defib', label:'Défibrillation',        icon:'⚡', ptype:['thorax'],                              fn:p=>`/me place les palettes ${p}, s'assure que personne ne touche le patient et délivre le choc.`},
+  {id:'drain', label:'Drain thoracique',      icon:'🔧', ptype:['thorax'],                              fn:p=>`/me pose un drain thoracique ${p} sous anesthésie locale.`},
+  {id:'palp',  label:'Palpation abdominale',  icon:'🖐️',ptype:['abdomen'],                             fn:p=>`/me palpe ${p} à la recherche d'une défense ou d'une douleur.`},
+  {id:'pupil', label:'Examen des pupilles',   icon:'👁️',ptype:['head'],                               fn:p=>`/me examine les pupilles ${p} : taille, symétrie, réactivité.`},
+  {id:'coll',  label:'Collier cervical',      icon:'🔒', ptype:['head'],                               fn:p=>`/me pose un collier cervical rigide ${p} en maintenant l'axe tête-cou-tronc.`},
+  {id:'garrot',label:'Garrot proximal',       icon:'🔴', ptype:['limb'],                               fn:p=>`/me pose un garrot proximal ${p} et note l'heure sur le front du patient.`},
+  {id:'attell',label:'Attelle',               icon:'🦴', ptype:['limb','wound'],                       fn:p=>`/me immobilise ${p} avec une attelle rigide.`},
+  {id:'surelv',label:'Surélévation du membre',icon:'⬆️', ptype:['limb'],                              fn:p=>`/me surélève ${p} pour limiter l'œdème.`},
 ];
 
 /* ══════════════════════════════════════ PROCÉDURES DATA ══ */
@@ -770,160 +770,160 @@ const PROCEDURES = [
     id:'vvp', titre:'Pose de VVP', icon:'💉', color:'#22d3ee',
     desc:'Voie veineuse périphérique — de la désinfection à la perfusion',
     etapes:[
-      {titre:'Préparation du matériel',      texte:'/me prépare le matériel nécessaire : cathéter, compresses stériles, antiseptique, garrot, pansement transparent et tubulure purgée.'},
-      {titre:'Pose du garrot',               texte:'/me pose le garrot à la racine du bras pour faire saillir le réseau veineux.'},
-      {titre:'Désinfection de la zone',      texte:'/me désinfecte soigneusement le site de ponction avec l\'antiseptique dermique en un mouvement centrifuge.'},
-      {titre:'Insertion du cathéter 18G',    texte:'/me insère le cathéter 18G en biseau vers le haut dans la veine, vérifie le reflux sanguin puis fait coulisser la canule.'},
-      {titre:'Retrait du garrot',            texte:'/me retire le garrot immédiatement après introduction du cathéter.'},
-      {titre:'Retrait du mandrin',           texte:'/me retire le mandrin d\'un geste sec en comprimant la veine en amont.'},
-      {titre:'Vérification reflux + flush',  texte:'/me vérifie la perméabilité par un flush au sérum physiologique et s\'assure de l\'absence d\'extravasation.'},
-      {titre:'Fixation du cathéter',         texte:'/me fixe le cathéter avec un pansement transparent stérile et note l\'heure de pose dans le dossier.'},
-      {titre:'Branchement de la perfusion',  texte:'/me connecte la tubulure purgée sur le cathéter et règle le débit selon la prescription médicale.'},
+      {titre:'Préparation du matériel',      texte:'/me prépare le matériel : cathéter, compresses, antiseptique, garrot, pansement, tubulure purgée.'},
+      {titre:'Pose du garrot',               texte:'/me pose le garrot à la racine du bras.'},
+      {titre:'Désinfection de la zone',      texte:'/me désinfecte le site de ponction, mouvement centrifuge.'},
+      {titre:'Insertion du cathéter 18G',    texte:'/me insère le cathéter 18G biseau vers le haut, vérifie le reflux et fait coulisser la canule.'},
+      {titre:'Retrait du garrot',            texte:'/me retire le garrot.'},
+      {titre:'Retrait du mandrin',           texte:'/me retire le mandrin en comprimant la veine en amont.'},
+      {titre:'Vérification reflux + flush',  texte:'/me fait un flush de sérum physiologique et vérifie l\'absence d\'extravasation.'},
+      {titre:'Fixation du cathéter',         texte:'/me fixe le cathéter avec un pansement transparent et note l\'heure de pose.'},
+      {titre:'Branchement de la perfusion',  texte:'/me connecte la tubulure purgée et règle le débit selon la prescription.'},
     ]
   },
   {
     id:'retrait_vvp', titre:'Retrait de VVP', icon:'🩹', color:'#f97316',
     desc:'Retrait sécurisé d\'une voie veineuse périphérique',
     etapes:[
-      {titre:'Arrêt de la perfusion',        texte:'/me clamp la tubulure et arrête la perfusion avant de procéder au retrait.'},
-      {titre:'Déconnexion de la tubulure',   texte:'/me déconnecte délicatement la tubulure du cathéter en évitant toute traction.'},
-      {titre:'Retrait du pansement',         texte:'/me retire délicatement le pansement transparent qui maintient le cathéter.'},
-      {titre:'Retrait du cathéter',          texte:'/me retire doucement le cathéter d\'un geste lent et continu tout en comprimant le site.'},
-      {titre:'Compression du site',          texte:'/me comprime fermement le site de ponction avec une compresse stérile pendant 2 à 3 minutes.'},
-      {titre:'Pansement final',              texte:'/me pose un pansement adhésif stérile sur le site et vérifie l\'absence de saignement résiduel.'},
-      {titre:'Traçabilité',                  texte:'/me note l\'heure de retrait, l\'aspect du site et l\'état du cathéter dans le dossier infirmier.'},
+      {titre:'Arrêt de la perfusion',        texte:'/me clampe la tubulure et arrête la perfusion.'},
+      {titre:'Déconnexion de la tubulure',   texte:'/me déconnecte la tubulure sans traction.'},
+      {titre:'Retrait du pansement',         texte:'/me retire le pansement transparent.'},
+      {titre:'Retrait du cathéter',          texte:'/me retire le cathéter lentement en comprimant le site.'},
+      {titre:'Compression du site',          texte:'/me comprime le site avec une compresse stérile pendant 2 à 3 minutes.'},
+      {titre:'Pansement final',              texte:'/me pose un pansement stérile et vérifie l\'absence de saignement.'},
+      {titre:'Traçabilité',                  texte:'/me note l\'heure de retrait et l\'aspect du site dans le dossier.'},
     ]
   },
   {
     id:'iot', titre:'Intubation oro-trachéale', icon:'🫁', color:'#a78bfa',
     desc:'Séquence complète d\'induction et intubation',
     etapes:[
-      {titre:'Vérification matériel IOT',    texte:'/me vérifie le matériel d\'intubation : laryngoscope allumé, sondes de tailles 7/7,5/8, mandrin, seringue 10mL, aspiration fonctionnelle et ballon valve masque.'},
-      {titre:'Évaluation voie aérienne',     texte:'/me évalue les critères d\'intubation difficile : ouverture de bouche, mobilité cervicale, classe de Mallampati et distance thyromentonnière.'},
-      {titre:'Préoxygénation 3 min',         texte:'/me préoxygène le patient au masque haute concentration pendant 3 minutes en FiO2 à 100%.'},
-      {titre:'Administration des drogues',   texte:'/me administre les drogues d\'induction selon la prescription : hypnotique IV puis curare IV en bolus direct.'},
-      {titre:'Attente curarisation',         texte:'/me attend 60 secondes la curarisation complète avant de tenter l\'intubation.'},
-      {titre:'Laryngoscopie + intubation',   texte:'/me expose la glotte sous laryngoscopie directe et introduit la sonde d\'intubation entre les cordes vocales.'},
-      {titre:'Gonflement du ballonnet',      texte:'/me gonfle le ballonnet à 25 cmH2O avec la seringue de contrôle.'},
-      {titre:'Vérification position',        texte:'/me vérifie la bonne position de la sonde par auscultation bilatérale symétrique et lecture du capnogramme.'},
-      {titre:'Fixation de la sonde',         texte:'/me fixe la sonde d\'intubation avec du sparadrap et note la cote labiale dans le dossier.'},
-      {titre:'Connexion au respirateur',     texte:'/me connecte la sonde au respirateur et vérifie les paramètres ventilatoires prescrits.'},
+      {titre:'Vérification matériel IOT',    texte:'/me vérifie le matériel d\'intubation : laryngoscope, sondes 7/7,5/8, mandrin, seringue, aspiration, BAVU.'},
+      {titre:'Évaluation voie aérienne',     texte:'/me évalue les critères d\'intubation difficile : ouverture de bouche, mobilité cervicale, Mallampati.'},
+      {titre:'Préoxygénation 3 min',         texte:'/me préoxygène 3 minutes au masque haute concentration, FiO2 100%.'},
+      {titre:'Administration des drogues',   texte:'/me administre les drogues d\'induction : hypnotique puis curare en IV direct.'},
+      {titre:'Attente curarisation',         texte:'/me attend 60 secondes la curarisation complète.'},
+      {titre:'Laryngoscopie + intubation',   texte:'/me expose la glotte sous laryngoscopie et passe la sonde entre les cordes vocales.'},
+      {titre:'Gonflement du ballonnet',      texte:'/me gonfle le ballonnet à 25 cmH2O.'},
+      {titre:'Vérification position',        texte:'/me vérifie la sonde par auscultation bilatérale et capnogramme.'},
+      {titre:'Fixation de la sonde',         texte:'/me fixe la sonde et note la cote labiale.'},
+      {titre:'Connexion au respirateur',     texte:'/me connecte la sonde au respirateur et vérifie les paramètres.'},
     ]
   },
   {
     id:'acr', titre:'Arrêt cardio-respiratoire', icon:'❤️‍🔥', color:'#f43f5e',
     desc:'Protocole RCP — constatation jusqu\'au RACS',
     etapes:[
-      {titre:'Constatation de l\'ACR',       texte:'/me constate l\'arrêt cardio-respiratoire : absence de conscience, de ventilation et de pouls carotidien après 10 secondes.'},
-      {titre:'Alerte et appel à l\'aide',    texte:'/me déclenche l\'alerte, demande le chariot d\'urgence, le défibrillateur et une aide médicale immédiate.'},
-      {titre:'Démarrage MCE',                texte:'/me débute les compressions thoraciques au rythme de 100/min, déprimant le sternum de 5 à 6 cm.'},
-      {titre:'Ventilation BVM',              texte:'/me ventile au masque BVM avec O2 à 15L/min, 2 insufflations toutes les 30 compressions.'},
-      {titre:'Analyse du rythme (DAE)',      texte:'/me allume le défibrillateur, colle les électrodes et lance l\'analyse du rythme cardiaque en suspendant brièvement le MCE.'},
-      {titre:'Choc électrique (si FV/TV)',   texte:'/me s\'assure que personne ne touche le patient et délivre un choc biphasique de 200J.'},
-      {titre:'Reprise MCE immédiate',        texte:'/me reprend immédiatement le MCE 2 minutes sans vérifier le pouls après le choc.'},
-      {titre:'Adrénaline 1mg IV',            texte:'/me administre 1mg d\'adrénaline en IV direct et reprend le MCE sans interruption.'},
-      {titre:'Amiodarone 300mg (3ème choc)', texte:'/me injecte 300mg d\'amiodarone IV lent après le 3ème choc électrique inefficace.'},
-      {titre:'RACS — bilan post-arrêt',      texte:'/me constate la reprise d\'activité cardiaque spontanée et débute le bilan post-arrêt cardio-respiratoire.'},
+      {titre:'Constatation de l\'ACR',       texte:'/me constate l\'ACR : pas de conscience, de ventilation ni de pouls carotidien après 10 secondes.'},
+      {titre:'Alerte et appel à l\'aide',    texte:'/me déclenche l\'alerte et demande le chariot d\'urgence, le défibrillateur et un médecin.'},
+      {titre:'Démarrage MCE',                texte:'/me débute le MCE à 100/min, sternum déprimé de 5 à 6 cm.'},
+      {titre:'Ventilation BVM',              texte:'/me ventile au BAVU avec O2 à 15L/min, 2 insufflations pour 30 compressions.'},
+      {titre:'Analyse du rythme (DAE)',      texte:'/me allume le défibrillateur, colle les électrodes et lance l\'analyse du rythme.'},
+      {titre:'Choc électrique (si FV/TV)',   texte:'/me s\'assure que personne ne touche le patient et délivre un choc de 200J.'},
+      {titre:'Reprise MCE immédiate',        texte:'/me reprend le MCE 2 minutes sans vérifier le pouls.'},
+      {titre:'Adrénaline 1mg IV',            texte:'/me injecte 1mg d\'Adrénaline en IV direct et reprend le MCE.'},
+      {titre:'Amiodarone 300mg (3ème choc)', texte:'/me injecte 300mg d\'Amiodarone en IV lent après le 3ème choc.'},
+      {titre:'RACS — bilan post-arrêt',      texte:'/me constate la reprise d\'activité cardiaque et débute le bilan post-arrêt.'},
     ]
   },
   {
     id:'gds', titre:'Gaz du sang artériels', icon:'🩸', color:'#f43f5e',
     desc:'Ponction artérielle radiale — du test d\'Allen à l\'envoi',
     etapes:[
-      {titre:'Test d\'Allen',                texte:'/me réalise le test d\'Allen pour vérifier la perméabilité de l\'artère cubitale avant la ponction radiale.'},
-      {titre:'Positionnement du poignet',    texte:'/me positionne le poignet en légère extension et palpe le pouls radial pour repérer le site de ponction.'},
-      {titre:'Désinfection',                 texte:'/me désinfecte soigneusement le poignet en regard de l\'artère radiale avec l\'antiseptique dermique.'},
-      {titre:'Ponction artérielle',          texte:'/me ponctionné l\'artère radiale avec la seringue héparinée à 45° jusqu\'au remplissage automatique par la pression artérielle.'},
-      {titre:'Retrait et compression',       texte:'/me retire l\'aiguille d\'un geste sec et applique immédiatement une compression manuelle ferme.'},
-      {titre:'Compression 5 minutes',        texte:'/me maintient la compression du site de ponction artérielle pendant 5 minutes minimum pour éviter tout hématome.'},
-      {titre:'Préparation de l\'échantillon',texte:'/me chasse les bulles d\'air de la seringue, coiffe l\'embout et place l\'échantillon sur glace pilée.'},
-      {titre:'Envoi immédiat à l\'analyseur',texte:'/me achemine immédiatement le prélèvement à l\'analyseur de gaz du sang et note l\'heure, la FiO2 et la température du patient.'},
-      {titre:'Vérification du site',         texte:'/me vérifie l\'absence de saignement résiduel, la coloration et la chaleur du membre après la ponction artérielle.'},
+      {titre:'Test d\'Allen',                texte:'/me réalise le test d\'Allen avant la ponction radiale.'},
+      {titre:'Positionnement du poignet',    texte:'/me place le poignet en légère extension et palpe le pouls radial.'},
+      {titre:'Désinfection',                 texte:'/me désinfecte le poignet en regard de l\'artère radiale.'},
+      {titre:'Ponction artérielle',          texte:'/me ponctionne l\'artère radiale à 45° avec la seringue héparinée jusqu\'au remplissage.'},
+      {titre:'Retrait et compression',       texte:'/me retire l\'aiguille et comprime fermement.'},
+      {titre:'Compression 5 minutes',        texte:'/me comprime le site pendant 5 minutes minimum.'},
+      {titre:'Préparation de l\'échantillon',texte:'/me chasse les bulles d\'air, coiffe l\'embout et met l\'échantillon sur glace.'},
+      {titre:'Envoi immédiat à l\'analyseur',texte:'/me envoie l\'échantillon à l\'analyseur et note l\'heure, la FiO2 et la température.'},
+      {titre:'Vérification du site',         texte:'/me vérifie le saignement, la coloration et la chaleur du membre.'},
     ]
   },
   {
     id:'pansement', titre:'Pansement de plaie', icon:'🩹', color:'#34d399',
     desc:'Soin de plaie — évaluation, nettoyage, protection',
     etapes:[
-      {titre:'Préparation du matériel',      texte:'/me prépare le chariot de soins : compresses stériles, sérum physiologique, antiseptique, pansement adapté et gants stériles.'},
-      {titre:'Retrait de l\'ancien pansement',texte:'/me retire délicatement l\'ancien pansement en notant son aspect et l\'odeur éventuelle.'},
-      {titre:'Évaluation de la plaie',       texte:'/me évalue la plaie : dimensions, profondeur, aspect du fond, qualité des berges, signes d\'infection et tissu de granulation.'},
-      {titre:'Nettoyage au sérum physio',    texte:'/me nettoie soigneusement la plaie au sérum physiologique du centre vers la périphérie.'},
-      {titre:'Désinfection',                 texte:'/me désinfecte la plaie et les berges avec l\'antiseptique en un seul passage centrifuge.'},
-      {titre:'Application du pansement',     texte:'/me applique le pansement adapté à la plaie en technique stérile et le fixe soigneusement sans comprimer.'},
-      {titre:'Traçabilité du soin',          texte:'/me note la date du soin, l\'aspect de la plaie, le type de pansement posé et le prochain délai de changement dans le dossier.'},
+      {titre:'Préparation du matériel',      texte:'/me prépare le chariot : compresses stériles, sérum physiologique, antiseptique, pansement, gants stériles.'},
+      {titre:'Retrait de l\'ancien pansement',texte:'/me retire l\'ancien pansement et note son aspect.'},
+      {titre:'Évaluation de la plaie',       texte:'/me évalue la plaie : dimensions, profondeur, fond, berges, signes d\'infection.'},
+      {titre:'Nettoyage au sérum physio',    texte:'/me nettoie la plaie au sérum physiologique du centre vers la périphérie.'},
+      {titre:'Désinfection',                 texte:'/me désinfecte la plaie et les berges en un passage centrifuge.'},
+      {titre:'Application du pansement',     texte:'/me pose le pansement adapté en technique stérile, sans comprimer.'},
+      {titre:'Traçabilité du soin',          texte:'/me note la date, l\'aspect de la plaie, le pansement posé et le prochain changement.'},
     ]
   },
   {
     id:'prelevement', titre:'Bilan biologique', icon:'🧪', color:'#fbbf24',
     desc:'Prélèvements veineux — de la prescription à l\'envoi labo',
     etapes:[
-      {titre:'Vérification de la prescription',texte:'/me vérifie la prescription médicale, prépare les tubes adaptés dans l\'ordre de remplissage et étiquette chaque tube avec l\'identité du patient.'},
-      {titre:'Préparation du matériel',       texte:'/me installe le matériel : garrot, aiguille épicrânienne ou vacutainer, compresses, antiseptique et pansement.'},
-      {titre:'Pose du garrot',                texte:'/me pose le garrot à 10 cm au-dessus du site de ponction pour faire saillir le réseau veineux.'},
-      {titre:'Désinfection du site',          texte:'/me désinfecte soigneusement le site de ponction et laisse sécher 30 secondes.'},
-      {titre:'Ponction veineuse',             texte:'/me réalise la ponction veineuse et remplit les tubes dans l\'ordre : sec, citraté, EDTA, fluorure en suivant le code couleur.'},
-      {titre:'Retournement des tubes',        texte:'/me retire le garrot avant de finir de remplir le dernier tube, puis retourne chaque tube par 8 retournements doux.'},
-      {titre:'Compression du site',          texte:'/me retire l\'aiguille, comprime le site avec une compresse stérile et pose un pansement adhésif.'},
-      {titre:'Acheminement au laboratoire',  texte:'/me place les tubes dans le sachet de transport identifié avec le bon de demande et les achemine immédiatement au laboratoire.'},
+      {titre:'Vérification de la prescription',texte:'/me vérifie la prescription et étiquette chaque tube avec l\'identité du patient.'},
+      {titre:'Préparation du matériel',       texte:'/me installe le matériel : garrot, aiguille, compresses, antiseptique, pansement.'},
+      {titre:'Pose du garrot',                texte:'/me pose le garrot à 10 cm au-dessus du site de ponction.'},
+      {titre:'Désinfection du site',          texte:'/me désinfecte le site et laisse sécher 30 secondes.'},
+      {titre:'Ponction veineuse',             texte:'/me ponctionne la veine et remplit les tubes dans l\'ordre : sec, citraté, EDTA, fluorure.'},
+      {titre:'Retournement des tubes',        texte:'/me retire le garrot puis retourne chaque tube 8 fois doucement.'},
+      {titre:'Compression du site',          texte:'/me retire l\'aiguille, comprime avec une compresse et pose un pansement.'},
+      {titre:'Acheminement au laboratoire',  texte:'/me place les tubes dans le sachet avec le bon de demande et les envoie au laboratoire.'},
     ]
   },
   {
     id:'sonde_uri', titre:'Sonde urinaire', icon:'🔧', color:'#818cf8',
     desc:'Pose de sonde urinaire à demeure en technique stérile',
     etapes:[
-      {titre:'Vérification prescription',    texte:'/me vérifie la prescription, contrôle l\'absence de contre-indication et prépare le matériel : sonde de taille adaptée, champ stérile, lubrifiant, seringue et poche.'},
-      {titre:'Information du patient',       texte:'/me informe le patient de la procédure, recueille son consentement et lui explique les sensations à attendre.'},
-      {titre:'Installation du patient',      texte:'/me installe le patient en décubitus dorsal, jambes légèrement écartées, et réalise le premier niveau de propreté.'},
-      {titre:'Mise en place du champ stérile',texte:'/me ouvre le kit de sondage en technique stérile et installe le champ troué autour du méat urinaire.'},
-      {titre:'Désinfection des méats',       texte:'/me réalise la toilette antiseptique des méats urinaires de l\'avant vers l\'arrière avec les compresses stériles.'},
-      {titre:'Lubrification + introduction', texte:'/me lubrifie la sonde et l\'introduit délicatement dans l\'urètre jusqu\'à l\'obtention d\'un écoulement d\'urine clair.'},
-      {titre:'Gonflement du ballonnet',      texte:'/me avance la sonde de 2 cm supplémentaires et gonfle le ballonnet avec 10 mL de sérum physiologique.'},
-      {titre:'Connexion à la poche',         texte:'/me connecte la sonde à la poche collectrice stérile en circuit fermé et fixe le système à la cuisse sans traction.'},
-      {titre:'Traçabilité',                  texte:'/me note la date de pose, le calibre de la sonde, l\'aspect et la quantité de la diurèse initiale dans le dossier.'},
+      {titre:'Vérification prescription',    texte:'/me vérifie la prescription et prépare : sonde, champ stérile, lubrifiant, seringue, poche.'},
+      {titre:'Information du patient',       texte:'/me informe le patient et recueille son consentement.'},
+      {titre:'Installation du patient',      texte:'/me installe le patient allongé, jambes légèrement écartées, et fait la toilette de propreté.'},
+      {titre:'Mise en place du champ stérile',texte:'/me ouvre le kit de sondage en stérile et pose le champ troué.'},
+      {titre:'Désinfection des méats',       texte:'/me fait la toilette antiseptique du méat, de l\'avant vers l\'arrière.'},
+      {titre:'Lubrification + introduction', texte:'/me lubrifie la sonde et l\'introduit jusqu\'à l\'écoulement d\'urine claire.'},
+      {titre:'Gonflement du ballonnet',      texte:'/me avance la sonde de 2 cm et gonfle le ballonnet avec 10mL de sérum physiologique.'},
+      {titre:'Connexion à la poche',         texte:'/me connecte la poche collectrice en circuit fermé et fixe sans traction.'},
+      {titre:'Traçabilité',                  texte:'/me note la date de pose, le calibre de la sonde et la diurèse initiale.'},
     ]
   },
   {
     id:'ecg18', titre:'ECG 18 dérivations', icon:'📊', color:'#06b6d4',
     desc:'ECG étendu avec dérivations droites et postérieures',
     etapes:[
-      {titre:'Préparation du patient',       texte:'/me installe le patient en décubitus dorsal, torse découvert, membres détendus et explique la procédure.'},
-      {titre:'Préparation des électrodes',   texte:'/me prépare les 10 électrodes standards et les 6 électrodes supplémentaires pour les dérivations droites et postérieures.'},
-      {titre:'ECG 12 dérivations standard',  texte:'/me pose les 10 électrodes standards : 4 sur les membres et V1 à V6 sur le thorax gauche, puis enregistre le tracé 12 dérivations.'},
-      {titre:'Dérivations droites V3R-V4R',  texte:'/me déplace les électrodes V3 et V4 en miroir sur l\'hémithorax droit pour obtenir V3R et V4R, à la recherche d\'un IDM du ventricule droit.'},
-      {titre:'Dérivations postérieures V7-V9',texte:'/me place les électrodes V7 (ligne axillaire postérieure), V8 (pointe scapulaire) et V9 (bord gauche rachis) dans le prolongement de V6 dans le même espace intercostal.'},
-      {titre:'Enregistrement ECG complet',   texte:'/me lance l\'enregistrement de l\'ECG 18 dérivations et vérifie la qualité de chaque tracé.'},
-      {titre:'Transmission au médecin',      texte:'/me imprime et transmet immédiatement l\'ECG 18 dérivations au médecin en précisant l\'heure de réalisation et le contexte clinique.'},
+      {titre:'Préparation du patient',       texte:'/me installe le patient allongé, torse découvert, et explique la procédure.'},
+      {titre:'Préparation des électrodes',   texte:'/me prépare les 10 électrodes standards et les 6 supplémentaires.'},
+      {titre:'ECG 12 dérivations standard',  texte:'/me pose les 10 électrodes standards (4 membres, V1 à V6) et enregistre l\'ECG.'},
+      {titre:'Dérivations droites V3R-V4R',  texte:'/me place V3R et V4R sur l\'hémithorax droit.'},
+      {titre:'Dérivations postérieures V7-V9',texte:'/me place V7, V8 et V9 dans le prolongement de V6.'},
+      {titre:'Enregistrement ECG complet',   texte:'/me lance l\'ECG 18 dérivations et vérifie la qualité des tracés.'},
+      {titre:'Transmission au médecin',      texte:'/me transmet l\'ECG au médecin avec l\'heure et le contexte clinique.'},
     ]
   },
   {
     id:'rsi', titre:'Induction — Séquence Rapide (RSI)', icon:'💊', color:'#b388ff',
     desc:'Etomidate + Célocurine — IOT en conditions optimales',
     etapes:[
-      {titre:'Préoxygénation BAVU 15L/min',      texte:'/me installe le masque BAVU avec O2 à 15L/min et préoxygène le patient pendant 3 minutes minimum.'},
-      {titre:'Préparation des drogues RSI',       texte:'/me prépare les drogues d\'induction : Etomidate (Hypnomidate) 20mg/10ml et Suxaméthonium (Célocurine) 100mg/10ml, vérifie les VVP et aspire les sécrétions.'},
-      {titre:'Lidocaïne 1% si HTIC (opt.)',       texte:'/me administre 1,5 mg/kg de Lidocaïne 1% 200mg/20ml en IV lent 3 minutes avant induction si suspicion d\'HTIC.'},
-      {titre:'Etomidate 0,3 mg/kg IV rapide',     texte:'/me administre 0,3 mg/kg d\'Etomidate (Hypnomidate) en IV rapide pour induction hypnotique, en vérifiant la perte de conscience.'},
-      {titre:'Célocurine 1 mg/kg IV',             texte:'/me injecte immédiatement 1 mg/kg de Suxaméthonium (Célocurine) en IV rapide pour curarisation de séquence rapide.'},
-      {titre:'Attente 60s — fasciculations',      texte:'/me attend 60 secondes la curarisation complète et observe les fasciculations musculaires.'},
-      {titre:'Laryngoscopie + IOT',               texte:'/me réalise la laryngoscopie directe, expose les cordes vocales et introduit la sonde d\'intubation entre celles-ci.'},
-      {titre:'Ballonnet 25 cmH2O + vérification', texte:'/me gonfle le ballonnet à 25 cmH2O, vérifie l\'auscultation bilatérale et confirme l\'IOT au capnographe.'},
-      {titre:'Fixation + sédation entretien',     texte:'/me fixe la sonde à la cote labiale, note l\'heure, et démarre la sédation d\'entretien par Propofol ou Midazolam à la SE.'},
+      {titre:'Préoxygénation BAVU 15L/min',      texte:'/me pose le masque BAVU à 15L/min d\'O2 et préoxygène 3 minutes minimum.'},
+      {titre:'Préparation des drogues RSI',       texte:'/me prépare Etomidate 20mg/10mL et Célocurine 100mg/10mL, vérifie les VVP et aspire.'},
+      {titre:'Lidocaïne 1% si HTIC (opt.)',       texte:'/me injecte 1,5 mg/kg de Lidocaïne 1% en IV lent 3 minutes avant l\'induction.'},
+      {titre:'Etomidate 0,3 mg/kg IV rapide',     texte:'/me injecte 0,3 mg/kg d\'Etomidate en IV rapide et vérifie la perte de conscience.'},
+      {titre:'Célocurine 1 mg/kg IV',             texte:'/me injecte 1 mg/kg de Célocurine en IV rapide.'},
+      {titre:'Attente 60s — fasciculations',      texte:'/me attend 60 secondes et observe les fasciculations.'},
+      {titre:'Laryngoscopie + IOT',               texte:'/me expose les cordes vocales sous laryngoscopie et passe la sonde.'},
+      {titre:'Ballonnet 25 cmH2O + vérification', texte:'/me gonfle le ballonnet à 25 cmH2O, ausculte et confirme au capnographe.'},
+      {titre:'Fixation + sédation entretien',     texte:'/me fixe la sonde à la cote labiale, note l\'heure et démarre la sédation d\'entretien à la SE.'},
     ]
   },
   {
     id:'reanimation_choc', titre:'Choc hémorragique', icon:'🚨', color:'#ef4444',
     desc:'Prise en charge d\'un choc hémorragique',
     etapes:[
-      {titre:'Bilan initial ABCDE',          texte:'/me réalise le bilan primaire ABCDE : voies aériennes libres, ventilation, état hémodynamique, conscience et exposition pour repérer le saignement.'},
-      {titre:'Deux VVP de gros calibre',     texte:'/me pose deux voies veineuses périphériques de gros calibre (14G ou 16G) en urgence pour accès médicamenteux et remplissage.'},
-      {titre:'Prélèvements urgents',         texte:'/me prélève simultanément : groupe RAI ×2, NFS, coagulation, ionogramme, lactates, troponine et hémocultures.'},
-      {titre:'Remplissage vasculaire',       texte:'/me branche un remplissage vasculaire rapide en NaCl 0,9% 500 mL sur les deux voies et surveille la réponse hémodynamique.'},
-      {titre:'Contrôle du saignement',       texte:'/me applique une compression directe ferme ou un garrot proximal sur le foyer hémorragique et note l\'heure.'},
-      {titre:'O2 masque HC 15L',             texte:'/me installe le masque à haute concentration et règle le débit d\'oxygène à 15 litres par minute.'},
-      {titre:'Scope + monitorage complet',   texte:'/me installe le scope cardiaque, le saturomètre et le brassard de TA en mode automatique toutes les 5 minutes.'},
-      {titre:'Réchauffement du patient',     texte:'/me couvre le patient avec une couverture chauffante pour prévenir l\'hypothermie qui aggrave la coagulopathie.'},
-      {titre:'Alerte chirurgie / bloc',      texte:'/me contacte le chirurgien d\'astreinte et prévient le bloc opératoire d\'une entrée en urgence absolue.'},
+      {titre:'Bilan initial ABCDE',          texte:'/me réalise le bilan ABCDE : voies aériennes, ventilation, hémodynamique, conscience, exposition.'},
+      {titre:'Deux VVP de gros calibre',     texte:'/me pose deux VVP de gros calibre (14G ou 16G).'},
+      {titre:'Prélèvements urgents',         texte:'/me prélève : groupe RAI ×2, NFS, coag, iono, lactates, troponine, hémocultures.'},
+      {titre:'Remplissage vasculaire',       texte:'/me branche un NaCl 0,9% 500mL en remplissage rapide sur les deux voies.'},
+      {titre:'Contrôle du saignement',       texte:'/me comprime fermement le foyer hémorragique ou pose un garrot, et note l\'heure.'},
+      {titre:'O2 masque HC 15L',             texte:'/me pose le masque à haute concentration à 15L/min d\'O2.'},
+      {titre:'Scope + monitorage complet',   texte:'/me installe le scope, le saturomètre et le brassard automatique toutes les 5 minutes.'},
+      {titre:'Réchauffement du patient',     texte:'/me couvre le patient avec une couverture chauffante.'},
+      {titre:'Alerte chirurgie / bloc',      texte:'/me appelle le chirurgien d\'astreinte et prévient le bloc d\'une urgence absolue.'},
     ]
   },
 ];
@@ -1186,7 +1186,7 @@ const PERF_DRUGS = [
    objectif:'Rappel de liquide vers le secteur vasculaire',
    alertes:['Hyperoncotique : attire l’eau vers le vaisseau — risque d’OAP si passage trop rapide','Produit dérivé du sang : traçabilité du numéro de lot obligatoire','Surveiller la tension pendant tout le passage','Ce n’est pas un soluté de remplissage d’urgence']},
 
-  {id:'p_cgr', sang:true, meExtra:{label:'Contrôle ultime pré-transfusionnel', texte:'/me réalise le contrôle ultime au lit du patient : il vérifie l’identité du patient, confronte le groupe inscrit sur la poche à la carte de contrôle, réalise le test de Beth-Vincent sur carte, lit le résultat à voix haute avec un témoin et note l’heure du contrôle avant de brancher quoi que ce soit.'}, volPur:280, volOptions:[280], nom:'Culot globulaire O Rh− (urgence vitale)', dci:'Concentré de globules rouges', cat:'Remplissage & solutés', icon:'🩸', color:'#f43f5e',
+  {id:'p_cgr', sang:true, meExtra:{label:'Contrôle ultime pré-transfusionnel', texte:'/me réalise le contrôle ultime au lit : identité du patient, groupe de la poche vs carte, test de Beth-Vincent, résultat lu avec un témoin, heure notée.'}, volPur:280, volOptions:[280], nom:'Culot globulaire O Rh− (urgence vitale)', dci:'Concentré de globules rouges', cat:'Remplissage & solutés', icon:'🩸', color:'#f43f5e',
    amp:'Poche de concentré érythrocytaire — 250 à 300 mL', unit:'mL', qteStd:280, volStd:280, solvOk:['pur'], solvIdeal:'pur', purOk:true,
    mode:'duree', dmin:10, dmax:120, dusuel:20, dunit:'min', step:5,
    voie:'VVP de gros calibre (16G minimum) — transfuseur avec filtre et réchauffeur',
@@ -1194,7 +1194,7 @@ const PERF_DRUGS = [
    objectif:'Hémoglobine ≥ 7 g/dL — ≥ 10 g/dL chez le traumatisé crânien ou le coronarien',
    alertes:['Contrôle ultime au lit du patient OBLIGATOIRE avant de brancher, même en urgence vitale','JAMAIS sur la même ligne qu’un Ringer Lactate ou une Isofundine : le calcium fait coaguler la poche','Réchauffer au-delà de 2 culots — l’hypothermie aggrave la coagulopathie','Surveillance rapprochée les 15 premières minutes : frissons, douleur lombaire, hypotension','Traçabilité de la poche et de la carte de contrôle obligatoire']},
 
-  {id:'p_plyo', sang:true, meExtra:{label:'Reconstitution du plasma', texte:'/me raccorde le flacon d’eau pour préparation injectable au flacon de plasma lyophilisé à l’aide du dispositif de transfert stérile, agite doucement jusqu’à dissolution complète, puis vérifie l’absence de particule et note l’heure de reconstitution.'}, volPur:200, volOptions:[200], nom:'Plasma lyophilisé (PLYO)', dci:'Plasma humain lyophilisé universel', cat:'Remplissage & solutés', icon:'🧊', color:'#f43f5e',
+  {id:'p_plyo', sang:true, meExtra:{label:'Reconstitution du plasma', texte:'/me raccorde l’eau PPI au flacon de PLYO avec le dispositif de transfert, agite doucement et vérifie l’absence de particule.'}, volPur:200, volOptions:[200], nom:'Plasma lyophilisé (PLYO)', dci:'Plasma humain lyophilisé universel', cat:'Remplissage & solutés', icon:'🧊', color:'#f43f5e',
    amp:'Flacon lyophilisé — reconstitué dans 200 mL d’eau PPI', unit:'mL', qteStd:200, volStd:200, solvOk:['pur'], solvIdeal:'pur', purOk:true,
    mode:'duree', dmin:10, dmax:45, dusuel:20, dunit:'min', step:5,
    voie:'VVP de bon calibre — transfuseur avec filtre',
@@ -1501,7 +1501,7 @@ function GenerateModal({onClose,onAdd}){
   const generate=()=>{
     if(!desc.trim())return;
     const l=desc.trim(),lo=l.charAt(0).toLowerCase()+l.slice(1).replace(/[.!?]$/,'');
-    const list=type==='me'?[`/me prépare le matériel nécessaire puis procède à ${lo}.`,`/me ${lo} en respectant les règles d\'hygiène et d\'asepsie.`,`/me effectue ${lo} avec soin, puis note l\'heure et les paramètres dans le dossier.`,`/me vérifie les constantes vitales avant de ${lo}.`]:[`/qu ${lo.charAt(0).toUpperCase()+lo.slice(1)} ?`,`/qu Pouvez-vous me préciser ${lo} ?`,`/qu Avez-vous des informations concernant ${lo} ?`];
+    const list=type==='me'?[`/me prépare le matériel puis procède à ${lo}.`,`/me ${lo} en asepsie.`,`/me ${lo} puis note l\'heure dans le dossier.`,`/me vérifie les constantes avant de ${lo}.`]:[`/qu ${lo.charAt(0).toUpperCase()+lo.slice(1)} ?`,`/qu Pouvez-vous me préciser ${lo} ?`,`/qu Avez-vous des informations concernant ${lo} ?`];
     setResults(list);setSel(new Set([0]));
   };
   const toggle=i=>setSel(s=>{const n=new Set(s);n.has(i)?n.delete(i):n.add(i);return n;});
@@ -1978,22 +1978,22 @@ function perfMe(drug, solv, qte, vol, dose, poids, r){
 
   return {
     verif: fluide
-      ? `/me contrôle la poche de ${nomCourt} avant de la suspendre : nom du soluté, volume de ${nf(vol,0)} mL, date de péremption, limpidité de la solution et intégrité de l’emballage, puis se désinfecte les mains.`
-      : `/me vérifie l’étiquette de l’ampoule de ${drug.nom} — nom du produit, dosage ${drug.amp} et date de péremption — contrôle l’intégrité du conditionnement, se désinfecte les mains et prépare un plan de travail propre.`,
+      ? `/me contrôle la poche de ${nomCourt} : volume de ${nf(vol,0)} mL, péremption, limpidité, emballage intact.`
+      : `/me vérifie l’ampoule de ${drug.nom} (${drug.amp}) : nom, dosage, péremption, conditionnement intact.`,
     prep: fluide
-      ? `/me suspend la poche de ${nf(vol,0)} mL de ${nomCourt} à la potence, y adapte ${ligne} et ferme le clamp avant de purger la ligne.`
+      ? `/me suspend la poche de ${nf(vol,0)} mL de ${nomCourt} à la potence et y adapte ${ligne}.`
       : solv.base==='pur'
-        ? `/me prépare ${drug.nom} ${dilTxt} : ${nf(qte,2)} ${u} pour ${nf(vol,0)} mL, soit une concentration de ${conc}, et purge l’air de la seringue.`
-        : `/me prélève ${nf(qte,2)} ${u} de ${drug.nom} (${drug.amp}) à l’aide d’une seringue stérile puis l’injecte ${dilTxt} pour obtenir ${contenant} de ${nf(vol,0)} mL à ${conc}, avant d’homogénéiser doucement la préparation.`,
+        ? `/me prépare ${drug.nom} sans dilution : ${nf(qte,2)} ${u} pour ${nf(vol,0)} mL (${conc}) et purge l’air de la seringue.`
+        : `/me prélève ${nf(qte,2)} ${u} de ${drug.nom} et l’injecte ${dilTxt} pour ${contenant} de ${nf(vol,0)} mL à ${conc}.`,
     etiq: fluide
-      ? `/me inscrit sur la poche l’heure de pose, le volume de ${nf(vol,0)} mL et le nom du patient, puis reporte l’apport sur la feuille de bilan des entrées et des sorties.`
-      : `/me colle une étiquette sur ${useSe?'la seringue':'la poche'} et y inscrit lisiblement : « ${drug.nom} — ${nf(qte,2)} ${u} / ${nf(vol,0)} mL — ${conc} — ${heureNow()} », puis ajoute ses initiales et le nom du patient.`,
-    purge: `/me connecte ${ligne} à ${fluide?'la poche':'la préparation'}, ouvre le clamp et purge intégralement la ligne jusqu’à chasser la dernière bulle d’air, puis referme le clamp.`,
-    branch: `/me désinfecte le robinet de la voie veineuse à l’antiseptique, contrôle la perméabilité du cathéter par un flush de sérum physiologique, puis y connecte la ligne purgée de ${nomCourt} en vérifiant l’absence de douleur et d’extravasation.`,
+      ? `/me note sur la poche l’heure de pose, le volume de ${nf(vol,0)} mL et le nom du patient.`
+      : `/me étiquette ${useSe?'la seringue':'la poche'} : « ${drug.nom} — ${nf(qte,2)} ${u} / ${nf(vol,0)} mL — ${conc} — ${heureNow()} » avec ses initiales.`,
+    purge: `/me connecte ${ligne} à ${fluide?'la poche':'la préparation'} et purge la ligne jusqu’à la dernière bulle.`,
+    branch: `/me désinfecte le robinet, flush la voie au sérum physiologique et connecte la ligne de ${nomCourt}.`,
     debit: useSe
-      ? `/me installe la seringue de ${drug.nom} dans le pousse-seringue électrique, sélectionne le volume et règle le débit à ${nf(r.mlh,1)} mL/h — soit ${nf(dose,3)} ${drug.dunit}${drug.mode.includes('k')?` pour ${poids} kg`:''} — puis lance la perfusion et s’assure de l’absence d’alarme d’occlusion.`
-      : `/me règle la molette ${appareil} sur ${nf(r.gttes,0)} gouttes par minute, soit ${nf(r.mlh,0)} mL/h, pour faire passer les ${nf(vol,0)} mL en ${drug.mode==='duree'?nf(dose,0)+' minutes':'la durée prescrite'}, et contrôle l’écoulement régulier dans la chambre compte-gouttes.`,
-    surv: `/me note sur la feuille de surveillance l’heure de début, le produit, ${fluide?'le volume':'la dilution'} et le débit réglé, puis met en place la surveillance : ${drug.objectif}. ${drug.mode==='duree'?'Il repasse contrôler le point de ponction avant la fin du passage.':'Il réévalue le débit toutes les 5 minutes selon la réponse du patient.'}`,
+      ? `/me installe la seringue dans le pousse-seringue et règle ${nf(r.mlh,1)} mL/h (${nf(dose,3)} ${drug.dunit}${drug.mode.includes('k')?` pour ${poids} kg`:''}), puis lance la perfusion.`
+      : `/me règle le perfuseur sur ${nf(r.gttes,0)} gouttes/min (${nf(r.mlh,0)} mL/h) pour ${nf(vol,0)} mL en ${drug.mode==='duree'?nf(dose,0)+' minutes':'la durée prescrite'}.`,
+    surv: `/me note l’heure de début, le produit, ${fluide?'le volume':'la dilution'} et le débit, puis surveille : ${drug.objectif}.`,
   };
 }
 
@@ -2700,6 +2700,174 @@ function SessionView({log,onUpdateTime,onDelete,active,onToggleActive,onClear,sh
   );
 }
 
+/* ═══════════════════════════════════════════ BILAN RÉGULATION ══ */
+const BILAN_DEF = {numero:'7442',moi:'VLI04 Ménil, infirmier',mode:'',cause:'',lieu:'',arrivee:'',sexe:'',age:'',poids:'',motif:'',atcd:'',traitements:'',anticoag:'',allergies:'',heure:'',conscience:'',fr:'',spo2:'',o2:'',fc:'',ta:'',temp:'',glyc:'',eva:'',examen:'',gestes:'',evolution:'',demande:'',autres:''};
+
+function buildBilan(b){
+  const v=k=>(b[k]||'').trim();
+  const out=[];
+  out.push(`BILAN – RÉGULATION N° ${v('numero')||'…'}`);
+  if(v('mode')) out.push(`Mode : ${v('mode')}`);
+  out.push('');
+  out.push(`Régulation, bonjour. Ici ${v('moi')||'…'}, pour un bilan sur la régulation ${v('numero')||'…'}.`);
+  const sec=(titre,lignes)=>{ const l=lignes.filter(Boolean); if(l.length){ out.push(''); out.push(titre); out.push(...l); } };
+  sec('CAUSE DU DÉPART',[v('cause'),[v('lieu')&&`Lieu : ${v('lieu')}`,v('arrivee')&&`Heure d'arrivée sur place : ${v('arrivee')}`].filter(Boolean).join('    ')]);
+  sec('IDENTITÉ',[[v('sexe'),v('age')&&`${v('age')} ans`,v('poids')&&`${v('poids')} kg`].filter(Boolean).join(', ')]);
+  sec('MOTIF / CIRCONSTANCES',[v('motif')]);
+  sec('ANTÉCÉDENTS / TRAITEMENTS / ALLERGIES',[
+    v('atcd')&&`ATCD : ${v('atcd')}`,
+    (v('traitements')||v('anticoag'))&&`Traitements : ${v('traitements')||'…'}${v('anticoag')?` (anticoagulants : ${v('anticoag')})`:''}`,
+    v('allergies')&&`Allergies : ${v('allergies')}`
+  ]);
+  sec(v('heure')?`CONSTANTES (à ${v('heure')})`:'CONSTANTES',[
+    v('conscience')&&`Conscience : ${v('conscience')}`,
+    [v('fr')&&`FR : ${v('fr')} /min`,v('spo2')&&`SpO2 : ${v('spo2')} %${v('o2')?` (${v('o2')})`:''}`].filter(Boolean).join('    '),
+    [v('fc')&&`FC : ${v('fc')} /min`,v('ta')&&`TA : ${v('ta')} mmHg`].filter(Boolean).join('    '),
+    [v('temp')&&`T° : ${v('temp')}`,v('glyc')&&`Glycémie : ${v('glyc')}`].filter(Boolean).join('    '),
+    v('eva')&&`Douleur : EVA ${v('eva')} /10`
+  ]);
+  sec('EXAMEN CLINIQUE',[v('examen')]);
+  sec('GESTES / TRAITEMENTS RÉALISÉS',[v('gestes')]);
+  sec('ÉVOLUTION',[v('evolution')]);
+  sec('AUTRES INFORMATIONS',[v('autres')]);
+  sec('DEMANDE',[v('demande')]);
+  return out.join('\n');
+}
+
+function BilanView({showToast}){
+  const [b,setB]=useState(()=>({...BILAN_DEF,...load('mRP2_bilan',{})}));
+  useEffect(()=>{save('mRP2_bilan',b);},[b]);
+  const set=(k,v)=>setB(p=>({...p,[k]:v}));
+  const text=useMemo(()=>buildBilan(b),[b]);
+  const copy=async()=>{
+    try{ await navigator.clipboard.writeText(text); }
+    catch{ const el=document.createElement('textarea');el.value=text;document.body.appendChild(el);el.select();document.execCommand('copy');el.remove(); }
+    showToast('Bilan copié dans le presse-papiers !','me');
+  };
+  const reset=()=>{ if(confirm('Vider le bilan ? (n° de régulation et identité conservés)')) setB(p=>({...BILAN_DEF,numero:p.numero,moi:p.moi})); };
+  const lbl={fontSize:10,fontWeight:800,textTransform:'uppercase',letterSpacing:'0.09em',color:'var(--muted)',marginBottom:6,display:'block'};
+  const grp={display:'flex',gap:10,flexWrap:'wrap',marginBottom:12};
+  const F=(label,k,ph,w=150)=>(
+    <div style={{flex:`1 1 ${w}px`,minWidth:0}}>
+      <span style={lbl}>{label}</span>
+      <input value={b[k]} onChange={e=>set(k,e.target.value)} placeholder={ph||''} style={{...INP}}/>
+    </div>
+  );
+  const A=(label,k,ph)=>(
+    <div style={{marginBottom:12}}>
+      <span style={lbl}>{label}</span>
+      <textarea value={b[k]} onChange={e=>set(k,e.target.value)} placeholder={ph||''} rows={2} style={{...INP,resize:'vertical',fontFamily:'inherit'}}/>
+    </div>
+  );
+  const Chips=(k,opts)=>(
+    <div style={{display:'flex',gap:6,flexWrap:'wrap',marginTop:7}}>
+      {opts.map(o=>{const on=b[k]===o; return (
+        <button key={o} onClick={()=>set(k,on?'':o)} style={{padding:'4px 10px',borderRadius:8,fontSize:11.5,fontWeight:700,cursor:'pointer',fontFamily:'Inter,sans-serif',background:on?'rgba(34,211,238,0.14)':'var(--surface)',border:`1px solid ${on?'rgba(34,211,238,0.4)':'var(--border)'}`,color:on?'#22d3ee':'var(--muted)'}}>{o}</button>
+      );})}
+    </div>
+  );
+  const H=t=><div style={{fontSize:11,fontWeight:900,textTransform:'uppercase',letterSpacing:'0.1em',color:'#22d3ee',margin:'20px 0 10px',paddingBottom:6,borderBottom:'1px solid var(--border)'}}>{t}</div>;
+
+  return (
+    <div style={{display:'flex',flex:1,flexDirection:'column',overflow:'hidden',minHeight:0}}>
+      <div style={{padding:'16px 20px 12px',borderBottom:'1px solid var(--border)',flexShrink:0,display:'flex',alignItems:'center',justifyContent:'space-between',gap:12,flexWrap:'wrap'}}>
+        <div style={{display:'flex',alignItems:'center',gap:12}}>
+          <div style={{width:4,height:26,borderRadius:99,background:'var(--me)',boxShadow:'0 0 12px var(--me)'}}/>
+          <div>
+            <h1 style={{fontSize:19,fontWeight:900,color:'#f1f5f9',letterSpacing:'-0.03em'}}>📻 Bilan régulation</h1>
+            <p style={{fontSize:12,color:'var(--muted)',marginTop:2,fontFamily:'JetBrains Mono'}}>Remplis les champs, le bilan se construit à droite</p>
+          </div>
+        </div>
+        <div style={{display:'flex',gap:8}}>
+          <button onClick={reset} style={{background:'var(--surface)',border:'1px solid var(--border)',color:'var(--red)',padding:'8px 14px',borderRadius:10,cursor:'pointer',fontSize:12.5,fontWeight:700,fontFamily:'Inter,sans-serif'}}>Vider</button>
+          <button onClick={copy} className="create-btn"><Ic.Copy/> Copier le bilan</button>
+        </div>
+      </div>
+      <div style={{flex:1,overflowY:'auto',padding:'8px 20px 24px'}}>
+        <div style={{display:'flex',gap:24,flexWrap:'wrap',alignItems:'flex-start'}}>
+          <div style={{flex:'1 1 420px',minWidth:0}}>
+            {H('Régulation')}
+            <div style={grp}>
+              {F('N° de régulation','numero','7442',110)}
+              {F('Je suis','moi','VLI04 Ménil, infirmier',220)}
+            </div>
+            <div style={{marginBottom:12}}>
+              <span style={lbl}>Mode</span>
+              <input value={b.mode} onChange={e=>set('mode',e.target.value)} placeholder="Radio, téléphone…" style={{...INP}}/>
+              {Chips('mode',['Radio','Téléphone','Sur place'])}
+            </div>
+
+            {H('Départ')}
+            {A('Cause du départ','cause','Motif donné par la régulation : malaise, chute, douleur thoracique, AVP…')}
+            <div style={grp}>
+              {F('Lieu','lieu','Adresse / type de lieu',200)}
+              {F('Heure d\'arrivée','arrivee','ex. 14h32',110)}
+            </div>
+
+            {H('Patient')}
+            <div style={grp}>
+              <div style={{flex:'1 1 200px'}}>
+                <span style={lbl}>Sexe</span>
+                {Chips('sexe',['Homme','Femme'])}
+              </div>
+              {F('Âge (ans)','age','',80)}
+              {F('Poids (kg)','poids','',80)}
+            </div>
+            {A('Motif / circonstances','motif','Ce qui s\'est passé, début des symptômes, ce que dit le patient ou l\'entourage')}
+            {A('Antécédents','atcd')}
+            <div style={grp}>
+              <div style={{flex:'2 1 220px'}}>
+                <span style={lbl}>Traitements</span>
+                <input value={b.traitements} onChange={e=>set('traitements',e.target.value)} style={{...INP}}/>
+              </div>
+              <div style={{flex:'1 1 150px'}}>
+                <span style={lbl}>Anticoagulants</span>
+                {Chips('anticoag',['oui','non'])}
+              </div>
+            </div>
+            {F('Allergies','allergies','',200)}
+
+            {H('Constantes')}
+            <div style={grp}>
+              {F('Heure','heure','ex. 14h40',90)}
+              {F('Conscience','conscience','Glasgow / AVPU',150)}
+            </div>
+            <div style={grp}>
+              {F('FR (/min)','fr','',80)}
+              {F('SpO2 (%)','spo2','',80)}
+              {F('O2','o2','air ambiant / O2 6 L/min',170)}
+            </div>
+            <div style={grp}>
+              {F('FC (/min)','fc','',80)}
+              {F('TA (mmHg)','ta','ex. 120/80',100)}
+              {F('T°','temp','',80)}
+              {F('Glycémie','glyc','',90)}
+              {F('EVA /10','eva','',80)}
+            </div>
+
+            {H('Suite')}
+            {A('Examen clinique','examen','Signes positifs et négatifs importants')}
+            {A('Gestes / traitements réalisés','gestes','VVP, O2, antalgie, ECG… avec doses et heure')}
+            <div style={{marginBottom:12}}>
+              <span style={lbl}>Évolution</span>
+              <input value={b.evolution} onChange={e=>set('evolution',e.target.value)} style={{...INP}}/>
+              {Chips('evolution',['Amélioration','Stable','Aggravation'])}
+            </div>
+            {A('Autres informations','autres','Tout ce que tu veux ajouter')}
+            {A('Demande','demande','Renfort médicalisé / VSAV / avis médical / orientation vers…')}
+          </div>
+
+          <div style={{flex:'1 1 360px',minWidth:0,position:'sticky',top:8}}>
+            {H('Aperçu')}
+            <pre style={{whiteSpace:'pre-wrap',wordBreak:'break-word',fontFamily:'JetBrains Mono,monospace',fontSize:12.5,lineHeight:1.65,color:'#cbd5e1',background:'var(--surface)',border:'1px solid var(--border)',borderRadius:12,padding:'16px 18px',margin:0}}>{text}</pre>
+            <button onClick={copy} className="copy-next-btn" style={{marginTop:12,background:'linear-gradient(135deg,#0891b2,#4f46e5)',color:'white',border:'none'}}>📋 Copier le bilan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ═══════════════════════════════════════════════ APP ══ */
 function App(){
   const [custom,setCustom]=useState(()=>load('mRP2_custom',[]));
@@ -2783,6 +2951,7 @@ function App(){
   const isProcView=view==='procedures';
   const isPerfView=view==='perfusion';
   const isSessionView=view==='session';
+  const isBilanView=view==='bilan';
 
   return(
     <div style={{display:'flex',height:'100vh',overflow:'hidden'}}>
@@ -2867,6 +3036,13 @@ function App(){
             style={isPerfView?{background:'rgba(56,189,248,0.09)',color:'#38bdf8'}:{}}>
             <span><span style={{marginRight:8}}>🧪</span>Faire ma perfusion</span>
             <span className="key-tag" style={{fontSize:9}}>Ctrl+I</span>
+          </button>
+
+          {/* Bilan button */}
+          <button onClick={()=>{setView(v=>v==='bilan'?'macros':'bilan');setSidebar(false);}}
+            className={`cat-btn ${isBilanView?'active':''}`}
+            style={isBilanView?{background:'rgba(34,211,238,0.09)',color:'#22d3ee'}:{}}>
+            <span><span style={{marginRight:8}}>📻</span>Bilan régulation</span>
           </button>
 
           {/* Session button */}
@@ -2955,12 +3131,17 @@ function App(){
             🧪 {isPerfView?'Fermer perfusion':'Faire ma perfusion'}
           </button>
 
+          {/* Bilan toggle chip */}
+          <button onClick={()=>setView(v=>v==='bilan'?'macros':'bilan')} style={{background:isBilanView?'rgba(34,211,238,0.12)':'var(--surface)',border:`1px solid ${isBilanView?'rgba(34,211,238,0.3)':'var(--border)'}`,color:isBilanView?'#22d3ee':'var(--muted)',padding:'8px 14px',borderRadius:10,cursor:'pointer',fontSize:12.5,fontWeight:700,display:'flex',alignItems:'center',gap:7,flexShrink:0,fontFamily:'Inter,sans-serif',transition:'all 0.15s'}}>
+            📻 {isBilanView?'Fermer bilan':'Bilan régulation'}
+          </button>
+
           {/* Session toggle chip */}
           <button onClick={openSession} style={{background:isSessionView?'rgba(52,211,153,0.12)':'var(--surface)',border:`1px solid ${isSessionView?'rgba(52,211,153,0.3)':'var(--border)'}`,color:isSessionView?'var(--green)':'var(--muted)',padding:'8px 14px',borderRadius:10,cursor:'pointer',fontSize:12.5,fontWeight:700,display:'flex',alignItems:'center',gap:7,flexShrink:0,fontFamily:'Inter,sans-serif',transition:'all 0.15s'}}>
             🕒 {isSessionView?'Fermer session':sessionActive?`Session (${sessionLog.length})`:'Mode session'}
           </button>
 
-          {!isBodyView&&!isProcView&&!isPerfView&&!isSessionView&&<>
+          {!isBodyView&&!isProcView&&!isPerfView&&!isSessionView&&!isBilanView&&<>
             <div style={{position:'relative',flex:1,maxWidth:500}}>
               <span style={{position:'absolute',left:13,top:'50%',transform:'translateY(-50%)',color:'var(--muted)',pointerEvents:'none'}}><Ic.Search/></span>
               <input ref={searchRef} type="text" placeholder="Rechercher /me ou /qu… (Ctrl+K)" value={q} onChange={e=>setQ(e.target.value)} style={{...INP,paddingLeft:38,paddingRight:36,borderRadius:12,width:'100%'}}/>
@@ -2977,6 +3158,8 @@ function App(){
           <ProceduresView showToast={showToast}/>
         ) : isPerfView ? (
           <PerfusionView showToast={showToast}/>
+        ) : isBilanView ? (
+          <BilanView showToast={showToast}/>
         ) : isSessionView ? (
           <SessionView log={sessionLog} onUpdateTime={updateSessionTime} onDelete={deleteSessionEntry}
             active={sessionActive} onToggleActive={toggleSessionActive} onClear={clearSessionLog}
