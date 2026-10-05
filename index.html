@@ -2705,6 +2705,159 @@ function BilanView({showToast}){
   );
 }
 
+/* ═══════════════════════════════════ FICHES PROTOCOLES & PHARMACO (données issues des documents CESU 93) ══ */
+const FICHES_GESTES = [
+ {id:"g_iot", titre:"Intubation oro-trachéale (IOT)", icon:"🫁", color:"#a78bfa", tag:"Geste", src:"UE 4.4 · CESU 93",
+  crit:["Acte médical : il permet de garder les voies aériennes en sécurité.","Troubles de la conscience inexpliqués graves (GCS < 8) sans signes d'amélioration.","Mise en coma artificiel sur des douleurs résistantes aux traitements morphiniques.","Mise au repos des voies respiratoires lors d'une dyspnée aiguë résistante à la VNI.","Mise en place d'une ventilation dans un mécanisme ORL obstructif."],
+  steps:["Étape 1 · Préoxygénation : MHC à 15 L/min, ou VNI en mode préoxygène (Fi 100 %) chez le patient conscient ; BAVU à 15 L/min si le patient est inconscient. Objectif : intuber à 100 % de SpO2.","Étape 1 bis · Préparation du matériel, en parallèle : respirateur préparé (souvent par l'ADE) et branché à la bouteille d'O2, réglages prescrits par le médecin. L'IDE prépare les traitements pour anticiper les effets de la ventilation artificielle (chute de TA, bradycardie) et s'assure d'avoir 2 voies d'abord minimum. Le médecin prépare la zone stérile (sonde adaptée et testée, mandrin, lame testée), place la tête du patient et retire les prothèses dentaires.","Étape 2 · Induction : endormir le patient avant de l'intuber (confort et pas de gestes parasites). Etomidate (ISR, sédatif de base), Kétamine (face à un état de choc), Propofol (sédation de courte durée, prioritaire si ISR dans le cadre de l'épilepsie).","Étape 3 · Curarisation : Suxaméthonium (Célocurine), curare de première intention, 1 mg/kg IVD. Des fasciculations parcourent le corps quand le patient est curarisé ; il faut alors le ballonner au BAVU car il ne respire plus.","Étape 4 · Intubation : le médecin place la tête en arrière et utilise le laryngoscope. Aspiration si sécrétions. Manœuvre de Sellick par une autre personne. Cordes vocales anesthésiées au Xylo spray. 45 secondes après la curarisation ou à l'apparition des fasciculations, la sonde passe, le ballonnet franchit les cordes vocales, est gonflé, et la sonde est raccordée au BAVU.","Étape 5 · Vérifications : deux insufflations ; l'IDE ausculte les deux poumons (intubation non sélective) ; branchement du capnographe puis nouvelle insufflation pour vérifier le CO2 libéré (35 à 45 mmHg). Noter le repère de la sonde aux dents, fixer avec la bande de fixation, relier la sonde au respirateur réglé et vérifier le ballonnet au manomètre du kit (ni sous-gonflé ni trop gonflé).","Étape 6 · Entretien : association d'un hypnotique (Midazolam) et d'un antalgique fort (Sufentanil) à la seringue électrique selon prescription."],
+  prep:[["Etomidate (Hypnomidate) 0,3 mg/kg IVDL","1 ampoule de 40 mg dans 20 mL pour 2 mg/mL. Patient de 70 kg : 21 mg soit 10 mL."],["Kétamine 2 mg/kg IVDL (état de choc)","1 ampoule de 250 mg dans 10 mL pour 25 mg/mL. Patient de 70 kg : 140 mg soit 6 mL."],["Propofol 2 mg/kg IVDL","1 ampoule de 200 mg dans 20 mL pour 20 mg/mL. Patient de 70 kg : 140 mg soit 7 mL."],["Suxaméthonium (Célocurine) 1 mg/kg IVD","1 ampoule de 100 mg (2 mL) avec 8 mL de NaCl pour 10 mg/mL. Patient de 70 kg : 70 mg."],["Hypnovel (Midazolam) IVSE","1 ampoule de 50 mg (50/10 mL) dans une seringue ramenée à 50 mL avec du SSI, soit 1 mg/mL. Vitesse de 2,5 mL/h à 10 mL/h."],["Sufentanil IVSE","1 ampoule de 250 μg dans une seringue ramenée à 50 mL avec du SSI, soit 5 μg/mL. Vitesse de 0,8 mL/h à 20 mL/h."]],
+  att:["JAMAIS de curarisation sur un patient éveillé : la drogue paralyse aussi les muscles respiratoires.","Ballonner le patient au BAVU dès la curarisation : il ne respire plus.","Intuber un patient à 100 % de SpO2 : la préoxygénation est indispensable.","Prévoir au minimum 2 voies d'abord pour passer tous les traitements.","Pas de CO2 (ou très peu) au capnographe : l'intubation est dans l'estomac.","En cas de doute à l'auscultation : retirer la sonde de 2 cm et ausculter à nouveau.","Propofol : importantes répercussions hémodynamiques possibles. Kétamine : moins d'effets hémodynamiques, à choisir face à un état de choc.","Une fois relié au respirateur, le patient dépend d'une bouteille d'O2 qui se vide très rapidement.","Un soignant est désigné pour tenir la sonde d'intubation lors des relevages et transferts.","Le patient ne peut pas se réveiller dans cette configuration."]},
+ {id:"g_vvp", titre:"Voie veineuse périphérique (VVP)", icon:"💉", color:"#22d3ee", tag:"Geste", src:"UE 4.4 · CESU 93",
+  crit:["Acte IDE sur prescription médicale (orale ou téléphonique) ou PISU.","Utile pour passer des traitements, mettre des solutés de remplissage ou simplement une voie d'attente."],
+  steps:["Expliquer au patient le pourquoi et le comment de la pose : il n'est pas forcément prêt psychologiquement à se faire perfuser.","Choisir le cathéter selon 4 paramètres : débit souhaité, capital veineux, âge, localisation.","Purger la tubulure avec le soluté en amont de la pose.","Poser la VVP. Il est possible de prélever du sang pendant la pose.","Poser un prolongateur si besoin (il ne nécessite pas obligatoirement de soluté).","Régler le débit avec la molette de la tubulure."],
+  prep:[["Cathéter vert 18G","Dans l'urgence."],["Cathéter gris 16G","En cas d'état de choc et d'hémorragie, autant que possible."],["Cathéter rose 20G","Si le patient est difficile à piquer."],["Matériel","KT 18 et 20G, ampoules des principaux traitements, matériel pour prélèvements sanguins, plateau de préparation, chlorhexidine, alcool 90°, SHA, sparadrap, tubulures et robinet, boîte OPCT, crochet pour perfusion."]],
+  att:["Ne pas perfuser un bras hémiplégique, un hématome ou une zone infectée.","Prélèvement pendant la pose possible pour : tubes d'examens, Hémocue, glycémie, gaz veineux."]},
+ {id:"g_io", titre:"Voie intra-osseuse (IO)", icon:"🦴", color:"#fb923c", tag:"Geste", src:"UE 4.4 et UE 2.11 · CESU 93",
+  crit:["Acte sur prescription médicale (orale ou téléphonique) ou PISU, pour IDE formé.","Indications : ACR adulte après échec de VVP > 90 secondes ; urgence vitale immédiate avec VVP non réalisable.","Pré-hospitalier : deux indications seulement, VVP trop longue en urgence vitale, et ACR de l'enfant."],
+  steps:["Vérifier les contre-indications.","Préparer le matériel : perceuse, aiguille IO, pansement stabilisateur, prolongateur avec clamp, compresses stériles, Bétadine alcoolique.","Anticiper la douleur (MEOPA, antalgiques) : soin douloureux, surtout chez le patient conscient.","Poser l'aiguille IO et faire un flush de 10 mL de SSI à la pose.","Administrer les traitements sous manchette à pression ou à la seringue électrique.","Purger la ligne entre chaque injection."],
+  prep:[["Pression sur la poche","Manchette à pression. Sans manchette : garrot élastique autour de la poche, ou un secouriste appuie sur la poche jusqu'à trouver une solution plus adaptée."],["Traitements","L'ensemble des traitements habituellement administrés par voie IV peut passer en IO."]],
+  att:["Contre-indications : fracture de l'os, prothèse ou ostéosynthèse sur l'os abordé, infection.","Soin douloureux : habituellement utilisé chez la personne inconsciente mais possible chez un patient conscient.","La résistance de l'os impose manchette à pression ou seringue électrique."]},
+ {id:"g_hemocue", titre:"Hémocue", icon:"🩸", color:"#f43f5e", tag:"Geste", src:"UE 4.4 · CESU 93",
+  crit:["Acte secouriste sur prescription médicale (orale ou téléphonique).","Apporte une information sur un saignement potentiel caché.","Estimation du taux d'hémoglobine sur sang capillaire."],
+  steps:["Mesure capillaire avec la troisième goutte de sang, ou une goutte de sang du cathéter."],
+  prep:[["Matériel","Appareil à Hémocue, lame à insérer, réserve de lames en pot ou en unidose, lancettes."],["Normes","Homme : 14 à 18 g/dL. Femme : 12 à 16 g/dL."]],
+  att:["Fiabilité limitée : le résultat peut varier de 1 voire 2 points par rapport au taux normal.","Face à un résultat anormal, réaliser un deuxième examen pour adapter la stratégie thérapeutique."]},
+ {id:"g_gds", titre:"Gaz du sang artériel", icon:"🩸", color:"#ef4444", tag:"Geste", src:"UE 4.4 · CESU 93",
+  crit:["Acte IDE sur prescription médicale (orale ou téléphonique).","Évalue l'efficacité de l'oxygénation du sang par la respiration.","Dose le pH et les lactates artériels pour diagnostiquer rapidement acidoses et états de choc."],
+  steps:["Prélèvement de sang artériel sur prescription, puis analyse à l'analyseur."],
+  prep:[],
+  att:["Soin douloureux : prévenir le patient."]},
+ {id:"g_ecg", titre:"ECG", icon:"📊", color:"#06b6d4", tag:"Geste", src:"UE 4.4 · CESU 93",
+  crit:["Acte secouriste sur prescription médicale (orale ou téléphonique).","Enregistrement de l'activité électrique du cœur."],
+  steps:["Enregistrement en 12 dérivations, possible également en 18 dérivations."],
+  prep:[],
+  att:["ECG à télétransmettre au SAMU dans les PISU 8 (OAP) et 13 (douleur thoracique), et à envoyer systématiquement en cas de brûlure électrique (PISU 5)."]},
+ {id:"g_transfusion", titre:"Transfusion", icon:"🩸", color:"#f43f5e", tag:"Geste", src:"UE 4.4 · CESU 93",
+  crit:["Acte IDE sur prescription médicale : injection en IV d'un ou de plusieurs composants du sang.","Indication majeure en pré-hospitalier : choc hémorragique (traumatisme ou hémorragie extériorisée)."],
+  steps:["Une hémoglobine glyquée est prélevée afin de confirmer le diagnostic de l'anémie."],
+  prep:[],
+  att:["Il existe plusieurs types de produits sanguins."]},
+ {id:"g_remplissage", titre:"Remplissage vasculaire", icon:"🫙", color:"#38bdf8", tag:"Geste", src:"UE 2.11 · CESU 93",
+  crit:["Compenser une perte de volémie ou augmenter le volume d'eau dans les vaisseaux pour faire monter la tension."],
+  steps:["Utiliser un soluté adapté.","Numéroter l'ensemble des poches pour connaître à tout moment la quantité de remplissage apportée.","Remplir en titration : à la fin de chaque poche, évaluer l'efficacité pour ne pas ajouter de poches inutiles.","Poches à conserver en hauteur par rapport au patient (accrochées ou portées par un témoin)."],
+  prep:[],
+  att:["Pas de glucosé sur un traumatisé crânien ni sur un diabétique avec un diabète équilibré.","En cas d'insuffisance cardiaque, remplir de manière prudente : ne pas majorer la surcharge. Si possible, préférer un sérum glucosé comme garde veine.","Cristalloïdes isotoniques : il faut 5 à 6 fois le volume perdu pour compenser. CI : insuffisance cardiaque, hyperhydratation, hyperkaliémie ou hypercalcémie (pour le Ringer Lactate)."]},
+];
+
+const FICHES_PHARMA = [
+ {id:"d_para", nom:"Paracétamol (Perfalgan)", cl:"Antalgique palier 1", color:"#22d3ee", ind:"Douleur faible à modérée", ci:"Insuffisance hépatique", ei:"", adm:["IV ou PO, max 4 g/jour, toutes les 4 à 6 h.","IVL : perfusette déjà constituée de 1 g/100 mL, à passer en 15 minutes."], att:["Max 4 g par jour.","Surdosage : antidote N-Acétylcystéine (Hidonac)."]},
+ {id:"d_ains", nom:"AINS (Kétoprofène, Ibuprofène…)", cl:"Antalgique palier 1", color:"#22d3ee", ind:"Douleur faible à modérée", ci:"", ei:"Problèmes digestifs", adm:["IV ou PO.","IVL : 1 ampoule selon prescription médicale dans une perfusette de 100 mL."], att:[]},
+ {id:"d_nefo", nom:"Néfopam (Acupan)", cl:"Antalgique palier 1", color:"#22d3ee", ind:"Douleur faible à modérée", ci:"", ei:"Nausées", adm:["IVL ou PO.","IVL : 1 ampoule (20 mg/2 mL) selon prescription médicale dans une perfusette de 100 mL."], att:[]},
+ {id:"d_morph", nom:"Morphine", cl:"Antalgique palier 3", color:"#f43f5e", ind:"Douleur intense", ci:"", ei:"Bradypnée, somnolence, confusion, nausées", adm:["PO, IV ou SC, en titration ++.","IV efficace en 5 minutes pendant 4 h.","IVD : 1 ampoule de 10 mg à diluer dans 10 mL pour 1 mg/mL."], att:["Risque de bradypnée, somnolence, confusion et nausées : surveiller la ventilation.","Hors présence d'un médecin, c'est le PISU qui détermine l'antalgique et la dose.","Antidote : Naloxone (Narcan)."]},
+ {id:"d_keta", nom:"Kétamine", cl:"Anesthésique / analgésique", color:"#a78bfa", ind:"Anesthésie et analgésie", ci:"HyperTA", ei:"Hypertension, tachycardie, désorientation", adm:["Douleur aiguë en MU, IVDL : 0,1 à 0,5 mg/kg (patient de 70 kg : 14 mg soit 1,4 mL).","Préparation : seringue de 50 mg/5 mL (une ampoule soit 10 mg/mL).","Induction IOT en état de choc : 2 mg/kg, ampoule de 250 mg dans 10 mL pour 25 mg/mL."], att:["Contre-indiquée en cas d'HTA.","Choix de l'induction face à un état de choc (peu d'effets hémodynamiques)."]},
+ {id:"d_mida", nom:"Midazolam (Hypnovel)", cl:"Benzodiazépine", color:"#a78bfa", ind:"Sédation vigile (antalgie, agitation), état de mal épileptique", ci:"État de choc", ei:"Somnolence, apnée, hypotension, coma", adm:["Sédation vigile IVD : 2 à 2,5 mg (ampoule de 5 mg/5 mL).","Sédation vigile intranasale : 5 mg dans chaque narine (ampoule de 5 mg/mL).","État de mal épileptique IM : 10 mg pour 70 kg.","Sédation-analgésie pour acte médico-chirurgical invasif (plaies étendues, réalignement de membre, réduction de luxation) : dans une seringue de 20 mL, 50 mg de Kétamine et 2 mg de Midazolam ramenés à 20 mL avec du SSI, soit 2 mL/10 kg IVDL (14 mL pour 70 kg).","Entretien après IOT : 50 mg ramenés à 50 mL (1 mg/mL), 2,5 à 10 mL/h."], att:["Sédation-analgésie pour acte invasif : préparer le matériel de réanimation, patient scopé. Risque de coma et de dépression respiratoire.","Contre-indiqué en état de choc.","Antidote : Flumazénil (Anexate)."]},
+ {id:"d_adre", nom:"Adrénaline", cl:"Catécholamine", color:"#fb923c", ind:"ACR, choc anaphylactique, état de choc", ci:"", ei:"Tachycardie, HTA, céphalées", adm:["ACR IVD : 1 ampoule de 5 mg/5 mL dans une seringue, administration pure 1 mg.","Choc anaphylactique IM : 0,5 mg pur.","Choc anaphylactique en aérosol : 1 mg dans 4 mL de SSI.","Choc anaphylactique IVD (seconde ligne) : 0,5 mg dans une seringue de 10 mL de SSI pour 0,05 mg/mL."], att:["Favorise la contractilité du myocarde.","En IM, l'adrénaline peut aller jusqu'à 0,5 mg."]},
+ {id:"d_amio", nom:"Amiodarone (Cordarone)", cl:"Antiarythmique", color:"#fb923c", ind:"ACR choqué (TV), tachycardie", ci:"", ei:"Bradycardie", adm:["ACR IVD : 2 ampoules de 150 mg/3 mL dans une seringue, puis 1 ampoule de 150 mg.","Autres cas IVL : 2 ampoules de 150 mg/3 mL avec une perfusion de G5 % sur 15 min."], att:["Bradycardisant : surveiller le scope."]},
+ {id:"d_augm", nom:"Augmentin (Amoxicilline + acide clavulanique)", cl:"Antibiotique large spectre", color:"#34d399", ind:"Plaies ouvertes", ci:"Allergie à la pénicilline et aux céphalosporines", ei:"Allergie", adm:["Cas général IVL : 2 g dans une perfusette de 100 mL."], att:["Rechercher une allergie à la pénicilline ou aux céphalosporines avant injection."]},
+ {id:"d_exa", nom:"Exacyl (Acide tranexamique)", cl:"Antifibrinolytique", color:"#f43f5e", ind:"Hémorragie", ci:"", ei:"", adm:["Cas général IVL : 2 ampoules de 500 mg dans une perfusion de 100 mL sur 15 minutes."], att:["Empêche la destruction des caillots qui se forment naturellement lors d'une hémorragie."]},
+ {id:"d_cyano", nom:"Hydroxocobalamine (Cyanokit)", cl:"Antidote", color:"#fbbf24", ind:"Intoxication au cyanure (incendies)", ci:"", ei:"Allergie, urines rouges pendant 2 à 3 jours", adm:["IVL : 1 flacon de 5 g dilué dans 200 mL de NaCl sur 15 minutes."], att:["Prévenir que les urines seront rouges pendant 2 à 3 jours."]},
+ {id:"d_ringer", nom:"Ringer Lactate", cl:"Cristalloïde isotonique", color:"#38bdf8", ind:"Soluté de choix pour les brûlés, choc anaphylactique", ci:"Trauma crânien, insuffisance cardiaque", ei:"", adm:["Brûlé IVL : 20 mL/kg sur la première heure.","Choc anaphylactique IVL : 10 à 20 mL/kg selon l'hypovolémie."], att:["Contre-indiqué en cas d'hyperkaliémie ou d'hypercalcémie."]},
+ {id:"d_salbu", nom:"Salbutamol", cl:"Bronchodilatateur", color:"#22d3ee", ind:"Asthme aigu grave, BPCO spastique, hyperkaliémie", ci:"", ei:"Tachycardie, palpitations, céphalées, nausées", adm:["Aérosol : 1 pipette de 5 mg/2,5 mL diluée avec 5 mL de NaCl pendant 10 minutes."], att:["Nébulisation : pas plus de 15 minutes, patient en décubitus dorsal à 30° minimum.","Série de 3 aérosols possible : 1 salbutamol + ipratropium, puis 1 salbutamol seul, puis un dernier salbutamol seul."]},
+ {id:"d_ipra", nom:"Ipratropium", cl:"Bronchodilatateur", color:"#22d3ee", ind:"Asthme aigu grave, poussée aiguë de BPCO", ci:"", ei:"Céphalées, nausées, vertiges", adm:["Aérosol : 1 pipette de 0,5 mg/2 mL pendant 10 minutes."], att:["TOUJOURS en association avec le Salbutamol."]},
+ {id:"d_aspe", nom:"Acide acétylsalicylique (Aspégic)", cl:"Antiagrégant, antipyrétique", color:"#f43f5e", ind:"SCA, AVC, péricardite", ci:"", ei:"Hémorragie, allergie, ulcère gastrique", adm:["SCA IVD : 250 mg, soit 1 flacon de 500 mg dilué avec 10 mL d'EPPI (administrer 5 mL).","Péricardite IVL : 1 g dans une perfusette de 100 mL sur 15 minutes.","AVC IVD : 1 à 5 mg/kg (patient de 70 kg : 70 à 350 mg)."], att:["Risque hémorragique."]},
+ {id:"d_nati", nom:"Trinitrine (Natispray)", cl:"Vasodilatateur", color:"#f43f5e", ind:"Angor, test diagnostique de l'IDM", ci:"", ei:"Hypotension, céphalées", adm:["1 pulvérisation sublinguale."], att:["Surveiller la tension (hypotension)."]},
+ {id:"d_tica", nom:"Ticagrelor (Brilique)", cl:"Inhibiteur de l'agrégation plaquettaire", color:"#f43f5e", ind:"SCA", ci:"", ei:"Hémorragie, bradycardie transitoire", adm:["2 comprimés de 90 mg en sublingual."], att:["Risque hémorragique."]},
+ {id:"d_rivo", nom:"Clonazépam (Rivotril)", cl:"Anticonvulsivant, myorelaxant", color:"#a78bfa", ind:"Convulsions, épilepsie", ci:"", ei:"Hypotension, hypotonie, nausées, allergie", adm:["IVD : 1 ampoule de 1 mg/mL diluée avec 1 mL d'EPPI, renouvelable une fois 5 minutes après si besoin."], att:[]},
+ {id:"d_kepp", nom:"Lévétiracétam (Keppra)", cl:"Anticonvulsivant", color:"#a78bfa", ind:"État de mal épileptique", ci:"", ei:"Perturbation de la NFS, insomnie, agressivité", adm:["IVL : 40 à 60 mg/kg dilué dans une perfusette de 500 mL de NaCl sur 10 minutes. Flacon de 500 mg (70 kg : 3,5 g soit 7 flacons)."], att:[]},
+ {id:"d_flum", nom:"Flumazénil (Anexate)", cl:"Antidote des benzodiazépines", color:"#fbbf24", ind:"Intoxications aiguës aux benzodiazépines (Oxazépam, Alprazolam, Valium…)", ci:"", ei:"Convulsions", adm:["IVD en titration : 0,1 à 0,3 mg réévalué minute par minute, jusqu'à signes de réveil francs et arrêt de la dépression respiratoire.","Ampoule de 0,5 mg/5 mL soit 0,1 mg/mL."], att:["MAXIMUM 2 mg.","Risque de convulsions."]},
+ {id:"d_nalo", nom:"Naloxone (Narcan)", cl:"Antidote des opioïdes", color:"#fbbf24", ind:"Intoxication morphinique et opioïde (morphine, codéine, tramadol, fentanyl…)", ci:"", ei:"Frissons, hyperventilation, agitation", adm:["IVD : diluer 1 ampoule de 0,4 mg dans une seringue de 10 mL, puis titration mL par mL (0,04 mg) toutes les 1 à 3 minutes, jusqu'à ventilation spontanée avec FR > 12/min."], att:["Titrer : ne pas injecter en bolus."]},
+ {id:"d_hido", nom:"N-Acétylcystéine (Hidonac)", cl:"Antidote du paracétamol", color:"#fbbf24", ind:"Surdosage au paracétamol", ci:"", ei:"Nausées, vomissements, allergie", adm:["IVL : 200 mg/kg sur 4 h dans un Phy de 500 mL (70 kg : 14 g soit 3 flacons de 5 g/25 mL)."], att:[]},
+ {id:"d_etom", nom:"Etomidate (Hypnomidate)", cl:"Hypnotique d'induction", color:"#a78bfa", ind:"Induction IOT (ISR, sédatif de base)", ci:"", ei:"", adm:["0,3 mg/kg IVDL. Ampoule de 40 mg dans 20 mL pour 2 mg/mL (70 kg : 21 mg soit 10 mL)."], att:["Voir fiche Intubation."]},
+ {id:"d_prop", nom:"Propofol", cl:"Hypnotique d'induction", color:"#a78bfa", ind:"Sédation de courte durée. Prioritaire si ISR dans le cadre de l'épilepsie.", ci:"", ei:"Répercussions hémodynamiques", adm:["2 mg/kg IVDL. Ampoule de 200 mg dans 20 mL pour 20 mg/mL (70 kg : 140 mg soit 7 mL)."], att:["Importantes répercussions hémodynamiques possibles."]},
+ {id:"d_celo", nom:"Suxaméthonium (Célocurine)", cl:"Curare", color:"#a78bfa", ind:"Curarisation de première intention pour l'IOT", ci:"", ei:"Fasciculations", adm:["1 mg/kg IVD. Ampoule de 100 mg (2 mL) avec 8 mL de NaCl pour 10 mg/mL (70 kg : 70 mg)."], att:["JAMAIS de curarisation sur un patient éveillé.","Ballonner au BAVU : le patient ne respire plus."]},
+];
+
+const FICHES_VOIES = [
+ ["Per os (PO)","Voie orale."],
+ ["Sublinguale","À ne pas confondre avec la voie PO : utilise les muqueuses sous la langue pour rejoindre la circulation sanguine. Exemples : Zophren, Natispray, Paracétamol, Spasfon."],
+ ["Inhalation","Tous les gaz, grâce à l'effort inspiratoire du patient. Exemples : Oxygène, MEOPA."],
+ ["Nébulisation","Traitements préparés en amont dans une chambre de nébulisation, dissipés en fines gouttelettes dans un masque. Consignes : ne pas dépasser 15 minutes, décubitus dorsal à 30° minimum. Exemples : Salbutamol, Ipratropium."],
+ ["IV Direct","L'infirmier administre la dose depuis une seringue vers le cathéter d'un coup, puis rince."],
+ ["IV Direct Lent","Même principe, administré sur quelques secondes, puis rinçage."],
+ ["IV Lent","Via une tubulure souvent reliée à un flacon. Une injection trop rapide provoque des effets indésirables. Nécessite une reconstitution dans une poche, sauf rare exception."],
+ ["IV Pousse-seringue","Le PSE est une forme d'IVL qui administre un médicament de manière sûre et régulière."],
+ ["Intramusculaire (IM)","Distribution plus lente et continue, ou voie veineuse non accessible. Face supérieure de la cuisse, quart supéro-externe de la fesse ou deltoïde. Exemples : vaccins, adrénaline jusqu'à 0,5 mg, Valium."],
+ ["Sous-cutanée (SC)","Ne pas confondre avec l'IM : couches superficielles de la peau. Cuisses, bras ou ventre (à bonne distance du nombril). Exemples : insuline, Lovenox."],
+ ["Intra-osseuse (IO)","Deux indications en pré-hospitalier : VVP trop longue en urgence vitale, et ACR de l'enfant. Tous les traitements IV passent de la même façon."],
+ ["Intrarectale","Voie d'abord privilégiée des enfants. Délai d'action court, absorption rapide. Canule rectale lubrifiée pour ne pas abîmer le rectum."],
+ ["Intranasale","De plus en plus utilisée, notamment pour les antalgiques puissants."],
+];
+const FICHES_SOLUTES = [
+ ["Cristalloïdes isotoniques : Ringer Lactate et SSI (NaCl 0,9 %)","Il faut 5 à 6 fois le volume perdu pour compenser. Aucun effet sur l'hémostase et la fonction rénale, aucun risque allergique. CI : insuffisance cardiaque, hyperhydratation, hyperkaliémie ou hypercalcémie (pour le Ringer Lactate)."],
+ ["NaCl 10 ou 20 % (hypertonique)","Réhydratation plus efficace."],
+ ["Glucosés G5, G10, G30 %","Resucrage ou apport calorique. Pas de glucosé sur un traumatisé crânien ni sur un diabétique avec un diabète équilibré."],
+ ["Bicarbonates de sodium 1,4 et 2,4 %","Corrigent les acidoses métaboliques."],
+ ["Mannitol 10, 20 et 25 %","Réduit l'hypertension intracrânienne."],
+];
+const FICHES_DOTATION = [
+ {t:"MedPack Réa", items:["Flumazénil (Anexate) 1 mg/10 mL ×1","Naloxone 0,4 mg/1 mL ×2","Midazolam (Hypnovel) 5 mg/5 mL ×1","Kétamine 250 mg/5 mL ×1","Morphine 10 mg/mL ×1","Polaramine 5 mg/1 mL ×1","G30 % 10 mL ×4","Amiodarone (Cordarone) 150 mg/3 mL ×3","Adrénaline 5 mg/5 mL ×2","Atropine 1 mg/1 mL ×1","Aspégic Fl 500 mg ×1","Héparine sodique 25000 UI/5 mL ×1","Lovenox 10000 UI seringue 1 mL ×1","Isosorbide dinitrate (Risordan) 10 mg/10 mL ×1","Exacyl 500 mg/5 mL ×2","Clonazépam (Rivotril) 1 mg/1 mL ×1","Paracétamol 500 mg ×4","Ticagrelor (Brilique) 90 mg ×2","Clopidogrel (Plavix) 300 mg ×2","Perfalgan 1 g/100 mL ×1","NaCl 0,9 % 500 mL ×1","NaCl 0,9 % 100 mL ×2","G5 % 250 mL ×1"]},
+ {t:"Dans les AR (toutes)", items:["Adrénaline 5 mg/5 mL ×5","Adrénaline 1 mg/1 mL ×5","Amiodarone 150 mg/3 mL ×5","Aspégic Fl 500 mg ×3","Atropine 0,5 mg/1 mL ×5","Brevibloc (esmolol) 100 mg/10 mL ×6","Dobutamine 250 mg/20 mL ×3","Exacyl 500 mg/5 mL ×10","Héparine sodique 25000 UI/5 mL ×3","Furosémide (Lasilix) 20 mg/2 mL ×10","Lovenox 10000 UI ×2","Méthylprednisolone (Solumédrol) 120 mg/2 mL ×2","Nicardipine (Loxen) 10 mg/10 mL ×2","Noradrénaline 8 mg/4 mL ×4","Risordan 10 mg/10 mL ×3","Salbutamol 5 mg/5 mL ×2","Diltiazem (Tildiem) Fl 25 mg ×2","Augmentin Fl 2 g/200 mg ×5","Ceftriaxone Fl 1 g ×3","Gluconate de calcium 10 % 10 mL ×5","Inexium Fl 40 mg ×8","Glucose 10 % ×2","Glucose 30 % ×6","Polaramine 5 mg/mL ×2","Potassium 10 % ×4","Primpéran 10 mg/2 mL ×4","Lidocaïne 1 % 200 mg/20 mL ×2","Etomidate (Hypnomidate) 20 mg/10 mL ×4","Kétamine 250 mg/5 mL ×3","Keppra 500 mg/5 mL ×6","Loxapac 50 mg/2 mL ×4","Métalyse 10000 UI ×1","Midazolam 5 mg/5 mL ×5","Midazolam 50 mg/10 mL ×5","Midazolam 5 mg/1 mL ×2","Morphine 10 mg/1 mL ×5","Naloxone 0,4 mg/1 mL ×5","Propofol 200 mg/20 mL ×5","Rivotril 1 mg/1 mL ×4","Sufentanil 250 μg/10 mL ×2","Diazepam (Valium) 10 mg/2 mL ×20","Flumazénil 0,5 mg/5 mL ×4","Néfopam (Acupan) 20 mg/2 mL ×5","Phloroglucinol (Spasfon) 40 mg/4 mL ×4","Novorapide 1000 UI/10 mL ×1","Suxaméthonium (Célocurine) 100 mg/10 mL ×4","Striadyne 20 mg/2 mL ×3","Glucagon 1 mg/1 mL ×10","Isuprel 0,2 mg/1 mL ×10","Somatostatine 250 μg/1 mL ×4","Oxytocine 5 UI/1 mL ×5","Tracrium 50 mg/5 mL ×3","NaCl 0,9 % 500 mL ×2"]},
+ {t:"Frigo : per os, aérosols, solutés", items:["Ticagrelor (Brilique) 90 mg ×4","Plavix 300 mg ×4","Toxicarb (charbon activé) 50 g/250 mL ×1","Hydroxyzine (Atarax) 25 mg ×2","Cétirizine 10 mg ×5","Prednisolone 20 mg ×6","Spasfon 80 mg ×5","Oxynorm 5 mg ×10","Ipratropium 0,5 mg/2 mL ×3","Ipratropium 0,25 mg/1 mL ×3","Salbutamol 5 mg/2,5 mL ×3","Perfalgan 1 g/100 mL ×4","NaCl 0,9 % 100 mL ×4","NaCl 0,9 % 500 mL ×8","Ringer Lactate 500 mL ×6","G5 % 250 mL ×5","Mannitol 20 % 500 mL ×1","G10 % 500 mL ×2"]},
+];
+
+function FichesView({showToast}){
+  const [tab,setTab]=useState('gestes');
+  const [q,setQ]=useState('');
+  const [open,setOpen]=useState(null);
+  const ql=q.trim().toLowerCase();
+  const m=(...a)=>!ql||a.join(' ').toLowerCase().includes(ql);
+  const copy=(t)=>{try{navigator.clipboard.writeText(t);showToast&&showToast('Copié !');}catch(e){}};
+  const Box=({color,title,children})=>(<div style={{background:'var(--surface)',border:'1px solid var(--border)',borderLeft:`3px solid ${color}`,borderRadius:10,padding:'10px 14px',marginTop:10}}><div style={{fontSize:11,fontWeight:800,color,letterSpacing:'0.06em',textTransform:'uppercase',marginBottom:6}}>{title}</div>{children}</div>);
+  const Att=({list})=>list&&list.length?(<Box color="#fbbf24" title="⚠️ Attention hein">{list.map((a,i)=><div key={i} style={{fontSize:13,lineHeight:1.5,marginBottom:4,color:'var(--text)'}}>• {a}</div>)}</Box>):null;
+  const Card=({id,color,icon,title,sub,children})=>{const o=open===id;return(<div style={{background:'var(--surface)',border:`1px solid ${o?color:'var(--border)'}`,borderRadius:14,marginBottom:10,overflow:'hidden'}}><button onClick={()=>setOpen(o?null:id)} style={{width:'100%',textAlign:'left',background:'none',border:'none',color:'var(--text)',padding:'14px 16px',cursor:'pointer',display:'flex',alignItems:'center',gap:12,fontFamily:'Inter,sans-serif'}}><span style={{fontSize:22}}>{icon}</span><span style={{flex:1}}><div style={{fontWeight:800,fontSize:14.5,color}}>{title}</div>{sub&&<div style={{fontSize:12,color:'var(--muted)',marginTop:2}}>{sub}</div>}</span><span style={{color:'var(--muted)'}}>{o?'▲':'▼'}</span></button>{o&&<div style={{padding:'0 16px 16px'}}>{children}</div>}</div>);};
+  const tabs=[['gestes','🫁 Gestes'],['protos','📋 Protocoles PISU'],['pharma','💊 Pharmaco'],['voies','🧪 Voies & solutés'],['dotation','🎒 Dotation']];
+  const gestes=FICHES_GESTES.filter(g=>m(g.titre,g.crit.join(' '),g.steps.join(' ')));
+  const protos=PROCEDURES.filter(p=>m(p.titre,p.desc));
+  const pharma=FICHES_PHARMA.filter(d=>m(d.nom,d.cl,d.ind));
+  return(
+    <div style={{flex:1,overflowY:'auto',padding:'20px 24px'}}>
+      <div style={{maxWidth:900,margin:'0 auto'}}>
+        <div style={{fontSize:20,fontWeight:800,marginBottom:4}}>📚 Fiches : protocoles & pharmaco</div>
+        <div style={{fontSize:12.5,color:'var(--muted)',marginBottom:14}}>Contenu issu des documents CESU 93 (UE 2.11, UE 4.4, PISU, Pharmacie). Les prescriptions restent médicales ou PISU.</div>
+        <div style={{display:'flex',gap:8,flexWrap:'wrap',marginBottom:12}}>
+          {tabs.map(([k,l])=>(<button key={k} onClick={()=>{setTab(k);setOpen(null);}} style={{padding:'8px 14px',borderRadius:10,cursor:'pointer',fontSize:12.5,fontWeight:700,fontFamily:'Inter,sans-serif',border:`1px solid ${tab===k?'#22d3ee':'var(--border)'}`,background:tab===k?'rgba(34,211,238,0.12)':'var(--surface)',color:tab===k?'#22d3ee':'var(--muted)'}}>{l}</button>))}
+        </div>
+        <input type="text" placeholder="Rechercher une fiche…" value={q} onChange={e=>setQ(e.target.value)} style={{...INP,width:'100%',marginBottom:14,borderRadius:12}}/>
+        {tab==='gestes'&&gestes.map(g=>(
+          <Card key={g.id} id={g.id} color={g.color} icon={g.icon} title={g.titre} sub={g.src}>
+            <Box color={g.color} title="Indications / critères">{g.crit.map((c,i)=><div key={i} style={{fontSize:13,lineHeight:1.5,marginBottom:3}}>• {c}</div>)}</Box>
+            <Box color="#22d3ee" title="Démarche à suivre">{g.steps.map((s,i)=><div key={i} style={{fontSize:13,lineHeight:1.55,marginBottom:7}}>{s}</div>)}</Box>
+            {g.prep.length>0&&<Box color="#34d399" title="Médicaments & préparation">{g.prep.map((p,i)=><div key={i} style={{fontSize:13,lineHeight:1.5,marginBottom:6}}><b>{p[0]}</b><div style={{color:'var(--muted)'}}>{p[1]}</div></div>)}</Box>}
+            <Att list={g.att}/>
+          </Card>))}
+        {tab==='protos'&&protos.map(p=>(
+          <Card key={p.id} id={p.id} color={p.color||'#22d3ee'} icon={p.icon} title={p.titre} sub={p.desc}>
+            <Box color="#22d3ee" title="Démarche">{p.etapes.map((e,i)=><div key={i} style={{marginBottom:8}}><div style={{fontSize:13,fontWeight:700}}>{i+1}. {e.titre}</div><div style={{fontSize:12.5,color:'var(--muted)',fontFamily:'JetBrains Mono,monospace',lineHeight:1.5,cursor:'pointer'}} onClick={()=>copy(e.texte)} title="Cliquer pour copier">{e.texte}</div></div>)}</Box>
+          </Card>))}
+        {tab==='pharma'&&pharma.map(d=>(
+          <Card key={d.id} id={d.id} color={d.color} icon="💊" title={d.nom} sub={d.cl}>
+            <Box color={d.color} title="Indications"><div style={{fontSize:13}}>{d.ind}</div></Box>
+            <Box color="#34d399" title="Administration & préparation">{d.adm.map((a,i)=><div key={i} style={{fontSize:13,lineHeight:1.5,marginBottom:4}}>• {a}</div>)}</Box>
+            {d.ci&&<Box color="#f43f5e" title="Contre-indications"><div style={{fontSize:13}}>{d.ci}</div></Box>}
+            {d.ei&&<Box color="#fb923c" title="Effets indésirables"><div style={{fontSize:13}}>{d.ei}</div></Box>}
+            <Att list={d.att}/>
+          </Card>))}
+        {tab==='voies'&&<>
+          <div style={{fontWeight:800,margin:'6px 0 8px'}}>Voies et formes galéniques</div>
+          {FICHES_VOIES.filter(v=>m(v[0],v[1])).map((v,i)=><Box key={i} color="#22d3ee" title={v[0]}><div style={{fontSize:13,lineHeight:1.5}}>{v[1]}</div></Box>)}
+          <div style={{fontWeight:800,margin:'18px 0 8px'}}>Solutés</div>
+          {FICHES_SOLUTES.filter(v=>m(v[0],v[1])).map((v,i)=><Box key={i} color="#38bdf8" title={v[0]}><div style={{fontSize:13,lineHeight:1.5}}>{v[1]}</div></Box>)}
+        </>}
+        {tab==='dotation'&&FICHES_DOTATION.map(d=>{const it=d.items.filter(x=>m(x));return it.length?(<Card key={d.t} id={d.t} color="#a78bfa" icon="🎒" title={d.t} sub={`${it.length} références`}><div style={{fontSize:13,lineHeight:1.6,columns:'260px'}}>{it.map((x,i)=><div key={i}>• {x}</div>)}</div></Card>):null;})}
+      </div>
+    </div>);
+}
+
 /* ═══════════════════════════════════════════════ APP ══ */
 function App(){
   const [custom,setCustom]=useState(()=>load('mRP2_custom',[]));
@@ -2789,6 +2942,7 @@ function App(){
   const isPerfView=view==='perfusion';
   const isSessionView=view==='session';
   const isBilanView=view==='bilan';
+  const isFichesView=view==='fiches';
 
   return(
     <div style={{display:'flex',height:'100vh',overflow:'hidden'}}>
@@ -2882,6 +3036,13 @@ function App(){
             <span><span style={{marginRight:8}}>📻</span>Bilan régulation</span>
           </button>
 
+          {/* Fiches button */}
+          <button onClick={()=>{setView(v=>v==='fiches'?'macros':'fiches');setSidebar(false);}}
+            className={`cat-btn ${isFichesView?'active':''}`}
+            style={isFichesView?{background:'rgba(34,211,238,0.09)',color:'#22d3ee'}:{}}>
+            <span><span style={{marginRight:8}}>📚</span>Fiches protocoles & pharmaco</span>
+          </button>
+
           {/* Session button */}
           <button onClick={()=>{openSession();setSidebar(false);}}
             className={`cat-btn ${isSessionView?'active':''}`}
@@ -2973,12 +3134,15 @@ function App(){
             📻 {isBilanView?'Fermer bilan':'Bilan régulation'}
           </button>
 
+          <button onClick={()=>setView(v=>v==='fiches'?'macros':'fiches')} style={{background:isFichesView?'rgba(34,211,238,0.12)':'var(--surface)',border:`1px solid ${isFichesView?'rgba(34,211,238,0.3)':'var(--border)'}`,color:isFichesView?'#22d3ee':'var(--muted)',padding:'8px 14px',borderRadius:10,cursor:'pointer',fontSize:12.5,fontWeight:700,display:'flex',alignItems:'center',gap:7,flexShrink:0,fontFamily:'Inter,sans-serif',transition:'all 0.15s'}}>
+            📚 {isFichesView?'Fermer fiches':'Fiches'}
+          </button>
           {/* Session toggle chip */}
           <button onClick={openSession} style={{background:isSessionView?'rgba(52,211,153,0.12)':'var(--surface)',border:`1px solid ${isSessionView?'rgba(52,211,153,0.3)':'var(--border)'}`,color:isSessionView?'var(--green)':'var(--muted)',padding:'8px 14px',borderRadius:10,cursor:'pointer',fontSize:12.5,fontWeight:700,display:'flex',alignItems:'center',gap:7,flexShrink:0,fontFamily:'Inter,sans-serif',transition:'all 0.15s'}}>
             🕒 {isSessionView?'Fermer session':sessionActive?`Session (${sessionLog.length})`:'Mode session'}
           </button>
 
-          {!isBodyView&&!isProcView&&!isPerfView&&!isSessionView&&!isBilanView&&<>
+          {!isBodyView&&!isProcView&&!isPerfView&&!isSessionView&&!isBilanView&&!isFichesView&&<>
             <div style={{position:'relative',flex:1,maxWidth:500}}>
               <span style={{position:'absolute',left:13,top:'50%',transform:'translateY(-50%)',color:'var(--muted)',pointerEvents:'none'}}><Ic.Search/></span>
               <input ref={searchRef} type="text" placeholder="Rechercher /me ou /qu… (Ctrl+K)" value={q} onChange={e=>setQ(e.target.value)} style={{...INP,paddingLeft:38,paddingRight:36,borderRadius:12,width:'100%'}}/>
@@ -2997,6 +3161,8 @@ function App(){
           <PerfusionView showToast={showToast}/>
         ) : isBilanView ? (
           <BilanView showToast={showToast}/>
+        ) : isFichesView ? (
+          <FichesView showToast={showToast}/>
         ) : isSessionView ? (
           <SessionView log={sessionLog} onUpdateTime={updateSessionTime} onDelete={deleteSessionEntry}
             active={sessionActive} onToggleActive={toggleSessionActive} onClear={clearSessionLog}
