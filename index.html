@@ -217,23 +217,23 @@ const DEFAULT_MACROS = [
   {id:'c11',categorie:'Cathéters',type:'me',titre:'Réglage du débit à la molette',texte:'/me règle le débit avec la molette de la tubulure.'},
   {id:'c12',categorie:'Cathéters',type:'me',titre:'Fixation du cathéter',texte:'/me fixe le cathéter avec du sparadrap et note l\'heure de pose.'},
   {id:'c14',categorie:'Cathéters',type:'me',titre:'Deuxième VVP',texte:'/me pose une deuxième voie veineuse.',info:'Deux voies minimum pour l\'IOT ; 2ème VVP dans le choc hémorragique.'},
-  {id:'c15',categorie:'Cathéters',type:'me',titre:'VVP d\'attente (PISU 11)',texte:'/me pose une VVP d\'attente avec un SSI 100mL en garde veine.',info:'PISU 11 : à tenir compte du risque de surcharge volémique (insuffisance rénale, enfant, décompensation respiratoire chez cardiaque).'},
+  {id:'c15',categorie:'Cathéters',type:'me',titre:'VVP d\'attente (PISU 11)',texte:'/me pose une VVP d\'attente avec un NaCl 100mL en garde veine.',info:'PISU 11 : à tenir compte du risque de surcharge volémique (insuffisance rénale, enfant, décompensation respiratoire chez cardiaque).'},
 
   // ── INTRA-OSSEUX ──
   {id:'io1',categorie:'Intra-osseux',type:'me',titre:'Indication — échec de VVP',texte:'/me constate l\'échec de la VVP après 90 secondes et passe en voie intra-osseuse.',info:'Indications : ACR adulte après échec de VVP > 90 s ; urgence vitale immédiate avec VVP non réalisable. ACR enfant : KTIO en 1ère intention.'},
   {id:'io2',categorie:'Intra-osseux',type:'me',titre:'Matériel IO',texte:'/me prépare le matériel IO : perceuse, aiguille IO, pansement stabilisateur, prolongateur avec clamp, compresses et Bétadine alcoolique.'},
   {id:'io3',categorie:'Intra-osseux',type:'me',titre:'Vérifier les contre-indications IO',texte:'/me vérifie l\'absence de fracture, de prothèse ou d\'infection sur l\'os abordé.',info:'Contre-indications : fracture de l\'os, prothèse ou ostéosynthèse sur l\'os abordé, infection.'},
   {id:'io4',categorie:'Intra-osseux',type:'me',titre:'Pose de l\'aiguille IO',texte:'/me désinfecte à la Bétadine alcoolique et pose l\'aiguille IO avec la perceuse.'},
-  {id:'io5',categorie:'Intra-osseux',type:'me',titre:'Flush de 10mL à la pose',texte:'/me fait un flush de 10mL de SSI à la pose.',info:'Flush de 10mL de SSI à la pose.'},
+  {id:'io5',categorie:'Intra-osseux',type:'me',titre:'Flush de 10mL à la pose',texte:'/me fait un flush de 10mL de NaCl à la pose.',info:'Flush de 10mL de NaCl à la pose.'},
   {id:'io6',categorie:'Intra-osseux',type:'me',titre:'Anticiper la douleur',texte:'/me anticipe la douleur de la pose avec du MEOPA ou un antalgique.',info:'Soin douloureux, surtout chez le patient conscient.'},
   {id:'io7',categorie:'Intra-osseux',type:'me',titre:'Poche sous manchette à pression',texte:'/me met la poche sous manchette à pression pour passer les traitements.',info:'Traitements à passer sous manchette à pression ou à la seringue électrique.'},
   {id:'io8',categorie:'Intra-osseux',type:'me',titre:'Pression sans manchette',texte:'/me met un garrot élastique autour de la poche pour faire pression.',info:'Sans manchette : garrot élastique sur la poche, ou un secouriste appuie sur la poche.'},
   {id:'io11',categorie:'Intra-osseux',type:'me',titre:'Purge entre chaque injection IO',texte:'/me purge la ligne entre chaque injection.',info:'La ligne doit être purgée entre chaque injection.'},
 
   // ── PERFUSIONS ──
-  {id:'pf1',categorie:'Perfusions',type:'me',titre:'SSI 500mL en garde veine',texte:'/me branche un SSI 500mL en garde veine sur la VVP.',info:'PISU : douleur, asthme, convulsions, hypoglycémie, anaphylaxie, délivrance.'},
-  {id:'pf2',categorie:'Perfusions',type:'me',titre:'SSI 100mL en garde veine',texte:'/me branche un SSI 100mL en garde veine sur la VVP.',info:'PISU : ACR, OAP, douleur thoracique, VVP d\'attente.'},
-  {id:'pf3',categorie:'Perfusions',type:'me',titre:'SSI 500mL sur 10 min',texte:'/me branche un SSI 500mL à passer en 10 minutes.',info:'PISU : choc hémorragique, anaphylaxie (signes hémodynamiques), intox fumées si défaillance vitale.'},
+  {id:'pf1',categorie:'Perfusions',type:'me',titre:'NaCl 500mL en garde veine',texte:'/me branche un NaCl 500mL en garde veine sur la VVP.',info:'PISU : douleur, asthme, convulsions, hypoglycémie, anaphylaxie, délivrance.'},
+  {id:'pf2',categorie:'Perfusions',type:'me',titre:'NaCl 100mL en garde veine',texte:'/me branche un NaCl 100mL en garde veine sur la VVP.',info:'PISU : ACR, OAP, douleur thoracique, VVP d\'attente.'},
+  {id:'pf3',categorie:'Perfusions',type:'me',titre:'NaCl 500mL sur 10 min',texte:'/me branche un NaCl 500mL à passer en 10 minutes.',info:'PISU : choc hémorragique, anaphylaxie (signes hémodynamiques), intox fumées si défaillance vitale.'},
   {id:'pf4',categorie:'Perfusions',type:'me',titre:'Numéroter les poches de remplissage',texte:'/me numérote la poche pour suivre le volume de remplissage apporté.'},
   {id:'pf5',categorie:'Perfusions',type:'me',titre:'Évaluer l\'efficacité après chaque poche',texte:'/me évalue l\'efficacité du remplissage à la fin de la poche avant d\'en passer une autre.',info:'Remplissage en titration. Prudence en cas d\'insuffisance cardiaque.'},
   {id:'pf6',categorie:'Perfusions',type:'me',titre:'Ringer Lactate 20mL/kg sur 1h — brûlé',texte:'/me branche du Ringer Lactate à 20mL/kg sur 1 heure.',info:'PISU 5 : si surface brûlée > 10 %.'},
@@ -242,19 +242,19 @@ const DEFAULT_MACROS = [
   {id:'pf9',categorie:'Perfusions',type:'me',titre:'G10% 500mL',texte:'/me branche un G10% 500mL.'},
   {id:'pf10',categorie:'Perfusions',type:'me',titre:'Mannitol 20% 500mL',texte:'/me branche le Mannitol 20% 500mL en perfusion.'},
   {id:'pf11',categorie:'Perfusions',type:'me',titre:'Perfalgan 1g/100mL — IVL 15 min',texte:'/me branche le flacon de Paracétamol 1g/100mL en IVL sur 15 minutes.',info:'PISU 12 : EVA 4-7, ou associé à la morphine si EVA > 7.'},
-  {id:'pf12',categorie:'Perfusions',type:'me',titre:'Exacyl 1g sur 20 min',texte:'/me dilue 2 ampoules d\'Exacyl 500mg dans un flacon de 100mL de SSI et perfuse sur 20 minutes.',info:'PISU 2 et 14. 2 amp de 500mg dans 100mL de SSI.'},
+  {id:'pf12',categorie:'Perfusions',type:'me',titre:'Exacyl 1g sur 20 min',texte:'/me dilue 2 ampoules d\'Exacyl 500mg dans un flacon de 100mL de NaCl et perfuse sur 20 minutes.',info:'PISU 2 et 14. 2 amp de 500mg dans 100mL de NaCl.'},
   {id:'pf13',categorie:'Perfusions',type:'me',titre:'Amiodarone IVL — 2 amp en G5%',texte:'/me dilue 2 ampoules d\'Amiodarone 150mg dans une perfusion de G5% sur 15 minutes.',info:'Hors ACR : IVL, 2 amp de 150mg/3mL avec perf de G5% sur 15 min.'},
   {id:'pf14',categorie:'Perfusions',type:'me',titre:'Augmentin 2g dans 100mL',texte:'/me dilue 2g d\'Augmentin dans une perfusette de 100mL.'},
-  {id:'pf15',categorie:'Perfusions',type:'me',titre:'Ceftriaxone 1g dans 100mL',texte:'/me dilue 1g de Ceftriaxone dans 100mL de SSI et perfuse.'},
+  {id:'pf15',categorie:'Perfusions',type:'me',titre:'Ceftriaxone 1g dans 100mL',texte:'/me dilue 1g de Ceftriaxone dans 100mL de NaCl et perfuse.'},
   {id:'pf16',categorie:'Perfusions',type:'me',titre:'Keppra 40-60 mg/kg dans 500mL',texte:'/me dilue le Keppra à 40-60 mg/kg dans 500mL de NaCl et perfuse sur 10 minutes.',info:'Flacon de 500mg : 70kg = 3,5g soit 7 flacons.'},
-  {id:'pf17',categorie:'Perfusions',type:'me',titre:'Solumedrol 1mg/kg (flacon à 10mg/mL)',texte:'/me dilue un flacon de Solumedrol 120mg dans 12mL de SSI (10mg/mL) et injecte 1mg/kg en IVDL, max 120mg.',info:'PISU 4, 6, 3 : 1mg/kg IVDL (max 120mg).'},
-  {id:'pf18',categorie:'Perfusions',type:'me',titre:'Polaramine 5mg dans 100mL',texte:'/me dilue 5mg de Polaramine dans un flacon de 100mL de SSI et perfuse en IVL.',info:'PISU 4 : anaphylaxie, signes cutanés ou muqueux isolés.'},
-  {id:'pf19',categorie:'Perfusions',type:'me',titre:'Héparine 5000 UI dans 100mL',texte:'/me dilue un flacon d\'Héparine 5000 UI dans 100mL de SSI et perfuse en IVL.',info:'PISU 13 : procédure clopidogrel.'},
+  {id:'pf17',categorie:'Perfusions',type:'me',titre:'Solumedrol 1mg/kg (flacon à 10mg/mL)',texte:'/me dilue un flacon de Solumedrol 120mg dans 12mL de NaCl (10mg/mL) et injecte 1mg/kg en IVDL, max 120mg.',info:'PISU 4, 6, 3 : 1mg/kg IVDL (max 120mg).'},
+  {id:'pf18',categorie:'Perfusions',type:'me',titre:'Polaramine 5mg dans 100mL',texte:'/me dilue 5mg de Polaramine dans un flacon de 100mL de NaCl et perfuse en IVL.',info:'PISU 4 : anaphylaxie, signes cutanés ou muqueux isolés.'},
+  {id:'pf19',categorie:'Perfusions',type:'me',titre:'Héparine 5000 UI dans 100mL',texte:'/me dilue un flacon d\'Héparine 5000 UI dans 100mL de NaCl et perfuse en IVL.',info:'PISU 13 : procédure clopidogrel.'},
   {id:'pf20',categorie:'Perfusions',type:'me',titre:'Hidonac 200mg/kg dans 500mL',texte:'/me prépare l\'Hidonac à 200mg/kg dans 500mL de NaCl et perfuse sur 4 heures.',info:'70kg = 14g soit 3 flacons de 5g/25mL.'},
-  {id:'pf21',categorie:'Perfusions',type:'me',titre:'Cyanokit 5g dans 200mL — adulte',texte:'/me dilue le Cyanokit 5g dans 200mL de SSI et perfuse sur 15 minutes.',info:'PISU 3 : intox fumées, si milieu clos et défaillance vitale. Effet indésirable : urines rouges 2 à 3 jours.'},
-  {id:'pf22',categorie:'Perfusions',type:'me',titre:'Ocytocine 5 UI dans 100mL',texte:'/me dilue 1 ampoule d\'Ocytocine 5 UI/1mL dans un flacon de 100mL de SSI.',info:'PISU 14.'},
-  {id:'pf23',categorie:'Perfusions',type:'me',titre:'SE — Midazolam 1mg/mL (entretien IOT)',texte:'/me prépare la SE de Midazolam : 1 ampoule de 50mg/10mL ramenée à 50mL avec du SSI (1mg/mL), démarre à 2,5-10mL/h.',info:'Hypnotique d\'entretien en IVSE selon prescription : 2,5 à 10 mL/h.'},
-  {id:'pf24',categorie:'Perfusions',type:'me',titre:'SE — Sufentanil 5μg/mL (entretien IOT)',texte:'/me prépare la SE de Sufentanil : 1 ampoule de 250μg ramenée à 50mL avec du SSI (5μg/mL), démarre à 0,8-20mL/h.',info:'Antalgique d\'entretien en IVSE selon prescription : 0,8 à 20 mL/h.'},
+  {id:'pf21',categorie:'Perfusions',type:'me',titre:'Cyanokit 5g dans 200mL — adulte',texte:'/me dilue le Cyanokit 5g dans 200mL de NaCl et perfuse sur 15 minutes.',info:'PISU 3 : intox fumées, si milieu clos et défaillance vitale. Effet indésirable : urines rouges 2 à 3 jours.'},
+  {id:'pf22',categorie:'Perfusions',type:'me',titre:'Ocytocine 5 UI dans 100mL',texte:'/me dilue 1 ampoule d\'Ocytocine 5 UI/1mL dans un flacon de 100mL de NaCl.',info:'PISU 14.'},
+  {id:'pf23',categorie:'Perfusions',type:'me',titre:'SE — Midazolam 1mg/mL (entretien IOT)',texte:'/me prépare la SE de Midazolam : 1 ampoule de 50mg/10mL ramenée à 50mL avec du NaCl (1mg/mL), démarre à 2,5mL/h.',info:'Hypnotique d\'entretien en IVSE selon prescription : 2,5 à 10 mL/h.'},
+  {id:'pf24',categorie:'Perfusions',type:'me',titre:'SE — Sufentanil 5μg/mL (entretien IOT)',texte:'/me prépare la SE de Sufentanil : 1 ampoule de 250μg ramenée à 50mL avec du NaCl (5μg/mL), démarre à 0,8-20mL/h.',info:'Antalgique d\'entretien en IVSE selon prescription : 0,8 à 20 mL/h.'},
   {id:'pf25',categorie:'Perfusions',type:'me',titre:'SE — Noradrénaline',texte:'/me prépare la SE de Noradrénaline 8mg/4mL et démarre au débit prescrit.'},
   {id:'pf26',categorie:'Perfusions',type:'me',titre:'SE — Dobutamine',texte:'/me prépare la SE de Dobutamine 250mg/20mL et démarre au débit prescrit.'},
   {id:'pf27',categorie:'Perfusions',type:'me',titre:'SE — Loxen',texte:'/me prépare la SE de Loxen 10mg/10mL et démarre au débit prescrit.'},
@@ -301,16 +301,16 @@ const DEFAULT_MACROS = [
   {id:'r3',categorie:'Réanimation',type:'me',titre:'CEE puis RCP 2 min',texte:'/me délivre le choc électrique externe puis reprend la RCP pendant 2 minutes.'},
   {id:'r4',categorie:'Réanimation',type:'me',titre:'Vérification du pouls par l\'IDE /2 min',texte:'/me vérifie le pouls toutes les 2 minutes.',info:'PISU 1P : si pas de choc recommandé.'},
   {id:'r5',categorie:'Réanimation',type:'me',titre:'Adrénaline adulte 1mg IVD pure',texte:'/me injecte 1mg d\'Adrénaline pure (1 ampoule 5mg/5mL, 1mL) en IVD.',info:'ACR adulte : IVD pure 1mg.'},
-  {id:'r6',categorie:'Réanimation',type:'me',titre:'Adrénaline enfant 0,01mg/kg /4 min',texte:'/me injecte 0,01mg/kg d\'Adrénaline (0,1mg/mL) en IVD, à renouveler toutes les 4 minutes.',info:'PISU 1P. Préparation : 2 ampoules de 5mg diluées dans 90mL de SSI pour 100mL à 0,1mg/mL. Max 1mg.'},
+  {id:'r6',categorie:'Réanimation',type:'me',titre:'Adrénaline enfant 0,01mg/kg /4 min',texte:'/me injecte 0,01mg/kg d\'Adrénaline (0,1mg/mL) en IVD, à renouveler toutes les 4 minutes.',info:'PISU 1P. Préparation : 2 ampoules de 5mg diluées dans 90mL de NaCl pour 100mL à 0,1mg/mL. Max 1mg.'},
   {id:'r7',categorie:'Réanimation',type:'me',titre:'Amiodarone adulte — 2 amp puis 1 amp',texte:'/me injecte 2 ampoules d\'Amiodarone 150mg en IVD puis 1 ampoule de 150mg.',info:'ACR adulte choqué (TV/FV) : 300mg puis 150mg.'},
   {id:'r8',categorie:'Réanimation',type:'me',titre:'Amiodarone enfant 5mg/kg',texte:'/me injecte 5mg/kg d\'Amiodarone en IVD avec l\'Adrénaline après 3 CEE.',info:'PISU 1P : adrénaline + amiodarone 5mg/kg après 3 CEE, puis après 5 CEE (max 300 puis 150mg).'},
-  {id:'r9',categorie:'Réanimation',type:'me',titre:'KTIO en 1ère intention (enfant)',texte:'/me pose un KTIO en 1ère intention, puis un SSI 100mL en garde veine.',info:'PISU 1P.'},
+  {id:'r9',categorie:'Réanimation',type:'me',titre:'KTIO en 1ère intention (enfant)',texte:'/me pose un KTIO en 1ère intention, puis un NaCl 100mL en garde veine.',info:'PISU 1P.'},
   {id:'r10',categorie:'Réanimation',type:'me',titre:'Masque laryngé / IOT par l\'IADE',texte:'/me demande à l\'IADE de poser le masque laryngé ou d\'intuber, puis ventile à 20/min en mode CPR avec EtCO2.',info:'PISU 1P : ventilation continue 20/min.'},
   {id:'r11',categorie:'Réanimation',type:'me',titre:'Ventilation au BAVU',texte:'/me ventile au BAVU avec de l\'O2 pur.'},
   {id:'r12',categorie:'Réanimation',type:'me',titre:'RACS — monitorage continu',texte:'/me constate le RACS, met en place le monitorage continu et évalue le Glasgow.'},
   {id:'r13',categorie:'Réanimation',type:'me',titre:'Paracétamol 15mg/kg si T° > 38,5',texte:'/me perfuse 15mg/kg de Paracétamol en IVL.',info:'PISU 1P : après RACS, si T° > 38,5.'},
   {id:'r14',categorie:'Réanimation',type:'me',titre:'Hypoglycémie (ACR enfant) — ½ ampoule de G30%',texte:'/me injecte ½ ampoule de G30% en IVDL.',info:'PISU 1P, situation particulière.'},
-  {id:'r15',categorie:'Réanimation',type:'me',titre:'Hémorragie (ACR enfant) — SSI 20mL/kg',texte:'/me contrôle le saignement puis passe un SSI 20mL/kg sur 10 minutes, puis SSI 100mL en garde veine.',info:'PISU 1P, situation particulière.'},
+  {id:'r15',categorie:'Réanimation',type:'me',titre:'Hémorragie (ACR enfant) — NaCl 20mL/kg',texte:'/me contrôle le saignement puis passe un NaCl 20mL/kg sur 10 minutes, puis NaCl 100mL en garde veine.',info:'PISU 1P, situation particulière.'},
   {id:'r16',categorie:'Réanimation',type:'me',titre:'Intox fumées (ACR enfant) — hydroxocobalamine 75mg/kg',texte:'/me perfuse l\'hydroxocobalamine à 75mg/kg sur 15 minutes.',info:'PISU 1P. Cyanokit : max 5g.'},
   {id:'r17',categorie:'Réanimation',type:'me',titre:'Obstruction des VAS',texte:'/me expose doucement au laryngoscope puis aspire ou retire avec la pince de Magill.',info:'PISU 1P, situation particulière.'},
   {id:'r18',categorie:'Réanimation',type:'me',titre:'Transmettre : ATCD, traitements, no flow, low flow',texte:'/me transmet les antécédents, les traitements, la durée de no flow, de low flow et le nombre de CEE.',info:'PISU 1P : informations à transmettre.'},
@@ -341,15 +341,15 @@ const DEFAULT_MACROS = [
   {id:'med13',categorie:'Médicaments',type:'me',titre:'Tracrium — entretien curarisation',texte:'/me démarre le Tracrium à la SE selon la prescription.'},
   {id:'med14',categorie:'Médicaments',type:'me',titre:'Lidocaïne 1%',texte:'/me prépare la Lidocaïne 1% selon la prescription.'},
   {id:'med15',categorie:'Médicaments',type:'me',titre:'Adrénaline IM — anaphylaxie',texte:'/me injecte 0,5mg d\'Adrénaline en IM.',info:'PISU 4 : détresse respiratoire ou signes hémodynamiques. Adrénaline pure.'},
-  {id:'med16',categorie:'Médicaments',type:'me',titre:'Adrénaline IVD 0,05mg/2 min',texte:'/me injecte 0,05mg d\'Adrénaline en IVD toutes les 2 minutes jusqu\'à TAS > 80mmHg.',info:'PISU 4 : absence d\'amélioration circulatoire. 0,5mg dans une seringue de 10mL de SSI (0,05mg/mL).'},
-  {id:'med17',categorie:'Médicaments',type:'me',titre:'Adrénaline en aérosol 1mg',texte:'/me prépare l\'aérosol d\'Adrénaline : 1mg dilué dans 4mL de SSI.',info:'PISU 4 : absence d\'amélioration respiratoire.'},
+  {id:'med16',categorie:'Médicaments',type:'me',titre:'Adrénaline IVD 0,05mg/2 min',texte:'/me injecte 0,05mg d\'Adrénaline en IVD toutes les 2 minutes jusqu\'à TAS > 80mmHg.',info:'PISU 4 : absence d\'amélioration circulatoire. 0,5mg dans une seringue de 10mL de NaCl (0,05mg/mL).'},
+  {id:'med17',categorie:'Médicaments',type:'me',titre:'Adrénaline en aérosol 1mg',texte:'/me prépare l\'aérosol d\'Adrénaline : 1mg dilué dans 4mL de NaCl.',info:'PISU 4 : absence d\'amélioration respiratoire.'},
   {id:'med18',categorie:'Médicaments',type:'me',titre:'Atropine',texte:'/me injecte l\'Atropine selon la prescription.'},
   {id:'med19',categorie:'Médicaments',type:'me',titre:'Lasilix 1mg/kg (max 80mg)',texte:'/me injecte 1mg/kg de Lasilix pur (1 ampoule 40mg/4mL, 10mg/mL) en IVDL, max 80mg.',info:'PISU 8 : OAP, si TAS > 120mmHg.'},
   {id:'med20',categorie:'Médicaments',type:'me',titre:'Risordan 1mg/5 min',texte:'/me injecte 1mg de Risordan pur (10mg/10mL, 1mg/mL) toutes les 5 minutes jusqu\'à amélioration ou TA < 120mmHg.',info:'PISU 8 : si TAS > 180mmHg.'},
   {id:'med21',categorie:'Médicaments',type:'me',titre:'Esmolol (Brevibloc)',texte:'/me injecte l\'Esmolol 100mg/10mL sous scope selon la prescription.'},
   {id:'med22',categorie:'Médicaments',type:'me',titre:'Diltiazem (Tildiem)',texte:'/me injecte le Tildiem 25mg sous scope selon la prescription.'},
   {id:'med23',categorie:'Médicaments',type:'me',titre:'Striadyne',texte:'/me injecte 20mg de Striadyne en IVD rapide puis fait un flush.'},
-  {id:'med24',categorie:'Médicaments',type:'me',titre:'Aspirine 250mg IVD',texte:'/me dilue ½ flacon d\'Aspégic 500mg dans une seringue de 20mL de SSI et injecte 250mg en IVD.',info:'PISU 13. Péricardite : 1g en IVL sur 15 min. AVC : 1 à 5mg/kg.'},
+  {id:'med24',categorie:'Médicaments',type:'me',titre:'Aspirine 250mg IVD',texte:'/me dilue ½ flacon d\'Aspégic 500mg dans une seringue de 20mL de NaCl et injecte 250mg en IVD.',info:'PISU 13. Péricardite : 1g en IVL sur 15 min. AVC : 1 à 5mg/kg.'},
   {id:'med25',categorie:'Médicaments',type:'me',titre:'Clopidogrel 600mg',texte:'/me donne 2 comprimés de Plavix 300mg (600mg).',info:'PISU 13 : procédure clopidogrel, sur demande de la régulation. Puis Héparine 5000 UI IVL.'},
   {id:'med26',categorie:'Médicaments',type:'me',titre:'Ticagrelor 180mg',texte:'/me donne 2 comprimés de Brilique 90mg (180mg).',info:'PISU 13 : procédure ticagrelor, sur demande de la régulation. CI : AVK, NACO, risque hémorragique élevé, AVC hémorragique, insuffisance hépatique sévère, hémodialyse, allergie.'},
   {id:'med27',categorie:'Médicaments',type:'me',titre:'Lovenox 0,5mg/kg IVD',texte:'/me injecte 0,5mg/kg de Lovenox en IVD avec une seringue préremplie et un bouchon injecteur.',info:'PISU 13 : procédure ticagrelor.'},
@@ -360,7 +360,7 @@ const DEFAULT_MACROS = [
   {id:'med32',categorie:'Médicaments',type:'me',titre:'Rivotril — renouveler à T+5 min',texte:'/me injecte une 2ème dose de 1mg de Rivotril en IVD, convulsions toujours présentes à T+5 min.',info:'PISU 10 : renouvelable une fois.'},
   {id:'med33',categorie:'Médicaments',type:'me',titre:'Valium',texte:'/me injecte 10mg de Valium en IV lent selon la prescription.'},
   {id:'med34',categorie:'Médicaments',type:'me',titre:'Loxapac',texte:'/me injecte 50mg de Loxapac en IM selon la prescription.'},
-  {id:'med35',categorie:'Médicaments',type:'me',titre:'Naloxone — titration',texte:'/me dilue 1 ampoule de Naloxone 0,4mg dans une seringue de 10mL de SSI et injecte 1mL (0,04mg) toutes les 1 à 3 minutes jusqu\'à FR > 12/min.',info:'Intoxication morphinique et opioïde. PISU 12 : Narcan 1 amp IVD/IM par 3 min jusqu\'à disparition des signes de surdosage.'},
+  {id:'med35',categorie:'Médicaments',type:'me',titre:'Naloxone — titration',texte:'/me dilue 1 ampoule de Naloxone 0,4mg dans une seringue de 10mL de NaCl et injecte 1mL (0,04mg) toutes les 1 à 3 minutes jusqu\'à FR > 12/min.',info:'Intoxication morphinique et opioïde. PISU 12 : Narcan 1 amp IVD/IM par 3 min jusqu\'à disparition des signes de surdosage.'},
   {id:'med36',categorie:'Médicaments',type:'me',titre:'Flumazénil — titration',texte:'/me injecte 0,1 à 0,3mg de Flumazénil (0,1mg/mL) en IVD, réévalue chaque minute, max 2mg.',info:'Intoxication aiguë aux benzodiazépines. Effet indésirable : convulsions.'},
   {id:'med37',categorie:'Médicaments',type:'me',titre:'Glucagon',texte:'/me injecte 1mg de Glucagon en IM.'},
   {id:'med38',categorie:'Médicaments',type:'me',titre:'Toxicarb 50g',texte:'/me donne 50g de Toxicarb à boire.'},
@@ -372,23 +372,23 @@ const DEFAULT_MACROS = [
   {id:'med44',categorie:'Médicaments',type:'me',titre:'Ipratropium 0,5mg — aérosol',texte:'/me prépare 1 pipette d\'Ipratropium 0,5mg avec le Salbutamol et lance la nébulisation.',info:'Toujours en association avec le Salbutamol. Série de 3 : salbu + ipra, puis salbu seul, puis salbu seul.'},
   {id:'med45',categorie:'Médicaments',type:'me',titre:'Aérosol enfant — Salbutamol 2,5mg + Ipratropium 0,25mg',texte:'/me prépare l\'aérosol de Salbutamol 2,5mg et d\'Ipratropium 0,25mg et lance la nébulisation.',info:'PISU 5P : brûlure grave de l\'enfant avec détresse respiratoire.'},
   {id:'med46',categorie:'Médicaments',type:'me',titre:'Solumedrol 1mg/kg',texte:'/me injecte 1mg/kg de Solumedrol (flacon 120mg dans 12mL, 10mg/mL) en IVDL, max 120mg.',info:'PISU 3, 4, 6.'},
-  {id:'med47',categorie:'Médicaments',type:'me',titre:'Polaramine 5mg IVL',texte:'/me perfuse 5mg de Polaramine dilués dans 100mL de SSI en IVL.',info:'PISU 4 : signes cutanés ou muqueux isolés, en fin de protocole.'},
-  {id:'med48',categorie:'Médicaments',type:'me',titre:'SSI 500mL — remplissage',texte:'/me branche un SSI 500mL pour le remplissage vasculaire.'},
+  {id:'med47',categorie:'Médicaments',type:'me',titre:'Polaramine 5mg IVL',texte:'/me perfuse 5mg de Polaramine dilués dans 100mL de NaCl en IVL.',info:'PISU 4 : signes cutanés ou muqueux isolés, en fin de protocole.'},
+  {id:'med48',categorie:'Médicaments',type:'me',titre:'NaCl 500mL — remplissage',texte:'/me branche un NaCl 500mL pour le remplissage vasculaire.'},
   {id:'med49',categorie:'Médicaments',type:'me',titre:'Ringer Lactate 500mL',texte:'/me branche un Ringer Lactate 500mL.',info:'Soluté de choix pour les brûlés et le choc anaphylactique (10 à 20mL/kg). CI : trauma crânien, insuffisance cardiaque.'},
-  {id:'med50',categorie:'Médicaments',type:'me',titre:'Exacyl 1g sur 20 min',texte:'/me perfuse 1g d\'Exacyl (2 amp de 500mg dans 100mL de SSI) sur 20 minutes.',info:'PISU 2 et 14.'},
-  {id:'med51',categorie:'Médicaments',type:'me',titre:'Ceftriaxone 1g',texte:'/me perfuse 1g de Ceftriaxone dans 100mL de SSI.'},
-  {id:'med52',categorie:'Médicaments',type:'me',titre:'Augmentin 2g',texte:'/me perfuse 2g d\'Augmentin dans 100mL de SSI.',info:'CI : allergie à la pénicilline et aux céphalosporines.'},
+  {id:'med50',categorie:'Médicaments',type:'me',titre:'Exacyl 1g sur 20 min',texte:'/me perfuse 1g d\'Exacyl (2 amp de 500mg dans 100mL de NaCl) sur 20 minutes.',info:'PISU 2 et 14.'},
+  {id:'med51',categorie:'Médicaments',type:'me',titre:'Ceftriaxone 1g',texte:'/me perfuse 1g de Ceftriaxone dans 100mL de NaCl.'},
+  {id:'med52',categorie:'Médicaments',type:'me',titre:'Augmentin 2g',texte:'/me perfuse 2g d\'Augmentin dans 100mL de NaCl.',info:'CI : allergie à la pénicilline et aux céphalosporines.'},
   {id:'med53',categorie:'Médicaments',type:'me',titre:'Somatostatine — SE',texte:'/me démarre la Somatostatine à la SE.'},
   {id:'med54',categorie:'Médicaments',type:'me',titre:'Oxytocine 5 UI — IVL ou IM',texte:'/me injecte 5 UI d\'Oxytocine en IVL ou en IM.',info:'PISU 14 : entre l\'engagement de la 2ème épaule et la 1ère minute de vie. En accouchement eutocique en présentation céphalique.'},
   {id:'med55',categorie:'Médicaments',type:'me',titre:'Oxytocine 10 UI /1h',texte:'/me perfuse 10 UI d\'Oxytocine en 1 heure en IVL.',info:'PISU 14 : après la délivrance.'},
   {id:'med56',categorie:'Médicaments',type:'me',titre:'Isuprel',texte:'/me démarre l\'Isuprel à la SE selon la prescription.'},
   {id:'med57',categorie:'Médicaments',type:'me',titre:'Enoxaparine (Lovenox)',texte:'/me injecte l\'Enoxaparine selon la prescription.'},
-  {id:'med58',categorie:'Médicaments',type:'me',titre:'Esoméprazole (Inexium)',texte:'/me dilue l\'Inexium 40mg dans 100mL de SSI et perfuse.'},
+  {id:'med58',categorie:'Médicaments',type:'me',titre:'Esoméprazole (Inexium)',texte:'/me dilue l\'Inexium 40mg dans 100mL de NaCl et perfuse.'},
   {id:'med59',categorie:'Médicaments',type:'me',titre:'Métoclopramide (Primpéran)',texte:'/me injecte 10mg de Primpéran en IV lente.'},
   {id:'med60',categorie:'Médicaments',type:'me',titre:'Potassium 10%',texte:'/me dilue le Potassium 10% et perfuse en IVL à débit contrôlé.'},
   {id:'med61',categorie:'Médicaments',type:'me',titre:'Phloroglucinol (Spasfon) IV',texte:'/me injecte 40mg de Spasfon en IV lente.'},
   {id:'med62',categorie:'Médicaments',type:'me',titre:'Hidonac — surdosage paracétamol',texte:'/me perfuse l\'Hidonac 200mg/kg dans 500mL de NaCl sur 4 heures.',info:'70kg = 14g soit 3 flacons de 5g/25mL.'},
-  {id:'med63',categorie:'Médicaments',type:'me',titre:'Cyanokit — intox fumées adulte',texte:'/me perfuse le Cyanokit 5g dilué dans 200mL de SSI sur 15 minutes.',info:'PISU 3. Max 5g.'},
+  {id:'med63',categorie:'Médicaments',type:'me',titre:'Cyanokit — intox fumées adulte',texte:'/me perfuse le Cyanokit 5g dilué dans 200mL de NaCl sur 15 minutes.',info:'PISU 3. Max 5g.'},
   {id:'med64',categorie:'Médicaments',type:'me',titre:'Cyanokit — enfant 75mg/kg',texte:'/me perfuse le Cyanokit à 75mg/kg sur 15 minutes.',info:'PISU 1P. Dose max 5g (6mL pour 2kg, 120mL pour 40kg).'},
 
   // ── PER OS ──
@@ -422,32 +422,32 @@ const DEFAULT_MACROS = [
   {id:'p4',categorie:'Protocoles PISU',type:'me',titre:'Brûlure électrique — ECG systématique',texte:'/me réalise un ECG et l\'envoie.',info:'PISU 5 : brûlure électrique, ECG systématique à envoyer.'},
   {id:'p5',categorie:'Protocoles PISU',type:'me',titre:'Inhalation de fumée — O2 15L/min',texte:'/me mesure le SpCO en continu et met l\'oxygène à 15L/min.',info:'PISU 5. Enfant : 9L/min.'},
   {id:'p6',categorie:'Protocoles PISU',type:'me',titre:'Brûlure — Ringer si surface > 10%',texte:'/me pose une VVP de Ringer Lactate et passe 20mL/kg sur 1 heure.',info:'PISU 5 : surface brûlée > 10 %, puis PISU 12 si douleur.'},
-  {id:'p7',categorie:'Protocoles PISU',type:'me',titre:'Anaphylaxie — détresse respiratoire',texte:'/me injecte 0,5mg d\'Adrénaline en IM puis lance l\'aérosol de Salbutamol 5mg.',info:'PISU 4 : puis VVP, SSI 500mL en garde veine, Solumedrol 1mg/kg.'},
-  {id:'p8',categorie:'Protocoles PISU',type:'me',titre:'Anaphylaxie — signes hémodynamiques',texte:'/me injecte 0,5mg d\'Adrénaline en IM, pose une VVP et passe un SSI 500mL sur 10 minutes.',info:'PISU 4 : puis Solumedrol 1mg/kg IVDL.'},
+  {id:'p7',categorie:'Protocoles PISU',type:'me',titre:'Anaphylaxie — détresse respiratoire',texte:'/me injecte 0,5mg d\'Adrénaline en IM puis lance l\'aérosol de Salbutamol 5mg.',info:'PISU 4 : puis VVP, NaCl 500mL en garde veine, Solumedrol 1mg/kg.'},
+  {id:'p8',categorie:'Protocoles PISU',type:'me',titre:'Anaphylaxie — signes hémodynamiques',texte:'/me injecte 0,5mg d\'Adrénaline en IM, pose une VVP et passe un NaCl 500mL sur 10 minutes.',info:'PISU 4 : puis Solumedrol 1mg/kg IVDL.'},
   {id:'p9',categorie:'Protocoles PISU',type:'me',titre:'Anaphylaxie — réévaluation',texte:'/me réévalue les signes respiratoires et circulatoires.',info:'PISU 4 : sans amélioration respiratoire : adrénaline 1mg en aérosol ; circulatoire : adrénaline 0,05mg IVD /2 min.'},
   {id:'p10',categorie:'Protocoles PISU',type:'me',titre:'OAP — VNI PEP 5',texte:'/me met en place la VNI avec une PEP à 5, en pause si TA < 120 ou GCS < 12.',info:'PISU 8 : procédure OAP 1 sur demande de la régulation. CI : asthme/BPCO, Glasgow < 12, T° > 38,5.'},
   {id:'p11',categorie:'Protocoles PISU',type:'me',titre:'OAP — transport avec scope continu',texte:'/me transporte le patient avec un scope continu.'},
   {id:'p12',categorie:'Protocoles PISU',type:'me',titre:'Noyade — stade 4 (ACR)',texte:'/me fait 5 insufflations starter puis applique le PISU 1 et décomprime l\'estomac par sonde nasogastrique.',info:'PISU 9.'},
-  {id:'p13',categorie:'Protocoles PISU',type:'me',titre:'Noyade — stade 3 (coma, obnubilation)',texte:'/me met en place la VNI avec une PEP à 5 et passe un SSI 500mL en garde veine.',info:'PISU 9 : Glasgow > 12 et VNI.'},
+  {id:'p13',categorie:'Protocoles PISU',type:'me',titre:'Noyade — stade 3 (coma, obnubilation)',texte:'/me met en place la VNI avec une PEP à 5 et passe un NaCl 500mL en garde veine.',info:'PISU 9 : Glasgow > 12 et VNI.'},
   {id:'p14',categorie:'Protocoles PISU',type:'me',titre:'Noyade — stade 2 (toux, angoisse)',texte:'/me règle l\'oxygène pour obtenir une SpO2 > 94%.',info:'PISU 9. Stade 1 : angoisse sans inhalation, réassurance.'},
   {id:'p15',categorie:'Protocoles PISU',type:'me',titre:'Noyade — réassurance (stade 1)',texte:'/me rassure le patient.'},
   {id:'p16',categorie:'Protocoles PISU',type:'me',titre:'Asthme — Salbutamol + Ipratropium',texte:'/me lance l\'aérosol de Salbutamol 5mg et d\'Ipratropium 0,5mg.',info:'PISU 6.'},
-  {id:'p17',categorie:'Protocoles PISU',type:'me',titre:'Asthme — Salbutamol jusqu\'à amélioration',texte:'/me renouvelle l\'aérosol de Salbutamol jusqu\'à amélioration clinique, puis pose une VVP avec SSI 500mL en garde veine.',info:'PISU 6 : puis Solumedrol 1mg/kg, O2 pour SpO2 > 94%.'},
+  {id:'p17',categorie:'Protocoles PISU',type:'me',titre:'Asthme — Salbutamol jusqu\'à amélioration',texte:'/me renouvelle l\'aérosol de Salbutamol jusqu\'à amélioration clinique, puis pose une VVP avec NaCl 500mL en garde veine.',info:'PISU 6 : puis Solumedrol 1mg/kg, O2 pour SpO2 > 94%.'},
   {id:'p18',categorie:'Protocoles PISU',type:'me',titre:'Convulsions — protection de la victime',texte:'/me protège le patient pendant la crise et prépare l\'aspiration.',info:'PISU 10 : O2 systématique, PLS si trouble de conscience ou vomissements.'},
   {id:'p19',categorie:'Protocoles PISU',type:'me',titre:'Hypoglycémie — contrôle + resucrage per os',texte:'/me contrôle la glycémie et resucre le patient par voie orale.',info:'PISU 7 : si Glasgow > 12.'},
   {id:'p20',categorie:'Protocoles PISU',type:'me',titre:'Hypoglycémie — contrôle glycémie /5 min',texte:'/me contrôle la glycémie toutes les 5 minutes.'},
   {id:'p21',categorie:'Protocoles PISU',type:'me',titre:'Délivrance — massage utérin',texte:'/me réalise un massage doux de l\'utérus.',info:'PISU 14. Sondage aller-retour à 20 min si pas de miction. Absence de délivrance à T+30 min : transport rapide avec accord C15.'},
   {id:'p22',categorie:'Protocoles PISU',type:'me',titre:'Délivrance — intégrité du placenta',texte:'/me vérifie l\'intégrité du placenta et le conserve pour l\'hôpital.',info:'PISU 14.'},
-  {id:'p23',categorie:'Protocoles PISU',type:'me',titre:'Hémorragie du post-partum',texte:'/me conditionne la patiente pour le transport, met de l\'oxygène pour SpO2 > 94%, pose une 2ème VVP avec SSI 500mL sur 10 minutes et la place en décubitus latéral gauche à 20°.',info:'PISU 14 : métrorragies > 500mL, puis Exacyl 1g sur 20 min et massage utérin.'},
+  {id:'p23',categorie:'Protocoles PISU',type:'me',titre:'Hémorragie du post-partum',texte:'/me conditionne la patiente pour le transport, met de l\'oxygène pour SpO2 > 94%, pose une 2ème VVP avec NaCl 500mL sur 10 minutes et la place en décubitus latéral gauche à 20°.',info:'PISU 14 : métrorragies > 500mL, puis Exacyl 1g sur 20 min et massage utérin.'},
   {id:'p24',categorie:'Protocoles PISU',type:'me',titre:'Nouveau-né — sécher et stimuler',texte:'/me sèche et stimule le nouveau-né.',info:'PISU 15 : à 1 min de vie, puis couper le cordon et évaluer l\'APGAR.'},
   {id:'p25',categorie:'Protocoles PISU',type:'me',titre:'Nouveau-né — APGAR 10 : peau à peau',texte:'/me met le nouveau-né en peau à peau, prévient l\'hypothermie et surveille l\'APGAR à T+5.',info:'PISU 15.'},
   {id:'p26',categorie:'Protocoles PISU',type:'me',titre:'Nouveau-né — FC < 100 ou apnée',texte:'/me libère les VAS, aspire doucement et ventile au BAVU à l\'air ambiant pendant 30 secondes (20 mvt/min).',info:'PISU 15 : APGAR < 10.'},
-  {id:'p27',categorie:'Protocoles PISU',type:'me',titre:'Nouveau-né — FC < 60 à 1 min 30',texte:'/me débute la RCP 3/1 avec le BAVU à l\'O2 (20 mvt/min) et pose un KTIO avec SSI 100mL en garde veine.',info:'PISU 15.'},
+  {id:'p27',categorie:'Protocoles PISU',type:'me',titre:'Nouveau-né — FC < 60 à 1 min 30',texte:'/me débute la RCP 3/1 avec le BAVU à l\'O2 (20 mvt/min) et pose un KTIO avec NaCl 100mL en garde veine.',info:'PISU 15.'},
   {id:'p28',categorie:'Protocoles PISU',type:'me',titre:'Nouveau-né — Adrénaline 0,01mg/kg',texte:'/me injecte 0,01mg/kg d\'Adrénaline en IVD, FC toujours < 60 à 2 min 30 de vie.',info:'PISU 15.'},
-  {id:'p29',categorie:'Protocoles PISU',type:'me',titre:'Douleur thoracique — O2 si désaturation',texte:'/me pose une VVP avec SSI 100mL en garde veine, met de l\'O2 pour SpO2 > 94% si désaturation et télétransmet l\'ECG au SAMU.',info:'PISU 13.'},
+  {id:'p29',categorie:'Protocoles PISU',type:'me',titre:'Douleur thoracique — O2 si désaturation',texte:'/me pose une VVP avec NaCl 100mL en garde veine, met de l\'O2 pour SpO2 > 94% si désaturation et télétransmet l\'ECG au SAMU.',info:'PISU 13.'},
   {id:'p30',categorie:'Protocoles PISU',type:'me',titre:'Douleur thoracique — patch DSA',texte:'/me place un patch DSA à proximité.',info:'PISU 13 : procédures clopidogrel et ticagrelor.'},
-  {id:'p31',categorie:'Protocoles PISU',type:'me',titre:'Douleur — EVA 4 à 7',texte:'/me pose une VVP avec SSI 500mL en garde veine et perfuse 1g de Paracétamol en IVL.',info:'PISU 12 : puis réévaluation et adaptation de la mobilisation.'},
-  {id:'p32',categorie:'Protocoles PISU',type:'me',titre:'Douleur — EVA > 7',texte:'/me pose une VVP avec SSI 500mL en garde veine et injecte la Morphine puis le Paracétamol 1g en IVL.',info:'PISU 12 : Morphine 2 ou 3mg IVD.'},
+  {id:'p31',categorie:'Protocoles PISU',type:'me',titre:'Douleur — EVA 4 à 7',texte:'/me pose une VVP avec NaCl 500mL en garde veine et perfuse 1g de Paracétamol en IVL.',info:'PISU 12 : puis réévaluation et adaptation de la mobilisation.'},
+  {id:'p32',categorie:'Protocoles PISU',type:'me',titre:'Douleur — EVA > 7',texte:'/me pose une VVP avec NaCl 500mL en garde veine et injecte la Morphine puis le Paracétamol 1g en IVL.',info:'PISU 12 : Morphine 2 ou 3mg IVD.'},
   {id:'p33',categorie:'Protocoles PISU',type:'me',titre:'Douleur — Nubain enfant intrarectal',texte:'/me administre 0,4mg/kg de Nubain par voie intrarectale, max 20mg.',info:'PISU 12P : alternative sans VVP, après accord de la régulation.'},
 
   // ── EXAMENS ──
@@ -693,7 +693,7 @@ const PROCEDURES = [
       {titre:'Anticipation de la douleur', texte:'/me anticipe la douleur de la pose avec du MEOPA ou un antalgique si le patient est conscient.'},
       {titre:'Désinfection', texte:'/me désinfecte à la Bétadine alcoolique.'},
       {titre:'Pose de l\'aiguille', texte:'/me pose l\'aiguille IO avec la perceuse puis le pansement stabilisateur.'},
-      {titre:'Flush de 10mL', texte:'/me fait un flush de 10mL de SSI à la pose.'},
+      {titre:'Flush de 10mL', texte:'/me fait un flush de 10mL de NaCl à la pose.'},
       {titre:'Mise sous pression', texte:'/me met la poche sous manchette à pression (ou un garrot élastique autour de la poche) pour passer les traitements.'},
       {titre:'Purge entre injections', texte:'/me purge la ligne entre chaque injection.'},
     ]
@@ -741,7 +741,7 @@ const PROCEDURES = [
     etapes:[
       {titre:'Plan dur et insufflations', texte:'/me met l\'enfant sur un plan dur, fait 5 insufflations puis 15 compressions pour 2 insufflations.'},
       {titre:'Oxygène', texte:'/me met de l\'O2 à 3L/min si < 1 an (6L/min si > 1 an).'},
-      {titre:'KTIO en 1ère intention', texte:'/me pose un KTIO en 1ère intention puis un SSI 100mL en garde veine.'},
+      {titre:'KTIO en 1ère intention', texte:'/me pose un KTIO en 1ère intention puis un NaCl 100mL en garde veine.'},
       {titre:'Pupilles et contexte', texte:'/me examine les pupilles et recherche le contexte de l\'ACR.'},
       {titre:'Choc recommandé : CEE', texte:'/me délivre le CEE puis reprend la RCP pendant 2 minutes.'},
       {titre:'Pas de choc : pouls', texte:'/me vérifie le pouls toutes les 2 minutes.'},
@@ -760,10 +760,10 @@ const PROCEDURES = [
       {titre:'Arrêt du saignement', texte:'/me arrête le saignement sur toutes les plaies.'},
       {titre:'Ceinture pelvienne', texte:'/me pose la ceinture pelvienne (trauma ou plaie de la région du bassin).'},
       {titre:'Oxygénothérapie', texte:'/me met le patient sous oxygène.'},
-      {titre:'VVP + SSI 500mL sur 10 min', texte:'/me pose une VVP et passe un SSI 500mL sur 10 minutes.'},
-      {titre:'TAS < 80 : 2ème VVP', texte:'/me pose une 2ème VVP et passe un SSI 500mL sur 10 minutes.'},
-      {titre:'TAS > 80 : SSI en garde veine', texte:'/me passe un SSI 500mL en garde veine.'},
-      {titre:'Exacyl 1g sur 20 min', texte:'/me perfuse 1g d\'Exacyl (2 amp de 500mg dans 100mL de SSI) sur 20 minutes.'},
+      {titre:'VVP + NaCl 500mL sur 10 min', texte:'/me pose une VVP et passe un NaCl 500mL sur 10 minutes.'},
+      {titre:'TAS < 80 : 2ème VVP', texte:'/me pose une 2ème VVP et passe un NaCl 500mL sur 10 minutes.'},
+      {titre:'TAS > 80 : NaCl en garde veine', texte:'/me passe un NaCl 500mL en garde veine.'},
+      {titre:'Exacyl 1g sur 20 min', texte:'/me perfuse 1g d\'Exacyl (2 amp de 500mg dans 100mL de NaCl) sur 20 minutes.'},
       {titre:'Douleur', texte:'/me traite la douleur selon le PISU 12 si besoin.'},
       {titre:'Transmission', texte:'/me transmet les antécédents, les anticoagulants, le volume de sang perdu, le mécanisme et les traumatismes associés.'},
     ]
@@ -773,12 +773,12 @@ const PROCEDURES = [
     desc:'Antécédent d\'allergie + signes cutanés, respiratoires ou hémodynamiques',
     etapes:[
       {titre:'Détresse respiratoire', texte:'/me injecte 0,5mg d\'Adrénaline en IM puis lance l\'aérosol de Salbutamol 5mg.'},
-      {titre:'Signes hémodynamiques', texte:'/me injecte 0,5mg d\'Adrénaline en IM, pose une VVP et passe un SSI 500mL sur 10 minutes.'},
+      {titre:'Signes hémodynamiques', texte:'/me injecte 0,5mg d\'Adrénaline en IM, pose une VVP et passe un NaCl 500mL sur 10 minutes.'},
       {titre:'Solumedrol', texte:'/me injecte 1mg/kg de Solumedrol (flacon 120mg dans 12mL) en IVDL, max 120mg.'},
       {titre:'Réévaluation', texte:'/me réévalue les signes respiratoires et circulatoires.'},
-      {titre:'Pas d\'amélioration respiratoire', texte:'/me lance l\'aérosol d\'Adrénaline : 1mg dilué dans 4mL de SSI.'},
+      {titre:'Pas d\'amélioration respiratoire', texte:'/me lance l\'aérosol d\'Adrénaline : 1mg dilué dans 4mL de NaCl.'},
       {titre:'Pas d\'amélioration circulatoire', texte:'/me injecte 0,05mg d\'Adrénaline en IVD toutes les 2 minutes jusqu\'à TAS > 80mmHg.'},
-      {titre:'Polaramine', texte:'/me perfuse 5mg de Polaramine dilués dans 100mL de SSI en IVL.'},
+      {titre:'Polaramine', texte:'/me perfuse 5mg de Polaramine dilués dans 100mL de NaCl en IVL.'},
     ]
   },
   {
@@ -788,7 +788,7 @@ const PROCEDURES = [
       {titre:'Aérosol initial', texte:'/me lance l\'aérosol de Salbutamol 5mg et d\'Ipratropium 0,5mg.'},
       {titre:'Amélioration clinique ?', texte:'/me réévalue l\'état clinique.'},
       {titre:'Pas d\'amélioration : Salbutamol', texte:'/me renouvelle l\'aérosol de Salbutamol jusqu\'à amélioration clinique.'},
-      {titre:'VVP et SSI', texte:'/me pose une VVP et passe un SSI 500mL en garde veine.'},
+      {titre:'VVP et NaCl', texte:'/me pose une VVP et passe un NaCl 500mL en garde veine.'},
       {titre:'Solumedrol', texte:'/me injecte 1mg/kg de Solumedrol en IVDL, max 120mg.'},
       {titre:'Oxygène', texte:'/me règle l\'oxygène pour une SpO2 > 94%.'},
     ]
@@ -799,7 +799,7 @@ const PROCEDURES = [
     etapes:[
       {titre:'Télétransmission ECG', texte:'/me télétransmet l\'ECG au SAMU.'},
       {titre:'Oxygène si désaturation', texte:'/me règle l\'oxygène pour une SpO2 > 94%.'},
-      {titre:'VVP', texte:'/me pose une VVP avec un SSI 100mL en garde veine.'},
+      {titre:'VVP', texte:'/me pose une VVP, purge et branche une poche de NaCl 100mL en garde veine.'},
       {titre:'Lasilix si TAS > 120', texte:'/me injecte 1mg/kg de Lasilix pur (40mg/4mL) en IVDL, max 80mg.'},
       {titre:'Procédure OAP 1 : VNI', texte:'/me met en place la VNI avec une PEP à 5, en pause si TA < 120 ou GCS < 12.'},
       {titre:'Risordan si TAS > 180', texte:'/me injecte 1mg de Risordan pur toutes les 5 minutes jusqu\'à amélioration ou TA < 120mmHg.'},
@@ -810,7 +810,7 @@ const PROCEDURES = [
     id:'hypoglycemie', titre:'Hypoglycémie grave (PISU 7)', icon:'🍬', color:'#34d399',
     desc:'Dextro < 0,7g/L et Glasgow < 12',
     etapes:[
-      {titre:'VVP + SSI 500mL', texte:'/me pose une VVP avec un SSI 500mL en garde veine.'},
+      {titre:'VVP + NaCl 500mL', texte:'/me pose une VVP, purge et branche une poche de NaCl 500mL en garde veine.'},
       {titre:'G30% — 1 ampoule', texte:'/me injecte 1 ampoule de G30% pure en IVDL.'},
       {titre:'Glasgow > 12', texte:'/me contrôle la glycémie et resucre le patient par voie orale.'},
       {titre:'Dextro < 0,7 : G30% 20mL', texte:'/me injecte 20mL de G30% pur en IVDL.'},
@@ -823,7 +823,7 @@ const PROCEDURES = [
     desc:'Crise tonique ou clonique en cours',
     etapes:[
       {titre:'Protection et oxygène', texte:'/me protège le patient pendant la crise, met de l\'O2 et prépare l\'aspiration.'},
-      {titre:'VVP + SSI 500mL', texte:'/me pose une VVP avec un SSI 500mL en garde veine.'},
+      {titre:'VVP + NaCl 500mL', texte:'/me pose une VVP, purge et branche une poche de NaCl 500mL en garde veine.'},
       {titre:'Rivotril 1mg IVD', texte:'/me injecte 1mg de Rivotril pur (2mg/2mL) en IVD.'},
       {titre:'Convulsions à T+5 min', texte:'/me injecte une 2ème dose de 1mg de Rivotril en IVD.'},
       {titre:'Hypoglycémie', texte:'/me contrôle la glycémie et applique le PISU 7 si besoin.'},
@@ -834,7 +834,7 @@ const PROCEDURES = [
     desc:'Douleurs aiguës traumatiques ou médicales',
     etapes:[
       {titre:'Évaluation', texte:'/me évalue la douleur (EVA).'},
-      {titre:'EVA 4 à 7 : VVP + Paracétamol', texte:'/me pose une VVP avec un SSI 500mL en garde veine et perfuse 1g de Paracétamol en IVL.'},
+      {titre:'EVA 4 à 7 : VVP + Paracétamol', texte:'/me pose une VVP, purge et branche une poche de NaCl 500mL en garde veine et perfuse 1g de Paracétamol en IVL.'},
       {titre:'EVA > 7 : Morphine', texte:'/me injecte 2 ou 3mg de Morphine pure (1mg/mL) en IVD.'},
       {titre:'EVA > 7 : Paracétamol', texte:'/me perfuse 1g de Paracétamol en IVL.'},
       {titre:'Réévaluation', texte:'/me réévalue la douleur.'},
@@ -848,11 +848,11 @@ const PROCEDURES = [
     desc:'Douleur thoracique non traumatique',
     etapes:[
       {titre:'Oxygène si désaturation', texte:'/me règle l\'oxygène pour une SpO2 > 94%.'},
-      {titre:'VVP', texte:'/me pose une VVP avec un SSI 100mL en garde veine.'},
+      {titre:'VVP', texte:'/me pose une VVP, purge et branche une poche de NaCl 100mL en garde veine.'},
       {titre:'ECG', texte:'/me télétransmet l\'ECG au SAMU.'},
-      {titre:'Aspirine 250mg IVD', texte:'/me dilue ½ flacon d\'Aspégic 500mg dans une seringue de 20mL de SSI et injecte 250mg en IVD.'},
+      {titre:'Aspirine 250mg IVD', texte:'/me dilue ½ flacon d\'Aspégic 500mg dans une seringue de 20mL de NaCl et injecte 250mg en IVD.'},
       {titre:'Clopidogrel 600mg', texte:'/me donne 2 comprimés de Plavix 300mg (procédure clopidogrel, sur demande de la régulation).'},
-      {titre:'Héparine 5000 UI', texte:'/me perfuse 1 flacon d\'Héparine 5000 UI dilué dans 100mL de SSI en IVL.'},
+      {titre:'Héparine 5000 UI', texte:'/me perfuse 1 flacon d\'Héparine 5000 UI dilué dans 100mL de NaCl en IVL.'},
       {titre:'Ticagrelor 180mg', texte:'/me donne 2 comprimés de Brilique 90mg (procédure ticagrelor, sur demande de la régulation).'},
       {titre:'Lovenox 0,5mg/kg', texte:'/me injecte 0,5mg/kg de Lovenox en IVD avec une seringue préremplie et un bouchon injecteur.'},
       {titre:'Transport', texte:'/me place un patch DSA à proximité et transporte avec un scope continu.'},
@@ -864,10 +864,10 @@ const PROCEDURES = [
     etapes:[
       {titre:'Déshabillage, scope, gravité', texte:'/me déshabille le patient, pose le scope et recherche des signes de gravité.'},
       {titre:'SpCO et oxygène', texte:'/me mesure le SpCO en continu et met l\'oxygène à 15L/min.'},
-      {titre:'Défaillance vitale : VVP', texte:'/me pose une VVP avec un SSI 500mL sur 10 minutes.'},
-      {titre:'Milieu clos : Cyanokit', texte:'/me perfuse le Cyanokit 5g dilué dans 200mL de SSI sur 15 minutes.'},
+      {titre:'Défaillance vitale : VVP', texte:'/me pose une VVP, purge et branche une poche de NaCl 500mL sur 10 minutes.'},
+      {titre:'Milieu clos : Cyanokit', texte:'/me perfuse le Cyanokit 5g dilué dans 200mL de NaCl sur 15 minutes.'},
       {titre:'Dyspnée : aérosol', texte:'/me lance l\'aérosol de Salbutamol 5mg et d\'Ipratropium 0,5mg.'},
-      {titre:'Dyspnée : VVP + Solumedrol', texte:'/me pose une VVP avec un SSI 500mL en garde veine et injecte 1mg/kg de Solumedrol en IVDL, max 120mg.'},
+      {titre:'Dyspnée : VVP + Solumedrol', texte:'/me pose une VVP, purge et branche une poche de NaCl 500mL en garde veine et injecte 1mg/kg de Solumedrol en IVDL, max 120mg.'},
     ]
   },
   {
@@ -889,7 +889,7 @@ const PROCEDURES = [
     etapes:[
       {titre:'Évaluation du stade', texte:'/me évalue le stade de la noyade.'},
       {titre:'Stade 4 : ACR', texte:'/me fait 5 insufflations starter, applique le PISU 1 et décomprime l\'estomac par sonde nasogastrique.'},
-      {titre:'Stade 3 : VNI', texte:'/me met en place la VNI avec une PEP à 5 (Glasgow > 12) et passe un SSI 500mL en garde veine.'},
+      {titre:'Stade 3 : VNI', texte:'/me met en place la VNI avec une PEP à 5 (Glasgow > 12) et passe un NaCl 500mL en garde veine.'},
       {titre:'Stade 2 : oxygène', texte:'/me règle l\'oxygène pour une SpO2 > 94%.'},
       {titre:'Stade 1 : réassurance', texte:'/me rassure le patient.'},
     ]
@@ -898,13 +898,13 @@ const PROCEDURES = [
     id:'delivrance', titre:'Délivrance (PISU 14)', icon:'🤰', color:'#ec4899',
     desc:'Accouchement en cours non réalisé',
     etapes:[
-      {titre:'VVP + SSI 500mL', texte:'/me pose une VVP avec un SSI 500mL en garde veine.'},
+      {titre:'VVP + NaCl 500mL', texte:'/me pose une VVP, purge et branche une poche de NaCl 500mL en garde veine.'},
       {titre:'Ocytocine 5 UI', texte:'/me injecte 5 UI d\'Oxytocine en IVL ou IM entre l\'engagement de la 2ème épaule et la 1ère minute de vie.'},
       {titre:'Évaluation', texte:'/me évalue la maman, le nouveau-né et les saignements.'},
       {titre:'Délivrance non faite', texte:'/me réalise un massage doux de l\'utérus puis un sondage aller-retour à 20 min si pas de miction.'},
       {titre:'Absence de délivrance à T+30', texte:'/me organise un transport rapide avec l\'accord du C15.'},
       {titre:'Délivrance faite', texte:'/me vérifie l\'intégrité du placenta, le conserve et perfuse 10 UI d\'Oxytocine en 1 heure.'},
-      {titre:'Métrorragies > 500mL', texte:'/me conditionne pour le transport, met de l\'O2, pose une 2ème VVP avec SSI 500mL sur 10 min, décubitus latéral gauche à 20°, Exacyl 1g sur 20 min et massage utérin.'},
+      {titre:'Métrorragies > 500mL', texte:'/me conditionne pour le transport, met de l\'O2, pose une 2ème VVP avec NaCl 500mL sur 10 min, décubitus latéral gauche à 20°, Exacyl 1g sur 20 min et massage utérin.'},
     ]
   },
   {
@@ -915,7 +915,7 @@ const PROCEDURES = [
       {titre:'Couper le cordon et APGAR', texte:'/me coupe le cordon à 1 min de vie et évalue l\'APGAR.'},
       {titre:'APGAR 10', texte:'/me met le nouveau-né en peau à peau, prévient l\'hypothermie et surveille l\'APGAR à T+5.'},
       {titre:'APGAR < 10 : FC < 100 ou apnée', texte:'/me libère les VAS, aspire doucement et ventile au BAVU à l\'air ambiant 30 secondes (20 mvt/min).'},
-      {titre:'FC < 60 à 1 min 30', texte:'/me débute la RCP 3/1 avec le BAVU à l\'O2 (20 mvt/min) et pose un KTIO avec SSI 100mL en garde veine.'},
+      {titre:'FC < 60 à 1 min 30', texte:'/me débute la RCP 3/1 avec le BAVU à l\'O2 (20 mvt/min) et pose un KTIO avec NaCl 100mL en garde veine.'},
       {titre:'FC < 60 à 2 min 30', texte:'/me injecte 0,01mg/kg d\'Adrénaline en IVD.'},
     ]
   },
@@ -2574,6 +2574,7 @@ function buildBilan(b){
 function BilanView({showToast}){
   const [b,setB]=useState(()=>({...BILAN_DEF,...load('mRP2_bilan',{})}));
   useEffect(()=>{save('mRP2_bilan',b);},[b]);
+  useEffect(()=>{const h=()=>setB(p=>({...p,gestes:(load('mRP2_bilan',{}).gestes)||''}));window.addEventListener('bilan-gestes',h);return()=>window.removeEventListener('bilan-gestes',h);},[]);
   const set=(k,v)=>setB(p=>({...p,[k]:v}));
   const text=useMemo(()=>buildBilan(b),[b]);
   const copy=async()=>{
@@ -2710,7 +2711,7 @@ const FICHES_GESTES = [
  {id:"g_iot", titre:"Intubation oro-trachéale (IOT)", icon:"🫁", color:"#a78bfa", tag:"Geste", src:"UE 4.4 · CESU 93",
   crit:["Acte médical : il permet de garder les voies aériennes en sécurité.","Troubles de la conscience inexpliqués graves (GCS < 8) sans signes d'amélioration.","Mise en coma artificiel sur des douleurs résistantes aux traitements morphiniques.","Mise au repos des voies respiratoires lors d'une dyspnée aiguë résistante à la VNI.","Mise en place d'une ventilation dans un mécanisme ORL obstructif."],
   steps:["Étape 1 · Préoxygénation : MHC à 15 L/min, ou VNI en mode préoxygène (Fi 100 %) chez le patient conscient ; BAVU à 15 L/min si le patient est inconscient. Objectif : intuber à 100 % de SpO2.","Étape 1 bis · Préparation du matériel, en parallèle : respirateur préparé (souvent par l'ADE) et branché à la bouteille d'O2, réglages prescrits par le médecin. L'IDE prépare les traitements pour anticiper les effets de la ventilation artificielle (chute de TA, bradycardie) et s'assure d'avoir 2 voies d'abord minimum. Le médecin prépare la zone stérile (sonde adaptée et testée, mandrin, lame testée), place la tête du patient et retire les prothèses dentaires.","Étape 2 · Induction : endormir le patient avant de l'intuber (confort et pas de gestes parasites). Etomidate (ISR, sédatif de base), Kétamine (face à un état de choc), Propofol (sédation de courte durée, prioritaire si ISR dans le cadre de l'épilepsie).","Étape 3 · Curarisation : Suxaméthonium (Célocurine), curare de première intention, 1 mg/kg IVD. Des fasciculations parcourent le corps quand le patient est curarisé ; il faut alors le ballonner au BAVU car il ne respire plus.","Étape 4 · Intubation : le médecin place la tête en arrière et utilise le laryngoscope. Aspiration si sécrétions. Manœuvre de Sellick par une autre personne. Cordes vocales anesthésiées au Xylo spray. 45 secondes après la curarisation ou à l'apparition des fasciculations, la sonde passe, le ballonnet franchit les cordes vocales, est gonflé, et la sonde est raccordée au BAVU.","Étape 5 · Vérifications : deux insufflations ; l'IDE ausculte les deux poumons (intubation non sélective) ; branchement du capnographe puis nouvelle insufflation pour vérifier le CO2 libéré (35 à 45 mmHg). Noter le repère de la sonde aux dents, fixer avec la bande de fixation, relier la sonde au respirateur réglé et vérifier le ballonnet au manomètre du kit (ni sous-gonflé ni trop gonflé).","Étape 6 · Entretien : association d'un hypnotique (Midazolam) et d'un antalgique fort (Sufentanil) à la seringue électrique selon prescription."],
-  prep:[["Etomidate (Hypnomidate) 0,3 mg/kg IVDL","1 ampoule de 40 mg dans 20 mL pour 2 mg/mL. Patient de 70 kg : 21 mg soit 10 mL."],["Kétamine 2 mg/kg IVDL (état de choc)","1 ampoule de 250 mg dans 10 mL pour 25 mg/mL. Patient de 70 kg : 140 mg soit 6 mL."],["Propofol 2 mg/kg IVDL","1 ampoule de 200 mg dans 20 mL pour 20 mg/mL. Patient de 70 kg : 140 mg soit 7 mL."],["Suxaméthonium (Célocurine) 1 mg/kg IVD","1 ampoule de 100 mg (2 mL) avec 8 mL de NaCl pour 10 mg/mL. Patient de 70 kg : 70 mg."],["Hypnovel (Midazolam) IVSE","1 ampoule de 50 mg (50/10 mL) dans une seringue ramenée à 50 mL avec du SSI, soit 1 mg/mL. Vitesse de 2,5 mL/h à 10 mL/h."],["Sufentanil IVSE","1 ampoule de 250 μg dans une seringue ramenée à 50 mL avec du SSI, soit 5 μg/mL. Vitesse de 0,8 mL/h à 20 mL/h."]],
+  prep:[["Etomidate (Hypnomidate) 0,3 mg/kg IVDL","1 ampoule de 40 mg dans 20 mL pour 2 mg/mL. Patient de 70 kg : 21 mg soit 10 mL."],["Kétamine 2 mg/kg IVDL (état de choc)","1 ampoule de 250 mg dans 10 mL pour 25 mg/mL. Patient de 70 kg : 140 mg soit 6 mL."],["Propofol 2 mg/kg IVDL","1 ampoule de 200 mg dans 20 mL pour 20 mg/mL. Patient de 70 kg : 140 mg soit 7 mL."],["Suxaméthonium (Célocurine) 1 mg/kg IVD","1 ampoule de 100 mg (2 mL) avec 8 mL de NaCl pour 10 mg/mL. Patient de 70 kg : 70 mg."],["Hypnovel (Midazolam) IVSE","1 ampoule de 50 mg (50/10 mL) dans une seringue ramenée à 50 mL avec du NaCl, soit 1 mg/mL. Vitesse de 2,5 mL/h à 10 mL/h."],["Sufentanil IVSE","1 ampoule de 250 μg dans une seringue ramenée à 50 mL avec du NaCl, soit 5 μg/mL. Vitesse de 0,8 mL/h à 20 mL/h."]],
   att:["JAMAIS de curarisation sur un patient éveillé : la drogue paralyse aussi les muscles respiratoires.","Ballonner le patient au BAVU dès la curarisation : il ne respire plus.","Intuber un patient à 100 % de SpO2 : la préoxygénation est indispensable.","Prévoir au minimum 2 voies d'abord pour passer tous les traitements.","Pas de CO2 (ou très peu) au capnographe : l'intubation est dans l'estomac.","En cas de doute à l'auscultation : retirer la sonde de 2 cm et ausculter à nouveau.","Propofol : importantes répercussions hémodynamiques possibles. Kétamine : moins d'effets hémodynamiques, à choisir face à un état de choc.","Une fois relié au respirateur, le patient dépend d'une bouteille d'O2 qui se vide très rapidement.","Un soignant est désigné pour tenir la sonde d'intubation lors des relevages et transferts.","Le patient ne peut pas se réveiller dans cette configuration."]},
  {id:"g_vvp", titre:"Voie veineuse périphérique (VVP)", icon:"💉", color:"#22d3ee", tag:"Geste", src:"UE 4.4 · CESU 93",
   crit:["Acte IDE sur prescription médicale (orale ou téléphonique) ou PISU.","Utile pour passer des traitements, mettre des solutés de remplissage ou simplement une voie d'attente."],
@@ -2719,7 +2720,7 @@ const FICHES_GESTES = [
   att:["Ne pas perfuser un bras hémiplégique, un hématome ou une zone infectée.","Prélèvement pendant la pose possible pour : tubes d'examens, Hémocue, glycémie, gaz veineux."]},
  {id:"g_io", titre:"Voie intra-osseuse (IO)", icon:"🦴", color:"#fb923c", tag:"Geste", src:"UE 4.4 et UE 2.11 · CESU 93",
   crit:["Acte sur prescription médicale (orale ou téléphonique) ou PISU, pour IDE formé.","Indications : ACR adulte après échec de VVP > 90 secondes ; urgence vitale immédiate avec VVP non réalisable.","Pré-hospitalier : deux indications seulement, VVP trop longue en urgence vitale, et ACR de l'enfant."],
-  steps:["Vérifier les contre-indications.","Préparer le matériel : perceuse, aiguille IO, pansement stabilisateur, prolongateur avec clamp, compresses stériles, Bétadine alcoolique.","Anticiper la douleur (MEOPA, antalgiques) : soin douloureux, surtout chez le patient conscient.","Poser l'aiguille IO et faire un flush de 10 mL de SSI à la pose.","Administrer les traitements sous manchette à pression ou à la seringue électrique.","Purger la ligne entre chaque injection."],
+  steps:["Vérifier les contre-indications.","Préparer le matériel : perceuse, aiguille IO, pansement stabilisateur, prolongateur avec clamp, compresses stériles, Bétadine alcoolique.","Anticiper la douleur (MEOPA, antalgiques) : soin douloureux, surtout chez le patient conscient.","Poser l'aiguille IO et faire un flush de 10 mL de NaCl à la pose.","Administrer les traitements sous manchette à pression ou à la seringue électrique.","Purger la ligne entre chaque injection."],
   prep:[["Pression sur la poche","Manchette à pression. Sans manchette : garrot élastique autour de la poche, ou un secouriste appuie sur la poche jusqu'à trouver une solution plus adaptée."],["Traitements","L'ensemble des traitements habituellement administrés par voie IV peut passer en IO."]],
   att:["Contre-indications : fracture de l'os, prothèse ou ostéosynthèse sur l'os abordé, infection.","Soin douloureux : habituellement utilisé chez la personne inconsciente mais possible chez un patient conscient.","La résistance de l'os impose manchette à pression ou seringue électrique."]},
  {id:"g_hemocue", titre:"Hémocue", icon:"🩸", color:"#f43f5e", tag:"Geste", src:"UE 4.4 · CESU 93",
@@ -2755,8 +2756,8 @@ const FICHES_PHARMA = [
  {id:"d_nefo", nom:"Néfopam (Acupan)", cl:"Antalgique palier 1", color:"#22d3ee", ind:"Douleur faible à modérée", ci:"", ei:"Nausées", adm:["IVL ou PO.","IVL : 1 ampoule (20 mg/2 mL) selon prescription médicale dans une perfusette de 100 mL."], att:[]},
  {id:"d_morph", nom:"Morphine", cl:"Antalgique palier 3", color:"#f43f5e", ind:"Douleur intense", ci:"", ei:"Bradypnée, somnolence, confusion, nausées", adm:["PO, IV ou SC, en titration ++.","IV efficace en 5 minutes pendant 4 h.","IVD : 1 ampoule de 10 mg à diluer dans 10 mL pour 1 mg/mL."], att:["Risque de bradypnée, somnolence, confusion et nausées : surveiller la ventilation.","Hors présence d'un médecin, c'est le PISU qui détermine l'antalgique et la dose.","Antidote : Naloxone (Narcan)."]},
  {id:"d_keta", nom:"Kétamine", cl:"Anesthésique / analgésique", color:"#a78bfa", ind:"Anesthésie et analgésie", ci:"HyperTA", ei:"Hypertension, tachycardie, désorientation", adm:["Douleur aiguë en MU, IVDL : 0,1 à 0,5 mg/kg (patient de 70 kg : 14 mg soit 1,4 mL).","Préparation : seringue de 50 mg/5 mL (une ampoule soit 10 mg/mL).","Induction IOT en état de choc : 2 mg/kg, ampoule de 250 mg dans 10 mL pour 25 mg/mL."], att:["Contre-indiquée en cas d'HTA.","Choix de l'induction face à un état de choc (peu d'effets hémodynamiques)."]},
- {id:"d_mida", nom:"Midazolam (Hypnovel)", cl:"Benzodiazépine", color:"#a78bfa", ind:"Sédation vigile (antalgie, agitation), état de mal épileptique", ci:"État de choc", ei:"Somnolence, apnée, hypotension, coma", adm:["Sédation vigile IVD : 2 à 2,5 mg (ampoule de 5 mg/5 mL).","Sédation vigile intranasale : 5 mg dans chaque narine (ampoule de 5 mg/mL).","État de mal épileptique IM : 10 mg pour 70 kg.","Sédation-analgésie pour acte médico-chirurgical invasif (plaies étendues, réalignement de membre, réduction de luxation) : dans une seringue de 20 mL, 50 mg de Kétamine et 2 mg de Midazolam ramenés à 20 mL avec du SSI, soit 2 mL/10 kg IVDL (14 mL pour 70 kg).","Entretien après IOT : 50 mg ramenés à 50 mL (1 mg/mL), 2,5 à 10 mL/h."], att:["Sédation-analgésie pour acte invasif : préparer le matériel de réanimation, patient scopé. Risque de coma et de dépression respiratoire.","Contre-indiqué en état de choc.","Antidote : Flumazénil (Anexate)."]},
- {id:"d_adre", nom:"Adrénaline", cl:"Catécholamine", color:"#fb923c", ind:"ACR, choc anaphylactique, état de choc", ci:"", ei:"Tachycardie, HTA, céphalées", adm:["ACR IVD : 1 ampoule de 5 mg/5 mL dans une seringue, administration pure 1 mg.","Choc anaphylactique IM : 0,5 mg pur.","Choc anaphylactique en aérosol : 1 mg dans 4 mL de SSI.","Choc anaphylactique IVD (seconde ligne) : 0,5 mg dans une seringue de 10 mL de SSI pour 0,05 mg/mL."], att:["Favorise la contractilité du myocarde.","En IM, l'adrénaline peut aller jusqu'à 0,5 mg."]},
+ {id:"d_mida", nom:"Midazolam (Hypnovel)", cl:"Benzodiazépine", color:"#a78bfa", ind:"Sédation vigile (antalgie, agitation), état de mal épileptique", ci:"État de choc", ei:"Somnolence, apnée, hypotension, coma", adm:["Sédation vigile IVD : 2 à 2,5 mg (ampoule de 5 mg/5 mL).","Sédation vigile intranasale : 5 mg dans chaque narine (ampoule de 5 mg/mL).","État de mal épileptique IM : 10 mg pour 70 kg.","Sédation-analgésie pour acte médico-chirurgical invasif (plaies étendues, réalignement de membre, réduction de luxation) : dans une seringue de 20 mL, 50 mg de Kétamine et 2 mg de Midazolam ramenés à 20 mL avec du NaCl, soit 2 mL/10 kg IVDL (14 mL pour 70 kg).","Entretien après IOT : 50 mg ramenés à 50 mL (1 mg/mL), 2,5 à 10 mL/h."], att:["Sédation-analgésie pour acte invasif : préparer le matériel de réanimation, patient scopé. Risque de coma et de dépression respiratoire.","Contre-indiqué en état de choc.","Antidote : Flumazénil (Anexate)."]},
+ {id:"d_adre", nom:"Adrénaline", cl:"Catécholamine", color:"#fb923c", ind:"ACR, choc anaphylactique, état de choc", ci:"", ei:"Tachycardie, HTA, céphalées", adm:["ACR IVD : 1 ampoule de 5 mg/5 mL dans une seringue, administration pure 1 mg.","Choc anaphylactique IM : 0,5 mg pur.","Choc anaphylactique en aérosol : 1 mg dans 4 mL de NaCl.","Choc anaphylactique IVD (seconde ligne) : 0,5 mg dans une seringue de 10 mL de NaCl pour 0,05 mg/mL."], att:["Favorise la contractilité du myocarde.","En IM, l'adrénaline peut aller jusqu'à 0,5 mg."]},
  {id:"d_amio", nom:"Amiodarone (Cordarone)", cl:"Antiarythmique", color:"#fb923c", ind:"ACR choqué (TV), tachycardie", ci:"", ei:"Bradycardie", adm:["ACR IVD : 2 ampoules de 150 mg/3 mL dans une seringue, puis 1 ampoule de 150 mg.","Autres cas IVL : 2 ampoules de 150 mg/3 mL avec une perfusion de G5 % sur 15 min."], att:["Bradycardisant : surveiller le scope."]},
  {id:"d_augm", nom:"Augmentin (Amoxicilline + acide clavulanique)", cl:"Antibiotique large spectre", color:"#34d399", ind:"Plaies ouvertes", ci:"Allergie à la pénicilline et aux céphalosporines", ei:"Allergie", adm:["Cas général IVL : 2 g dans une perfusette de 100 mL."], att:["Rechercher une allergie à la pénicilline ou aux céphalosporines avant injection."]},
  {id:"d_exa", nom:"Exacyl (Acide tranexamique)", cl:"Antifibrinolytique", color:"#f43f5e", ind:"Hémorragie", ci:"", ei:"", adm:["Cas général IVL : 2 ampoules de 500 mg dans une perfusion de 100 mL sur 15 minutes."], att:["Empêche la destruction des caillots qui se forment naturellement lors d'une hémorragie."]},
@@ -2793,7 +2794,7 @@ const FICHES_VOIES = [
  ["Intranasale","De plus en plus utilisée, notamment pour les antalgiques puissants."],
 ];
 const FICHES_SOLUTES = [
- ["Cristalloïdes isotoniques : Ringer Lactate et SSI (NaCl 0,9 %)","Il faut 5 à 6 fois le volume perdu pour compenser. Aucun effet sur l'hémostase et la fonction rénale, aucun risque allergique. CI : insuffisance cardiaque, hyperhydratation, hyperkaliémie ou hypercalcémie (pour le Ringer Lactate)."],
+ ["Cristalloïdes isotoniques : Ringer Lactate et NaCl (NaCl 0,9 %)","Il faut 5 à 6 fois le volume perdu pour compenser. Aucun effet sur l'hémostase et la fonction rénale, aucun risque allergique. CI : insuffisance cardiaque, hyperhydratation, hyperkaliémie ou hypercalcémie (pour le Ringer Lactate)."],
  ["NaCl 10 ou 20 % (hypertonique)","Réhydratation plus efficace."],
  ["Glucosés G5, G10, G30 %","Resucrage ou apport calorique. Pas de glucosé sur un traumatisé crânien ni sur un diabétique avec un diabète équilibré."],
  ["Bicarbonates de sodium 1,4 et 2,4 %","Corrigent les acidoses métaboliques."],
@@ -2856,6 +2857,88 @@ function FichesView({showToast}){
         {tab==='dotation'&&FICHES_DOTATION.map(d=>{const it=d.items.filter(x=>m(x));return it.length?(<Card key={d.t} id={d.t} color="#a78bfa" icon="🎒" title={d.t} sub={`${it.length} références`}><div style={{fontSize:13,lineHeight:1.6,columns:'260px'}}>{it.map((x,i)=><div key={i}>• {x}</div>)}</div></Card>):null;})}
       </div>
     </div>);
+}
+
+/* ═══ MODE BSPP : arbre de décision guidé (PISU) ═══ */
+const MEOPA_CI=['O² dépendant','Traumatisme crânien, HTIC','Patient non coopérant ou altération de conscience','OH','Trauma thoracique','Accident de plongée','État de choc','Traumatisme facial','Chirurgie occulaire récente','Anémie chronique'];
+const BSPP_TREES={
+ douleur:{titre:'Douleur aiguë de l\'adulte (PISU 12)',icon:'🩹',color:'#f97316',start:'d0',
+  intro:{crit:'Douleurs aiguës traumatiques ou médicales.',excl:'Contre-indication : allergie à la morphine, au paracétamol ou au MEOPA.',
+   transm:['Antécédents médicaux et traitements en cours','Facteur déclenchant de la douleur','Description précise de la douleur','Dose de morphine administrée avant soulagement','Mécanisme si traumatisme'],
+   prep:['Paracétamol : 1 flacon de 1g/100mL','Morphine : 1 ampoule de 10mg/10mL = 1mg/mL, PUR','Naloxone (Narcan) : 1 ampoule de 0,4mg dans une seringue de 10mL de NaCl']},
+  nodes:{
+   d0:{titre:'Évaluation de la douleur',me:'/me évalue la douleur (EVA).',q:'Quelle est l\'EVA ?',opts:[['EVA 4 à 7','a1'],['EVA > 7','b1'],['EVA < 4 (hors protocole)','hors'],['Relevage / brancardage / réalignement en attente de VVP','meopa'],['Signes de surdosage en morphine','narcan']]},
+   hors:{titre:'Hors protocole',info:'EVA < 4 : pas de conduite dans le PISU 12. Demander l\'avis de la régulation.',end:true},
+   a1:{titre:'EVA 4 à 7 : VVP + Paracétamol',me:'/me pose une VVP, purge et branche une poche de NaCl 500mL en garde veine, puis perfuse 1g de Paracétamol en IVL.',next:'a2'},
+   a2:{titre:'Réévaluation',me:'/me réévalue la douleur.',q:'Résultat de la réévaluation ?',opts:[['Douleur soulagée','mob'],['Toujours EVA > 7','b4']]},
+   mob:{titre:'Adapter la mobilisation',me:'/me adapte la mobilisation à la douleur du patient.',info:'Pense à transmettre la dose de morphine administrée avant soulagement.',end:true},
+   b1:{titre:'EVA > 7 : VVP + Morphine',me:'/me pose une VVP, purge et branche une poche de NaCl 500mL en garde veine, puis injecte 2 ou 3mg de Morphine pure (1mg/mL) en IVD.',att:['Morphine : risque de bradypnée, somnolence, confusion, nausées. Surveille la ventilation.'],next:'b2'},
+   b2:{titre:'Paracétamol',me:'/me perfuse 1g de Paracétamol en IVL.',next:'b3'},
+   b3:{titre:'Réévaluation',me:'/me réévalue la douleur.',q:'Résultat de la réévaluation ?',opts:[['EVA < 7','mob'],['EVA > 7','b4']]},
+   b4:{titre:'EVA > 7 : Morphine 2mg (max 10mg)',me:'/me réinjecte 2mg de Morphine en IVD (max 10mg au total).',att:['Maximum 10mg de morphine au total.'],next:'b3'},
+   meopa:{titre:'MEOPA en attente de VVP',me:'/me pose le masque de MEOPA à 6L/min pour le relevage ou le réalignement en attente de VVP.',att:['Contre-indications au MEOPA : '+MEOPA_CI.join(', ')+'.'],end:true},
+   narcan:{titre:'Surdosage en morphine : Narcan',me:'/me injecte 1 ampoule de Narcan (0,4mg dilué dans une seringue de 10mL de NaCl) en IVD ou IM, à répéter toutes les 3 minutes jusqu\'à disparition des signes.',end:true}
+  }}
+};
+function bsppLinear(p){const n={};p.etapes.forEach((e,i)=>{n['s'+i]={titre:e.titre,me:e.texte,step:`${i+1}/${p.etapes.length}`,...(i<p.etapes.length-1?{next:'s'+(i+1)}:{end:true})};});return{titre:p.titre,icon:p.icon,color:p.color||'#fb923c',start:'s0',nodes:n,intro:{crit:p.desc}};}
+function BSPPView({showToast}){
+  const [pid,setPid]=useState(null);
+  const [nid,setNid]=useState(null);
+  const [hist,setHist]=useState([]);
+  const [auto,setAuto]=useState(true);
+  const tree=pid?(BSPP_TREES[pid]||bsppLinear(PROCEDURES.find(p=>p.id===pid))):null;
+  const node=tree&&nid?tree.nodes[nid]:null;
+  const [acts,setActs]=useState([]);
+  const logAct=t=>{const d=new Date();const hh=String(d.getHours()).padStart(2,'0')+'h'+String(d.getMinutes()).padStart(2,'0');const txt=t.replace(/^\/me\s*/,'').replace(/\.$/,'');
+    setActs(a=>(a.length&&a[a.length-1].txt===txt&&a[a.length-1].hh===hh)?a:[...a,{hh,txt}]);
+    try{const cur=load('mRP2_bilan',{});const line=`${hh} : ${txt}`;const g=cur.gestes?cur.gestes.split('\n'):[];if(g[g.length-1]!==line){g.push(line);save('mRP2_bilan',{...BILAN_DEF,...cur,gestes:g.join('\n')});window.dispatchEvent(new Event('bilan-gestes'));}}catch(e){}};
+  const copy=async(t,quiet)=>{logAct(t);try{await navigator.clipboard.writeText(t);}catch(e){const el=document.createElement('textarea');el.value=t;document.body.appendChild(el);el.select();document.execCommand('copy');el.remove();}if(!quiet&&showToast)showToast('/me copié !','me');};
+  useEffect(()=>{if(node&&node.me&&auto)copy(node.me,false);},[pid,nid]);
+  const go=id=>{setHist(h=>[...h,nid]);setNid(id);};
+  const back=()=>{setNid(hist[hist.length-1]);setHist(h=>h.slice(0,-1));};
+  const pick=id=>{setPid(id);const t=BSPP_TREES[id]||bsppLinear(PROCEDURES.find(p=>p.id===id));setNid(t.start);setHist([]);};
+  const reset=()=>{setPid(null);setNid(null);setHist([]);};
+  const B=(p)=>({padding:'11px 14px',borderRadius:10,cursor:'pointer',fontSize:13.5,fontWeight:700,fontFamily:'Inter,sans-serif',textAlign:'left',border:'1px solid var(--border)',background:'var(--surface)',color:'var(--text)',...p});
+  return(
+   <div style={{flex:1,overflowY:'auto',padding:'16px 18px 28px'}}>
+    <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:12,flexWrap:'wrap'}}>
+      <label style={{display:'flex',alignItems:'center',gap:6,fontSize:12,color:'var(--muted)',cursor:'pointer'}}><input type="checkbox" checked={auto} onChange={e=>setAuto(e.target.checked)}/> Copie auto du /me</label>
+      {pid&&<button onClick={reset} style={B({padding:'6px 12px',fontSize:12})}>⟲ Autre protocole</button>}
+    </div>
+    {!pid&&<>
+      <div style={{fontSize:16,fontWeight:800,marginBottom:4}}>Quel protocole ?</div>
+      <div style={{fontSize:12.5,color:'var(--muted)',marginBottom:12}}>Tu réponds, le site te dit quoi faire et copie le /me tout seul.</div>
+      <div style={{display:'grid',gap:8}}>
+        <button onClick={()=>pick('douleur')} style={B({borderColor:'#f97316'})}>🩹 Douleur aiguë (PISU 12) · arbre EVA</button>
+        {PROCEDURES.filter(p=>p.id!=='douleur'&&p.id!=='vvp'&&p.id!=='io'&&p.id!=='iot').map(p=><button key={p.id} onClick={()=>pick(p.id)} style={B()}>{p.icon} {p.titre}</button>)}
+      </div>
+    </>}
+    {pid&&node&&<div>
+      <div style={{fontSize:11,fontWeight:800,letterSpacing:'0.08em',color:tree.color,marginBottom:6}}>{tree.icon} {tree.titre.toUpperCase()}{node.step?` · ÉTAPE ${node.step}`:''}</div>
+      {hist.length===0&&tree.intro&&<div style={{background:'var(--surface)',border:'1px solid var(--border)',borderRadius:10,padding:'10px 14px',marginBottom:12,fontSize:12.5,lineHeight:1.55}}>
+        {tree.intro.crit&&<div><b>Critères :</b> {tree.intro.crit}</div>}
+        {tree.intro.excl&&<div style={{color:'#f87171'}}>{tree.intro.excl}</div>}
+        {tree.intro.prep&&<div style={{marginTop:6}}><b>Préparation :</b> {tree.intro.prep.join(' · ')}</div>}
+        {tree.intro.transm&&<div style={{marginTop:6}}><b>À transmettre :</b> {tree.intro.transm.join(' · ')}</div>}
+      </div>}
+      <div style={{fontSize:18,fontWeight:800,marginBottom:10}}>{node.titre}</div>
+      {node.me&&<div onClick={()=>copy(node.me)} title="Cliquer pour copier" style={{background:'rgba(34,211,238,0.08)',border:'1px solid rgba(34,211,238,0.35)',borderRadius:12,padding:'14px 16px',fontFamily:'JetBrains Mono,monospace',fontSize:14,lineHeight:1.55,cursor:'pointer',marginBottom:10}}>{node.me}<div style={{fontSize:11,color:'var(--muted)',marginTop:6,fontFamily:'Inter,sans-serif'}}>{auto?'✓ Copié automatiquement · ':''}clique pour recopier</div></div>}
+      {node.info&&<div style={{fontSize:13.5,lineHeight:1.55,marginBottom:10}}>{node.info}</div>}
+      {node.att&&<div style={{background:'rgba(251,191,36,0.08)',border:'1px solid rgba(251,191,36,0.4)',borderLeft:'3px solid #fbbf24',borderRadius:10,padding:'10px 14px',marginBottom:12}}><div style={{fontSize:11,fontWeight:800,color:'#fbbf24',marginBottom:4}}>⚠️ ATTENTION HEIN</div>{node.att.map((a,i)=><div key={i} style={{fontSize:13,lineHeight:1.5}}>• {a}</div>)}</div>}
+      {node.q&&<div style={{fontSize:14,fontWeight:700,margin:'14px 0 8px'}}>{node.q}</div>}
+      <div style={{display:'grid',gap:8}}>
+        {node.opts&&node.opts.map(([l,n],i)=><button key={i} onClick={()=>go(n)} style={B({borderColor:tree.color})}>{l}</button>)}
+        {node.next&&<button onClick={()=>go(node.next)} style={B({borderColor:tree.color,background:'rgba(34,211,238,0.1)',color:'#22d3ee',textAlign:'center'})}>Suivant →</button>}
+        {node.end&&<div style={{fontSize:13,color:'var(--green)',fontWeight:700}}>✓ Fin du protocole.</div>}
+        {hist.length>0&&<button onClick={back} style={B({padding:'8px 12px',fontSize:12.5,color:'var(--muted)'})}>← Précédent</button>}
+      </div>
+    </div>}
+    {acts.length>0&&<div style={{marginTop:22,borderTop:'1px solid var(--border)',paddingTop:12}}>
+      <div style={{fontSize:11,fontWeight:800,letterSpacing:'0.08em',color:'var(--green)',marginBottom:6}}>📝 ACTES NOTÉS AUTOMATIQUEMENT (envoyés dans le bilan)</div>
+      {acts.map((a,i)=><div key={i} style={{fontSize:12.5,lineHeight:1.5}}><b style={{color:'var(--muted)'}}>{a.hh}</b> {a.txt}</div>)}
+      <button onClick={()=>{setActs([]);try{const cur=load('mRP2_bilan',{});save('mRP2_bilan',{...BILAN_DEF,...cur,gestes:''});window.dispatchEvent(new Event('bilan-gestes'));}catch(e){}}} style={B({padding:'6px 12px',fontSize:12,marginTop:8})}>Vider les actes</button>
+    </div>}
+   </div>);
 }
 
 /* ═══════════════════════════════════════════════ APP ══ */
@@ -3175,8 +3258,8 @@ function App(){
         ) : isDuoView ? (
           <div style={{display:'flex',flexDirection:window.innerWidth<900?'column':'row',flex:1,minHeight:0,overflow:'hidden'}}>
             <div style={{flex:1,minWidth:0,minHeight:0,display:'flex',flexDirection:'column',overflow:'hidden',borderRight:'1px solid var(--border)'}}>
-              <div style={{padding:'8px 16px',fontSize:11,fontWeight:800,letterSpacing:'0.08em',color:'#fb923c',background:'rgba(251,146,60,0.08)'}}>🚒 PISU · /me</div>
-              <ProceduresView showToast={showToast}/>
+              <div style={{padding:'8px 16px',fontSize:11,fontWeight:800,letterSpacing:'0.08em',color:'#fb923c',background:'rgba(251,146,60,0.08)'}}>🚒 MODE BSPP · PISU guidé</div>
+              <BSPPView showToast={showToast}/>
             </div>
             <div style={{flex:1,minWidth:0,minHeight:0,display:'flex',flexDirection:'column',overflow:'hidden'}}>
               <div style={{padding:'8px 16px',fontSize:11,fontWeight:800,letterSpacing:'0.08em',color:'#22d3ee',background:'rgba(34,211,238,0.08)'}}>📻 BILAN RÉGULATION</div>
