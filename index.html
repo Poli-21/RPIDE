@@ -2859,82 +2859,137 @@ function FichesView({showToast}){
     </div>);
 }
 
-/* ═══ MODE BSPP : arbre de décision guidé (PISU) ═══ */
+/* ═══ MODE BSPP : infos à chercher + /me d'actions (tout visible) ═══ */
 const MEOPA_CI=['O² dépendant','Traumatisme crânien, HTIC','Patient non coopérant ou altération de conscience','OH','Trauma thoracique','Accident de plongée','État de choc','Traumatisme facial','Chirurgie occulaire récente','Anémie chronique'];
-const BSPP_TREES={
- douleur:{titre:'Douleur aiguë de l\'adulte (PISU 12)',icon:'🩹',color:'#f97316',start:'d0',
-  intro:{crit:'Douleurs aiguës traumatiques ou médicales.',excl:'Contre-indication : allergie à la morphine, au paracétamol ou au MEOPA.',
-   transm:['Antécédents médicaux et traitements en cours','Facteur déclenchant de la douleur','Description précise de la douleur','Dose de morphine administrée avant soulagement','Mécanisme si traumatisme'],
-   prep:['Paracétamol : 1 flacon de 1g/100mL','Morphine : 1 ampoule de 10mg/10mL = 1mg/mL, PUR','Naloxone (Narcan) : 1 ampoule de 0,4mg dans une seringue de 10mL de NaCl']},
-  nodes:{
-   d0:{titre:'Évaluation de la douleur',me:'/me évalue la douleur (EVA).',q:'Quelle est l\'EVA ?',opts:[['EVA 4 à 7','a1'],['EVA > 7','b1'],['EVA < 4 (hors protocole)','hors'],['Relevage / brancardage / réalignement en attente de VVP','meopa'],['Signes de surdosage en morphine','narcan']]},
-   hors:{titre:'Hors protocole',info:'EVA < 4 : pas de conduite dans le PISU 12. Demander l\'avis de la régulation.',end:true},
-   a1:{titre:'EVA 4 à 7 : VVP + Paracétamol',me:'/me pose une VVP, purge et branche une poche de NaCl 500mL en garde veine, puis perfuse 1g de Paracétamol en IVL.',next:'a2'},
-   a2:{titre:'Réévaluation',me:'/me réévalue la douleur.',q:'Résultat de la réévaluation ?',opts:[['Douleur soulagée','mob'],['Toujours EVA > 7','b4']]},
-   mob:{titre:'Adapter la mobilisation',me:'/me adapte la mobilisation à la douleur du patient.',info:'Pense à transmettre la dose de morphine administrée avant soulagement.',end:true},
-   b1:{titre:'EVA > 7 : VVP + Morphine',me:'/me pose une VVP, purge et branche une poche de NaCl 500mL en garde veine, puis injecte 2 ou 3mg de Morphine pure (1mg/mL) en IVD.',att:['Morphine : risque de bradypnée, somnolence, confusion, nausées. Surveille la ventilation.'],next:'b2'},
-   b2:{titre:'Paracétamol',me:'/me perfuse 1g de Paracétamol en IVL.',next:'b3'},
-   b3:{titre:'Réévaluation',me:'/me réévalue la douleur.',q:'Résultat de la réévaluation ?',opts:[['EVA < 7','mob'],['EVA > 7','b4']]},
-   b4:{titre:'EVA > 7 : Morphine 2mg (max 10mg)',me:'/me réinjecte 2mg de Morphine en IVD (max 10mg au total).',att:['Maximum 10mg de morphine au total.'],next:'b3'},
-   meopa:{titre:'MEOPA en attente de VVP',me:'/me pose le masque de MEOPA à 6L/min pour le relevage ou le réalignement en attente de VVP.',att:['Contre-indications au MEOPA : '+MEOPA_CI.join(', ')+'.'],end:true},
-   narcan:{titre:'Surdosage en morphine : Narcan',me:'/me injecte 1 ampoule de Narcan (0,4mg dilué dans une seringue de 10mL de NaCl) en IVD ou IM, à répéter toutes les 3 minutes jusqu\'à disparition des signes.',end:true}
-  }}
+const PISU_INFO={
+ douleur:{crit:['Douleurs aiguës traumatiques ou médicales'],excl:['Allergie à la morphine','Allergie au paracétamol','Allergie au MEOPA'],
+  cherche:['Évaluer la douleur : EVA (4 à 7 ou > 7)','Contexte traumatique ou médical','Mécanisme si traumatisme','Facteur déclenchant, description précise de la douleur','Antécédents médicaux et traitements en cours','Allergies (morphine, paracétamol, MEOPA)'],
+  secou:['Évaluation de la douleur','Contexte traumatique : immobilisation','Contexte médical : position antalgique'],
+  transm:['Antécédents médicaux et traitements en cours','Facteur déclenchant de la douleur','Description précise de la douleur','Dose de morphine administrée avant soulagement','Mécanisme si traumatisme'],
+  prep:['Paracétamol : 1 flacon de 1g/100mL','Morphine : 1 ampoule de 10mg/10mL = 1mg/mL, PUR','Naloxone (Narcan) : 1 ampoule de 0,4mg dans une seringue de 10mL de NaCl'],
+  att:['EVA 4 à 7 : VVP + Paracétamol, puis réévaluation. EVA > 7 : VVP + Morphine 2 ou 3mg + Paracétamol, réévaluation, morphine 2mg à répéter (max 10mg).','Relevage, brancardage ou réalignement en attente de VVP : MEOPA 6L/min. Contre-indications MEOPA : '+MEOPA_CI.join(', ')+'.','Signes de surdosage en morphine : Narcan 1 ampoule IVD/IM toutes les 3 minutes jusqu\'à disparition des signes.']},
+ douleur_thoracique:{crit:['Douleur thoracique non traumatique'],excl:[],
+  cherche:['Description précise de la douleur','Heure de début des symptômes','Facteur déclenchant','Facteurs de risque cardio-vasculaire','Antécédents et traitements en cours (AVK, NACO…)','Désaturation ? Douleur persistante ?'],
+  secou:['Position d\'attente demi-assise','Évaluation précise de la douleur'],
+  transm:['Description précise de la douleur','Heure de début des symptômes','Facteur déclenchant','Facteur de risque cardio-vasculaire','Antécédents et traitements en cours'],
+  prep:['Aspirine (Aspégic) : 1/2 flacon de 500mg dilué dans une seringue de 20mL de NaCl','Héparine (HNF) : 1 flacon de 5000 UI dans un flacon de 100mL de NaCl','Clopidogrel (Plavix) : 2 comprimés de 300mg','Ticagrelor (Brilique) : 2 comprimés de 90mg','Enoxaparine (Lovenox) : seringues pré-remplies avec bouchon injecteur'],
+  att:['Procédures clopidogrel ou ticagrelor uniquement sur demande de la régulation (MREG).','Contre-indications au ticagrelor : traitement par AVK (Previscan, Coumadine, Sintrom), traitement par NACO (Pradaxa, Xarelto, Eliquis), risque hémorragique élevé, antécédent d\'AVC ou d\'hémorragie intracrânienne, insuffisance hépatique sévère, hémodialyse, allergie au ticagrelor.','Patch DSA à proximité et transport avec scopage continu.']},
+ choc:{crit:['TAS < 80 mmHg ET pouls > 120 bpm (ou pouls radial absent)','Contexte : AVP, hémorragie évidente ou suspectée, mise en place de garrot, plaie par arme'],excl:[],
+  cherche:['TAS et pouls (radial présent ?)','Signes de gravité','Saignement contrôlable ?','Antécédents, prise d\'anticoagulant','Volume de sang perdu, type d\'arme et calibre','Mécanisme, traumatismes associés (crânien, fracture…)'],
+  secou:['Position allongée, jambes surélevées si possible','Oxygénothérapie','Isoler du sol, réchauffer, couvrir','Immobiliser si nécessaire','Demande de renfort médical si non présent'],
+  transm:['Antécédents et prise de traitements (anticoagulant)','Volume de sang perdu','Type d\'arme impliquée et calibre','Mécanisme du traumatisme','Traumatismes associés (crânien, fracture…)'],
+  prep:['Acide tranexamique (Exacyl) : 2 ampoules de 500mg dans un flacon de 100mL de NaCl'],
+  att:['Saignement contrôlable : non, arrêt du saignement sur toutes les plaies, ceinture pelvienne si trauma ou plaie région du bassin.','TAS > 80 : NaCl 500mL en garde veine. TAS < 80 : 2ème VVP + NaCl 500mL sur 10 min.','PISU 12 douleurs si besoin.']},
+ anaphylaxie:{crit:['Antécédents d\'allergie','+ signes cliniques : cutanés, respiratoires, hémodynamiques'],excl:['Absence d\'antécédents allergiques'],
+  cherche:['Détresse respiratoire ?','Signes hémodynamiques ?','Signes cutanés ou muqueux isolés ?','Contexte d\'exposition à l\'allergène','Antécédents médicaux et traitements en cours','Surface des signes cliniques'],
+  secou:['Position d\'attente allongée ou demi-assise','Jambes surélevées si état de choc','Oxygéner pour SpO2 > 94%','Rassurer +++'],
+  transm:['Antécédents médicaux et traitements en cours','Contexte d\'exposition à l\'allergène','Rapporter les signes cliniques observés (surface…)'],
+  prep:['Méthylprednisolone (Solumédrol) : flacon 120mg dans 12mL de NaCl = 10mg/mL','Dexchlorphéniramine (Polaramine) : 5mg dans un flacon de 100mL de NaCl','Adrénaline IM : 1mg dans une seringue de 10mL de NaCl = 0,1mg/mL','Adrénaline aérosol : 1mg dilué dans 4mL de NaCl'],
+  att:['Détresse respiratoire ou signes hémodynamiques : adrénaline 0,5mg IM d\'emblée.','Absence d\'amélioration respiratoire : adrénaline 1mg en aérosol. Absence d\'amélioration circulatoire : adrénaline 0,05mg IVD toutes les 2 min, objectif TAS > 80 mmHg.']},
+ asthme:{crit:['Détresse respiratoire aiguë','+ antécédents d\'asthme'],excl:['Antécédents d\'insuffisance cardiaque','Douleur thoracique associée'],
+  cherche:['Signe de gravité ?','Amélioration clinique après aérosol ?','Antécédents et traitements en cours','Facteur déclenchant de la crise','Nombre d\'inhalations nécessaires pour faire céder la crise'],
+  secou:['Position demi-assise','Oxygénothérapie'],
+  transm:['Antécédents et traitements en cours','Facteur déclenchant la crise d\'asthme','Nombre d\'inhalations nécessaires pour faire céder la crise'],
+  prep:['Méthylprednisolone (Solumédrol) : flacon 120mg dans 12mL de NaCl = 10mg/mL','Salbutamol (Ventoline) : pipette monodose de 5mg à nébuliser','Ipratropium (Atrovent) : pipette monodose de 0,5mg à nébuliser'],
+  att:['Sans amélioration : salbutamol jusqu\'à amélioration clinique, VVP NaCl 500mL en garde veine, Solumédrol 1mg/kg IVDL (max 120mg).','Oxygénothérapie pour SpO2 > 94%.']},
+ oap:{crit:['Détresse respiratoire aiguë','+ antécédents cardiaques'],excl:['Antécédents d\'asthme ou BPCO','Glasgow < 12','Hyperthermie > 38,5°C'],
+  cherche:['Heure de début de la détresse','Antécédents cardiaques (cardiopathie, OAP)','Traitement en cours','Désaturation ? TAS (> 120 ? > 180 ?)','Critères de gravité observés','Compliance du patient à la VNI'],
+  secou:['Oxygénothérapie pour SpO2 > 94%','Position assis ou demi-assis','Demande de renfort médical si non présent'],
+  transm:['Heure de début de la détresse','Antécédents du patient (cardiopathie/OAP)','Traitement en cours','Critères de gravité observés','Compliance du patient à la VNI'],
+  prep:['Furosémide (Lasilix) : 1 ampoule 40mg/4mL = 10mg/mL, PUR','Isosorbide dinitrate (Risordan) : 1 ampoule 10mg/10mL = 1mg/mL, PUR'],
+  att:['Télétransmission de l\'ECG au SAMU.','TAS > 120 : Lasilix 1mg/kg IVDL (max 80mg).','Procédure OAP 1 sur demande de la régulation : VNI PEP = 5 (pause si TA < 120 ou GCS < 12), TAS > 180 : Risordan 1mg/5min jusqu\'à amélioration ou TA < 120 mmHg, transport avec scopage continu.']},
+ convulsions:{crit:['Crise tonique ou clonique en cours'],excl:['ACR hypoxique annoncé par des convulsions','Agitation psychiatrique'],
+  cherche:['Antécédents et traitements en cours','Contexte d\'exposition à un toxique','Si trauma : mécanisme et heure du trauma','Fièvre ou syndrome méningé associé','Durée de la crise et durée entre deux crises'],
+  secou:['Protection de la victime','Aspiration prête','Oxygénothérapie systématique','PLS si troubles de conscience ou vomi'],
+  transm:['Antécédents et traitements en cours','Contexte d\'exposition à un toxique','Si trauma, rechercher mécanisme et heure du trauma','Fièvre ou syndrome méningé associé','Durée de la crise et durée entre deux crises si mal'],
+  prep:['Clonazépam (Rivotril) : 1 ampoule 2mg/2mL = 1mg/mL, PUR'],
+  att:['Convulsions à T+5 min : seconde injection de clonazépam 1mg IVD.','Hypoglycémie : PISU 7. Patient en post-critique : PISU 11 (VVP d\'attente).']},
+ hypoglycemie:{crit:['Hypoglycémie < 0,7 g/dL ou < 3,5 mmol/L','+ Glasgow < 12'],excl:[],
+  cherche:['Glycémie capillaire (Dextro)','Glasgow','Intoxication à l\'insuline ?','Antécédents et traitements en cours','Contexte de l\'hypoglycémie'],
+  secou:['Mise en PLS si nécessaire','Aspiration prête','Libération des voies aériennes'],
+  transm:['Antécédents et traitements en cours','Contexte de l\'hypoglycémie'],
+  prep:['Glucose 30% : 2 ampoules de 10mL = 6g/20mL, PUR'],
+  att:['Contrôle de la glycémie toutes les 5 min.','Intoxication à l\'insuline : G30 1 ampoule IVDL toutes les 5 min tant que Dextro < 0,7, puis G5 100mL + 2 ampoules G30 en garde veine, monitorage continu + ECG.']},
+ intox_fumees:{crit:['Symptômes post-inhalation : céphalées, toux, raucité…','Ou asymptomatique : suie, conjonctivite, exposition aux fumées'],excl:[],
+  cherche:['Signe de gravité (déshabillage, scope)','SpCO en continu','Défaillance vitale : TAS < 80, GCS < 9, convulsions ?','Milieu clos ?','Dyspnée ?','Brûlures ou traumatismes annexes','Contexte de l\'intoxication, antécédents et traitements'],
+  secou:['Position demi-assise','Oxygénothérapie 15 L/min','PLS si trouble de la conscience','Prévention de l\'hypothermie','Immobilisation si trauma','Demande de renfort médical si non présent'],
+  transm:['Antécédents et traitements en cours','Évaluer le contexte de l\'intoxication','Évaluer la présence de brûlures ou traumatismes annexes'],
+  prep:['Hydroxocobalamine (Cyanokit) : 5g dans un flacon de 200mL de NaCl','Méthylprednisolone (Solumédrol) : flacon 120mg dans 12mL de NaCl = 10mg/mL','Salbutamol (Ventoline) : pipette monodose de 5mg à nébuliser','Ipratropium (Atrovent) : pipette monodose de 0,5mg à nébuliser'],
+  att:['Défaillance vitale : VVP NaCl 500mL sur 10 min, et si milieu clos hydroxocobalamine 5g sur 15 min.','Dyspnée : salbutamol 5mg + ipratropium 0,5mg, VVP NaCl 500mL en garde veine, Solumédrol 1mg/kg IVDL (max 120mg).','PISU 5 brûlure si besoin.']},
+ brulure:{crit:['Brûlure thermique, chimique ou électrique','+ signe de gravité'],excl:['Brûlure < 1/2 paume de main','Brûlures superficielles'],
+  cherche:['Origine et heure de la brûlure','Type de brûlure','Surface (score de Wallace, > 10 % ?) et profondeur','Sensibilité et motricité','Description des douleurs','Inhalation associée','Détresse respiratoire ?','Antécédents et traitements en cours'],
+  secou:['Déshabiller la victime et retirer les bijoux','Mise sous l\'eau (règle des 3x15)','O2 si nécessaire','Allonger, prévenir l\'hypothermie','Demande de renfort médical si non présent'],
+  transm:['Origine et heure de la brûlure','Type de brûlure','Surface et profondeur de la brûlure','Sensibilité et motricité','Description des douleurs','Inhalation associée','Contexte de la brûlure','Antécédents et traitements en cours'],
+  prep:['Salbutamol (Ventoline) : pipette monodose de 5mg à nébuliser','Ipratropium (Atrovent) : pipette monodose de 0,5mg à nébuliser'],
+  att:['Règle du refroidissement : arrêt après 30 min de refroidissement, Watergel maximum 15 min d\'utilisation, contre-indiqué si réchauffement impossible.','Brûlure électrique : ECG systématique à envoyer. Inhalation de fumée : SpCO en continu et O2 15 L/min.','Détresse respiratoire : salbutamol 5mg + ipratropium 0,5mg. Sinon PISU 3 intox fumée si besoin. PISU 12 douleur si besoin.']},
+ noyade:{crit:['Immersion aquatique'],excl:[],
+  cherche:['Stade de la noyade : 1 angoisse sans inhalation, 2 toux/angoisse, 3 coma ou obnubilation, 4 ACR','Glasgow (> 12 ?)','Température du patient','Temps passé dans l\'eau','Circonstances, traumatisme associé','Noyade primaire (noyé bleu, inhalation cause PC) ou secondaire (noyé blanc, lié à un malaise, épilepsie, trauma, choc thermique)'],
+  secou:['Recherche des circonstances','Aspiration et O2 thérapie au MHC ou BAVU selon FR','Lutte contre l\'hypothermie','Immobilisation si trauma','Contrôle glycémie et température'],
+  transm:['Stade de la noyade','Température du patient','Contexte de la noyade','Temps passé dans l\'eau','Traumatisme associé','Noyade primaire ou secondaire'],
+  prep:[],
+  att:['Stade 4 : 5 insufflations starter, PISU 1 arrêt cardiaque, décompression de l\'estomac par pose de SNG.','Stade 3 : si Glasgow > 12 VNI PEP = 5 (pause si TA < 120 ou GCS < 12), NaCl 500mL en garde veine.','Stade 2 : oxygénothérapie pour SpO2 > 94%. Stade 1 : réassurance.','Demande de renfort médical si non présent.']},
+ delivrance:{crit:['Accouchement en cours non réalisé'],excl:[],
+  cherche:['Déroulé de la grossesse','Nombre de semaines d\'aménorrhée','Quantité de sang approximative perdue','Score de Malinas si accouchement non réalisé','Facteur de risque, date prévue d\'accouchement','Délivrance faite ? Métrorragies > 500mL ?'],
+  secou:['Mise en position d\'accouchement','Préparation poche de recueil (kit accouchement)','Prévention hypothermie','Préparation d\'une zone de prise en charge du nouveau-né (BAVU, aspi…)','Demande de renfort médical si non présent'],
+  transm:['Déroulé de la grossesse','Nombre de semaines d\'aménorrhée','Quantité de sang approximative perdue','Score de Malinas si accouchement non réalisé','Facteur de risque','Date prévue d\'accouchement'],
+  prep:['Ocytocine (Syntocinon) : 1 ampoule 5 UI/1mL dans un flacon de 100mL de NaCl','Acide tranexamique (Exacyl) : 2 ampoules de 500mg dans un flacon de 100mL de NaCl'],
+  att:['Ocytocine 5 UI IVL ou IM : entre l\'engagement de la 2ème épaule et la première minute de vie (sur accouchement eutocique en présentation céphalique).','Absence de délivrance à T+30 min : transport rapide avec accord C15.','Métrorragies > 500mL : conditionner pour transport, O2 SpO2 > 94%, 2ème VVP + NaCl 500mL sur 10 min, décubitus latéral gauche à 20°, Exacyl 1g sur 20 min, massage doux utérin.']},
+ nouveau_ne:{crit:['Accouchement en cours ou survenue récente'],excl:[],
+  cherche:['Temps de vie (1 min, 1 min 30, 2 min 30)','Score d\'Apgar (10 ou < 10)','Fréquence cardiaque (< 100, < 60 bpm)','Gasp ou apnée','Déroulé de la grossesse, aménorrhée, quantité de sang perdue, facteur de risque'],
+  secou:['Mise en position d\'accouchement','Préparation poche de recueil (kit accouchement)','Prévention hypothermie','Zone de prise en charge du nouveau-né (BAVU, aspi…)','Demande de renfort médical si non présent'],
+  transm:['Déroulé de la grossesse','Nombre de semaines d\'aménorrhée','Quantité de sang approximative perdue','Score de Malinas si accouchement non réalisé','Facteur de risque','Date prévue d\'accouchement'],
+  prep:['Adrénaline : 100mL de NaCl, 10mL jetés + 2 ampoules soit 10mg/10mL = 0,1mg/mL'],
+  att:['Apgar à 10 : peau à peau, prévention hypothermie, surveillance et Apgar à T+5.','FC < 60 bpm à 1 min 30 : RCP 3/1, BAVU O2 (20 mvt/min), pose KTIO avec NaCl 100mL en garde veine. FC < 60 bpm à 2 min 30 : adrénaline 0,01mg/kg IVD.']},
+ acr_enfant:{crit:['Victime inconsciente','+ arrêt respiratoire ou gasps','+ absence de pouls central'],excl:['Rigor mortis','Putréfaction généralisée','Décès attendu','Directives anticipées'],
+  cherche:['Durée no flow, durée du low flow','Nombre de CEE','Circonstances de survenue de l\'ACR','Examen pupille et contexte ACR','Choc recommandé ? (rythme)','Antécédents et traitements en cours'],
+  secou:['Mise sur un plan dur','5 insufflations puis 15/2','LVA et O2 3L/min si < 1 an (6L si > 1 an)','Ventilation bas volume par BAVU','Aspiration prête à la tête et guédel','CEE précoce','Demande de renfort médical si non présent'],
+  transm:['Antécédents et traitements en cours','Évaluer durée no flow','Évaluer la durée du low flow et le nombre de CEE','Rechercher les circonstances de survenue de l\'ACR'],
+  prep:['Adrénaline : 0,1 mg/mL (max 1 mg)','Cordarone (amiodarone) : 25 mg/mL (max 300 puis 150 mg)','Cyanokit : 25 mg/mL (max 5 g)'],
+  att:['Doses selon le poids : voir tableaux du schéma PISU (adrénaline 0,01 mg/kg, amiodarone 5 mg/kg, Cyanokit 75 mg/kg).','Situations particulières : hémorragie (contrôle du saignement, NaCl 20 mL/kg sur 10 min), intoxication aux fumées (hydroxocobalamine 75 mg/kg sur 15 min), hypoglycémie (1/2 ampoule G30 IVDL), obstruction des VAS (laryngoscope, aspiration ou pince de Magill).','RACS : monitorage continu + GSC, paracétamol 15 mg/kg IVL si T° > 38,5.']}
 };
-function bsppLinear(p){const n={};p.etapes.forEach((e,i)=>{n['s'+i]={titre:e.titre,me:e.texte,step:`${i+1}/${p.etapes.length}`,...(i<p.etapes.length-1?{next:'s'+(i+1)}:{end:true})};});return{titre:p.titre,icon:p.icon,color:p.color||'#fb923c',start:'s0',nodes:n,intro:{crit:p.desc}};}
 function BSPPView({showToast}){
   const [pid,setPid]=useState(null);
-  const [nid,setNid]=useState(null);
-  const [hist,setHist]=useState([]);
-  const [auto,setAuto]=useState(true);
-  const tree=pid?(BSPP_TREES[pid]||bsppLinear(PROCEDURES.find(p=>p.id===pid))):null;
-  const node=tree&&nid?tree.nodes[nid]:null;
   const [acts,setActs]=useState([]);
+  const proc=pid?PROCEDURES.find(p=>p.id===pid):null;
+  const info=pid?PISU_INFO[pid]:null;
   const logAct=t=>{const d=new Date();const hh=String(d.getHours()).padStart(2,'0')+'h'+String(d.getMinutes()).padStart(2,'0');const txt=t.replace(/^\/me\s*/,'').replace(/\.$/,'');
     setActs(a=>(a.length&&a[a.length-1].txt===txt&&a[a.length-1].hh===hh)?a:[...a,{hh,txt}]);
     try{const cur=load('mRP2_bilan',{});const line=`${hh} : ${txt}`;const g=cur.gestes?cur.gestes.split('\n'):[];if(g[g.length-1]!==line){g.push(line);save('mRP2_bilan',{...BILAN_DEF,...cur,gestes:g.join('\n')});window.dispatchEvent(new Event('bilan-gestes'));}}catch(e){}};
-  const copy=async(t,quiet)=>{logAct(t);try{await navigator.clipboard.writeText(t);}catch(e){const el=document.createElement('textarea');el.value=t;document.body.appendChild(el);el.select();document.execCommand('copy');el.remove();}if(!quiet&&showToast)showToast('/me copié !','me');};
-  useEffect(()=>{if(node&&node.me&&auto)copy(node.me,false);},[pid,nid]);
-  const go=id=>{setHist(h=>[...h,nid]);setNid(id);};
-  const back=()=>{setNid(hist[hist.length-1]);setHist(h=>h.slice(0,-1));};
-  const pick=id=>{setPid(id);const t=BSPP_TREES[id]||bsppLinear(PROCEDURES.find(p=>p.id===id));setNid(t.start);setHist([]);};
-  const reset=()=>{setPid(null);setNid(null);setHist([]);};
-  const B=(p)=>({padding:'11px 14px',borderRadius:10,cursor:'pointer',fontSize:13.5,fontWeight:700,fontFamily:'Inter,sans-serif',textAlign:'left',border:'1px solid var(--border)',background:'var(--surface)',color:'var(--text)',...p});
+  const copy=async t=>{logAct(t);try{await navigator.clipboard.writeText(t);}catch(e){const el=document.createElement('textarea');el.value=t;document.body.appendChild(el);el.select();document.execCommand('copy');el.remove();}if(showToast)showToast('/me copié !','me');};
+  const B=(p)=>({padding:'10px 14px',borderRadius:10,cursor:'pointer',fontSize:13.5,fontWeight:700,fontFamily:'Inter,sans-serif',textAlign:'left',border:'1px solid var(--border)',background:'var(--surface)',color:'var(--text)',...p});
+  const Sec=({color,title,children})=>(<div style={{background:'var(--surface)',border:'1px solid var(--border)',borderLeft:`3px solid ${color}`,borderRadius:10,padding:'10px 14px',marginBottom:10}}><div style={{fontSize:11,fontWeight:800,color,letterSpacing:'0.06em',textTransform:'uppercase',marginBottom:6}}>{title}</div>{children}</div>);
+  const L=({items})=>items.map((x,i)=><div key={i} style={{fontSize:13,lineHeight:1.5,marginBottom:3}}>• {x}</div>);
   return(
    <div style={{flex:1,overflowY:'auto',padding:'16px 18px 28px'}}>
-    <div style={{display:'flex',alignItems:'center',gap:10,marginBottom:12,flexWrap:'wrap'}}>
-      <label style={{display:'flex',alignItems:'center',gap:6,fontSize:12,color:'var(--muted)',cursor:'pointer'}}><input type="checkbox" checked={auto} onChange={e=>setAuto(e.target.checked)}/> Copie auto du /me</label>
-      {pid&&<button onClick={reset} style={B({padding:'6px 12px',fontSize:12})}>⟲ Autre protocole</button>}
-    </div>
     {!pid&&<>
       <div style={{fontSize:16,fontWeight:800,marginBottom:4}}>Quel protocole ?</div>
-      <div style={{fontSize:12.5,color:'var(--muted)',marginBottom:12}}>Tu réponds, le site te dit quoi faire et copie le /me tout seul.</div>
+      <div style={{fontSize:12.5,color:'var(--muted)',marginBottom:12}}>Tu vois tout : ce que tu dois chercher chez le patient, puis les /me d'actions. Rien ne se copie tout seul : tu cliques un /me pour le copier et il est noté dans le bilan.</div>
       <div style={{display:'grid',gap:8}}>
-        <button onClick={()=>pick('douleur')} style={B({borderColor:'#f97316'})}>🩹 Douleur aiguë (PISU 12) · arbre EVA</button>
-        {PROCEDURES.filter(p=>p.id!=='douleur'&&p.id!=='vvp'&&p.id!=='io'&&p.id!=='iot').map(p=><button key={p.id} onClick={()=>pick(p.id)} style={B()}>{p.icon} {p.titre}</button>)}
+        {PROCEDURES.map(p=><button key={p.id} onClick={()=>setPid(p.id)} style={B()}>{p.icon} {p.titre}</button>)}
       </div>
     </>}
-    {pid&&node&&<div>
-      <div style={{fontSize:11,fontWeight:800,letterSpacing:'0.08em',color:tree.color,marginBottom:6}}>{tree.icon} {tree.titre.toUpperCase()}{node.step?` · ÉTAPE ${node.step}`:''}</div>
-      {hist.length===0&&tree.intro&&<div style={{background:'var(--surface)',border:'1px solid var(--border)',borderRadius:10,padding:'10px 14px',marginBottom:12,fontSize:12.5,lineHeight:1.55}}>
-        {tree.intro.crit&&<div><b>Critères :</b> {tree.intro.crit}</div>}
-        {tree.intro.excl&&<div style={{color:'#f87171'}}>{tree.intro.excl}</div>}
-        {tree.intro.prep&&<div style={{marginTop:6}}><b>Préparation :</b> {tree.intro.prep.join(' · ')}</div>}
-        {tree.intro.transm&&<div style={{marginTop:6}}><b>À transmettre :</b> {tree.intro.transm.join(' · ')}</div>}
+    {pid&&proc&&<div>
+      <button onClick={()=>setPid(null)} style={B({padding:'6px 12px',fontSize:12,marginBottom:12})}>⟲ Autre protocole</button>
+      <div style={{fontSize:18,fontWeight:800,marginBottom:12}}>{proc.icon} {proc.titre}</div>
+      {info&&<>
+        <Sec color="#22d3ee" title="🔎 À chercher / évaluer chez le patient"><L items={info.cherche}/></Sec>
+        <Sec color="#34d399" title="✅ Critères d'inclusion"><L items={info.crit}/></Sec>
+        {info.excl.length>0&&<Sec color="#f43f5e" title="⛔ Critères d'exclusion"><L items={info.excl}/></Sec>}
+        <Sec color="#a78bfa" title="🧑‍🚒 Actions secouristes"><L items={info.secou}/></Sec>
+      </>}
+      {!info&&proc.desc&&<Sec color="#22d3ee" title="Info"><div style={{fontSize:13}}>{proc.desc}</div></Sec>}
+      <div style={{fontSize:12,fontWeight:800,letterSpacing:'0.08em',color:'#fb923c',margin:'16px 0 8px'}}>⚡ ACTIONS : /me (clique pour copier)</div>
+      {proc.etapes.map((e,i)=>(<div key={i} onClick={()=>copy(e.texte)} style={{cursor:'pointer',background:'rgba(34,211,238,0.06)',border:'1px solid rgba(34,211,238,0.3)',borderRadius:10,padding:'10px 14px',marginBottom:8}}>
+        <div style={{fontSize:12,fontWeight:800,color:'var(--muted)',marginBottom:3}}>{i+1}. {e.titre}</div>
+        <div style={{fontFamily:'JetBrains Mono,monospace',fontSize:13,lineHeight:1.5}}>{e.texte}</div></div>))}
+      {info&&<div style={{marginTop:14}}>
+        {info.att.length>0&&<div style={{background:'rgba(251,191,36,0.08)',border:'1px solid rgba(251,191,36,0.4)',borderLeft:'3px solid #fbbf24',borderRadius:10,padding:'10px 14px',marginBottom:10}}><div style={{fontSize:11,fontWeight:800,color:'#fbbf24',marginBottom:4}}>⚠️ ATTENTION HEIN · situations particulières</div><L items={info.att}/></div>}
+        {info.prep.length>0&&<Sec color="#34d399" title="💊 Préparation des traitements"><L items={info.prep}/></Sec>}
+        <Sec color="#fb923c" title="📣 Infos à transmettre"><L items={info.transm}/></Sec>
       </div>}
-      <div style={{fontSize:18,fontWeight:800,marginBottom:10}}>{node.titre}</div>
-      {node.me&&<div onClick={()=>copy(node.me)} title="Cliquer pour copier" style={{background:'rgba(34,211,238,0.08)',border:'1px solid rgba(34,211,238,0.35)',borderRadius:12,padding:'14px 16px',fontFamily:'JetBrains Mono,monospace',fontSize:14,lineHeight:1.55,cursor:'pointer',marginBottom:10}}>{node.me}<div style={{fontSize:11,color:'var(--muted)',marginTop:6,fontFamily:'Inter,sans-serif'}}>{auto?'✓ Copié automatiquement · ':''}clique pour recopier</div></div>}
-      {node.info&&<div style={{fontSize:13.5,lineHeight:1.55,marginBottom:10}}>{node.info}</div>}
-      {node.att&&<div style={{background:'rgba(251,191,36,0.08)',border:'1px solid rgba(251,191,36,0.4)',borderLeft:'3px solid #fbbf24',borderRadius:10,padding:'10px 14px',marginBottom:12}}><div style={{fontSize:11,fontWeight:800,color:'#fbbf24',marginBottom:4}}>⚠️ ATTENTION HEIN</div>{node.att.map((a,i)=><div key={i} style={{fontSize:13,lineHeight:1.5}}>• {a}</div>)}</div>}
-      {node.q&&<div style={{fontSize:14,fontWeight:700,margin:'14px 0 8px'}}>{node.q}</div>}
-      <div style={{display:'grid',gap:8}}>
-        {node.opts&&node.opts.map(([l,n],i)=><button key={i} onClick={()=>go(n)} style={B({borderColor:tree.color})}>{l}</button>)}
-        {node.next&&<button onClick={()=>go(node.next)} style={B({borderColor:tree.color,background:'rgba(34,211,238,0.1)',color:'#22d3ee',textAlign:'center'})}>Suivant →</button>}
-        {node.end&&<div style={{fontSize:13,color:'var(--green)',fontWeight:700}}>✓ Fin du protocole.</div>}
-        {hist.length>0&&<button onClick={back} style={B({padding:'8px 12px',fontSize:12.5,color:'var(--muted)'})}>← Précédent</button>}
-      </div>
     </div>}
     {acts.length>0&&<div style={{marginTop:22,borderTop:'1px solid var(--border)',paddingTop:12}}>
-      <div style={{fontSize:11,fontWeight:800,letterSpacing:'0.08em',color:'var(--green)',marginBottom:6}}>📝 ACTES NOTÉS AUTOMATIQUEMENT (envoyés dans le bilan)</div>
+      <div style={{fontSize:11,fontWeight:800,letterSpacing:'0.08em',color:'var(--green)',marginBottom:6}}>📝 ACTES NOTÉS (copiés → envoyés dans le bilan)</div>
       {acts.map((a,i)=><div key={i} style={{fontSize:12.5,lineHeight:1.5}}><b style={{color:'var(--muted)'}}>{a.hh}</b> {a.txt}</div>)}
       <button onClick={()=>{setActs([]);try{const cur=load('mRP2_bilan',{});save('mRP2_bilan',{...BILAN_DEF,...cur,gestes:''});window.dispatchEvent(new Event('bilan-gestes'));}catch(e){}}} style={B({padding:'6px 12px',fontSize:12,marginTop:8})}>Vider les actes</button>
     </div>}
