@@ -198,8 +198,8 @@ const { useState, useEffect, useCallback, useMemo, useRef } = React;
 
 /* ══════════════════════════════════════════ MACRO DATA ══ */
 
-const CATEGORIES = ['Tous','Favoris','Cathéters','Intra-osseux','Perfusions','Monitoring','Intubation','Réanimation','Trauma','Médicaments','Per Os','Urgences','Protocoles PISU','Examens','Questions /qu','Autres'];
-const CAT_ICON = {'Tous':'🏥','Favoris':'⭐','Cathéters':'💉','Intra-osseux':'🦴','Perfusions':'🫙','Monitoring':'📊','Intubation':'🫁','Réanimation':'❤️‍🔥','Trauma':'🩹','Médicaments':'💉','Per Os':'💊','Urgences':'🚨','Protocoles PISU':'📋','Examens':'🔬','Questions /qu':'💬','Autres':'📋'};
+const CATEGORIES = ['Tous','Favoris','Cathéters','Intra-osseux','Perfusions','Remplissage','Monitoring','Intubation','Réanimation','Trauma','Médicaments','Per Os','Urgences','Protocoles PISU','Examens','Questions /qu','Autres'];
+const CAT_ICON = {'Tous':'🏥','Favoris':'⭐','Cathéters':'💉','Intra-osseux':'🦴','Perfusions':'🫙','Remplissage':'🫗','Monitoring':'📊','Intubation':'🫁','Réanimation':'❤️‍🔥','Trauma':'🩹','Médicaments':'💉','Per Os':'💊','Urgences':'🚨','Protocoles PISU':'📋','Examens':'🔬','Questions /qu':'💬','Autres':'📋'};
 
 const DEFAULT_MACROS = [
 
@@ -472,6 +472,19 @@ const DEFAULT_MACROS = [
   {id:'io10',categorie:'Intra-osseux',type:'qu',titre:'Extravasation IO ?',
    texte:'/qu Extravasation ou gonflement au site IO ?'},
 
+  {id:'rp1',categorie:'Remplissage',type:'me',titre:'Remplissage NaCl 500mL — débit libre',texte:'/me branche une poche de NaCl 500mL en débit libre pour le remplissage.',info:'Remplissage rapide : poche ouverte à fond, à évaluer en titration.'},
+  {id:'rp2',categorie:'Remplissage',type:'me',titre:'Remplissage NaCl 500mL sur 10 min',texte:'/me passe une poche de NaCl 500mL en remplissage sur 10 minutes.',info:'Choc hémorragique, intoxication aux fumées (défaillance vitale), métrorragies.'},
+  {id:'rp3',categorie:'Remplissage',type:'me',titre:'2ème VVP + NaCl 500mL sur 10 min',texte:'/me pose une 2ème VVP et passe une poche de NaCl 500mL en remplissage sur 10 minutes.',info:'Choc hémorragique avec TAS < 80 mmHg, métrorragies > 500mL.'},
+  {id:'rp4',categorie:'Remplissage',type:'me',titre:'Garde veine NaCl 500mL',texte:'/me branche une poche de NaCl 500mL en garde veine (débit minimal).',info:'GV : maintient la VVP perméable.'},
+  {id:'rp5',categorie:'Remplissage',type:'me',titre:'Garde veine NaCl 100mL',texte:'/me branche une poche de NaCl 100mL en garde veine (débit minimal).',info:'Douleur thoracique, OAP, KTIO.'},
+  {id:'rp6',categorie:'Remplissage',type:'me',titre:'Ringer Lactate 20mL/kg sur 1h (brûlé)',texte:'/me passe du Ringer Lactate à 20mL/kg sur 1 heure.',info:'Brûlure > 10% de surface.'},
+  {id:'rp7',categorie:'Remplissage',type:'me',titre:'Ringer Lactate 10 à 20mL/kg (anaphylaxie)',texte:'/me passe du Ringer Lactate à 10 à 20mL/kg selon l\'hypovolémie.',info:'Choc anaphylactique.'},
+  {id:'rp8',categorie:'Remplissage',type:'me',titre:'Remplissage sous manchette à pression',texte:'/me met la poche sous manchette à pression pour accélérer le remplissage.',info:'Aussi utile en voie IO.'},
+  {id:'rp9',categorie:'Remplissage',type:'me',titre:'Poche en hauteur',texte:'/me suspend la poche en hauteur par rapport au patient.',info:'Sinon demander à un témoin de la tenir.'},
+  {id:'rp10',categorie:'Remplissage',type:'me',titre:'Numéroter les poches',texte:'/me numérote la poche pour suivre la quantité de remplissage apportée.',info:''},
+  {id:'rp11',categorie:'Remplissage',type:'me',titre:'Réévaluer le remplissage (titration)',texte:'/me réévalue l\'efficacité du remplissage (TA, FC, pouls) avant de passer une nouvelle poche.',info:'Remplissage en titration : évaluer à la fin de chaque poche.'},
+  {id:'rp12',categorie:'Remplissage',type:'me',titre:'Remplissage enfant NaCl 20mL/kg sur 10 min',texte:'/me passe du NaCl à 20mL/kg sur 10 minutes.',info:'ACR enfant avec hémorragie.'},
+  {id:'rp13',categorie:'Remplissage',type:'me',titre:'Remplissage prudent (insuffisance cardiaque)',texte:'/me limite le remplissage en raison de l\'insuffisance cardiaque et laisse un garde veine.',info:'Ne pas majorer la surcharge.'},
   // /qu
   {id:'q1',categorie:'Questions /qu',type:'qu',titre:'TA ?',texte:'/qu TA ?'},
   {id:'q2',categorie:'Questions /qu',type:'qu',titre:'FC ?',texte:'/qu FC ?'},
@@ -716,6 +729,21 @@ const PROCEDURES = [
       {titre:'5 · Fixation', texte:'/me note le repère aux dents, fixe la sonde avec la bande de fixation et vérifie le ballonnet au manomètre.'},
       {titre:'5 · Respirateur', texte:'/me raccorde la sonde au respirateur réglé.'},
       {titre:'6 · Entretien — Midazolam + Sufentanil', texte:'/me prépare les SE : Midazolam 50mg ramené à 50mL (1mg/mL) et Sufentanil 250μg ramené à 50mL (5μg/mL), selon prescription.'},
+    ]
+  },
+  {
+    id:'remplissage', titre:'Remplissage vasculaire', icon:'🫗', color:'#38bdf8',
+    desc:'Compenser une perte de volémie ou faire monter la tension',
+    etapes:[
+      {titre:'Poche en hauteur', texte:'/me suspend la poche en hauteur par rapport au patient.'},
+      {titre:'Numéroter la poche', texte:'/me numérote la poche pour suivre la quantité de remplissage apportée.'},
+      {titre:'Débit libre', texte:'/me branche une poche de NaCl 500mL en débit libre pour le remplissage.'},
+      {titre:'Sur 10 minutes (PISU)', texte:'/me passe une poche de NaCl 500mL en remplissage sur 10 minutes.'},
+      {titre:'Accélérer : manchette à pression', texte:'/me met la poche sous manchette à pression pour accélérer le remplissage.'},
+      {titre:'Réévaluer (titration)', texte:'/me réévalue l\'efficacité du remplissage (TA, FC, pouls) avant de passer une nouvelle poche.'},
+      {titre:'Garde veine', texte:'/me branche une poche de NaCl 500mL en garde veine (débit minimal).'},
+      {titre:'Brûlé : Ringer Lactate', texte:'/me passe du Ringer Lactate à 20mL/kg sur 1 heure.'},
+      {titre:'Insuffisance cardiaque : prudence', texte:'/me limite le remplissage en raison de l\'insuffisance cardiaque et laisse un garde veine.'},
     ]
   },
   {
@@ -2947,6 +2975,12 @@ const PISU_INFO={
   prep:['Adrénaline : 0,1 mg/mL (max 1 mg)','Cordarone (amiodarone) : 25 mg/mL (max 300 puis 150 mg)','Cyanokit : 25 mg/mL (max 5 g)'],
   att:['Doses selon le poids : voir tableaux du schéma PISU (adrénaline 0,01 mg/kg, amiodarone 5 mg/kg, Cyanokit 75 mg/kg).','Situations particulières : hémorragie (contrôle du saignement, NaCl 20 mL/kg sur 10 min), intoxication aux fumées (hydroxocobalamine 75 mg/kg sur 15 min), hypoglycémie (1/2 ampoule G30 IVDL), obstruction des VAS (laryngoscope, aspiration ou pince de Magill).','RACS : monitorage continu + GSC, paracétamol 15 mg/kg IVL si T° > 38,5.']}
 };
+PISU_INFO.remplissage={crit:['Perte de volémie ou besoin de faire monter la tension'],excl:['Insuffisance cardiaque : remplir prudemment','Pas de glucosé sur un traumatisé crânien ni sur un diabétique équilibré'],
+  cherche:['TA, FC, pouls radial, signes de choc','Saignement, volume perdu','Insuffisance cardiaque, hyperhydratation','Traumatisme crânien ? Diabète ?','Kaliémie / calcémie (Ringer Lactate)','Efficacité à la fin de chaque poche'],
+  secou:['Position allongée, jambes surélevées si possible','Poches en hauteur par rapport au patient'],
+  transm:['Nombre de poches passées (poches numérotées)','Volume total de remplissage apporté','Efficacité sur la TA et la FC'],
+  prep:['NaCl 0,9 % 500mL ou 100mL','Ringer Lactate 500mL','Il faut 5 à 6 fois le volume perdu avec les cristalloïdes isotoniques'],
+  att:['Remplissage en titration : évaluer l\'efficacité à la fin de chaque poche pour ne pas ajouter de poches inutiles.','Débit libre ou manchette à pression : surveiller la TA et la FC en continu.','Ringer Lactate contre-indiqué en cas de trauma crânien, insuffisance cardiaque, hyperkaliémie ou hypercalcémie.']};
 function BSPPView({showToast}){
   const [pid,setPid]=useState(null);
   const [acts,setActs]=useState([]);
