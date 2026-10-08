@@ -198,8 +198,8 @@ const { useState, useEffect, useCallback, useMemo, useRef } = React;
 
 /* ══════════════════════════════════════════ MACRO DATA ══ */
 
-const CATEGORIES = ['Tous','Favoris','Cathéters','Intra-osseux','Perfusions','Remplissage','Monitoring','Intubation','Antalgiques N1','Antalgiques N2','Antalgiques N3','Sédation','Antidotes','Cardio & urgence','Neuro','Réanimation','Trauma','Médicaments','Per Os','Urgences','Protocoles PISU','Examens','Questions /qu','Autres'];
-const CAT_ICON = {'Tous':'🏥','Favoris':'⭐','Cathéters':'💉','Intra-osseux':'🦴','Perfusions':'🫙','Remplissage':'🫗','Antalgiques N1':'🩹','Antalgiques N2':'💊','Antalgiques N3':'💉','Sédation':'😴','Antidotes':'🧪','Cardio & urgence':'🫀','Neuro':'🧠','Monitoring':'📊','Intubation':'🫁','Réanimation':'❤️‍🔥','Trauma':'🩹','Médicaments':'💉','Per Os':'💊','Urgences':'🚨','Protocoles PISU':'📋','Examens':'🔬','Questions /qu':'💬','Autres':'📋'};
+const CATEGORIES = ['Tous','Favoris','Cathéters','Intra-osseux','Perfusions','Remplissage','Pousse-seringue','Monitoring','Intubation','Antalgiques N1','Antalgiques N2','Antalgiques N3','Sédation','Antidotes','Cardio & urgence','Neuro','Réanimation','Trauma','Médicaments','Per Os','Urgences','Protocoles PISU','Examens','Questions /qu','Autres'];
+const CAT_ICON = {'Tous':'🏥','Favoris':'⭐','Cathéters':'💉','Intra-osseux':'🦴','Perfusions':'🫙','Remplissage':'🫗','Pousse-seringue':'🔌','Antalgiques N1':'🩹','Antalgiques N2':'💊','Antalgiques N3':'💉','Sédation':'😴','Antidotes':'🧪','Cardio & urgence':'🫀','Neuro':'🧠','Monitoring':'📊','Intubation':'🫁','Réanimation':'❤️‍🔥','Trauma':'🩹','Médicaments':'💉','Per Os':'💊','Urgences':'🚨','Protocoles PISU':'📋','Examens':'🔬','Questions /qu':'💬','Autres':'📋'};
 
 const DEFAULT_MACROS = [
 
@@ -253,12 +253,12 @@ const DEFAULT_MACROS = [
   {id:'pf20',categorie:'Perfusions',type:'me',titre:'Hidonac 200mg/kg dans 500mL',texte:'/me prépare l\'Hidonac à 200mg/kg dans 500mL de NaCl et perfuse sur 4 heures.',info:'70kg = 14g soit 3 flacons de 5g/25mL.'},
   {id:'pf21',categorie:'Perfusions',type:'me',titre:'Cyanokit 5g dans 200mL — adulte',texte:'/me dilue le Cyanokit 5g dans 200mL de NaCl et perfuse sur 15 minutes.',info:'PISU 3 : intox fumées, si milieu clos et défaillance vitale. Effet indésirable : urines rouges 2 à 3 jours.'},
   {id:'pf22',categorie:'Perfusions',type:'me',titre:'Ocytocine 5 UI dans 100mL',texte:'/me dilue 1 ampoule d\'Ocytocine 5 UI/1mL dans un flacon de 100mL de NaCl.',info:'PISU 14.'},
-  {id:'pf23',categorie:'Perfusions',type:'me',titre:'SE — Midazolam 1mg/mL (entretien IOT)',texte:'/me prépare la SE de Midazolam : 1 ampoule de 50mg/10mL ramenée à 50mL avec du NaCl (1mg/mL), démarre à 2,5mL/h.',info:'Hypnotique d\'entretien en IVSE selon prescription : 2,5 à 10 mL/h.'},
-  {id:'pf24',categorie:'Perfusions',type:'me',titre:'SE — Sufentanil 5μg/mL (entretien IOT)',texte:'/me prépare la SE de Sufentanil : 1 ampoule de 250μg ramenée à 50mL avec du NaCl (5μg/mL), démarre à 0,8-20mL/h.',info:'Antalgique d\'entretien en IVSE selon prescription : 0,8 à 20 mL/h.'},
-  {id:'pf25',categorie:'Perfusions',type:'me',titre:'SE — Noradrénaline',texte:'/me prépare la SE de Noradrénaline 8mg/4mL et démarre au débit prescrit.'},
-  {id:'pf26',categorie:'Perfusions',type:'me',titre:'SE — Dobutamine',texte:'/me prépare la SE de Dobutamine 250mg/20mL et démarre au débit prescrit.'},
-  {id:'pf27',categorie:'Perfusions',type:'me',titre:'SE — Loxen',texte:'/me prépare la SE de Loxen 10mg/10mL et démarre au débit prescrit.'},
-  {id:'pf28',categorie:'Perfusions',type:'me',titre:'SE — Somatostatine',texte:'/me prépare la SE de Somatostatine 250μg/1mL et démarre à la dose prescrite.'},
+  {id:'pf23',categorie:'Pousse-seringue',type:'me',titre:'SE — Midazolam 1mg/mL (entretien IOT)',texte:'/me prépare la SE de Midazolam : 1 ampoule de 50mg/10mL ramenée à 50mL avec du NaCl (1mg/mL), démarre à 2,5mL/h.',info:'Hypnotique d\'entretien en IVSE selon prescription : 2,5 à 10 mL/h.'},
+  {id:'pf24',categorie:'Pousse-seringue',type:'me',titre:'SE — Sufentanil 5μg/mL (entretien IOT)',texte:'/me prépare la SE de Sufentanil : 1 ampoule de 250μg ramenée à 50mL avec du NaCl (5μg/mL), démarre à 0,8mL/h.',info:'Antalgique d\'entretien en IVSE selon prescription : 0,8 à 20 mL/h.'},
+  {id:'pf25',categorie:'Pousse-seringue',type:'me',titre:'SE — Noradrénaline',texte:'/me prépare la SE de Noradrénaline 8mg/4mL et démarre au débit prescrit.'},
+  {id:'pf26',categorie:'Pousse-seringue',type:'me',titre:'SE — Dobutamine',texte:'/me prépare la SE de Dobutamine 250mg/20mL et démarre au débit prescrit.'},
+  {id:'pf27',categorie:'Pousse-seringue',type:'me',titre:'SE — Loxen',texte:'/me prépare la SE de Loxen 10mg/10mL et démarre au débit prescrit.'},
+  {id:'pf28',categorie:'Pousse-seringue',type:'me',titre:'SE — Somatostatine',texte:'/me prépare la SE de Somatostatine 250μg/1mL et démarre à la dose prescrite.'},
   {id:'pf29',categorie:'Perfusions',type:'me',titre:'Purge de la tubulure',texte:'/me purge la tubulure pour chasser toutes les bulles d\'air.'},
   {id:'pf30',categorie:'Perfusions',type:'me',titre:'Flush de 10mL de NaCl',texte:'/me fait un flush de 10mL de NaCl 0,9% sur la VVP.'},
   {id:'pf31',categorie:'Perfusions',type:'me',titre:'Changement de flacon',texte:'/me remplace le flacon vide par le suivant.'},
@@ -338,7 +338,7 @@ const DEFAULT_MACROS = [
   {id:'med10',categorie:'Médicaments',type:'me',titre:'Midazolam — sédation vigile IVD',texte:'/me injecte 2 à 2,5mg de Midazolam en IVD.',info:'Ampoule 5mg/5mL. CI : état de choc.'},
   {id:'med11',categorie:'Médicaments',type:'me',titre:'Midazolam — intranasal',texte:'/me administre 5mg de Midazolam dans chaque narine.',info:'Ampoule 5mg/1mL.'},
   {id:'med12',categorie:'Médicaments',type:'me',titre:'Midazolam IM — état de mal épileptique',texte:'/me injecte 10mg de Midazolam en IM.',info:'70kg : 10mg.'},
-  {id:'med13',categorie:'Médicaments',type:'me',titre:'Tracrium — entretien curarisation',texte:'/me démarre le Tracrium à la SE selon la prescription.'},
+  {id:'med13',categorie:'Pousse-seringue',type:'me',titre:'Tracrium — entretien curarisation',texte:'/me démarre le Tracrium à la SE selon la prescription.'},
   {id:'med14',categorie:'Médicaments',type:'me',titre:'Lidocaïne 1%',texte:'/me prépare la Lidocaïne 1% selon la prescription.'},
   {id:'med15',categorie:'Médicaments',type:'me',titre:'Adrénaline IM — anaphylaxie',texte:'/me injecte 0,5mg d\'Adrénaline en IM.',info:'PISU 4 : détresse respiratoire ou signes hémodynamiques. Adrénaline pure.'},
   {id:'med16',categorie:'Médicaments',type:'me',titre:'Adrénaline IVD 0,05mg/2 min',texte:'/me injecte 0,05mg d\'Adrénaline en IVD toutes les 2 minutes jusqu\'à TAS > 80mmHg.',info:'PISU 4 : absence d\'amélioration circulatoire. 0,5mg dans une seringue de 10mL de NaCl (0,05mg/mL).'},
@@ -378,10 +378,10 @@ const DEFAULT_MACROS = [
   {id:'med50',categorie:'Médicaments',type:'me',titre:'Exacyl 1g sur 20 min',texte:'/me perfuse 1g d\'Exacyl (2 amp de 500mg dans 100mL de NaCl) sur 20 minutes.',info:'PISU 2 et 14.'},
   {id:'med51',categorie:'Médicaments',type:'me',titre:'Ceftriaxone 1g',texte:'/me perfuse 1g de Ceftriaxone dans 100mL de NaCl.'},
   {id:'med52',categorie:'Médicaments',type:'me',titre:'Augmentin 2g',texte:'/me perfuse 2g d\'Augmentin dans 100mL de NaCl.',info:'CI : allergie à la pénicilline et aux céphalosporines.'},
-  {id:'med53',categorie:'Médicaments',type:'me',titre:'Somatostatine — SE',texte:'/me démarre la Somatostatine à la SE.'},
+  {id:'med53',categorie:'Pousse-seringue',type:'me',titre:'Somatostatine — SE',texte:'/me démarre la Somatostatine à la SE.'},
   {id:'med54',categorie:'Médicaments',type:'me',titre:'Oxytocine 5 UI — IVL ou IM',texte:'/me injecte 5 UI d\'Oxytocine en IVL ou en IM.',info:'PISU 14 : entre l\'engagement de la 2ème épaule et la 1ère minute de vie. En accouchement eutocique en présentation céphalique.'},
   {id:'med55',categorie:'Médicaments',type:'me',titre:'Oxytocine 10 UI /1h',texte:'/me perfuse 10 UI d\'Oxytocine en 1 heure en IVL.',info:'PISU 14 : après la délivrance.'},
-  {id:'med56',categorie:'Médicaments',type:'me',titre:'Isuprel',texte:'/me démarre l\'Isuprel à la SE selon la prescription.'},
+  {id:'med56',categorie:'Pousse-seringue',type:'me',titre:'Isuprel',texte:'/me démarre l\'Isuprel à la SE selon la prescription.'},
   {id:'med57',categorie:'Médicaments',type:'me',titre:'Enoxaparine (Lovenox)',texte:'/me injecte l\'Enoxaparine selon la prescription.'},
   {id:'med58',categorie:'Médicaments',type:'me',titre:'Esoméprazole (Inexium)',texte:'/me dilue l\'Inexium 40mg dans 100mL de NaCl et perfuse.'},
   {id:'med59',categorie:'Médicaments',type:'me',titre:'Métoclopramide (Primpéran)',texte:'/me injecte 10mg de Primpéran en IV lente.'},
@@ -518,6 +518,20 @@ const DEFAULT_MACROS = [
   {id:'cn9',categorie:'Neuro',type:'me',titre:'Keppra 40 à 60mg/kg IVL',texte:'/me perfuse du Keppra (40 à 60mg/kg) dilué dans une perfusette de 500mL de NaCl en IVL sur 10 minutes (anticonvulsivant).',info:'État de mal épileptique. Flacons de 500mg : 70kg = 3,5g soit 7 flacons.'},
   {id:'cn10',categorie:'Antidotes',type:'me',titre:'Hidonac 200mg/kg',texte:'/me perfuse 200mg/kg de N-Acétylcystéine (Hidonac) dans 500mL de NaCl en IVL sur 4 heures (antidote du paracétamol).',info:'70kg : 14g soit 3 flacons de 5g/25mL. Nausées, vomissements, allergie possibles.'},
   {id:'cn11',categorie:'Antidotes',type:'me',titre:'Cyanokit 5g',texte:'/me perfuse 1 flacon de Cyanokit 5g dilué dans 200mL de NaCl en IVL sur 15 minutes (antidote du cyanure).',info:'Intoxication aux fumées en milieu clos. Allergie possible, urines rouges pendant 2 à 3 jours.'},
+  {id:'ps1',categorie:'Pousse-seringue',type:'me',titre:'Purger la SE',texte:'/me purge la seringue et le prolongateur de la SE.',info:'Purger avant de brancher sur la VVP.'},
+  {id:'ps2',categorie:'Pousse-seringue',type:'me',titre:'Étiqueter la seringue',texte:'/me étiquette la seringue (produit, concentration, heure).',info:'Une seringue préparée doit toujours être étiquetée.'},
+  {id:'ps3',categorie:'Pousse-seringue',type:'me',titre:'Brancher la SE sur la VVP',texte:'/me branche la SE sur la VVP via le prolongateur.',info:''},
+  {id:'ps4',categorie:'Pousse-seringue',type:'me',titre:'Démarrer la SE au débit prescrit',texte:'/me démarre la SE au débit prescrit.',info:'IV pousse-seringue : forme d\'IVL, administration sûre et régulière.'},
+  {id:'ps5',categorie:'Pousse-seringue',type:'me',titre:'Augmenter le débit (titration)',texte:'/me augmente le débit de la SE selon la prescription.',info:''},
+  {id:'ps6',categorie:'Pousse-seringue',type:'me',titre:'Diminuer le débit',texte:'/me diminue le débit de la SE selon la prescription.',info:''},
+  {id:'ps7',categorie:'Pousse-seringue',type:'me',titre:'Surveillance sous SE',texte:'/me surveille la tension, la fréquence cardiaque et la saturation sous SE.',info:''},
+  {id:'ps8',categorie:'Pousse-seringue',type:'me',titre:'Changer la seringue',texte:'/me remplace la seringue de la SE et reprend au même débit.',info:''},
+  {id:'ps9',categorie:'Pousse-seringue',type:'me',titre:'Arrêter la SE',texte:'/me arrête la SE.',info:''},
+  {id:'ps10',categorie:'Pousse-seringue',type:'me',titre:'SE — Brevibloc',texte:'/me prépare la SE de Brevibloc 100mg/10mL et démarre au débit prescrit.',info:'Dotation AR : Brevibloc (esmolol) 100mg/10mL.'},
+  {id:'ps11',categorie:'Pousse-seringue',type:'me',titre:'SE — Héparine sodique',texte:'/me prépare la SE d\'Héparine sodique 25000UI/5mL et démarre au débit prescrit.',info:'Dotation AR et MedPack Réa.'},
+  {id:'ps12',categorie:'Pousse-seringue',type:'me',titre:'SE — Striadyne',texte:'/me prépare la SE de Striadyne 20mg/2mL et démarre au débit prescrit.',info:'Dotation AR.'},
+  {id:'ps13',categorie:'Pousse-seringue',type:'me',titre:'SE — Adrénaline',texte:'/me prépare la SE d\'Adrénaline 5mg/5mL et démarre au débit prescrit.',info:'Dotation AR et MedPack Réa.'},
+  {id:'ps14',categorie:'Pousse-seringue',type:'me',titre:'SE — Hypnovel 50mg/10mL',texte:'/me prépare la SE d\'Hypnovel 50mg/10mL ramenée à 50mL avec du NaCl (1mg/mL) et démarre à 2,5mL/h.',info:'Entretien : 2,5 à 10 mL/h selon la prescription.'},
   // /qu
   {id:'q1',categorie:'Questions /qu',type:'qu',titre:'TA ?',texte:'/qu TA ?'},
   {id:'q2',categorie:'Questions /qu',type:'qu',titre:'FC ?',texte:'/qu FC ?'},
